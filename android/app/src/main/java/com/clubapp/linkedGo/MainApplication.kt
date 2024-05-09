@@ -1,4 +1,4 @@
-package com.linkedgo
+package com.clubapp.linkedGo
 
 import android.app.Application
 import com.facebook.react.PackageList
