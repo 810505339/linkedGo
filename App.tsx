@@ -1,118 +1,128 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
-import React from 'react';
-import type {PropsWithChildren} from 'react';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import AppNavigator from '@router/index';
+import '@utils/i18next';
 import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
+  PaperProvider,
+  MD3DarkTheme,
+  MD3LightTheme,
+  Modal,
+  Portal,
+  Dialog,
   Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+  Button,
+} from 'react-native-paper';
+import { Image, useColorScheme, View } from 'react-native';
+import { useMaterial3Theme } from '@pchmn/expo-material3-theme';
+import SplashScreen from 'react-native-splash-screen';
+import useSysLanguage from '@hooks/useSysLanguage.ts';
+import { useEffect } from 'react';
+import { StatusBar } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
+import Toast from 'react-native-toast-message';
+import toastConfig from '@components/toast/customToast';
+import { getFileUrl } from '@store/getfileurl';
+import useVersion from '@hooks/useVersion';
+import './global.css';
+import useImLogin from '@hooks/useImLogin';
+import { ModalLayerFactory, ModalLayers } from 'react-native-modal-layer';
+import { useBackHandler } from '@react-native-community/hooks';
+import useUserInfo from '@hooks/useUserInfo';
+import MyModal from '@components/modal';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+const headerIcon = require('@assets/imgs/base/modalHeader.png');
 
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
+const App = () => {
+  const { allData, hideDialog, download } = useVersion();
+  useUserInfo();
+  useImLogin();
+  useSysLanguage();
+  useBackHandler(() => {
+    return ModalLayerFactory.back();
+  });
 
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-}
-
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+  useEffect(() => {
+    /* 这是启动页 */
+    //SplashScreen.hide();
+    getFileUrl();
+  }, []);
+  const colorScheme = useColorScheme();
+  const { theme } = useMaterial3Theme();
+  const colors = {
+    ...theme.dark,
+    primary: '#EE2737',
   };
 
+  const paperTheme =
+    colorScheme === 'dark'
+      ? { ...MD3DarkTheme, colors: colors }
+      : { ...MD3LightTheme, colors: colors };
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-}
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <ModalLayers>
+        <BottomSheetModalProvider>
+          <PaperProvider theme={paperTheme}>
+            <SafeAreaProvider>
+              <StatusBar backgroundColor="transparent" translucent={true} />
 
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
+              {/* allData.isShow  */}
+
+              <Portal>
+                <MyModal
+                  visible={allData.isShow}
+                  onDismiss={hideDialog}
+                  dismissable={false}>
+                  <View className="w-[285]  bg-[#222222FF] items-center ml-auto mr-auto  rounded-2xl relative ">
+                    <Image
+                      source={headerIcon}
+                      resizeMode="contain"
+                      className="w-[285] h-[60] absolute -top-2 left-0 right-0"
+                    />
+                    <View>
+                      <Text className="text-lg font-bold text-white  text-center pt-2">
+                        提示
+                      </Text>
+                    </View>
+                    <View className="m-auto py-8 px-5">
+                      <Text
+                        className="text-xs font-bold text-white  text-center "
+                        numberOfLines={2}>
+                        {allData.versionIntroduce}
+                      </Text>
+                    </View>
+                    <View className="flex-row justify-around items-center  w-full px-5 pb-5 ">
+                      <Button
+                        className="bg-transparent flex-1 mr-5"
+                        mode="outlined"
+                        labelStyle={{ fontWeight: 'bold' }}
+                        textColor="#ffffffbf"
+                        onPress={hideDialog}>
+                        关闭
+                      </Button>
+                      <Button
+                        className="bg-[#EE2737FF] flex-1"
+                        textColor="#000000FF"
+                        labelStyle={{ fontWeight: 'bold' }}
+                        mode="contained"
+                        onPress={download}>
+                        下载
+                      </Button>
+                    </View>
+                  </View>
+                </MyModal>
+              </Portal>
+              <AppNavigator />
+              <Toast
+                config={toastConfig}
+                bottomOffset={200}
+                position="bottom"
+              />
+            </SafeAreaProvider>
+          </PaperProvider>
+        </BottomSheetModalProvider>
+      </ModalLayers>
+    </GestureHandlerRootView>
+  );
+};
 
 export default App;
