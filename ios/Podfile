@@ -16,6 +16,8 @@ end
 
 target 'linkedGo' do
   config = use_native_modules!
+    # 安装官方 SDK
+    pod 'WechatOpenSDK'
 
   use_react_native!(
     :path => config[:reactNativePath],
