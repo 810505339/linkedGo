@@ -258,6 +258,8 @@ export default {
     item4: '已取消',
     btn1: '取消订单',
     btn2: '继续支付',
+    btn3: '确认取消',
+    btn4: '我在想想',
     info1: '剩余',
     info2: '可继续支付',
     label1: '所选门店',
@@ -282,7 +284,8 @@ export default {
     PAY_CANCEL: '支付取消',
     PAY_SUCCESS: '支付成功',
     REFUND_TO_BALANCE: '已退款',
-    NOT_PAY: '未支付'
+    NOT_PAY: '未支付',
+
   },
   systemmessage: {
     btn1: '全部已读'

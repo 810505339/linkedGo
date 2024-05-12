@@ -357,7 +357,7 @@ const Orders = () => {
         })}
       </Tabs>
     </TabsProvider>
-    <Dialog visible={data.visible} confirm={confirm} onDismiss={onDismiss} >
+    <Dialog visible={data.visible} confirm={confirm} onDismiss={onDismiss} confirmText={t('orders.btn3')} cancelText={t('orders.btn4')}  >
       <Text>{t('orders.tip1')}</Text>
     </Dialog>
   </BaseLayout>);

@@ -4,8 +4,10 @@ import TicketScreen from '@pages/mainScreen/ticket';
 import FightwineScreen from '@pages/mainScreen/fightwine';
 import UserScreen from '@pages/mainScreen/user';
 import { TabParamList } from './type';
-import { Image } from 'react-native';
+import { Image, TouchableOpacity } from 'react-native';
 import { useTranslation } from 'react-i18next';
+import { useEffect } from 'react';
+import { store } from '@store/versionStore';
 
 
 const HOMEICON = require('@assets/imgs/bottombar/home.png');
@@ -25,6 +27,11 @@ const { Navigator, Screen } = createBottomTabNavigator<TabParamList>();
 const HomeTabs = () => {
   const { t } = useTranslation();
 
+  useEffect(() => {
+    console.log('tabs', store.app.sensitivenessOn)
+  }, [store.app.sensitivenessOn])
+
+
   return (
     <Navigator initialRouteName="Home" screenOptions={({ route }) => {
       return {
@@ -41,7 +48,6 @@ const HomeTabs = () => {
           backgroundColor: '#0B0B0BE6',
           justifyContent: 'center',
           alignItems: 'center',
-
         },
         tabBarIcon: ({ focused }) => {
           let image;
@@ -64,7 +70,12 @@ const HomeTabs = () => {
     }}>
       <Screen name="Home" component={HomeScreen} />
       <Screen name="Fightwine" options={{ title: t('default.titleList.fightwine') }} component={FightwineScreen} />
-      <Screen name="Ticket" options={{ title: t('default.titleList.ticket') }} component={TicketScreen} />
+      <Screen name="Ticket" options={{
+        title: t('default.titleList.ticket'),
+        tabBarButton: (props) => store.app.sensitivenessOn === '0' ? <TouchableOpacity {...props} activeOpacity={1} /> : <TouchableOpacity {...props} activeOpacity={1} />,
+
+
+      }} component={TicketScreen} />
       <Screen name="User" options={{ title: t('default.titleList.user') }} component={UserScreen} />
     </Navigator>
   );

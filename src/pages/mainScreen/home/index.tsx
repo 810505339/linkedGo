@@ -127,7 +127,7 @@ const HomeScreen = () => {
   return (
     <BaseLayout className="bg-[#0B0B0BE6]">
       {data.img && (<TouchableOpacity onPress={() => advertisingClick(data.advertising)}><Image source={{ uri: data.img }} className='h-[60] mx-5 my-5  rounded-2xl' /></TouchableOpacity>)}
-      <HorizontalFlatList className="mt-7" />
+      {<HorizontalFlatList className="mt-7" />}
       {data.swiperList && <SwiperView swiperList={data?.swiperList} />}
 
       <MyModal visible={data.visible} onDismiss={() => setData(draft => { draft.visible = false })} contentContainerStyle={containerStyle} dismissable={false}  >

@@ -53,7 +53,7 @@ const ConfirmBooth = () => {
 
   });
   const file = fileStore.fileUrl;
-  const selectBooth: any = booths?.activeIndex ? booths.list[booths?.activeIndex] : {
+  const selectBooth: any = booths?.activeIndex != undefined ? booths.list[booths?.activeIndex] : {
     maxAccommodate: 0,
     reserveAmount: 0,
   }
@@ -105,6 +105,8 @@ const ConfirmBooth = () => {
 
     const feeRate = findIndex(storeId)?.feeRate ?? 0
     const taxRate = findIndex(storeId)?.taxRate ?? 0
+
+    console.log(booths?.activeIndex, 'activeIndex')
 
     if (!selectBooth.boothId) {
       Toast.show({

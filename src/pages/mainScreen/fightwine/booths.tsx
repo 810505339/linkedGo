@@ -53,7 +53,7 @@ const Booths = () => {
     selectPackage: {},
 
   });
-  const selectBooth: any = booths?.activeIndex ? booths.list[booths?.activeIndex] : {
+  const selectBooth: any = booths?.activeIndex != undefined ? booths.list[booths?.activeIndex] : {
     maxAccommodate: 0,
     reserveAmount: 0,
   }

@@ -5,6 +5,7 @@ import { useRequest } from 'ahooks'
 import { getVersion } from "@api/version"
 import { useEffect } from "react"
 import { fileStore } from '@store/getfileurl';
+import { getStore } from '@store/versionStore'
 export default () => {
   const type = Platform.OS === 'android' ? 'ANDROID' : 'IOS'
 
@@ -14,7 +15,9 @@ export default () => {
     versionIntroduce: '',
     isForceUpdate: 0,
     isShow: false,
-    packageFile: ''
+    packageFile: '',
+    sensitivenessOn: '',//敏感功能开关
+    versionType: ''
   })
 
 
@@ -27,18 +30,21 @@ export default () => {
 
       console.log(resdata, '获取版本');
 
-      if(resdata)
-      {
+      if (resdata) {
         setAllData(draft => {
           draft.versionNumber = resdata?.versionNumber
           draft.versionIntroduce = resdata?.versionIntroduce
           draft.isForceUpdate = resdata?.isForceUpdate
           draft.isShow = resdata?.versionNumber != version
           draft.packageFile = fileStore?.fileUrl + '/' + resdata?.packageFile
+          draft.sensitivenessOn = resdata?.sensitivenessOn
+          draft.versionType = resdata?.versionType
+          getStore(resdata)
         })
+
       }
 
-     
+
 
 
     }

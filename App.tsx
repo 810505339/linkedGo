@@ -64,9 +64,6 @@ const App = () => {
           <PaperProvider theme={paperTheme}>
             <SafeAreaProvider>
               <StatusBar backgroundColor="transparent" translucent={true} />
-
-              {/* allData.isShow  */}
-
               <Portal>
                 <MyModal
                   visible={allData.isShow}

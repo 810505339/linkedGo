@@ -1,11 +1,13 @@
 import { useNavigation } from '@react-navigation/native';
-import { FC, PropsWithChildren } from 'react';
+import { FC, PropsWithChildren, useEffect, useState } from 'react';
 import { View, FlatList, ImageBackground, ImageSourcePropType, TouchableOpacity } from 'react-native';
 import { Text } from 'react-native-paper';
 import { RootStackParamList } from '@router/type';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useTranslation } from 'react-i18next';
 import { cssInterop } from 'nativewind'
+
+import { store } from '@store/versionStore'
 
 cssInterop(Text, {
   className: 'style'
@@ -39,22 +41,32 @@ type IProps = {
 const HorizontalFlatList: FC<PropsWithChildren<IProps>> = ({ style }) => {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { t, i18n } = useTranslation();
+  const [data, setData] = useState<IData[]>([
 
-  const data: IData[] = [
     { key: '1', navigation: 'Fightwine', text: t('home.nav1'), source: require('@assets/imgs/home/fightwine.png'), color: '#ED8EFFFF' },
-    { key: '2', navigation: 'Preset', text: t('home.nav2'), source: require('@assets/imgs/home/tickets.png'), color: '#FFBF65FF' },
-    { key: '3', navigation: 'ReserveBooth', text: t('home.nav3'), source: require('@assets/imgs/home/deck.png'), color: '#91F2FFFF' },
     { key: '4', navigation: 'Radio', text: t('home.nav4'), source: require('@assets/imgs/home/radio.png'), color: '#FF8383FF' },
     { key: '6', navigation: 'Dynamic', text: t('home.nav6'), source: require('@assets/imgs/home/dynamic.png'), color: '#C7C2FFFF' },
 
-  ];
+  ])
 
 
-  const onPress = (nav: unknown) => {
-    console.log(nav);
+  useEffect(() => {
+    if (store.app.sensitivenessOn === '0') {
+      setData([
+        { key: '1', navigation: 'Fightwine', text: t('home.nav1'), source: require('@assets/imgs/home/fightwine.png'), color: '#ED8EFFFF' },
+        { key: '2', navigation: 'Preset', text: t('home.nav2'), source: require('@assets/imgs/home/tickets.png'), color: '#FFBF65FF' },
+        { key: '3', navigation: 'ReserveBooth', text: t('home.nav3'), source: require('@assets/imgs/home/deck.png'), color: '#91F2FFFF' },
+        { key: '4', navigation: 'Radio', text: t('home.nav4'), source: require('@assets/imgs/home/radio.png'), color: '#FF8383FF' },
+        { key: '6', navigation: 'Dynamic', text: t('home.nav6'), source: require('@assets/imgs/home/dynamic.png'), color: '#C7C2FFFF' },
+      ])
 
+    }
+  }, [store.app.sensitivenessOn])
+
+
+
+  const onPress = (nav: any) => {
     navigation.navigate(nav);
-
   };
 
   return (
