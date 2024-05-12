@@ -60,7 +60,7 @@ const DynamicInfo = () => {
     });
   };
   const { data: application, runAsync: applicationRun } = useRequest(() => isAlreadySignUp(id), {
-
+    manual: true
   });
   const { data: res } = useRequest(() => getDynamicInfo({ id: id }));
   const data = res?.data
@@ -68,10 +68,7 @@ const DynamicInfo = () => {
 
 
   const { runAsync } = useRequest(signUp, {
-    debounceWait: 300,
     manual: true,
-    debounceLeading: true,
-    debounceTrailing: false,
   });
 
   useAsyncEffect(
@@ -86,13 +83,6 @@ const DynamicInfo = () => {
     },
     [],
   );
-
-
-
-
-
-
-
 
   const RenderList = ({ item }) => {
     const { activityTime, activityPlace, amount, useOfExpenses, activityPersonNumber, activitySignUpNumber, showOrNotPersonNumber } = item;

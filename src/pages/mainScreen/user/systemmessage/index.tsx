@@ -66,7 +66,7 @@ const SystemMessage = () => {
 
 
   const renderItem: FC<PropsWithChildren<IItemProps>> = (props) => {
-    console.log(props);
+
 
     const { content, messageTime, read, title, id } = props;
 
