@@ -35,7 +35,7 @@ export default ({ areaId, entranceDate, peopleNum, type }: IParams) => {
     },
   });
   const [booths, setBooths] = useImmer({
-    activeIndex: 0,
+    activeIndex: undefined,
     list: [],
     picture: null,
   });

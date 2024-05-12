@@ -78,6 +78,8 @@ const DynamicInfo = () => {
     async function* () {
       const generic = await getGenericPassword()
 
+      console.log(generic, 'generic')
+
       if ((generic as UserCredentials)?.password) {
         await applicationRun()
       }

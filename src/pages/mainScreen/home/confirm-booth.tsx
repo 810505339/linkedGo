@@ -53,7 +53,10 @@ const ConfirmBooth = () => {
 
   });
   const file = fileStore.fileUrl;
-  const selectBooth: any = booths.list[booths?.activeIndex]
+  const selectBooth: any = booths?.activeIndex ? booths.list[booths?.activeIndex] : {
+    maxAccommodate: 0,
+    reserveAmount: 0,
+  }
 
   const changePackage = (list: any[], index: number | undefined) => {
     if (index != undefined) {
@@ -75,7 +78,7 @@ const ConfirmBooth = () => {
     {
       /* 卡座列表 */
       label: t('confirmBooth.label1'), render: () => {
-        return (<View >
+        return (<View>
           <BoothsList itemPress={handleItemPress} {...booths} />
         </View>)
 

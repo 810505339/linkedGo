@@ -19,7 +19,6 @@ import { useTranslation } from 'react-i18next';
 import { TextInput } from 'react-native-paper';
 import PswInput from '@pages/LoginScreen/set-password/components/pswInput'
 import usesetPwd from './hooks/usesetPwd';
-import { setPayPassword } from '@api/common'
 import currency from 'currency.js'
 import { getCustomerCoupon } from '@api/coupon';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -172,6 +171,15 @@ const OrdersInfo = () => {
   useEffect(() => {
     balanceRun()
   }, [])
+
+  useEffect(() => {
+    if (orderStatus) {
+      navigation.setOptions({
+        title: ''
+      })
+    }
+
+  }, [navigation, orderStatus])
 
   const couponNum = route.params?.couponId ? 1 : 0;
   let amount: number | currency = currency(!couponNum ? route.params?.amount : couponAmount?.data).add(taxAmount).add(feeAmount).value;

@@ -30,7 +30,7 @@ const AuthenticationPower = () => {
     await checkPermission();
   };
 
-  const textindent = '\t\t\t\t';
+  const textindent = '    ';
   return (
     <BaseLayout source={bgImage} >
       <View className="flex items-center justify-center mt-10">

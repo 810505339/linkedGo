@@ -37,20 +37,11 @@ const service = axios.create({
 service.interceptors.request.use(async (config) => {
 	// 统一增加Authorization请求头, skipToken 跳过增加token
 
-
-
-
 	const generic = await getGenericPassword();
-
-	console.log(generic, 'generic');
-
-
-
 	let token = null;
 	if (generic) {
 		token = generic.password;
 	}
-	console.log(config.headers?.skipToken);
 
 	if (token && !config.headers?.skipToken) {
 		config.headers![CommonHeaderEnum.AUTHORIZATION] = `Bearer ${token}`;

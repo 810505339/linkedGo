@@ -260,6 +260,20 @@ export default {
     btn2: '继续支付',
     info1: '剩余',
     info2: '可继续支付',
+    label1: '所选门店',
+    label2: '卡座',
+    label3: '已选套餐',
+    label4: '入场时间',
+    label5: '到店人数',
+    label6: '入场时间',
+    label7: '应付金额',
+    label8: '商品名称',
+    label9: '商品数量',
+    label10: '酒局名称',
+    label11: '最晚到场时间',
+    label12: '男性人数',
+    label13: '女性人数',
+    label14: '酒局类型',
     tip1: '取消订单以后无法恢复，是否确认',
     WINE_PARTY: '拼酒局',
     TICKET: '预定门票',
@@ -268,6 +282,7 @@ export default {
     PAY_CANCEL: '支付取消',
     PAY_SUCCESS: '支付成功',
     REFUND_TO_BALANCE: '已退款',
+    NOT_PAY: '未支付'
   },
   systemmessage: {
     btn1: '全部已读'

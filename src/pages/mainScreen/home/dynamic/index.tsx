@@ -34,7 +34,6 @@ type IProps = {
 }
 
 const DynamicItem = (props: IProps) => {
-  console.log(props);
   const { t } = useTranslation();
   const navigation = useNavigation<ScreenNavigationProp<'DynamicInfo'>>();
   const { id, onPress, type, pageView, publishDate, pictureFile, dynamicTitleCn, dynamicTitleUk, dynamicContentCn, dynamicContentUk, whetherSignUp, amount, } = props;
@@ -67,7 +66,7 @@ const DynamicItem = (props: IProps) => {
 
 
   const handleItemPress = (id: string) => {
-    console.log(id);
+
     navigation.navigate('DynamicInfo', {
       id
     });

@@ -53,7 +53,10 @@ const Booths = () => {
     selectPackage: {},
 
   });
-  const selectBooth: any = booths?.activeIndex != undefined ? booths.list[booths?.activeIndex] : {};
+  const selectBooth: any = booths?.activeIndex ? booths.list[booths?.activeIndex] : {
+    maxAccommodate: 0,
+    reserveAmount: 0,
+  }
   const { shopName } = useSelectShop();
   const { loading, runAsync } = useRequest((params) => calPayAmount(params), {
     debounceWait: 500,
@@ -168,11 +171,9 @@ const Booths = () => {
           { label: t('orders.label1'), value: shopName },
           { label: t('orders.label2'), value: `${areaName} - ${selectBooth?.name}` },
           { label: t('orders.label3'), value: data.selectPackage?.name },
-          { label: t('orders.label4'), value: entranceDate },
-          { label: t('orders.label6'), value: latestArrivalTime },
           { label: t('orders.label10'), value: partyName },
           { label: t('orders.label14'), value: modeName },
-          { label: t('orders.label11'), value: latestArrivalTime },
+          { label: t('orders.label11'), value: entranceDate + ' ' + latestArrivalTime },
           { label: t('orders.label12'), value: data.maleNum },
           { label: t('orders.label13'), value: data.femaleNum },
           { label: t('orderInfo.tag29'), value: `S$${selectBooth?.reserveAmount}` },

@@ -73,7 +73,7 @@ const CustomFlatList = forwardRef<CustomFlatListRef, IPaginatedFlatListProps<any
     ...rest
   } = props;
 
-  console.log('触发的我的render');
+
 
 
 

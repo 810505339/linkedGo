@@ -722,6 +722,7 @@ const FightwineDetail = () => {
         Toast.show({
           text1: '请输入评价'
         })
+        return
       }
       const contentPic = ((imageList as []) ?? []).map((item: any) => item.id)
       console.log(AppraiseDom.current, 'AppraiseDom.current获取到的数据');

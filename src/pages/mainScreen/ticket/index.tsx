@@ -156,7 +156,11 @@ const TicketScreen = () => {
   const api = useCallback(myTicket, []);
 
 
-  const handleItemPress = useCallback(async (id: string) => {
+  const handleItemPress = async (id: string) => {
+    console.log(data.defaultIndex)
+    if (data.defaultIndex != 0) {
+      return
+    }
     const res = await genQrCodeStr(id)
     setData(draft => {
       draft.visible = true;
@@ -168,8 +172,7 @@ const TicketScreen = () => {
         draft.qrCode = res?.data?.data
       });
     }, 60000)
-
-  }, [setData]);
+  }
 
 
   const handleChangeIndex = (index: number) => {

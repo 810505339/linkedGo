@@ -150,6 +150,7 @@ export default {
     PAY_CANCEL: 'Cancelled',
     PAY_SUCCESS: 'Payment successful',
     REFUND_TO_BALANCE: 'Refunded',
+    NOT_PAY: 'Not pay'
 
   },
   ticket: {
