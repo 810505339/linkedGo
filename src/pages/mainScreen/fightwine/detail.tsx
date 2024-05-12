@@ -289,14 +289,14 @@ const Appraise = forwardRef((props: any, childRef: any) => {
     </View>}
 
     {/* 评价本次酒局 */}
-    {!item.isCommented && <View className="flex-row items-center space-x-2 my-3">
+    {<View className="flex-row items-center space-x-2 my-3">
       <Text className="font-bold">{t('wineDetail.appraise2')}</Text>
       <Text className=" text-[#EE2737] font-normal text-xs">{t('wineDetail.appraise3')}</Text>
     </View>
     }
 
     {
-      !item.isCommented && <View className="bg-[#191919] rounded-xl border-[#343434] p-2 max-h-36 overflow-y-scroll">
+      <View className="bg-[#191919] rounded-xl border-[#343434] p-2 max-h-36 overflow-y-scroll">
         <TextInput placeholder={t('wineDetail.appraise4')}
           editable
           maxLength={300}
@@ -317,13 +317,13 @@ const Appraise = forwardRef((props: any, childRef: any) => {
 
     {/* 上传图片 */}
     {
-      !item.isCommented && <View className="flex-row  my-3 space-x-2">
+      <View className="flex-row  my-3 space-x-2">
         <Text className="font-bold">{t('wineDetail.appraise5')}</Text>
         <Text className="text-[#EE2737] font-normal text-xs">{t('wineDetail.appraise6')}</Text>
       </View>
     }
 
-    {!item.isCommented && <View className="flex-row  space-x-2    items-center ">
+    {<View className="flex-row  space-x-2    items-center ">
       {imageList.map((image) => {
         return (<TouchableOpacity className="w-20 h-20 rounded relative mx-2 " key={image.id} onPress={() => onSelectImage(image)}>
           <IconButton icon="backspace-reverse"
@@ -746,7 +746,7 @@ const FightwineDetail = () => {
 
       console.log(res.isCommented, 'res.isCommented')
       /* 没评价过 */
-      if (!res.isCommented && res.status === STATE.已入场) {
+      if (res.status === STATE.已入场) {
         return <Button mode={'elevated'} className="bg-[#EE2737FF]" textColor="#0C0C0CFF" onPress={commented}>{t('wineDetail.btn9')}</Button>;
       }
 

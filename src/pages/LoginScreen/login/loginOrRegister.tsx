@@ -66,7 +66,7 @@ const LoginOrRegister = () => {
 
   const { authCode } = route.params
   const { loading, runAsync } = useRequest(() => sendYzmApi({
-    phone: phone,
+    mobile: phone,
     phoneAreaCode: alldata.selectItem.areaCode
   }), {
     manual: true,
