@@ -228,7 +228,7 @@ const Booths = () => {
     { label: t('confirmBooth.label1'), render: () => <BoothsList itemPress={itemPress} {...booths} /> },
     {
       label: t('booths.tag2'), render: () => (<View>
-        {selectBooth?.maxAccommodate && <Text className="text-center mb-5 text-[10px]"> {t('booths.tag3')} <Text className="text-[#E6A055FF] font-bold">{selectBooth?.maxAccommodate}</Text>  {t('booths.tag4')}</Text>}
+        {selectBooth?.maxAccommodate ? <Text className="text-center mb-5 text-[10px]"> {t('booths.tag3')} <Text className="text-[#E6A055FF] font-bold">{selectBooth?.maxAccommodate}</Text>  {t('booths.tag4')}</Text> : null}
 
         <View className=" flex flex-row justify-between items-center">
           <View className="flex-col  items-center">
