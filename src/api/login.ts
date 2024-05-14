@@ -155,3 +155,12 @@ export const allPhoneAreaCode = () => {
 		method: 'get',
 	});
 }
+
+/* 退出登录 */
+
+export const logout = () => {
+	return service({
+		url: `/auth/token/logout`,
+		method: 'DELETE',
+	});
+}

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import qs from 'qs';
-import { getGenericPassword } from 'react-native-keychain';
+import { getGenericPassword, resetGenericPassword } from 'react-native-keychain';
 import Toast from 'react-native-toast-message';
 const baseUrl = 'https://club-h5.point2club.com/api/';
 import { replace } from '@router/index';
@@ -112,6 +112,7 @@ service.interceptors.response.use((response) => {
 	console.log(error, 'error');
 
 	if (error?.response?.status == CODELIST.TOKENCAN) {
+		resetGenericPassword() //清除token
 		replace('Login')
 	}
 
