@@ -14,6 +14,7 @@ import { CommonActions } from '@react-navigation/native';
 import { cssInterop } from 'nativewind';
 import { useTranslation } from 'react-i18next';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { logout } from '@api/login';
 
 
 cssInterop(Button, {
@@ -60,6 +61,8 @@ const Account = () => {
 
   async function handleOut() {
     //退出登录
+
+    await logout()
     await storage.clearMap();
     await resetGenericPassword();
     navigation.dispatch(
