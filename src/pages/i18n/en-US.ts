@@ -6,7 +6,7 @@ export default {
   },
   common: {
     btn1: "Cancel",
-    btn2: 'Sure',
+    btn2: 'Confirm',
     btn3: 'Next',
     btn4: 'Continue',
     btn5: 'Return',
@@ -341,14 +341,14 @@ export default {
     label2: 'Number of people in attendance',
   },
   confirmBooth: {
-    label1: 'Select the deck',
-    label2: 'Select a package',
-    label3: 'Choose your way to the store',
-    label4: 'Upon arrival, you can choose your own drinks and meals',
-    label5: 'The deck can accommodate up to the maximum',
-    label6: 'person',
-    label7: 'Minimum spend',
-    label8: 'Once the booth is booked, you will be given the same number of tickets',
+    label1: 'Select VIP Sofa',
+    label2: 'Select package',
+    label3: 'Select package',
+    label4: 'Choose your own drinks and meals after arriving at the store',
+    label5: 'Maximum capacity',
+    label6: ' ',
+    label7: 'Total Amount',
+    label8: 'Free Tickets will be provided based on the maximum capacity of the selected VIP sofa upon successful reservation',
     btn1: 'Select VIP Sofa'
   },
 
