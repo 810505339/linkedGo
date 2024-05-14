@@ -39,6 +39,7 @@ const PackageItem = (props: IProps) => {
 export type IAreaListProps = {
   boothId: string,
   onChange?: (list: any[], index: number | undefined) => void
+  changeLoading?: (loading: boolean) => void
 }
 
 const PackageList: FC<IAreaListProps> = (props) => {
@@ -52,7 +53,7 @@ const PackageList: FC<IAreaListProps> = (props) => {
       isDefault: true,
     },
   ];/*  */
-  const { boothId, onChange } = props;
+  const { boothId, onChange, changeLoading } = props;
   const [data, setData] = useImmer({
     cells: initList,
     activeIndex: 0,
@@ -64,7 +65,7 @@ const PackageList: FC<IAreaListProps> = (props) => {
     onChange?.(data.cells, index);
   };
 
-  const { run } = useRequest(() => getByBoothId(boothId), {
+  const { run, loading } = useRequest(() => getByBoothId(boothId), {
     manual: true,
     onSuccess: (res) => {
 
@@ -88,6 +89,10 @@ const PackageList: FC<IAreaListProps> = (props) => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [boothId]);
+
+  useEffect(() => {
+    changeLoading?.(loading)
+  }, [loading])
 
   return (<View className=' flex-wrap gap-3 flex-row '>
     {data.cells.map((item, index) => {

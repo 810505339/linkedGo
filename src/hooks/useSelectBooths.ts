@@ -10,14 +10,11 @@ type IParams = {
   areaId: string,
   entranceDate: string
   type?: undefined | 'getOpenBoothByWine'
+
 }
 
 export default ({ areaId, entranceDate, peopleNum, type }: IParams) => {
-
-
-
-
-  useRequest(() => !type ? getOpenBooth({ areaId, entranceDate, peopleNum }) : getOpenBoothByWine({ areaId, entranceDate, peopleNum }), {
+  const { loading } = useRequest(() => !type ? getOpenBooth({ areaId, entranceDate, peopleNum }) : getOpenBoothByWine({ areaId, entranceDate, peopleNum }), {
     onSuccess: (res) => {
       setBooths(darft => {
         const list = res?.data?.boothList ?? [];

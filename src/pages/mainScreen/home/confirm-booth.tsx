@@ -50,6 +50,7 @@ const ConfirmBooth = () => {
   const [data, setData] = useImmer({
     selectPackage: {},
     num: 1,
+    loading: false
 
   });
   const file = fileStore.fileUrl;
@@ -94,7 +95,7 @@ const ConfirmBooth = () => {
     /* 套餐 */
     {
       label: t('confirmBooth.label2'), render: () => (<View >
-        <PackageList boothId={selectBooth?.boothId} onChange={changePackage} />
+        <PackageList boothId={selectBooth?.boothId} onChange={changePackage} changeLoading={changeLoading} />
         <Text className="text-[#E6A055FF] mt-5  text-[10px]" >*  {t('confirmBooth.label8')}</Text>
       </View>),
     }
@@ -164,10 +165,16 @@ const ConfirmBooth = () => {
     });
   };
 
+  const changeLoading = (loading: boolean) => {
+    setData(draft => {
+      draft.loading = loading
+    })
+  }
+
   console.log(img, 'img');
 
 
-  return (<BaseLayout loading={loading}>
+  return (<BaseLayout loading={loading || data.loading}>
     {<Image resizeMode="cover" className="absolute top-0" style={{ width: width, height: 500 }} source={{ uri: file + '/' + img }} />}
     <ScrollView>
       <Panel className="mt-[200]">
