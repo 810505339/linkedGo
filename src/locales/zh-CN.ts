@@ -36,5 +36,8 @@ export default {
     Orders: '订单',
     Coupons: '优惠券',
     Information: '账户余额',
+    Result: '支付结果',
+    Authentication: '认证成功',
+    AuthenticationFacestatus: '',
   },
 };

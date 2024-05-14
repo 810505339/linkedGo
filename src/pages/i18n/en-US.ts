@@ -193,9 +193,9 @@ export default {
   },
   power: {
     tag1: 'Authorization Statement',
-    tag2: '为了给您提供更好的服务,请您通过人脸识别来完成性别认证.您上传的照片仅用于性别认证,我们不会留存',
-    tag3: '点击同意则表示您同意我们根据以上方式和目的使用您提供的本人照片收集您的性别信息',
-    btn1: '同意',
+    tag2: 'In order to provide you with better service, please complete gender authentication through face recognition. The photos you upload are for gender verification purposes only and will not be retained by us。',
+    tag3: 'By clicking Agree, you agree that we will use the photo you provide to collect your gender information according to the above methods and purposes。',
+    btn1: 'Agree',
   },
   facestatus: {
     btn1: 'Verification Passed',
