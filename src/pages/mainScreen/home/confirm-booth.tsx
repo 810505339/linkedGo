@@ -107,7 +107,7 @@ const ConfirmBooth = () => {
     const feeRate = findIndex(storeId)?.feeRate ?? 0
     const taxRate = findIndex(storeId)?.taxRate ?? 0
 
-    console.log(booths?.activeIndex, 'activeIndex')
+
 
     if (!selectBooth.boothId) {
       Toast.show({
@@ -196,7 +196,9 @@ const ConfirmBooth = () => {
             <Text style={{ fontSize: 10 }}>{t('confirmBooth.label5')} <Text className="text-[#E6A055FF]">{selectBooth?.maxAccommodate}</Text>{t('confirmBooth.label6')}</Text>
             <Text className="mt-2" style={{ fontSize: 10 }}>{t('confirmBooth.label7')}： <Text className="text-[#E6A055FF]">S$ {selectBooth?.reserveAmount}</Text></Text>
           </View>
-          <Button mode={'elevated'} className="bg-[#EE2737FF]" textColor="#0C0C0CFF" onPress={toUrl} >{t('common.btn2')}</Button>
+          <Button mode={'elevated'} className="bg-[#EE2737FF]" textColor="#0C0C0CFF" onPress={toUrl} >
+            {t('common.btn2')}
+          </Button>
         </View>
       </View>
     </SafeAreaView>

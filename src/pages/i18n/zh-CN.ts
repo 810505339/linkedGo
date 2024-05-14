@@ -141,6 +141,7 @@ export default {
     tag3: '您提交的资料将只会用于性别认证审核',
     tag4: '本过程需要<Text className="color-[#EE2737]">您本人</Text>亲自完成，仅需1分钟！',
     btn1: '开始验证',
+    btn2: '暂不认证',
   },
   power: {
     tag1: '授权声明',
