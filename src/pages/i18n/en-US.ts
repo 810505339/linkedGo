@@ -349,6 +349,7 @@ export default {
     label6: 'person',
     label7: 'Minimum spend',
     label8: 'Once the booth is booked, you will be given the same number of tickets',
+    btn1: 'Select VIP Sofa'
   },
 
 };

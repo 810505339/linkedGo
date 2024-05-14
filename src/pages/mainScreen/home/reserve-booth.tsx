@@ -44,6 +44,7 @@ const ReserveBooth = () => {
   const [data, setData] = useImmer({
     selectArea: {},
     num: 1,
+    loading: false
   });
   const beginTime = data.selectArea?.businessDateVOS?.[0]?.beginTime
   const endTime = data.selectArea?.businessDateVOS?.[0]?.beginTime
@@ -84,6 +85,12 @@ const ReserveBooth = () => {
       draft.selectArea = list[index];
     });
   };
+
+  const changeLoading = (loading: boolean) => {
+    setData((draft) => {
+      draft.loading = loading
+    })
+  }
 
 
   const checkTime = (selectDate: Date) => {
@@ -126,7 +133,7 @@ const ReserveBooth = () => {
 
   }
 
-  return (<BaseLayout>
+  return (<BaseLayout loading={data.loading}>
     <CustomModal ref={bottomSheetModalRef} data={snap.shopList} selectValue={shop.select.id} onPress={onPress} headerText={t('common.label1')} snapPoints={['50%']} />
     <View className="flex-1">
       <View className="flex-1">
@@ -166,7 +173,7 @@ const ReserveBooth = () => {
             </View>
             <View className="mt-7">
               <Text className="text-xs text-white font-bold opacity-50 mb-4">{t('common.label3')}</Text>
-              <AreaList storeId={shop.select.id} date={formatDay} onChange={changeArea} />
+              <AreaList storeId={shop.select.id} date={formatDay} onChange={changeArea} changeLoading={changeLoading} />
             </View>
           </Panel>
         </ScrollView>
@@ -175,7 +182,7 @@ const ReserveBooth = () => {
         <View className="h-14  flex-col justify-center ">
           <Divider />
           <View className="flex-row  px-5 mt-2">
-            <Button mode={'elevated'} className="bg-[#EE2737FF] w-full" textColor="#0C0C0CFF" onPress={toUrl} >{t('common.btn3')}</Button>
+            <Button mode={'elevated'} className="bg-[#EE2737FF] w-full" textColor="#0C0C0CFF" onPress={toUrl} >{t('confirmBooth.btn1')}</Button>
           </View>
         </View>
       </SafeAreaView>

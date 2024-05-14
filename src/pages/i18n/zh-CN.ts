@@ -353,6 +353,7 @@ export default {
     label6: '人',
     label7: '最低消费',
     label8: '卡座预订成功后，将会赠送您相同人数的门票',
+    btn1: '选择卡座',
   },
 
 };
