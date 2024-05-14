@@ -150,7 +150,7 @@ const HomeScreen = () => {
 
     const header = (
       <View className=" ml-5   flex-auto" >
-        <View><Text className="text-lg text-[#fff] font-bold">{userInfo?.nickname}</Text></View>
+        <View><Text className="text-xl text-[#fff] font-bold">{userInfo?.nickname}</Text></View>
         <View >
           <Text numberOfLines={2} ellipsizeMode="tail" className="text-white opacity-50">{userInfo?.personalSignature ?? t('user.header1')}</Text>
         </View>
@@ -159,7 +159,7 @@ const HomeScreen = () => {
             <BlurView
               style={{ position: 'absolute', bottom: 0, left: 0, right: 0, top: 0 }}
               blurType="light"
-              blurAmount={10}
+              blurAmount={5}
               reducedTransparencyFallbackColor="transparent"
 
             />
@@ -199,7 +199,7 @@ const HomeScreen = () => {
         <TouchableOpacity className={`${box} basis-2/4`} onPress={() => balancePress('Information')} >
           <ImageBackground source={bg1Icon} resizeMode='contain' className="absolute right-0 bottom-0 left-0 w-full h-full" />
           <View className='pb-8'>
-            <View className='flex-row items-center'>
+            <View className='flex-row items-center justify-center'>
               <Text className='text-sm text-[#E6A055FF]'>S$</Text>
               <Text className="text-[#E6A055FF]  text-[24px]  text-center font-bold">
                 {info?.balanceAmount ?? 0}
@@ -228,7 +228,7 @@ const HomeScreen = () => {
   };
 
   const renderItem = ({ item }) => {
-    return (<List.Item title={item.title} className='flex-row items-center pl-5 bg-[#0B0B0BFF]' left={() => <List.Icon icon={item.left} />} right={() => <Right {...item} />} onPress={() => handleItemPress(item)} />);
+    return (<List.Item title={item.title} className='flex-row items-center pl-5 bg-[#0B0B0BFF] opacity-75' left={() => <List.Icon icon={item.left} />} right={() => <Right {...item} />} onPress={() => handleItemPress(item)} />);
   };
 
   return (<BaseLayout className="bg-[#0B0B0BFF]">
