@@ -76,10 +76,10 @@ const Account = () => {
 
 
   }
-  const handleItemPress = (item) => {
+  const handleItemPress = (item: any) => {
     navigation.navigate(item.id);
   };
-  const right = (item) => {
+  const right = (item: any) => {
     return (<View className=" flex-row items-center">
       <Text className="text-[#ffffff7f] font-light text-xs">{item.description}</Text>
       <List.Icon icon="chevron-right" color="#ffffff7f" />
