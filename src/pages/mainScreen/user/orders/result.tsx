@@ -43,20 +43,19 @@ const Result = () => {
     const { data } = await getOrderDetail(orderId);
 
 
-    /* 根据不同的type获取OrderContext */
-
     function getOrderContext(orderType: IOrderType) {
       let initList: { label: string; value: any; }[] = []
 
       if (orderType === IOrderType.拼酒局) {
         initList = [
-          { label: '', value: data?.productName },
+          // { label: t('orderInfo.mode2'), value: data?.productName },
+          { label: t('orderInfo.mode3'), value: data?.modeName },
         ]
       }
 
       if (orderType === IOrderType.预定卡座) {
         initList = [
-          { label: t('orderInfo.tag16'), value: data?.productName },
+          // { label: t('orderInfo.tag16'), value: data?.productName },
         ]
       }
       if (orderType === IOrderType.预定门票) {
@@ -66,6 +65,7 @@ const Result = () => {
       }
 
       const list = [
+        { label: t('orderInfo.mode1'), value: data?.orderNo },
         { label: t('orderInfo.tag1'), value: data?.storeName },
         { label: t('orderInfo.tag2'), value: data?.areaName },
         { label: t('orderInfo.tag3'), value: data?.bootName },
@@ -76,9 +76,10 @@ const Result = () => {
         // { label: t('orderInfo.tag8'), value: data?.createTime },
         ...initList,
         { label: t('orderInfo.tag9'), value: data?.productNum },
-        { label: t('orderInfo.tag10'), value: data?.entranceDate ? (data?.entranceDate + (data?.latestArrivalTime ?? '')) : null },
-        { label: t('orderInfo.tag11'), value: data?.payMethod },
-        { label: t('orderInfo.tag12'), value: data.orderStatus },
+        { label: t('orderInfo.tag16'), value: data?.drinksMealName ?? t('confirmBooth.label3') },
+        { label: t('orderInfo.tag10'), value: data?.entranceDate ? (data?.entranceDate + ' ' + (data?.latestArrivalTime ?? '')) : null },
+        // { label: t('orderInfo.tag11'), value: data?.payMethod },
+        // { label: t('orderInfo.tag12'), value: item.orderStatus },
         { label: t('orderInfo.tag13'), value: data?.discountAmount != 0 ? <Text className='text-[#FF2C2C]'>{'-S$' + data?.discountAmount}</Text> : null },
         { label: t('orderInfo.tag14'), value: data?.discountDetail?.name },
         { label: t('orderInfo.tag15'), value: 'S$' + data.originalAmount },

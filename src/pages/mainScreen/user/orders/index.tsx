@@ -250,7 +250,7 @@ const Orders = () => {
       }
 
       const list = [
-        { label: t('orderInfo.mode1'), value: data?.id },
+        { label: t('orderInfo.mode1'), value: data?.orderNo },
         { label: t('orderInfo.tag1'), value: data?.storeName },
         { label: t('orderInfo.tag2'), value: data?.areaName },
         { label: t('orderInfo.tag3'), value: data?.bootName },
