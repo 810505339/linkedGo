@@ -53,7 +53,7 @@ const list: Item[] = [
 
 
 
-const ItemCard = ({ cards }: { cards: any[] }) => {
+const ItemCard = ({ cards, className }: { cards: any[] }) => {
 
   const positionLeft = (index: number): StyleProp<ViewStyle> => {
     const left = -10 * index;
@@ -66,8 +66,8 @@ const ItemCard = ({ cards }: { cards: any[] }) => {
 
   };
 
-  return (<View className="flex flex-row   mr-5 overflow-hidden relative">
-    {cards.map((Item, index) => (<View key={index} style={positionLeft(index)} className={'  w-6 h-6 rounded-full relative border border-[#000000] overflow-hidden   '}>
+  return (<View className={`flex flex-row  overflow-hidden relative ${className}`}>
+    {cards.map((Item, index) => (<View key={index} style={positionLeft(index)} className={'  w-8 h-8 rounded-full relative border border-[#000000] overflow-hidden   '}>
       {Item}
     </View>))
     }
@@ -89,7 +89,7 @@ export const Item = (props) => {
   const tags = [
     { label: partyModeDesc },
     { label: `${peopleNum} ${t('fightwine.tag1')}` },
-    { label: `${entranceDate} ${latestArrivalTime} ${t('fightwine.tag2')}` },
+    { label: `${entranceDate}  ${t('fightwine.tag2')}` },
   ];
 
 
@@ -114,10 +114,10 @@ export const Item = (props) => {
     </View>
     <View className="mt-5 flex-row ">
       <ItemCard cards={maleIconList} />
-      <ItemCard cards={famaleIconList} />
-      <TouchableOpacity activeOpacity={1} className="h-6 w-16 justify-self-end justify-center items-center bg-[#FFFFFFE6] rounded-2xl absolute right-0" onPress={() => onPress(id)}>
+      <ItemCard cards={famaleIconList} className='mr-5' />
+      <TouchableOpacity activeOpacity={1} className="h-6 w-16 justify-self-end justify-center items-center bg-[#FFFFFF] rounded-2xl absolute right-0" onPress={() => onPress(id)}>
         <View>
-          <Text className={`text-xs font-normal ${color}`}  >{t('fightwine.btn2')}</Text>
+          <Text className={` font-normal ${color}`}  >{t('fightwine.btn2')}</Text>
         </View>
       </TouchableOpacity>
 
@@ -263,14 +263,14 @@ const FightwineScreen = () => {
 function createAvatar(people: number, avatarList: any[], bg: string = 'bg-[#E6A055FF]', icon: any = maleIcon) {
 
   const avatarListRender_ = Array.from({ length: people - avatarList.length }, () => {
-    return <View className={`${bg} w-6 h-6 items-center justify-center`}>
-      <Image source={icon} className='w-4 h-4' />
+    return <View className={`${bg} w-8 h-8 items-center justify-center`}>
+      <Image source={icon} className='w-6 h-6' />
     </View >
   })
 
   const avatarListRender = avatarList.map((m: string) => {
     // return <ImageBackground source={{ uri: m }} className='w-6 h-6' />
-    return (<View className='relative w-6 h-6  overflow-hidden'>
+    return (<View className='relative w-8 h-8  overflow-hidden'>
       <BlurView
         style={{ position: 'absolute', bottom: 0, left: 0, right: 0, top: 0, zIndex: 10 }}
         blurAmount={10}
@@ -278,7 +278,7 @@ function createAvatar(people: number, avatarList: any[], bg: string = 'bg-[#E6A0
         reducedTransparencyFallbackColor="transparent"
 
       />
-      <ImageBackground source={{ uri: m }} className='w-6 h-6' />
+      <ImageBackground source={{ uri: m }} className='w-8 h-8' />
     </View>)
   })
   const iconList = [...avatarListRender, ...avatarListRender_]

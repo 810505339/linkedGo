@@ -89,7 +89,7 @@ const App = () => {
                     </View>
                     <View className="flex-row justify-around items-center  w-full px-5 pb-5 ">
                       <Button
-                        className="bg-transparent flex-1 mr-5"
+                        className="bg-transparent  mr-5 w-32"
                         mode="outlined"
                         labelStyle={{ fontWeight: 'bold' }}
                         textColor="#ffffffbf"
@@ -97,7 +97,7 @@ const App = () => {
                         关闭
                       </Button>
                       <Button
-                        className="bg-[#EE2737FF] flex-1"
+                        className="bg-[#EE2737FF] w-32 "
                         textColor="#000000FF"
                         labelStyle={{ fontWeight: 'bold' }}
                         mode="contained"

@@ -37,5 +37,8 @@ export default {
     Orders: 'Orders',
     Coupons: 'Coupons',
     Information: 'Account balance',
+    Authentication: '认证成功',
+    AuthenticationFacestatus: '',
+    Result: '',
   },
 };

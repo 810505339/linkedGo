@@ -50,6 +50,7 @@ const ConfirmBooth = () => {
   const [data, setData] = useImmer({
     selectPackage: {},
     num: 1,
+    loading: false
 
   });
   const file = fileStore.fileUrl;
@@ -94,7 +95,7 @@ const ConfirmBooth = () => {
     /* 套餐 */
     {
       label: t('confirmBooth.label2'), render: () => (<View >
-        <PackageList boothId={selectBooth?.boothId} onChange={changePackage} />
+        <PackageList boothId={selectBooth?.boothId} onChange={changePackage} changeLoading={changeLoading} />
         <Text className="text-[#E6A055FF] mt-5  text-[10px]" >*  {t('confirmBooth.label8')}</Text>
       </View>),
     }
@@ -106,7 +107,7 @@ const ConfirmBooth = () => {
     const feeRate = findIndex(storeId)?.feeRate ?? 0
     const taxRate = findIndex(storeId)?.taxRate ?? 0
 
-    console.log(booths?.activeIndex, 'activeIndex')
+
 
     if (!selectBooth.boothId) {
       Toast.show({
@@ -164,10 +165,16 @@ const ConfirmBooth = () => {
     });
   };
 
+  const changeLoading = (loading: boolean) => {
+    setData(draft => {
+      draft.loading = loading
+    })
+  }
+
   console.log(img, 'img');
 
 
-  return (<BaseLayout loading={loading}>
+  return (<BaseLayout loading={loading || data.loading}>
     {<Image resizeMode="cover" className="absolute top-0" style={{ width: width, height: 500 }} source={{ uri: file + '/' + img }} />}
     <ScrollView>
       <Panel className="mt-[200]">
@@ -189,7 +196,9 @@ const ConfirmBooth = () => {
             <Text style={{ fontSize: 10 }}>{t('confirmBooth.label5')} <Text className="text-[#E6A055FF]">{selectBooth?.maxAccommodate}</Text>{t('confirmBooth.label6')}</Text>
             <Text className="mt-2" style={{ fontSize: 10 }}>{t('confirmBooth.label7')}： <Text className="text-[#E6A055FF]">S$ {selectBooth?.reserveAmount}</Text></Text>
           </View>
-          <Button mode={'elevated'} className="bg-[#EE2737FF]" textColor="#0C0C0CFF" onPress={toUrl} >{t('common.btn2')}</Button>
+          <Button mode={'elevated'} className="bg-[#EE2737FF]" textColor="#0C0C0CFF" onPress={toUrl} >
+            {t('common.btn2')}
+          </Button>
         </View>
       </View>
     </SafeAreaView>

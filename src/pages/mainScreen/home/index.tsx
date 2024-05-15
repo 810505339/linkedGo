@@ -5,16 +5,16 @@ import { useEffect, useState } from 'react';
 import BaseLayout from '@components/baselayout';
 import SwiperView from './components/swiperView';
 import HorizontalFlatList from './components/HorizontalFlatList';
-import { getcarouselList } from '@api/common';
+import { getcarouselList, getHomePageAdvertising } from '@api/common';
 import { useImmer } from 'use-immer';
 import { fileStore } from '@store/getfileurl';
 import { LogLevelEnum, TencentImSDKPlugin } from 'react-native-tim-js';
-import { getHomePageAdvertising } from '@api/common'
 import { Image, ScrollView, Text, TouchableOpacity } from 'react-native';
 import useImageSize from '@hooks/useImageSize';
 import { Modal } from 'react-native-paper';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import MyModal from '@components/modal';
+import { useRequest } from 'ahooks';
 
 
 const closeIcon = require('@assets/imgs/base/close.png')
@@ -48,6 +48,12 @@ const HomeScreen = () => {
   const navigation =
     useNavigation<NativeStackNavigationProp<UsertackParamList>>();
 
+  const { runAsync, error, loading } = useRequest(() => {
+    return Promise.all([getcarouselList({ storeId: data.id, limitNum: '5', type: '0' }), getHomePageAdvertising('0', data.id), getHomePageAdvertising('1', data.id)]);
+  }, {
+    manual: true
+  });
+
   const { imageSize, getSize } = useImageSize()
   const { imageSize: imageSize1, getSize: getSize1 } = useImageSize()
 
@@ -69,10 +75,7 @@ const HomeScreen = () => {
   }
   /* 轮播图跟广告 */
   async function getcarouselListApi() {
-    const res = await getcarouselList({ storeId: data.id, limitNum: '5', type: '0' });
-    const advertising = await getHomePageAdvertising('0', data.id)
-    const advertising2 = await getHomePageAdvertising('1', data.id)
-
+    const [res, advertising, advertising2] = await runAsync()
     const img = advertising?.data ? fileStore.fileUrl + '/' + advertising?.data?.pictureFile?.[0]?.fileName : ''
     const img1 = advertising2?.data ? fileStore.fileUrl + '/' + advertising2?.data?.pictureFile?.[0]?.fileName : ''
 
@@ -104,16 +107,10 @@ const HomeScreen = () => {
 
 
   useEffect(() => {
-
     console.log(data.id, 'data.id');
-
     if (data.id) {
       getcarouselListApi();
-
     }
-
-
-
   }, [data.id]);
 
 
@@ -125,7 +122,7 @@ const HomeScreen = () => {
 
   const containerStyle = { padding: 20 };
   return (
-    <BaseLayout className="bg-[#0B0B0BE6]">
+    <BaseLayout className="bg-[#0B0B0BE6]" loading={loading}>
       {data.img && (<TouchableOpacity onPress={() => advertisingClick(data.advertising)}><Image source={{ uri: data.img }} className='h-[60] mx-5 my-5  rounded-2xl' /></TouchableOpacity>)}
       {<HorizontalFlatList className="mt-7" />}
       {data.swiperList && <SwiperView swiperList={data?.swiperList} />}

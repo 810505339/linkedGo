@@ -115,7 +115,7 @@ const LoginOrRegister = () => {
   /* 验证规则是否通过 */
   function verify() {
     if (!checked) {
-      Toast.show({ text1: '请勾选' });
+      Toast.show({ text1: t('login.tip1') });
       return false;
     }
 
@@ -132,7 +132,7 @@ const LoginOrRegister = () => {
   }
   /* 点击选择地区 */
   function setCode(item: any) {
-
+    console.log(item, 'item')
     setAllData(draft => {
       draft.selectItem = item
     })
@@ -157,7 +157,7 @@ const LoginOrRegister = () => {
     <BaseLayout source={bgImage} loading={loading}>
       <View className="mx-5 mt-11">
         <View>
-          <Text className="text-[#ffffff7f] text-sx">{t('login.tag2')}</Text>
+          <Text className="text-[#ffffff] text-sx">{t('login.tag13')}</Text>
         </View>
         <View className="flex-row items-center mt-4 ">
           <TextInput
@@ -173,6 +173,7 @@ const LoginOrRegister = () => {
             keyboardType="numeric"
             maxLength={11}
             value={phone}
+            label={t('login.tag2')}
             onChangeText={text => setPhone(text)}
             className="bg-transparent flex-grow font-bold text-2xl"
           />
@@ -188,12 +189,11 @@ const LoginOrRegister = () => {
             />
           </View>
           <View className="flex-1 ">
-            <Text className="text-[#ffffff7f]">
+            <Text className="text-[#ffffff]">
               {t('login.tag11')}
               <TouchableOpacity onPress={() => toRule('p')}>
                 <Text className="text-[#EE2737]">{t('login.tag7')}</Text>
               </TouchableOpacity>
-
               {t('login.tag12')}
               <TouchableOpacity onPress={() => toRule('u')}>
                 <Text className="text-[#EE2737]">{t('login.tag8')}</Text>
@@ -233,7 +233,7 @@ const LoginOrRegister = () => {
           </Button>
         </View>
       </View>
-      <CustomModal ref={bottomSheetModalRef} data={alldata.codeList} headerText={t('user.header6')} selectValue={alldata.selectItem.areaCode} onPress={setCode} snapPoints={['50%']} />
+      <CustomModal ref={bottomSheetModalRef} data={alldata.codeList} headerText={t('user.header6')} selectValue={alldata.selectItem.nameCode} onPress={setCode} snapPoints={['50%']} />
     </BaseLayout>
   );
 };

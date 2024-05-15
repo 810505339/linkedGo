@@ -157,19 +157,22 @@ const TicketScreen = () => {
 
 
   const handleItemPress = async (id: string) => {
-    console.log(data.defaultIndex)
+
     if (data.defaultIndex != 0) {
       return
     }
+    console.log(id, 'id')
     const res = await genQrCodeStr(id)
+
+    console.log(res)
     setData(draft => {
       draft.visible = true;
-      draft.qrCode = res?.data?.data
+      draft.qrCode = res?.data?.data?.qrCodeStr
     });
     timeId.current = setInterval(async () => {
       const res = await genQrCodeStr(id)
       setData(draft => {
-        draft.qrCode = res?.data?.data
+        draft.qrCode = res?.data?.data?.qrCodeStr
       });
     }, 60000)
   }

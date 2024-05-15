@@ -37,7 +37,7 @@ const CheckSex = () => {
       <View className="bg-[#1E1E1EFF] ">
         <View className=" relative -top-10   ">
           <Text className=" text-center font-bold text-2xl">为了更好的拼局体验</Text>
-          <Text className=" text-center font-bold text-2xl">您需要完成性别认证流</Text>
+          <Text className=" text-center font-bold text-2xl">您需要完成性别认证流程</Text>
         </View>
         <View className="flex-row justify-around items-center  w-full px-5 pb-5 mt-10 ">
           <Button className="bg-transparent mr-5 w-32" mode="outlined" labelStyle={{ fontWeight: 'bold' }} textColor="#ffffffbf" onPress={hidden} >{t('common.btn1')}</Button>
