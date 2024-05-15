@@ -32,6 +32,12 @@ cssInterop(Image, {
   className: 'style'
 })
 
+enum TICKET {
+  非赠票 = 'NORMAL',
+  未赠送 = 'NOTGIVEN',
+  已赠送 = 'GIVEN'
+}
+
 const expiredIcon = require('@assets/imgs/ticket/expired.png');
 const usedIcon = require('@assets/imgs/ticket/used.png');
 
@@ -132,7 +138,10 @@ const TicketScreen = () => {
   const [data, setData] = useImmer({
     defaultIndex: 0,
     visible: false,
-    qrCode: ''
+    qrCode: '',
+    givenStatus: TICKET.非赠票,
+    givenTime: '',
+
 
   });
 
@@ -168,11 +177,15 @@ const TicketScreen = () => {
     setData(draft => {
       draft.visible = true;
       draft.qrCode = res?.data?.data?.qrCodeStr
+      draft.givenStatus = res?.data?.data?.givenStatus
+      draft.givenTime = res?.data?.data?.givenTime
     });
     timeId.current = setInterval(async () => {
       const res = await genQrCodeStr(id)
       setData(draft => {
         draft.qrCode = res?.data?.data?.qrCodeStr
+        draft.givenStatus = res?.data?.data?.givenStatus
+        draft.givenTime = res?.data?.data?.givenTime
       });
     }, 60000)
   }
@@ -223,19 +236,32 @@ const TicketScreen = () => {
 
       <Portal>
         <MyModal visible={data.visible} onDismiss={hideModal} contentContainerStyle={containerStyle} dismissable={false}>
-          <View className="bg-[#1E1E1E] relative flex items-center   -top-24 h-44" style={style.modal}>
-            <ImageBackground source={modalBg} className="w-full h-44" />
+          <View className="bg-[#1E1E1E] relative flex items-center  pb-5  border  rounded-2xl  " style={style.modal}>
+            <ImageBackground source={modalBg} className="w-full h-44 absolute -z-0" />
             <Image source={modalIcon} className="absolute -top-10" />
-            <View className="rounded-xl border p-2.5 bg-white   absolute   inset-0 top-28 flex flex-row items-center justify-center">
+            <View className="rounded-xl border p-2.5 bg-white flex flex-row items-center justify-center mt-28">
               <QRCode
                 value={data.qrCode}
-                size={260}
+                size={180}
                 logoBackgroundColor="transparent" />
             </View>
-            <TouchableOpacity onPress={hideModal} className='flex-row  items-center justify-center top-72' >
-              <Image source={closeIcon} className='w-6 h-6' />
-            </TouchableOpacity>
+
+            {data.givenStatus != TICKET.非赠票 && (<View className=' mt-5'>
+              {data.givenStatus === TICKET.未赠送 ? (<View className='flex flex-row items-center  justify-between   w-full px-12'>
+                <Text>此票可赠送</Text>
+                <Button mode={'elevated'} className="bg-[#EE2737FF]  font-bold " contentStyle={{ padding: 0 }} textColor="#000000FF" >赠送</Button>
+              </View>) : <View>
+                <Text>{data.givenTime}</Text>
+              </View>}
+
+
+            </View>
+            )}
           </View>
+
+          <TouchableOpacity onPress={hideModal} className='flex-row  items-center justify-center mt-10' >
+            <Image source={closeIcon} className='w-6 h-6' />
+          </TouchableOpacity>
         </MyModal>
       </Portal>
     </BaseLayout>

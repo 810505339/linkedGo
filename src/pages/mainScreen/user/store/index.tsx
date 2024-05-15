@@ -14,6 +14,7 @@ const Store = () => {
     {data.language && <WebView source={{
       uri: `https://club-h5.point2club.com/#/me/shop?have=0&language=${data.language}`
     }}
+      originWhitelist={['https://*', 'git://*']}
       androidLayerType={'hardware'}
       mixedContentMode={'always'}
       mediaPlaybackRequiresUserAction={false}

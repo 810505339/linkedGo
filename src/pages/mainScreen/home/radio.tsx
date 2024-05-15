@@ -25,6 +25,7 @@ const Radio = () => {
     {data.language && token && <WebView source={{
       uri: `https://club-h5.point2club.com/#/broadcast?language=${data.language}&have=0&token=${token}&storeId=${shop.select.id}`
     }}
+      originWhitelist={['https://*', 'git://*']}
       style={{ flex: 1, backgroundColor: '#222222FF' }} />}
   </BaseLayout>
 }

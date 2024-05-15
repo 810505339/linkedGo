@@ -33,6 +33,7 @@ const Customer = () => {
         uri: `https://club-h5.point2club.com/#/me/opinion?type=0&language=${data.language}&have=0&token=${token}`
         // uri: 'https://club-h5.point2club.com/'
       }}
+      originWhitelist={['https://*', 'git://*']}
       style={{ flex: 1, backgroundColor: '#222222FF' }} />}
   </BaseLayout>
 }
