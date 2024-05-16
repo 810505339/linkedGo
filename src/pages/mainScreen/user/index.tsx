@@ -64,12 +64,12 @@ const HomeScreen = () => {
 
   const { data: _userInfo, runAsync } = useRequest(detailsById, {
     manual: true,
-    onSuccess: async () => {
-      await userRun()
-    }
   });
   const { data, runAsync: userRun } = useRequest(mineInfo, {
     manual: true,
+    onSuccess: (res) => {
+      console.log('跟新', res)
+    }
   });
 
   useEffect(() => {
@@ -125,7 +125,9 @@ const HomeScreen = () => {
         const generic = await getGenericPassword();
         console.log('generic', generic);
         if (generic) {
-          await runAsync()
+          await Promise.all([runAsync(), userRun()])
+
+
         }
       });
 
@@ -142,6 +144,8 @@ const HomeScreen = () => {
     const isCertifiedIcon = userInfo?.checkFace ? certifiedIcon : noCertifiedIcon;
     const sexText = userInfo?.gender === 1 ? t('user.header4') : t('user.header5');
     const isCertifieText = userInfo?.checkFace ? t('user.header2') : t('user.header3');
+
+    const orderCount = info?.orderCount >= 100 ? `99+` : info?.orderCount
 
 
     const avatarUrl = userInfo?.avatarUrl ? (<Image className={' w-24  h-24 rounded-full border-2 border-[#98000CFF]'} resizeMode="cover" source={{ uri: userInfo?.avatarUrl }} />) :
@@ -219,7 +223,7 @@ const HomeScreen = () => {
         <TouchableOpacity className={`${box}  basis-1/4 `} onPress={() => balancePress('Orders')}>
           <ImageBackground source={bg3Icon} resizeMode='contain' className="absolute inset-0 w-full h-full" />
           <View className='pb-8'>
-            <Text className="text-[#2ECFFFFF] text-[24px] text-center font-bold">{info?.orderCount ?? 0}</Text>
+            <Text className="text-[#2ECFFFFF] text-[24px] text-center font-bold">{orderCount ?? 0}</Text>
             <Text className={fontText}>{t('user.tag3')}</Text>
           </View>
         </TouchableOpacity>

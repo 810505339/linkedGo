@@ -99,6 +99,11 @@ const AreaList: FC<IAreaListProps> = (props) => {
   if (loading) {
     return null
   }
+  if (data.cells.length <= 0) {
+    return <View className='border border-[#343434] bg-[#191919] h-24 rounded-xl justify-center items-center flex-row'>
+      <Text className='text-xs  opacity-50 ml-2.5'>暂无区域</Text>
+    </View>
+  }
 
   return <View className='flex flex-row flex-wrap gap-4'>
     {(data.cells as Array<IProps>).map((item, index) => {
