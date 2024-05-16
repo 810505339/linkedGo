@@ -140,8 +140,8 @@ const Result = () => {
         contentStyle={{ height: 50 }}
         onPress={handleItemPress}
       >
-        查看详情
-      </Button>
+        查看详情    
+          </Button>
     </View>
   </View >
 }
