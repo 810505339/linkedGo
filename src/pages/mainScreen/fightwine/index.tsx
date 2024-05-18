@@ -15,6 +15,7 @@ import { cssInterop } from 'nativewind'
 import { useTranslation } from 'react-i18next';
 import { BlurView } from '@react-native-community/blur';
 import useSelectShop from '@hooks/useSelectShop';
+import useUserInfo from '@hooks/useUserInfo';
 
 cssInterop(Button, {
   className: 'style'
@@ -148,6 +149,9 @@ const FightwineScreen = () => {
   const { shop } = useSelectShop();
   const flatRef = useRef(null)
 
+  const { userInfoStorage } = useUserInfo();
+  const { userInfo } = userInfoStorage;
+
   useEffect(() => {
     navigation.setOptions({
       headerRight: (props: HeaderButtonProps) => <HeaderRight {...props} onPress={nextMyWineParty} />,
@@ -158,14 +162,6 @@ const FightwineScreen = () => {
     refreshing: false,
     defaultIndex: 0,
   });
-
-
-
-  // useEffect(() => {
-  //   if (flatRef.current) {
-  //     flatRef.current.refreshData({ storeId: shop.select.id });
-  //   }
-  // }, [shop.select.id, flatRef.current])
 
 
 
@@ -251,9 +247,10 @@ const FightwineScreen = () => {
       >
 
       </Animated.View> */}
-      <TouchableOpacity className="absolute z-50 w-16 h-16 bottom-1/4 right-0" onPress={onLaunch}>
+      {userInfo?.checkFace && <TouchableOpacity className="absolute z-50 w-16 h-16 bottom-1/4 right-0" onPress={onLaunch}>
         <ImageBackground source={launch} className="w-16 h-16" />
-      </TouchableOpacity>
+      </TouchableOpacity>}
+
 
     </BaseLayout>
   );
