@@ -135,10 +135,8 @@ const HomeScreen = () => {
       return unsubscribe;
     }, [navigation])
 
-
     const fontText = 'text-xs text-[#ffffff7f] text-center';
     const box = 'items-center h-40  justify-end  relative';
-
     const sexIcon = userInfo?.gender === 1 ? manIcon : womanIcon;
     const sexHeaderIcon = userInfo?.gender === 1 ? manHeaderIcon : womanHeaderIcon;
     const isCertifiedIcon = userInfo?.checkFace ? certifiedIcon : noCertifiedIcon;

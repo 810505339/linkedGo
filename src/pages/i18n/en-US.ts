@@ -326,6 +326,7 @@ export default {
       tag3: 'Activity fees',
       tag4: 'Purpose of Expense',
       tag5: 'Number of applicants',
+      tag6: 'Event Store',
       btn1: 'Sign up now',
       btn2: 'The number of people is full',
       btn3: '',
