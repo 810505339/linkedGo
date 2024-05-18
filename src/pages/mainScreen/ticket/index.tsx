@@ -147,13 +147,13 @@ const TicketScreen = () => {
 
   const containerStyle = { background: '#1E1E1E', padding: 20, margin: 20 };
 
-  useRequest(myTicket, {
-    onSuccess: (res) => {
-      console.log(res);
+  // useRequest(myTicket, {
+  //   onSuccess: (res) => {
+  //     console.log(res);
 
-    },
+  //   },
 
-  });
+  // });
 
   const hideModal = () => {
     setData(draft => {

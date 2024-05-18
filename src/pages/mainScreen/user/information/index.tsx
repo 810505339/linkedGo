@@ -85,7 +85,7 @@ const Information = () => {
     {data?.data && <Animated.View>
       <ListHeader headerInfo={data?.data} />
 
-      <CustomFlatlist renderItem={(item) => renderItem(item, t)} params={{ customerId: data?.data.customerId }} onFetchData={balanceDetailPage} keyExtractor={(item) => item.orderNo} />
+      <CustomFlatlist renderItem={(item) => renderItem(item, t)} params={{ customerId: data?.data.customerId }} onFetchData={balanceDetailPage} keyExtractor={(item) => item.serialNum} />
     </Animated.View>}
 
   </BaseLayout>);
