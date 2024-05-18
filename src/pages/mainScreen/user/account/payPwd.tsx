@@ -14,9 +14,10 @@ const PayPwd = () => {
   }, [])
 
   return <BaseLayout>
-    {data.language && token && <WebView source={{
-      uri: `https://club-h5.point2club.com/#/me/password?type=1&language=${data.language}&have=0&token=${token}`
-    }}
+    {data.language && token && <WebView startInLoadingState={true}
+      source={{
+        uri: `https://club-h5.point2club.com/#/me/password?type=1&language=${data.language}&have=0&token=${token}`
+      }}
       originWhitelist={['https://*', 'git://*']}
       style={{ flex: 1, backgroundColor: '#222222FF' }} />}
   </BaseLayout>

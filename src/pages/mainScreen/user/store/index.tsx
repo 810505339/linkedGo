@@ -11,9 +11,10 @@ const Store = () => {
   console.log(`https://club-h5.point2club.com/#/me/shop?have=0&language=${data.language}`);
 
   return <BaseLayout>
-    {data.language && <WebView source={{
-      uri: `https://club-h5.point2club.com/#/me/shop?have=0&language=${data.language}`
-    }}
+    {data.language && <WebView startInLoadingState={true}
+      source={{
+        uri: `https://club-h5.point2club.com/#/me/shop?have=0&language=${data.language}`
+      }}
       originWhitelist={['https://*', 'git://*']}
       androidLayerType={'hardware'}
       mixedContentMode={'always'}

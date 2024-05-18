@@ -115,7 +115,7 @@ export const Item = (props) => {
     <View className="mt-5 flex-row ">
       <ItemCard cards={maleIconList} />
       <ItemCard cards={famaleIconList} className='mr-5' />
-      <TouchableOpacity activeOpacity={1} className="h-6 w-16 justify-self-end justify-center items-center bg-[#FFFFFF] rounded-2xl absolute right-0" onPress={() => onPress(id)}>
+      <TouchableOpacity activeOpacity={1} className=" p-2 justify-self-end justify-center items-center bg-[#FFFFFF] rounded-2xl absolute right-0" onPress={() => onPress(id)}>
         <View>
           <Text className={` font-normal ${color}`}  >{t('fightwine.btn2')}</Text>
         </View>
