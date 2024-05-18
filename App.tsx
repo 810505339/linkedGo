@@ -112,7 +112,7 @@ const App = () => {
               <Toast
                 config={toastConfig}
                 bottomOffset={200}
-                position="bottom"
+            
               />
             </SafeAreaProvider>
           </PaperProvider>

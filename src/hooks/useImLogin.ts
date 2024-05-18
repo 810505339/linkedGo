@@ -70,7 +70,7 @@ export default () => {
 
               console.log(getConversationtRes.data?.lastMessage?.textElem?.text, 'getConversationtRes.data?.lastMessage?.textElem?.text')
               Toast.show({
-                type: "success",
+                type: "info",
                 text1: text1
               })
 

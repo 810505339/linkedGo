@@ -11,10 +11,10 @@ import { fileStore } from '@store/getfileurl';
 import { LogLevelEnum, TencentImSDKPlugin } from 'react-native-tim-js';
 import { Image, ScrollView, Text, TouchableOpacity } from 'react-native';
 import useImageSize from '@hooks/useImageSize';
-import { Modal } from 'react-native-paper';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import MyModal from '@components/modal';
 import { useRequest } from 'ahooks';
+import Toast from 'react-native-toast-message';
 
 
 const closeIcon = require('@assets/imgs/base/close.png')
