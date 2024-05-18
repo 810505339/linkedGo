@@ -197,7 +197,12 @@ const TicketScreen = () => {
     });
   };
 
+  const send = () => {
+    
+  }
   const getId = useCallback((item: any) => item.cusTicketId, []);
+
+
   return (
     <BaseLayout >
       {/* <CheckAuthLayout /> */}
@@ -244,6 +249,18 @@ const TicketScreen = () => {
                 value={data.qrCode}
                 size={180}
                 logoBackgroundColor="transparent" />
+            </View>
+
+            <View className=' mt-5'>
+              { (<View className='flex flex-row items-center  justify-between   w-full px-12'>
+                <Text>此票可赠送</Text>
+                <Button mode={'elevated'} className="bg-[#EE2737FF]  font-bold " contentStyle={{ padding: 0 }} 
+                onPress={send}
+                textColor="#000000FF" 
+                >赠送</Button>
+              </View>)}
+
+
             </View>
 
             {data.givenStatus != TICKET.非赠票 && (<View className=' mt-5'>
