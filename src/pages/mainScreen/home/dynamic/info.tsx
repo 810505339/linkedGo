@@ -62,7 +62,14 @@ const DynamicInfo = () => {
   const { data: application, runAsync: applicationRun } = useRequest(() => isAlreadySignUp(id), {
     manual: true
   });
-  const { data: res } = useRequest(() => getDynamicInfo({ id: id }));
+  const { data: res } = useRequest(() => getDynamicInfo({ id: id }), {
+    onSuccess: (res) => {
+      console.log(res, 'res')
+      if (!res.success) {
+        navigation.goBack()
+      }
+    }
+  });
   const data = res?.data
 
 
