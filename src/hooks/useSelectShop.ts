@@ -20,6 +20,7 @@ export default (isStore = true) => {
   //点击确定按钮
   const onPress = (value: IItemProp | undefined) => {
     bottomSheetModalRef.current?.dismiss();
+    save({ id: value?.id || '0' })
     setShop((draft) => {
       draft.select = value!;
     });

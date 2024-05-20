@@ -131,6 +131,9 @@ export default {
     tag10: '请输入密码',
     tag11: '继续下一步，即表示你同意0.2Lounge & Club 的',
     tag12: '并确认你已阅读我们',
+    tag13: '请选择区号',
+    tip1: '请阅读并同意条款',
+    tip2: '',
   },
   sex: {
     tag1: '即将开始人脸认证',
@@ -138,6 +141,7 @@ export default {
     tag3: '您提交的资料将只会用于性别认证审核',
     tag4: '本过程需要<Text className="color-[#EE2737]">您本人</Text>亲自完成，仅需1分钟！',
     btn1: '开始验证',
+    btn2: '暂不认证',
   },
   power: {
     tag1: '授权声明',
@@ -326,6 +330,7 @@ export default {
       tag3: '活动费用',
       tag4: '费用用途',
       tag5: '报名人数',
+      tag6: '活动门店',
       btn1: '立即报名',
       btn2: '人数已满,期待下次相遇',
       btn3: '您已报名',
@@ -350,6 +355,7 @@ export default {
     label6: '人',
     label7: '最低消费',
     label8: '卡座预订成功后，将会赠送您相同人数的门票',
+    btn1: '选择卡座',
   },
 
 };

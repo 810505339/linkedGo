@@ -77,8 +77,9 @@ export type IModalProp = {
 
 const CustomModal = forwardRef<BottomSheetModal, IModalProp>((props, ref) => {
   const { btnText, headerText, data, onPress, selectValue, snapPoints } = props;
-  const [value, setValue] = useState<string>(selectValue);
+  const [value, setValue] = useState<string>('123');
   useEffect(() => {
+    console.log(selectValue)
     setValue(selectValue);
   }, [selectValue]);
   function onDismiss() {
@@ -96,6 +97,7 @@ const CustomModal = forwardRef<BottomSheetModal, IModalProp>((props, ref) => {
   );
 
   const onValueChange = (value: any) => {
+
     setValue(value)
     onPress(data?.find(d => d.id == value))
   }
@@ -125,6 +127,7 @@ const CustomModal = forwardRef<BottomSheetModal, IModalProp>((props, ref) => {
     <BottomSheetScrollView  >
 
       <RadioButton.Group onValueChange={onValueChange} value={value}>
+
         {data.map(renderItem)}
       </RadioButton.Group>
     </BottomSheetScrollView>

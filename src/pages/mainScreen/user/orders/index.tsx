@@ -125,7 +125,7 @@ const Item: FC<any> = ((props) => {
           <Text numberOfLines={2} className="text-[#ffffff] text-sm">{name}</Text>
           <Text className="text-[#ffffff7f] text-xs">{createTime}</Text>
         </View>
-        <Text>${realAmount}</Text>
+        <Text>S${realAmount}</Text>
       </View>
       {orderStatus === IOrderStatus.未支付 && <RenderOrderStatus />}
     </View>
@@ -250,7 +250,7 @@ const Orders = () => {
       }
 
       const list = [
-        { label: t('orderInfo.mode1'), value: data?.id },
+        { label: t('orderInfo.mode1'), value: data?.orderNo },
         { label: t('orderInfo.tag1'), value: data?.storeName },
         { label: t('orderInfo.tag2'), value: data?.areaName },
         { label: t('orderInfo.tag3'), value: data?.bootName },

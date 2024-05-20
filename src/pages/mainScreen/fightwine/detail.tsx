@@ -736,11 +736,11 @@ const FightwineDetail = () => {
     }
     const NavButton = () => {
       /* 退出酒局 */
-      if (res.isJoined && res.status === STATE.进行中) {
+      if (res.quitButton) {
         return <Button mode={'elevated'} className="bg-[#EE2737FF]" textColor="#0C0C0CFF" onPress={quitWine}>{t('wineDetail.btn1')}</Button>;
       }
       /* 取消酒局 */
-      if (res.isJoined && res.playerType === 'PROMOTER' && res.partyMode === 'PAY_SOLO' && res.status === STATE.进行中) {
+      if (res.cancelButton) {
         return <Button mode={'elevated'} className="bg-[#EE2737FF]" textColor="#0C0C0CFF" onPress={cancelWine}>{t('wineDetail.btn2')}</Button>;
       }
 

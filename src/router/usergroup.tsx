@@ -6,6 +6,7 @@ import loginPassword from '@pages/mainScreen/user/account/loginPassword';
 import payPwd from '@pages/mainScreen/user/account/payPwd';
 
 
+
 import Orders from '@pages/mainScreen/user/orders';
 import OrdersInfo from '@pages/mainScreen/user/orders/info';
 import Coupons from '@pages/mainScreen/user/coupons';
@@ -83,6 +84,12 @@ const LoginGroup = () => {
     />
     <Stack.Screen
       name="AccountPayPwd"
+      component={payPwd}
+      options={{ title: t('default.titleList.AccountPayPwd') }}
+    />
+
+    <Stack.Screen
+      name="AccountPhone"
       component={payPwd}
       options={{ title: t('default.titleList.AccountPayPwd') }}
     />

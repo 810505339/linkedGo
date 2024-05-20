@@ -52,7 +52,7 @@ export default () => {
 
   useEffect(() => {
 
-    run({ type })
+    run({ type, version })
   }, [])
 
   function hideDialog() {

@@ -2,7 +2,7 @@ export default {
   titleList: {
     user: '我的',
     fightwine: '拼酒局',
-    ticket: '门票',
+    ticket: '票夹',
     bookTickets: '预定门票',
     reserveBooth: '预定卡座',
     confirmBooth: '选择卡座',
@@ -36,5 +36,8 @@ export default {
     Orders: '订单',
     Coupons: '优惠券',
     Information: '账户余额',
+    Result: '支付结果',
+    Authentication: '认证成功',
+    AuthenticationFacestatus: '',
   },
 };

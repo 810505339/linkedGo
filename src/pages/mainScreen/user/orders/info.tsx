@@ -114,6 +114,8 @@ const OrdersInfo = () => {
     PayPasswordNow: '',/* 支付的密码 */
     /* 是否显示优惠券*/
     isShowCoupon: false,
+    /* 订单loading */
+    loading: false
   });
   const { t } = useTranslation()
   /* 需要支付的钱 */
@@ -262,12 +264,18 @@ const OrdersInfo = () => {
 
       /* 当orderid没值的时候 */
       if (!orderIdRef.current && !orderId) {
+        setAllData(draft => {
+          draft.loading = true
+        })
         const res = await submit?.({
           couponCusId: route.params?.couponId,
           useBalance: allData.isBalance,
           payMethod: "PAYNOW",
         })
         orderIdRef.current = res?.orderId ?? ''
+        setAllData(draft => {
+          draft.loading = false
+        })
       }
 
 
@@ -333,7 +341,9 @@ const OrdersInfo = () => {
             <View>
               <Text style={{ fontSize: 10 }}>{t('orderInfo.nav1')}:<Text className='text-[#E6A055FF]  text-[10px]'>S$</Text><Text className='text-[#E6A055FF] text-[24px] font-bold'>{amount}</Text></Text>
             </View>
-            <Button className="bg-[#EE2737FF]  w-32 font-bold" textColor="#0C0C0CFF" onPress={() => handleSubmit.run()}>{t('orderInfo.nav2')}</Button>
+            <Button className="bg-[#EE2737FF]    w-28 font-bold" textColor="#0C0C0CFF" onPress={() => handleSubmit.run()}>
+              {t('orderInfo.nav2')}
+            </Button>
           </View>
         )}
         {orderStatus != undefined && orderId != undefined && (<>
@@ -388,7 +398,7 @@ const OrdersInfo = () => {
     </View>
   </View>)
 
-  return <BaseLayout className="bg-[#0B0B0BE6]" loading={loading}>
+  return <BaseLayout className="bg-[#0B0B0BE6]" loading={loading || allData.loading}>
     {
       orderStatus === undefined &&
       (<View className="relative">

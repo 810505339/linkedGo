@@ -6,6 +6,7 @@ import { useImmer } from 'use-immer';
 import { getAreaById } from '@api/store';
 import dayjs from 'dayjs';
 import { fileStore } from '@store/getfileurl';
+import { useRequest } from 'ahooks';
 const DATA = [
   {
     id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
@@ -45,12 +46,15 @@ export type IAreaListProps = {
   storeId: string,
   date: string,
   onChange: (list: any[], activeIndex: number) => void
+  changeLoading?: (loading: boolean) => void
 
 }
 const AreaList: FC<IAreaListProps> = (props) => {
-  const { storeId, date, onChange } = props;
+  const { storeId, date, onChange, changeLoading } = props;
 
-  const { width } = useWindowDimensions()
+  const { runAsync, loading } = useRequest(() => getAreaById(storeId, { date }), {
+    manual: true
+  })
   const [data, setData] = useImmer({
     cells: [],
     activeIndex: 0,
@@ -66,19 +70,17 @@ const AreaList: FC<IAreaListProps> = (props) => {
 
 
   const getAreaByIdApi = async () => {
-    const { data: res } = await getAreaById(storeId, { date });
+    const { data: res } = await runAsync()
     const week = dayjs(date).day() == 0 ? 7 : dayjs(date).day();
     //获取今天的时间
     //数据里面找到今天的营业
-
-    console.log(week, 'week');
+    console.log(res, 'week');
     setData(draft => {
       const list = res ?? [];
       draft.cells = list;
       draft.activeIndex = 0;
       onChange(list, 0);
     });
-
   };
 
 
@@ -90,25 +92,25 @@ const AreaList: FC<IAreaListProps> = (props) => {
 
   }, [storeId, date]);
 
+  useEffect(() => {
+    changeLoading?.(loading)
+  }, [loading])
+
+  if (loading) {
+    return null
+  }
+  if (data.cells.length <= 0) {
+    return <View className='border border-[#343434] bg-[#191919] h-24 rounded-xl justify-center items-center flex-row'>
+      <Text className='text-xs  opacity-50 ml-2.5'>暂无区域</Text>
+    </View>
+  }
+
   return <View className='flex flex-row flex-wrap gap-4'>
     {(data.cells as Array<IProps>).map((item, index) => {
       return <AreaItem {...item} key={item.id} activeIndex={data.activeIndex}
         onPress={onPress} index={index} />
     })}
   </View>
-
-  // return <FlatList
-  //   showsHorizontalScrollIndicator={false}
-  //   horizontal
-  //   data={data.cells}
-  //   keyExtractor={item => item.id}
-  //   renderItem={({ index, item }) =>
-  //     <AreaItem {...(item as IProps)}
-  //       index={index}
-  //       activeIndex={data.activeIndex}
-  //       onPress={onPress} />}
-  // />;
-
 
 };
 

@@ -127,8 +127,9 @@ function Index({ swiperList }: IProps) {
         autoPlay={true}
         autoPlayInterval={3000}
         data={[...swiperList]}
-        onScrollStart={() => { }}
-        onScrollEnd={() => { }}
+        onProgressChange={(offsetProgress, absoluteProgress) => {
+          progressValue.value = absoluteProgress;
+        }}
 
         onConfigurePanGesture={g => g.enabled(false)}
         pagingEnabled={true}

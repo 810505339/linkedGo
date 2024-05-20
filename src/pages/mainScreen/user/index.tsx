@@ -64,12 +64,12 @@ const HomeScreen = () => {
 
   const { data: _userInfo, runAsync } = useRequest(detailsById, {
     manual: true,
-    onSuccess: async () => {
-      await userRun()
-    }
   });
   const { data, runAsync: userRun } = useRequest(mineInfo, {
     manual: true,
+    onSuccess: (res) => {
+      console.log('跟新', res)
+    }
   });
 
   useEffect(() => {
@@ -125,7 +125,9 @@ const HomeScreen = () => {
         const generic = await getGenericPassword();
         console.log('generic', generic);
         if (generic) {
-          await runAsync()
+          await Promise.all([runAsync(), userRun()])
+
+
         }
       });
 
@@ -133,15 +135,15 @@ const HomeScreen = () => {
       return unsubscribe;
     }, [navigation])
 
-
     const fontText = 'text-xs text-[#ffffff7f] text-center';
     const box = 'items-center h-40  justify-end  relative';
-
     const sexIcon = userInfo?.gender === 1 ? manIcon : womanIcon;
     const sexHeaderIcon = userInfo?.gender === 1 ? manHeaderIcon : womanHeaderIcon;
     const isCertifiedIcon = userInfo?.checkFace ? certifiedIcon : noCertifiedIcon;
     const sexText = userInfo?.gender === 1 ? t('user.header4') : t('user.header5');
     const isCertifieText = userInfo?.checkFace ? t('user.header2') : t('user.header3');
+
+    const orderCount = info?.orderCount >= 100 ? `99+` : info?.orderCount
 
 
     const avatarUrl = userInfo?.avatarUrl ? (<Image className={' w-24  h-24 rounded-full border-2 border-[#98000CFF]'} resizeMode="cover" source={{ uri: userInfo?.avatarUrl }} />) :
@@ -150,7 +152,7 @@ const HomeScreen = () => {
 
     const header = (
       <View className=" ml-5   flex-auto" >
-        <View><Text className="text-lg text-[#fff] font-bold">{userInfo?.nickname}</Text></View>
+        <View><Text className="text-xl text-[#fff] font-bold">{userInfo?.nickname}</Text></View>
         <View >
           <Text numberOfLines={2} ellipsizeMode="tail" className="text-white opacity-50">{userInfo?.personalSignature ?? t('user.header1')}</Text>
         </View>
@@ -159,7 +161,7 @@ const HomeScreen = () => {
             <BlurView
               style={{ position: 'absolute', bottom: 0, left: 0, right: 0, top: 0 }}
               blurType="light"
-              blurAmount={10}
+              blurAmount={5}
               reducedTransparencyFallbackColor="transparent"
 
             />
@@ -199,7 +201,7 @@ const HomeScreen = () => {
         <TouchableOpacity className={`${box} basis-2/4`} onPress={() => balancePress('Information')} >
           <ImageBackground source={bg1Icon} resizeMode='contain' className="absolute right-0 bottom-0 left-0 w-full h-full" />
           <View className='pb-8'>
-            <View className='flex-row items-center'>
+            <View className='flex-row items-center justify-center'>
               <Text className='text-sm text-[#E6A055FF]'>S$</Text>
               <Text className="text-[#E6A055FF]  text-[24px]  text-center font-bold">
                 {info?.balanceAmount ?? 0}
@@ -219,7 +221,7 @@ const HomeScreen = () => {
         <TouchableOpacity className={`${box}  basis-1/4 `} onPress={() => balancePress('Orders')}>
           <ImageBackground source={bg3Icon} resizeMode='contain' className="absolute inset-0 w-full h-full" />
           <View className='pb-8'>
-            <Text className="text-[#2ECFFFFF] text-[24px] text-center font-bold">{info?.orderCount ?? 0}</Text>
+            <Text className="text-[#2ECFFFFF] text-[24px] text-center font-bold">{orderCount ?? 0}</Text>
             <Text className={fontText}>{t('user.tag3')}</Text>
           </View>
         </TouchableOpacity>
@@ -228,7 +230,7 @@ const HomeScreen = () => {
   };
 
   const renderItem = ({ item }) => {
-    return (<List.Item title={item.title} className='flex-row items-center pl-5 bg-[#0B0B0BFF]' left={() => <List.Icon icon={item.left} />} right={() => <Right {...item} />} onPress={() => handleItemPress(item)} />);
+    return (<List.Item title={item.title} className='flex-row items-center pl-5 bg-[#0B0B0BFF] opacity-75' left={() => <List.Icon icon={item.left} />} right={() => <Right {...item} />} onPress={() => handleItemPress(item)} />);
   };
 
   return (<BaseLayout className="bg-[#0B0B0BFF]">

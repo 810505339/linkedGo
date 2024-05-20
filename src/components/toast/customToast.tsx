@@ -1,20 +1,18 @@
 import { BaseToast, ErrorToast, ToastConfig } from 'react-native-toast-message';
-import {View} from 'react-native';
+import { View } from 'react-native';
 import { Text } from 'react-native-paper';
 
 /*
   1. Create the config
 */
-const toastConfig:ToastConfig = {
+const toastConfig: ToastConfig = {
   /*
     Overwrite 'success' type,
     by modifying the existing `BaseToast` component
   */
   success: (props) => (
     <View
-
       className="  bg-slate-800   bottom-0 py-2 px-4 rounded-3xl"
-
     >
       <Text className="text-center text-sm">{props.text1}</Text>
     </View>
@@ -34,6 +32,14 @@ const toastConfig:ToastConfig = {
       }}
     />
   ),
+  info: (props) => (
+    <View
+      className=" h-20 bg-red-500 py-2 px-4  items-center justify-center"
+    >
+      <Text className="text-center text-sm">{props.text1}</Text>
+    </View>
+  )
+
   /*
     Or create a completely new type - `tomatoToast`,
     building the layout from scratch.

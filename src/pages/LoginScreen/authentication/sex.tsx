@@ -21,7 +21,7 @@ const AuthenticationSex = () => {
 
   useEffect(() => {
     navigation.setOptions({
-      headerRight: () => <Button className='text-[ #FFFFFF]' onPress={() => navigation.navigate('HomeTabs')}>暂不认证</Button>
+      headerRight: () => <Button className='text-[ #FFFFFF]' onPress={() => navigation.navigate('HomeTabs')}>{t('sex.btn2')}</Button>
     })
 
   }, [
@@ -79,7 +79,7 @@ const AuthenticationSex = () => {
 
         <Text className="text-lg font-bold mt-5 mb-3" >{t('sex.tag1')}</Text>
         {/*  */}
-        <Text className="text-xs color-[#ffffff7f]">本过程需要<Text className="color-[#EE2737]">您本人</Text>亲自完成，仅需1分钟！</Text>
+
       </View>
       <View className="absolute left-5 right-5 bottom-0 h-32">
         <Text className="text-xs color-[#ffffff7f] text-center mb-3">{t('sex.tag3')}</Text>

@@ -37,11 +37,11 @@ const ListHeader = (props: { headerInfo: IListHeaderProps }) => {
         <View className='mt-5'>
           <View className="flex-row items-center w-full justify-center">
             <Text className="text-[#0b0b0bbf]  text-center " style={{ fontSize: 14 }}>{t('balance.text2')}</Text>
-            <Text className="ml-2 w-28">${headerInfo.lockBalance}</Text>
+            <Text className="ml-2 w-28">S${headerInfo.lockBalance}</Text>
           </View>
           <View className="flex-row items-center w-full  justify-center mt-2">
             <Text className="text-[#0b0b0bbf] " style={{ fontSize: 14 }}>{t('balance.text3')}</Text>
-            <Text className="ml-2 w-28 ">${headerInfo.availableBalance}</Text>
+            <Text className="ml-2 w-28 ">S${headerInfo.availableBalance}</Text>
           </View>
         </View>
       </View>
@@ -85,7 +85,7 @@ const Information = () => {
     {data?.data && <Animated.View>
       <ListHeader headerInfo={data?.data} />
 
-      <CustomFlatlist renderItem={(item) => renderItem(item, t)} params={{ customerId: data?.data.customerId }} onFetchData={balanceDetailPage} keyExtractor={(item) => item.orderNo} />
+      <CustomFlatlist renderItem={(item) => renderItem(item, t)} params={{ customerId: data?.data.customerId }} onFetchData={balanceDetailPage} keyExtractor={(item) => item.serialNum} />
     </Animated.View>}
 
   </BaseLayout>);

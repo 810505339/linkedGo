@@ -191,7 +191,6 @@ const Preset = () => {
   useEffect(() => {
     console.log(shop.select.id, time, data.selectAreaId);
     if (!data.selectAreaId && shop.select.id) {
-      Toast.show({ text1: '暂无区域' });
       setData((draft) => {
         Object.keys(defaultData).map(k => {
           draft[k] = defaultData[k];

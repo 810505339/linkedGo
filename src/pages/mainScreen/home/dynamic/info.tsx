@@ -85,11 +85,13 @@ const DynamicInfo = () => {
   );
 
   const RenderList = ({ item }) => {
-    const { activityTime, activityPlace, amount, useOfExpenses, activityPersonNumber, activitySignUpNumber, showOrNotPersonNumber } = item;
+
+    const { activityTime, activityPlace, amount, useOfExpenses, activityPersonNumber, activitySignUpNumber, showOrNotPersonNumber, areaName, storeName } = item;
 
 
     const list = [
       { label: t('dynamic.info.tag1'), value: activityTime },
+      { label: t('dynamic.info.tag6'), value: storeName + ' - ' + areaName },
       { label: t('dynamic.info.tag2'), value: activityPlace },
       {
         label: t('dynamic.info.tag3'), value: amount, render: () => {

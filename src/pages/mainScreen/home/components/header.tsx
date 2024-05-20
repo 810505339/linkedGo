@@ -16,7 +16,7 @@ const LOGO = require('@assets/imgs/home/logo.png');
 const xialaIcon = require('@assets/imgs/base/xiala.png')
 
 const Header = ({ layout, options, onChange }: BottomTabHeaderProps & { onChange: (value: any) => void }) => {
-  const { snap, bottomSheetModalRef, shop, onPress } = useSelectShop(false);
+  const { snap, bottomSheetModalRef, shop, onPress, shopName } = useSelectShop(false);
   const { t } = useTranslation()
 
   //点击展开
@@ -28,7 +28,6 @@ const Header = ({ layout, options, onChange }: BottomTabHeaderProps & { onChange
 
   useEffect(() => {
     if (shop.select.id != '') {
-      save(shop.select);
       onChange(shop.select);
     }
   }, [shop.select?.id]);
@@ -38,7 +37,7 @@ const Header = ({ layout, options, onChange }: BottomTabHeaderProps & { onChange
     <Appbar.Content style={{
       alignItems: 'flex-end',
       justifyContent: "center",
-    }} onPress={handlePresentModalPress} title={(<Text numberOfLines={2} className=" text-base  items-center justify-center  font-bold ">{findIndex(shop.select.id)?.name}</Text>)} tvParallaxTiltAngle={1} />
+    }} onPress={handlePresentModalPress} title={(<Text numberOfLines={2} className=" text-base  items-center justify-center  font-bold ">{shopName}</Text>)} tvParallaxTiltAngle={1} />
     <TouchableOpacity onPress={handlePresentModalPress}>
       <Image source={xialaIcon} className='w-4 h-4' />
     </TouchableOpacity>

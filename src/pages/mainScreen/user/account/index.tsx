@@ -76,10 +76,10 @@ const Account = () => {
 
 
   }
-  const handleItemPress = (item) => {
+  const handleItemPress = (item: any) => {
     navigation.navigate(item.id);
   };
-  const right = (item) => {
+  const right = (item: any) => {
     return (<View className=" flex-row items-center">
       <Text className="text-[#ffffff7f] font-light text-xs">{item.description}</Text>
       <List.Icon icon="chevron-right" color="#ffffff7f" />
@@ -87,7 +87,9 @@ const Account = () => {
 
   };
 
-  const renderItem = ({ item }) => {
+  const RenderItem = (props: any) => {
+    const { item } = props;
+
     return (<List.Item title={item.title} className="bg-[#00000000]" background={'#00000000'} onPress={() => handleItemPress(item)} right={() => right(item)} />);
   };
 
@@ -96,21 +98,19 @@ const Account = () => {
     <ScrollView className="p-2">
       <Text className="pl-2 font-bold my-4">{t('account.tag1')}</Text>
       <View className="rounded-xl border border-[#343434] bg-[#191919]">
-        <FlatList
-          data={data.info}
-          ItemSeparatorComponent={Divider}
-          keyExtractor={(item) => item.id}
-          renderItem={renderItem} />
+        {data.info.map((item) => {
+          return <RenderItem item={item} key={item.id} />
+        })}
       </View>
 
       <View className="p-2">
         <Text className="pl-2 font-bold my-4">{t('login.tag1')}</Text>
         <View className="rounded-xl border border-[#343434] bg-[#191919]">
-          <FlatList
-            data={data.third}
-            ItemSeparatorComponent={Divider}
-            keyExtractor={(item) => item.id}
-            renderItem={renderItem} />
+
+          {data.third.map((item) => {
+            return <RenderItem item={item} key={item.id} />
+          })}
+
         </View>
       </View>
     </ScrollView>
