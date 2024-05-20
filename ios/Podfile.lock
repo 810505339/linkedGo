@@ -1165,9 +1165,11 @@ PODS:
     - SDWebImage/Core (~> 5.10)
   - SocketRocket (0.6.1)
   - TXIMSDK_Plus_iOS (7.6.5011)
-  - VisionCamera (3.9.2):
-    - React
-    - React-callinvoker
+  - VisionCamera (4.0.4):
+    - VisionCamera/Core (= 4.0.4)
+    - VisionCamera/React (= 4.0.4)
+  - VisionCamera/Core (4.0.4)
+  - VisionCamera/React (4.0.4):
     - React-Core
   - WechatOpenSDK (2.0.4)
   - Yoga (1.14.0)
@@ -1524,7 +1526,7 @@ SPEC CHECKSUMS:
   SDWebImageWebPCoder: 908b83b6adda48effe7667cd2b7f78c897e5111d
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
   TXIMSDK_Plus_iOS: b665f09489e7d1a35c2dd95a495544d0c2a84f37
-  VisionCamera: 36c460338692788a0d377dce7d32f8ba049fb4f2
+  VisionCamera: b19a077d72d9f9cff2a269e26aad76f71f6029f6
   WechatOpenSDK: 290989072e87b79d52225a01bb4e5e58f6f88593
   Yoga: 2a16e58450c48e110211dae1159fb114bbcdcfc0
 

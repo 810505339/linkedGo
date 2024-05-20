@@ -13,8 +13,8 @@
   self.initialProps = @{};
   
   //向微信注册
-      [WXApi registerApp:@"wx8d956651a112bfa6"
-  universalLink:@"https://club-h5.point2club.com/WechatLogin/"];
+//      [WXApi registerApp:@"wx8d956651a112bfa6"
+//  universalLink:@"https://club-h5.point2club.com/WechatLogin/"];
 
   return [super application:application didFinishLaunchingWithOptions:launchOptions];
 }
@@ -37,7 +37,19 @@
     return  [WXApi handleOpenURL:url delegate:self];
 }
 
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+- (BOOL)application:(UIApplication *)application
+  continueUserActivity:(NSUserActivity *)userActivity
+  restorationHandler:(void(^)(NSArray<id<UIUserActivityRestoring>> * __nullable
+  restorableObjects))restorationHandler {
+  // 触发回调方法
+  [RCTLinkingManager application:application continueUserActivity:userActivity restorationHandler:restorationHandler];
+  return [WXApi handleOpenUniversalLink:userActivity
+  delegate:self];
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url
+            options:(NSDictionary<NSString*, id> *)options {
+    [RCTLinkingManager application:application openURL:url options:options];
     return [WXApi handleOpenURL:url delegate:self];
 }
 
