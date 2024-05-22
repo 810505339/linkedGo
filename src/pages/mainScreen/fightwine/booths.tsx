@@ -263,7 +263,7 @@ const Booths = () => {
         return (<View className="flex-col">
           <Divider />
           <View className="flex-row items-center justify-between py-4">
-            <Text numberOfLines={2}>{t('booths.tag7')}</Text>
+            <Text numberOfLines={3} className='w-[80%]'>{t('booths.tag7')}</Text>
             <Switch value={data.autoLock} onValueChange={() => setData(draft => { draft.autoLock = !draft.autoLock; })} />
           </View>
           <Divider />

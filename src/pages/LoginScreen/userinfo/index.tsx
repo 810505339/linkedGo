@@ -1,6 +1,6 @@
 import BaseLayout from '@components/baselayout';
-import { useRef, useState } from 'react';
-import { View, Image, Pressable, TouchableWithoutFeedback, NativeSyntheticEvent, TextInputFocusEventData, ImageSourcePropType } from 'react-native';
+import { useEffect, useRef, useState } from 'react';
+import { View, Image, Pressable, TouchableWithoutFeedback, NativeSyntheticEvent, TextInputFocusEventData, ImageSourcePropType, TouchableOpacity } from 'react-native';
 import { IconButton, Button, Text, TextInput, TouchableRipple } from 'react-native-paper';
 import { Asset, launchImageLibrary } from 'react-native-image-picker';
 import DateTimePicker, { DateTimePickerEvent } from '@react-native-community/datetimepicker';
@@ -19,7 +19,7 @@ import { cssInterop } from 'nativewind';
 import { useTranslation } from 'react-i18next';
 
 const bgImage = require('@assets/imgs/login/login-register-bg.png');
-
+const red = require('@assets/imgs/nav/red.png')
 cssInterop(IconButton, {
   className: {
     target: 'style'
@@ -28,6 +28,26 @@ cssInterop(IconButton, {
 
 const UserInfo = () => {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+
+  const handleClose = () => {
+    navigation.reset({
+      index: 0,
+      routes: [
+        { name: 'HomeTabs' },
+      ],
+    });
+  }
+
+  useEffect(() => {
+    navigation.setOptions({
+      headerLeft: () => <TouchableOpacity onPress={handleClose} className='ml-5'><Image source={red} className='w-6 h-6 mr-4' /></TouchableOpacity>
+    })
+  }, [navigation])
+
+
+
+
+
   //选择头像
   const [selectImage, setSelectImage] = useState<Asset>({ uri: '' });
   //选择日期

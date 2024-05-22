@@ -106,7 +106,7 @@ export default {
     modal7: 'Please enter new password',
     modal8: 'Please enter again',
     modal9: 'Please enter a 6-digit password, numbers only',
-    mode1: 'oderNo',
+    mode1: 'orderNo',
     mode2: 'Name of the session',
     mode3: 'Sessions Mode',
     mode4: 'Payment details',
