@@ -319,8 +319,8 @@ const Booths = () => {
             <Text className="text-xs font-bold text-white  text-center " numberOfLines={2}>{t('booths.tag10')}</Text>
           </View>
           <View className="flex-row justify-around items-center  w-full px-5 pb-5 ">
-            <Button className="bg-transparent flex-1 mr-5" mode="outlined" labelStyle={{ fontWeight: 'bold' }} textColor="#ffffffbf" onPress={onDismiss} >{t('common.btn5')}</Button>
-            <Button className="bg-[#EE2737FF] flex-1" textColor="#000000FF" labelStyle={{ fontWeight: 'bold' }} mode="contained" onPress={onNext} >{t('common.btn4')}</Button>
+            <Button className="bg-transparent mr-5" mode="outlined" labelStyle={{ fontWeight: 'bold' }} textColor="#ffffffbf" onPress={onDismiss} >{t('common.btn5')}</Button>
+            <Button className="bg-[#EE2737FF] " textColor="#000000FF" labelStyle={{ fontWeight: 'bold' }} mode="contained" onPress={onNext} >{t('common.btn4')}</Button>
           </View>
         </View>
       </MyModal>
