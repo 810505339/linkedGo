@@ -353,5 +353,10 @@ export default {
     label8: 'Free Tickets will be provided based on the maximum capacity of the selected VIP sofa upon successful reservation',
     btn1: 'Select VIP Sofa'
   },
+  Modal: {
+    btn1: 'Download',
+    btn2: 'Close',
+    tip: 'Tips',
+  }
 
 };
