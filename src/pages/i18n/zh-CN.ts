@@ -17,6 +17,7 @@ export default {
     label5: '预定规则',
     label6: '选择门票',
 
+
   },
   user: {
     item1: '系统消息',
@@ -363,6 +364,8 @@ export default {
     btn1: '下载',
     btn2: '关闭',
     tip: '提示',
+    sex1: '为了更好的拼酒体验',
+    sex2: '您需要完成性别认证流程',
   },
   Pay: {
     download: '下载二维码',

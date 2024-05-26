@@ -359,6 +359,8 @@ export default {
     btn1: 'Download',
     btn2: 'Close',
     tip: 'Tips',
+    sex1: 'For a better wine mixing experience',
+    sex2: 'You need to complete the gender authentication process',
   },
   Pay: {
     download: 'Download QR code',
