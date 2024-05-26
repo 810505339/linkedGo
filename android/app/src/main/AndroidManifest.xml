@@ -33,7 +33,7 @@
         android:launchMode="singleTask"
         android:windowSoftInputMode="stateAlwaysHidden|adjustPan"
         android:exported="true"
-            android:theme="@style/BootTheme"
+           
         >
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />

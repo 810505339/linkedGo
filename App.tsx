@@ -29,6 +29,7 @@ import { useBackHandler } from '@react-native-community/hooks';
 import useUserInfo from '@hooks/useUserInfo';
 import MyModal from '@components/modal';
 import { useTranslation } from 'react-i18next';
+import SplashScreen from 'react-native-splash-screen'
 
 const headerIcon = require('@assets/imgs/base/modalHeader.png');
 
@@ -45,8 +46,7 @@ const App = () => {
 
   useEffect(() => {
     /* 这是启动页 */
-
-
+    SplashScreen.hide();
     getFileUrl();
   }, []);
   const colorScheme = useColorScheme();

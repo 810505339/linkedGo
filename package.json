@@ -45,7 +45,6 @@
     "react-i18next": "^13.5.0",
     "react-native": "^0.73.6",
     "react-native-audio-recorder-player": "^3.6.6",
-    "react-native-bootsplash": "^5.5.3",
     "react-native-circular-progress-indicator": "^4.4.2",
     "react-native-compressor": "^1.8.24",
     "react-native-confirmation-code-field": "^7.3.2",
