@@ -9,7 +9,7 @@ import { getcarouselList, getHomePageAdvertising } from '@api/common';
 import { useImmer } from 'use-immer';
 import { fileStore } from '@store/getfileurl';
 import { LogLevelEnum, TencentImSDKPlugin } from 'react-native-tim-js';
-import { Image, ScrollView, Text, TouchableOpacity } from 'react-native';
+import { Image, RefreshControl, ScrollView, Text, TouchableOpacity } from 'react-native';
 import useImageSize from '@hooks/useImageSize';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import MyModal from '@components/modal';
@@ -57,6 +57,8 @@ const HomeScreen = () => {
   const { imageSize, getSize } = useImageSize()
   const { imageSize: imageSize1, getSize: getSize1 } = useImageSize()
 
+  const [isRefreshing, setIsRefreshing] = useState(false)
+
   const [data, setData] = useImmer<IData>({
     id: '',
     swiperList: [],
@@ -99,6 +101,12 @@ const HomeScreen = () => {
     }
   }
 
+  async function onRefresh() {
+    setIsRefreshing(true)
+    await runAsync()
+    setIsRefreshing(false)
+  }
+
 
 
   useEffect(() => {
@@ -123,9 +131,19 @@ const HomeScreen = () => {
   const containerStyle = { padding: 20 };
   return (
     <BaseLayout className="bg-[#0B0B0BE6]" loading={loading}>
-      {data.img && (<TouchableOpacity onPress={() => advertisingClick(data.advertising)}><Image source={{ uri: data.img }} className='h-[60] mx-5 my-5  rounded-2xl' /></TouchableOpacity>)}
-      {<HorizontalFlatList className="mt-7" />}
-      {data.swiperList && <SwiperView swiperList={data?.swiperList} />}
+
+      <ScrollView
+        contentContainerStyle={{ flex: 1 }}
+        refreshControl={
+          < RefreshControl refreshing={isRefreshing} onRefresh={onRefresh} />
+        }>
+
+        {data.img && (<TouchableOpacity onPress={() => advertisingClick(data.advertising)}><Image source={{ uri: data.img }} className='h-[60] mx-5 my-5  rounded-2xl' /></TouchableOpacity>)}
+        {<HorizontalFlatList className="mt-7" />}
+        {data.swiperList && <SwiperView swiperList={data?.swiperList} />}
+
+      </ScrollView>
+
 
       <MyModal visible={data.visible} onDismiss={() => setData(draft => { draft.visible = false })} contentContainerStyle={containerStyle} dismissable={false}  >
         {data.img1 && (<TouchableOpacity onPress={() => advertisingClick(data.advertising1)}><Image source={{ uri: data.img1 }} resizeMethod='auto' className='h-[440px]  mx-[44px] my-5 rounded-2xl' /></TouchableOpacity>)}

@@ -21,7 +21,7 @@ import { cssInterop } from 'nativewind'
 const white = require('@assets/imgs/nav/white.png')
 
 /* 预定门票 */
-const card1Image = require('assets/imgs/base/card_1.png');
+const card1Image = require('assets/imgs/base/fightwineBg.png');
 /* 拼酒局 */
 const card2Image = require('assets/imgs/base/card_2.png');
 
@@ -49,10 +49,10 @@ export const getImage = (orderType: IOrderType, img: string) => {
     };
   }
   if (orderType === IOrderType.拼酒局) {
-    return card2Image;
+    return card1Image;
   }
   if (orderType === IOrderType.预定卡座) {
-    return card1Image;
+    return card2Image;
   }
 };
 

@@ -88,7 +88,6 @@ const Info = (props: any) => {
       <Text className='text-[#fff] text-xl'>{t(`orders.${orderStatus}`)}</Text>
     </View>
   </ScrollView>
-
 }
 
 
@@ -182,9 +181,13 @@ const OrdersInfo = () => {
     }
 
   }, [navigation, orderStatus])
-
+  /* 是否选择优惠券 */
   const couponNum = route.params?.couponId ? 1 : 0;
-  let amount: number | currency = currency(!couponNum ? route.params?.amount : couponAmount?.data).add(taxAmount).add(feeAmount).value;
+  /*   */
+  const tempAmount = !couponNum ? route.params?.amount : couponAmount?.data
+  const temptaxAmount = currency(taxAmount).divide(route.params?.amount || 0).multiply(tempAmount)
+  const tempfeeAmount = currency(feeAmount).divide(route.params?.amount || 0).multiply(tempAmount)
+  let amount: number | currency = currency(tempAmount).add(temptaxAmount).add(tempfeeAmount).value;
   /* 总的余额 */
   const totalBalance = balance?.data?.totalBalance ?? 0
   /* 如果大于0证明余额多 */
@@ -199,7 +202,8 @@ const OrdersInfo = () => {
 
   const payList = [
     { label: t('orderInfo.tag30'), value: `S$ ${route.params?.amount}`, color: '#fff', show: orderStatus === undefined },
-    { label: t('orderInfo.tag13'), value: `-S$ ${couponUnAmount}`, color: '#FF2C2CFF', show: route.params?.couponId },
+    { label: t('orderInfo.tag13'), value: `-S$ ${couponUnAmount}`, color: '#FF2C2CFF', show: couponNum },
+    /* 系统算的优惠 */
     { label: t('orderInfo.tag13'), value: `-S$ ${discountAmount}`, color: '#FF2C2CFF', show: discountAmount },
     { label: t('orderInfo.tag34'), value: `-S$ ${balanceAmount}`, color: '#FF2C2CFF', show: balanceAmount },
     { label: t('orderInfo.tag34'), value: `-S$ ${tempBalance}`, color: '#FF2C2CFF', show: allData?.isBalance },

@@ -62,7 +62,7 @@ const FirstRoute = (props: IFirstRouteProps) => {
   }
 
   const isShow = list.length > 0
-  return <View className="mt-5 relative flex-1 " >
+  return <View className="mt-10 relative flex-1 " >
     <CustomFlatList getList={getList}
       renderItem={(item, index) => <Item item={item} index={index} t={t} checked={checked} onChecked={onChecked} available={available} />}
       onFetchData={getCustomerCoupon} keyExtractor={(item) => item.id}
@@ -154,11 +154,13 @@ const CouponsModal = () => {
   const layout = useWindowDimensions();
   const route = useRoute<RouteProp<RootStackParamList, 'Carouseldemo'>>();
 
+  console.log(route.params, 'route')
+
   // const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const [index, setIndex] = useState(0);
   const [routes] = useState([
-    { key: 'first', title: t('coupons.btn1') },
-    { key: 'second', title: t('coupons.btn2') },
+    { key: 'first', title: t('coupons.text1') },
+    { key: 'second', title: t('coupons.text6') },
   ]);
   const _renderTabBar = (props: SceneRendererProps & {
     navigationState: NavigationState<{

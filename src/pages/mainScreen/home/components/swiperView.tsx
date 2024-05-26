@@ -113,7 +113,7 @@ function Index({ swiperList }: IProps) {
     //     ))}
     //   </View>
     // </View>
-    <View className=" p-5    relative  flex-1 ">
+    <View className=" p-5 relative border" style={{ flex: 1 }}>
       <Carousel
         {...baseOptions}
         panGestureHandlerProps={{
