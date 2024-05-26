@@ -913,7 +913,7 @@ PODS:
     - React-Core
   - react-native-create-thumbnail (2.0.0-rc.2):
     - React-Core
-  - react-native-date-picker (5.0.2):
+  - react-native-date-picker (5.0.3):
     - React-Core
   - react-native-document-picker (8.2.2):
     - React-Core
@@ -940,7 +940,7 @@ PODS:
     - react-native-video/Video (= 5.2.1)
   - react-native-video/Video (5.2.1):
     - React-Core
-  - react-native-webview (13.10.0):
+  - react-native-webview (13.10.2):
     - glog
     - RCT-Folly (= 2022.05.16.00)
     - React-Core
@@ -1121,7 +1121,7 @@ PODS:
     - React-Core
   - RNDateTimePicker (7.7.0):
     - React-Core
-  - RNDeviceInfo (10.13.2):
+  - RNDeviceInfo (10.14.0):
     - React-Core
   - RNFastImage (8.6.3):
     - React-Core
@@ -1151,7 +1151,7 @@ PODS:
     - RCT-Folly (= 2022.05.16.00)
     - React-Core
     - React-RCTImage
-  - RNSVG (14.1.0):
+  - RNSVG (14.2.0):
     - React-Core
   - RNVectorIcons (10.1.0):
     - glog
@@ -1165,11 +1165,11 @@ PODS:
     - SDWebImage/Core (~> 5.10)
   - SocketRocket (0.6.1)
   - TXIMSDK_Plus_iOS (7.6.5011)
-  - VisionCamera (4.0.4):
-    - VisionCamera/Core (= 4.0.4)
-    - VisionCamera/React (= 4.0.4)
-  - VisionCamera/Core (4.0.4)
-  - VisionCamera/React (4.0.4):
+  - VisionCamera (4.0.5):
+    - VisionCamera/Core (= 4.0.5)
+    - VisionCamera/React (= 4.0.5)
+  - VisionCamera/Core (4.0.5)
+  - VisionCamera/React (4.0.5):
     - React-Core
   - WechatOpenSDK (2.0.4)
   - Yoga (1.14.0)
@@ -1475,7 +1475,7 @@ SPEC CHECKSUMS:
   react-native-cameraroll: 4701ae7c3dbcd3f5e9e150ca17f250a276154b35
   react-native-compressor: b9bdbc08fdb8c3846a081c4489d1e86717a2af6f
   react-native-create-thumbnail: 6f45caa41b69098376c1681bf757c6113871b7b8
-  react-native-date-picker: 90687f1dbd374ff0265dca99d949998364c22fa9
+  react-native-date-picker: 682417ada6f9c334b969f7df6dd331a56983c63c
   react-native-document-picker: cd4d6b36a5207ad7a9e599ebb9eb0c2e84fa0b87
   react-native-image-picker: d3db110a3ded6e48c93aef7e8e51afdde8b16ed0
   react-native-pager-view: f1e72cb827406f1b49f007ab07400197d421b6e7
@@ -1484,7 +1484,7 @@ SPEC CHECKSUMS:
   react-native-splash-screen: 4312f786b13a81b5169ef346d76d33bc0c6dc457
   react-native-tim-js: 32d80c645592f7786d028d99bd57a8ef7cd80ccb
   react-native-video: c26780b224543c62d5e1b2a7244a5cd1b50e8253
-  react-native-webview: 39288780069589ffd4d6912e327a52b11ff31513
+  react-native-webview: c461fed0b58be5ee5180c3c3092a1d5dcb214a94
   react-native-wechat-lib: 2aee4950372b8feb89489bcdb936079429fe58ac
   React-nativeconfig: 2e44d0d2dd222b12a5183f4bcaa4a91881497acb
   React-NativeModulesApple: 8aa032fe6c92c1a3c63e4809d42816284a56a9b0
@@ -1510,7 +1510,7 @@ SPEC CHECKSUMS:
   RNCAsyncStorage: 826b603ae9c0f88b5ac4e956801f755109fa4d5c
   RNCClipboard: 0a720adef5ec193aa0e3de24c3977222c7e52a37
   RNDateTimePicker: 4f3c4dbd4f908be32ec8c93f086e8924bd4a2e07
-  RNDeviceInfo: 42aadf1282ffa0a88dc38a504a7be145eb010dfa
+  RNDeviceInfo: 59344c19152c4b2b32283005f9737c5c64b42fba
   RNFastImage: 5c9c9fed9c076e521b3f509fe79e790418a544e8
   RNFileViewer: ce7ca3ac370e18554d35d6355cffd7c30437c592
   RNFS: 4ac0f0ea233904cb798630b3c077808c06931688
@@ -1520,16 +1520,16 @@ SPEC CHECKSUMS:
   RNLocalize: e8694475db034bf601e17bd3dfa8986565e769eb
   RNReanimated: 6cfa556540186ce7ae7a0b048f369236b1d86ebb
   RNScreens: 134a7511b12b8eb440b87aac21e36a71295d6024
-  RNSVG: ba3e7232f45e34b7b47e74472386cf4e1a676d0a
+  RNSVG: 963a95f1f5d512a13d11ffd50d351c87fb5c6890
   RNVectorIcons: 96e8c5c45609932bb2f8347e1c709bcca0e95654
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SDWebImageWebPCoder: 908b83b6adda48effe7667cd2b7f78c897e5111d
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
   TXIMSDK_Plus_iOS: b665f09489e7d1a35c2dd95a495544d0c2a84f37
-  VisionCamera: b19a077d72d9f9cff2a269e26aad76f71f6029f6
+  VisionCamera: 59949b04a51c00a52a6d7125425d01664792c9bd
   WechatOpenSDK: 290989072e87b79d52225a01bb4e5e58f6f88593
-  Yoga: 2a16e58450c48e110211dae1159fb114bbcdcfc0
+  Yoga: e5b887426cee15d2a326bdd34afc0282fc0486ad
 
 PODFILE CHECKSUM: adee2abaeea3bc1771e638ebab7ad051e89d4f2d
 
-COCOAPODS: 1.14.3
+COCOAPODS: 1.15.2

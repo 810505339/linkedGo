@@ -15,8 +15,8 @@
 		80C1B3295D1D7A1C5E505597 /* libPods-linkedGo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 034FBC2F677E5C34A6F87C0F /* libPods-linkedGo.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		AE3300EC2BF8F530006FBA6C /* WxLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = AE3300EA2BF8F52F006FBA6C /* WxLogin.m */; };
-		F2FD85CEDF01EAD2091F2225 /* libPods-linkedGo-linkedGoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 87E15159B752EA1CC30BBFCD /* libPods-linkedGo-linkedGoTests.a */; };
 		C55AD99012404ED4BF2C4684 /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1EABA13B90E047358BED8039 /* BootSplash.storyboard */; };
+		F2FD85CEDF01EAD2091F2225 /* libPods-linkedGo-linkedGoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 87E15159B752EA1CC30BBFCD /* libPods-linkedGo-linkedGoTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +42,7 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = linkedGo/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = linkedGo/main.m; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = linkedGo/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		1EABA13B90E047358BED8039 /* BootSplash.storyboard */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = BootSplash.storyboard; path = linkedGo/BootSplash.storyboard; sourceTree = "<group>"; };
 		587BB2CD52CB181BA3ABA223 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = linkedGo/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		6BAE37928B23EE2F90C0588F /* Pods-linkedGo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-linkedGo.debug.xcconfig"; path = "Target Support Files/Pods-linkedGo/Pods-linkedGo.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = linkedGo/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -52,7 +53,6 @@
 		AE3300ED2BFA505B006FBA6C /* linkedGo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = linkedGo.entitlements; path = linkedGo/linkedGo.entitlements; sourceTree = "<group>"; };
 		E074115C64ADBE88F965CC44 /* Pods-linkedGo-linkedGoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-linkedGo-linkedGoTests.release.xcconfig"; path = "Target Support Files/Pods-linkedGo-linkedGoTests/Pods-linkedGo-linkedGoTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		1EABA13B90E047358BED8039 /* BootSplash.storyboard */ = {isa = PBXFileReference; name = "BootSplash.storyboard"; path = "linkedGo/BootSplash.storyboard"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -607,7 +607,11 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-Wl",
+					"-ld_classic",
+				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
@@ -680,7 +684,11 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-Wl",
+					"-ld_classic",
+				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
