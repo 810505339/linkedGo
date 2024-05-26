@@ -198,7 +198,7 @@ const TicketScreen = () => {
   };
 
   const send = () => {
-    
+
   }
   const getId = useCallback((item: any) => item.cusTicketId, []);
 
@@ -251,7 +251,7 @@ const TicketScreen = () => {
                 logoBackgroundColor="transparent" />
             </View>
 
-            <View className=' mt-5'>
+            {/* <View className=' mt-5'>
               { (<View className='flex flex-row items-center  justify-between   w-full px-12'>
                 <Text>此票可赠送</Text>
                 <Button mode={'elevated'} className="bg-[#EE2737FF]  font-bold " contentStyle={{ padding: 0 }} 
@@ -261,12 +261,12 @@ const TicketScreen = () => {
               </View>)}
 
 
-            </View>
+            </View> */}
 
             {data.givenStatus != TICKET.非赠票 && (<View className=' mt-5'>
               {data.givenStatus === TICKET.未赠送 ? (<View className='flex flex-row items-center  justify-between   w-full px-12'>
-                <Text>此票可赠送</Text>
-                <Button mode={'elevated'} className="bg-[#EE2737FF]  font-bold " contentStyle={{ padding: 0 }} textColor="#000000FF" >赠送</Button>
+                <Text>{t('ticket.tip1')}</Text>
+                <Button mode={'elevated'} className="bg-[#EE2737FF]  font-bold " contentStyle={{ padding: 0 }} textColor="#000000FF" >{t('ticket.btn1')}</Button>
               </View>) : <View>
                 <Text>{data.givenTime}</Text>
               </View>}

@@ -160,6 +160,8 @@ export default {
     tag1: 'Available',
     tag2: '最迟入场',
     tip1: 'Admittance during business hours. Please arrange your time accordingly~',
+    tip2: 'This ticket can be given away',
+    bnt1: 'Given',
   },
   login: {
 
