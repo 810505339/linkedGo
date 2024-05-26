@@ -40,4 +40,5 @@ export default {
     Authentication: '认证成功',
     AuthenticationFacestatus: '',
   },
+
 };

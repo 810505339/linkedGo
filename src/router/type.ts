@@ -124,7 +124,8 @@ export type HomeParamList = {
     orderId: string
     orderStatus: string,
     codeUrl: string,
-    codeExpireSecond: string
+    codeExpireSecond: string,
+    amount: string
   },
   EditUserInfo: undefined
 }

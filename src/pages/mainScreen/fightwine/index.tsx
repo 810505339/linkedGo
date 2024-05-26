@@ -235,17 +235,20 @@ const FightwineScreen = () => {
         </Tabs>}
 
       </TabsProvider>
-      {/* <Animated.View
+      <Animated.View
+        className="absolute z-50 w-16 h-16 bottom-1/4 right-0"
         style={{
           transform: [{ translateX: pan.x }, { translateY: pan.y }]
         }}
         {...panResponder.panHandlers}
       >
-
-      </Animated.View> */}
-      <TouchableOpacity className="absolute z-50 w-16 h-16 bottom-1/4 right-0" onPress={onLaunch}>
+        <TouchableOpacity onPress={onLaunch} >
+          <ImageBackground source={launch} className="w-16 h-16" />
+        </TouchableOpacity>
+      </Animated.View>
+      {/* <TouchableOpacity className="absolute z-50 w-16 h-16 bottom-1/4 right-0" onPress={onLaunch}>
         <ImageBackground source={launch} className="w-16 h-16" />
-      </TouchableOpacity>
+      </TouchableOpacity> */}
 
 
     </BaseLayout>

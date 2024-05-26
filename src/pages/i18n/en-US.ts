@@ -160,6 +160,8 @@ export default {
     tag1: 'Available',
     tag2: '最迟入场',
     tip1: 'Admittance during business hours. Please arrange your time accordingly~',
+    tip2: 'This ticket can be given away',
+    bnt1: 'Given',
   },
   login: {
 
@@ -226,10 +228,10 @@ export default {
     btn4: "Let's chat",
     btn5: 'Join',
     btn6: 'Remove',
-    btn7: '同意',
-    btn8: '拒绝',
+    btn7: 'Agree',
+    btn8: 'Reject',
     btn9: '评价酒局',
-    btn10: '申请加入酒局',
+    btn10: 'Do you wish to join the session',
     btn11: 'Exit',
     info0: 'Sessions Mode',
     info1: 'Status',
@@ -357,6 +359,15 @@ export default {
     btn1: 'Download',
     btn2: 'Close',
     tip: 'Tips',
+    sex1: 'For a better wine mixing experience',
+    sex2: 'You need to complete the gender authentication process',
+  },
+  Pay: {
+    download: 'Download QR code',
+    tips: 'You can download the QR code and use the App that supports PayNow to load the QR code for payment, or you can use another phone to pay directly by scanning the code',
+    tips1: 'If the page does not automatically redirection after successful payment, please click the button below',
+    btn1: 'I have completed the payment',
+    btn2: 'Cancel',
   }
 
 };

@@ -119,9 +119,9 @@ const AuthenticationCamera = () => {
 
     if (!device) {
         return (
-            <View className="flex-1">
+            <BaseLayout className="h-full w-full items-center  justify-center"  >
                 <Text>请打开摄像头</Text>
-            </View>
+            </BaseLayout>
         )
     }
     return (
