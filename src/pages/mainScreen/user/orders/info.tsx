@@ -150,6 +150,7 @@ const OrdersInfo = () => {
     manual: true,
   })
   /* 查询余额 */
+
   const { data: balance, run: balanceRun } = useRequest(getBalanceInfo, {
     manual: true,
   })
@@ -300,11 +301,13 @@ const OrdersInfo = () => {
             type: '1',
           })
         } else {
+          console.log(res1, '支付的时候拿到的结果');
           navigation.navigate('Pay', {
             orderId: res1Data?.orderId,
             orderStatus: res1Data?.orderStatus,
             codeUrl: res1Data?.codeUrl,
-            codeExpireSecond: res1Data?.codeExpireSecond
+            codeExpireSecond: res1Data?.codeExpireSecond,
+            amount: res1Data?.otherAmount,
           })
         }
 

@@ -26,7 +26,7 @@ const Pay = () => {
 
   const { t } = useTranslation()
 
-  const { orderId, orderStatus, codeUrl, codeExpireSecond } = route.params
+  const { orderId, orderStatus, codeUrl, codeExpireSecond, amount } = route.params
   const { data, run, cancel } = useRequest(() => queryPayResult({ orderId }), {
     pollingInterval: Number(codeExpireSecond) * 1000,
     manual: true,
@@ -99,7 +99,7 @@ const Pay = () => {
     <ScrollView className=" rounded-t-3xl bg-[#101010] flex-1">
       <View className=" py-5 px-14">
         <Text className="text-center font-bold text-lg">{t('orders.item1')}</Text>
-        <Text className="text-[#FDAD25] font-bold text-2xl text-center my-2">S$1000.00</Text>
+        <Text className="text-[#FDAD25] font-bold text-2xl text-center my-2">S${amount}</Text>
         <View className="flex-row items-center justify-center mt-5 mb-2.5 rounded overflow-hidden">
           <QRCode
             getRef={(ref) => qrCodeRef.current = ref}
@@ -112,12 +112,12 @@ const Pay = () => {
             {t('orders.item1')}
           </Button>
         </View>
-        <Text numberOfLines={3} className="pt-2.5 pb-5  text-white mb-2.5">{t('pay.tips')}</Text>
+        <Text numberOfLines={3} className="pt-2.5 pb-5  text-white mb-2.5">{t('Pay.tips')}</Text>
         <Divider />
         <View className="mt-10">
-          <Text className=" text-center  opacity-75  mb-2.5 text-xs">{t('pay.tips1')}</Text>
-          <Button textColor="#FDAD25" labelStyle={{ fontWeight: 'bold' }} onPress={run}>{t('pay.btn1')}</Button>
-          <Button textColor="#ffffff" labelStyle={{ fontWeight: 'bold' }} onPress={cancelPay}>{t('pay.btn2')}</Button>
+          <Text className=" text-center  opacity-75  mb-2.5 text-xs">{t('Pay.tips1')}</Text>
+          <Button textColor="#FDAD25" labelStyle={{ fontWeight: 'bold' }} onPress={run}>{t('Pay.btn1')}</Button>
+          <Button textColor="#ffffff" labelStyle={{ fontWeight: 'bold' }} onPress={cancelPay}>{t('Pay.btn2')}</Button>
         </View>
       </View>
     </ScrollView>

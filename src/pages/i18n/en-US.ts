@@ -359,6 +359,13 @@ export default {
     btn1: 'Download',
     btn2: 'Close',
     tip: 'Tips',
+  },
+  Pay: {
+    download: 'Download QR code',
+    tips: 'You can download the QR code and use the App that supports PayNow to load the QR code for payment, or you can use another phone to pay directly by scanning the code',
+    tips1: 'If the page does not automatically redirection after successful payment, please click the button below',
+    btn1: 'I have completed the payment',
+    btn2: 'Cancel',
   }
 
 };
