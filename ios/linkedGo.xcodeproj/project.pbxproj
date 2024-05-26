@@ -16,6 +16,7 @@
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		AE3300EC2BF8F530006FBA6C /* WxLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = AE3300EA2BF8F52F006FBA6C /* WxLogin.m */; };
 		F2FD85CEDF01EAD2091F2225 /* libPods-linkedGo-linkedGoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 87E15159B752EA1CC30BBFCD /* libPods-linkedGo-linkedGoTests.a */; };
+		C55AD99012404ED4BF2C4684 /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1EABA13B90E047358BED8039 /* BootSplash.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		AE3300ED2BFA505B006FBA6C /* linkedGo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = linkedGo.entitlements; path = linkedGo/linkedGo.entitlements; sourceTree = "<group>"; };
 		E074115C64ADBE88F965CC44 /* Pods-linkedGo-linkedGoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-linkedGo-linkedGoTests.release.xcconfig"; path = "Target Support Files/Pods-linkedGo-linkedGoTests/Pods-linkedGo-linkedGoTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		1EABA13B90E047358BED8039 /* BootSplash.storyboard */ = {isa = PBXFileReference; name = "BootSplash.storyboard"; path = "linkedGo/BootSplash.storyboard"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				13B07FB71A68108700A75B9A /* main.m */,
 				13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */,
 				587BB2CD52CB181BA3ABA223 /* PrivacyInfo.xcprivacy */,
+				1EABA13B90E047358BED8039 /* BootSplash.storyboard */,
 			);
 			name = linkedGo;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				38103DF51967B9730BD4DB5A /* PrivacyInfo.xcprivacy in Resources */,
+				C55AD99012404ED4BF2C4684 /* BootSplash.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

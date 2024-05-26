@@ -13,7 +13,6 @@ import {
 } from 'react-native-paper';
 import { Image, useColorScheme, View } from 'react-native';
 import { useMaterial3Theme } from '@pchmn/expo-material3-theme';
-import SplashScreen from 'react-native-splash-screen';
 import useSysLanguage from '@hooks/useSysLanguage.ts';
 import { useEffect } from 'react';
 import { StatusBar } from 'react-native';
@@ -46,7 +45,8 @@ const App = () => {
 
   useEffect(() => {
     /* 这是启动页 */
-    //SplashScreen.hide();
+
+
     getFileUrl();
   }, []);
   const colorScheme = useColorScheme();
