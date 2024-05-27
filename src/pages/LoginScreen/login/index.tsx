@@ -66,10 +66,10 @@ const Login = () => {
                     {t('login.btn1')}
                 </Button>
                 <View className="flex-row items-center justify-center">
-                    <View className="m-auto border  mt-8 w-[50%] flex-row items-center justify-between">
+                    <View className="m-auto   mt-8  flex-row items-center justify-between">
                         <View className="w-8 h-0 border-t border-[#ffffff7f]  " />
-                        <Text className="text-xs text-[#ffffff7f]">
-                            三方账号登录
+                        <Text className="text-xs text-[#ffffff7f] mx-2">
+                            {t('login.btn11')}
                         </Text>
                         <View className="w-8 h-0 border-t border-[#ffffff7f]" />
                     </View>

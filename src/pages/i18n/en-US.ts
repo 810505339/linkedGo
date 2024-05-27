@@ -183,6 +183,7 @@ export default {
     tag12: 'Please click "Agree" to confirm that you have read and agree to our Terms and Conditions',
     tag13: 'Select an area code',
     tip1: 'Please read through the T&C and click AGREE',
+    btn11: 'Login with other accounts'
 
   },
   sex: {
