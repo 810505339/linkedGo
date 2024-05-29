@@ -7,6 +7,7 @@ import { getAreaById } from '@api/store';
 import dayjs from 'dayjs';
 import { fileStore } from '@store/getfileurl';
 import { useRequest } from 'ahooks';
+import { useTranslation } from 'react-i18next';
 const DATA = [
   {
     id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
@@ -51,6 +52,7 @@ export type IAreaListProps = {
 }
 const AreaList: FC<IAreaListProps> = (props) => {
   const { storeId, date, onChange, changeLoading } = props;
+  const { t } = useTranslation()
 
   const { runAsync, loading } = useRequest(() => getAreaById(storeId, { date }), {
     manual: true
@@ -101,7 +103,7 @@ const AreaList: FC<IAreaListProps> = (props) => {
   }
   if (data.cells.length <= 0) {
     return <View className='border border-[#343434] bg-[#191919] h-24 rounded-xl justify-center items-center flex-row'>
-      <Text className='text-xs  opacity-50 ml-2.5'>暂无区域</Text>
+      <Text className='text-xs  opacity-50 ml-2.5'>{t('NoMore.tag2')}</Text>
     </View>
   }
 

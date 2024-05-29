@@ -111,7 +111,7 @@ const ConfirmBooth = () => {
 
     if (!selectBooth.boothId) {
       Toast.show({
-        text1: '请选择卡座',
+        text1: t('orders.tip'),
       });
       return;
     }

@@ -280,7 +280,7 @@ const Preset = () => {
               {data?.ticketList?.length > 0 && <TicketList onPress={selectTicket} list={data.ticketList} activeIndex={data.tickerIndex} />}
               {data?.ticketList?.length <= 0 && <View className='border border-[#343434] bg-[#191919] h-24 rounded-xl justify-center items-center flex-row'>
                 <Image source={noMore} className=' w-8 h-8' />
-                <Text className='text-xs  opacity-50 ml-2.5'>暂无门票</Text>
+                <Text className='text-xs  opacity-50 ml-2.5'>{t('NoMore.tag1')}</Text>
               </View>}
 
             </View>

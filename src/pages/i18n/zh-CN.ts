@@ -294,6 +294,8 @@ export default {
     REFUND_TO_BALANCE: '已退款',
     NOT_PAY: '未支付',
 
+    tip: '请选择卡座',
+
   },
   systemmessage: {
     btn1: '全部已读'
@@ -374,6 +376,20 @@ export default {
     tips1: '如果支付成功后页面没有自动跳转，请点击以下按钮',
     btn1: '我已经完成付款',
     btn2: '取消支付',
+  },
+  Tip: {
+    man: '男性已满',
+    woman: '女性已满',
+  },
+  NoMore: {
+    tag1: '暂无门票',
+    tag2: '暂无区域',
+  },
+  Result: {
+    tag1: '支付成功!',
+    tag2: '感谢您对0.2 Lounge & Clu',
+    tag3: '关闭页面',
+    tag4: '查看详情',
   }
 
 };

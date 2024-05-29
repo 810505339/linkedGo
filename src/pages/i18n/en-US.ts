@@ -150,7 +150,8 @@ export default {
     PAY_CANCEL: 'Cancelled',
     PAY_SUCCESS: 'Payment successful',
     REFUND_TO_BALANCE: 'Refunded',
-    NOT_PAY: 'Not pay'
+    NOT_PAY: 'Not pay',
+    tip: 'Please select  holder',
 
   },
   ticket: {
@@ -369,6 +370,20 @@ export default {
     tips1: 'If the page does not automatically redirection after successful payment, please click the button below',
     btn1: 'I have completed the payment',
     btn2: 'Cancel',
+  },
+  Tip: {
+    man: 'Male full',
+    woman: 'Women  full',
+  },
+  NoMore: {
+    tag1: 'No tickets yet',
+    tag2: 'No area yet',
+  },
+  Result: {
+    tag1: 'Pay successful',
+    tag2: 'Thank you for that 0.2 Lounge & Clu',
+    tag3: 'Close Page',
+    tag4: 'View Info',
   }
 
 };

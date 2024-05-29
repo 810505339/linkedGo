@@ -588,14 +588,14 @@ const FightwineDetail = () => {
 
       if (gender == 1 && _male <= 0) {
         Toast.show({
-          text1: '男性已满'
+          text1: t('Tip.man')
         })
         return
       }
 
       if (gender == 2 && _female <= 0) {
         Toast.show({
-          text1: '女性已满'
+          text1: t('Tip.woman')
         })
         return
       }
