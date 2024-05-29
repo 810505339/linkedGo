@@ -134,7 +134,7 @@ const CustomFlatList = forwardRef<CustomFlatListRef, IPaginatedFlatListProps<any
 
       setAllData((draft) => {
         draft.isRefreshing = false;
-
+        draft.isLoading = false;
       });
     },
   });
