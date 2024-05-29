@@ -15,7 +15,7 @@ import { cssInterop } from 'nativewind';
 import { useTranslation } from 'react-i18next';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { logout } from '@api/login';
-
+import { useStore } from '@store/versionStore'
 
 cssInterop(Button, {
   className: 'style'
@@ -24,6 +24,7 @@ cssInterop(Button, {
 const Account = () => {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { t } = useTranslation()
+  const { sensitiveness } = useStore()
   useRequest(detailsById, {
     onSuccess: (res) => {
       console.log(res);
@@ -103,7 +104,7 @@ const Account = () => {
         })}
       </View>
 
-      <View className="p-2">
+      {sensitiveness && <View className="p-2">
         <Text className="pl-2 font-bold my-4">{t('login.tag1')}</Text>
         <View className="rounded-xl border border-[#343434] bg-[#191919]">
 
@@ -112,7 +113,9 @@ const Account = () => {
           })}
 
         </View>
-      </View>
+      </View>}
+
+
     </ScrollView>
 
     <SafeAreaView >

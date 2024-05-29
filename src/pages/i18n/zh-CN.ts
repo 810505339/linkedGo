@@ -294,6 +294,8 @@ export default {
     REFUND_TO_BALANCE: '已退款',
     NOT_PAY: '未支付',
 
+    tip: '请选择卡座',
+
   },
   systemmessage: {
     btn1: '全部已读'
@@ -378,6 +380,10 @@ export default {
   Tip: {
     man: '男性已满',
     woman: '女性已满',
+  },
+  NoMore: {
+    tag1: '暂无门票',
+    tag2: '暂无区域',
   }
 
 };

@@ -6,7 +6,8 @@ import BaseLayout from '@components/baselayout'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import useWechat from '@hooks/useWechat'
 import { useTranslation } from 'react-i18next'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import {  useStore } from '@store/versionStore'
 
 const bgImage = require('@assets/imgs/login/bg.png')
 
@@ -17,6 +18,13 @@ const Login = () => {
         useNavigation<NativeStackNavigationProp<RootStackParamList>>()
     const { wechatLogin, iosWxLogin } = useWechat(navigation)
     const { t } = useTranslation()
+    const loginList = [
+        { img: require('@assets/imgs/login/wechat.png'), name: 'WeChat' },
+    ]
+
+
+
+    const { sensitiveness } = useStore()
 
     useEffect(() => {
         navigation.setOptions({
@@ -26,9 +34,7 @@ const Login = () => {
         })
     }, [navigation])
 
-    const loginList = [
-        { img: require('@assets/imgs/login/wechat.png'), name: 'WeChat' },
-    ]
+
 
     function handleLogin() {
         navigation.navigate('LoginOrRegister', {})
@@ -65,31 +71,38 @@ const Login = () => {
                 >
                     {t('login.btn4')}
                 </Button>
-                <View className="flex-row items-center justify-center">
-                    <View className="m-auto   mt-8  flex-row items-center justify-between">
-                        <View className="w-8 h-0 border-t border-[#ffffff7f]  " />
-                        <Text className="text-xs text-[#ffffff7f] mx-2">
-                            {t('login.btn11')}
-                        </Text>
-                        <View className="w-8 h-0 border-t border-[#ffffff7f]" />
-                    </View>
-                </View>
 
-                <View className="mt-2 px-10 flex-row items-center justify-center">
-                    {loginList.map((l, index) => {
-                        return (
-                            <TouchableOpacity
-                                key={index}
-                                onPress={() => mediaClick(l)}
-                            >
-                                <Image
-                                    source={l.img}
-                                    className="w-[24px] h-[24px]"
-                                />
-                            </TouchableOpacity>
-                        )
-                    })}
-                </View>
+                {sensitiveness &&
+                    <View>
+                        <View className="flex-row items-center justify-center">
+                            <View className="m-auto   mt-8  flex-row items-center justify-between">
+                                <View className="w-8 h-0 border-t border-[#ffffff7f]  " />
+                                <Text className="text-xs text-[#ffffff7f] mx-2">
+                                    {t('login.btn11')}
+                                </Text>
+                                <View className="w-8 h-0 border-t border-[#ffffff7f]" />
+                            </View>
+                        </View>
+
+                        <View className="mt-2 px-10 flex-row items-center justify-center">
+                            {loginList.map((l, index) => {
+                                return (
+                                    <TouchableOpacity
+                                        key={index}
+                                        onPress={() => mediaClick(l)}
+                                    >
+                                        <Image
+                                            source={l.img}
+                                            className="w-[24px] h-[24px]"
+                                        />
+                                    </TouchableOpacity>
+                                )
+                            })}
+                        </View>
+                    </View>
+                }
+
+
             </View>
         </BaseLayout>
     )

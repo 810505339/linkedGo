@@ -150,7 +150,8 @@ export default {
     PAY_CANCEL: 'Cancelled',
     PAY_SUCCESS: 'Payment successful',
     REFUND_TO_BALANCE: 'Refunded',
-    NOT_PAY: 'Not pay'
+    NOT_PAY: 'Not pay',
+    tip: 'Please select  holder',
 
   },
   ticket: {
@@ -373,6 +374,10 @@ export default {
   Tip: {
     man: 'Male full',
     woman: 'Women  full',
+  },
+  NoMore: {
+    tag1: 'No tickets yet',
+    tag2: 'No area yet',
   }
 
 };
