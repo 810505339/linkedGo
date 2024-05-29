@@ -72,7 +72,7 @@ const DynamicItem = (props: IProps) => {
     });
   };
 
-  const Type = () => <View className={`${tagPostion} w-12 h-8 rounded-2xl bg-[#00000066]  flex-row justify-center items-center`}>
+  const Type = () => <View className={`${tagPostion} min-w-12 h-8 px-2 rounded-2xl bg-[#00000066]  flex-row justify-center items-center`}>
     <Text className="text-sm font-normal text-white">{type}</Text>
   </View>;
 
@@ -157,7 +157,7 @@ const Dynamic = () => {
         style={{ backgroundColor: 'transparent' }} // works the same as AppBar in react-native-paper
         dark={true} // works the same as AppBar in react-native-paper
         // theme={} // works the same as AppBar in react-native-paper
-        mode="fixed" // fixed, scrollable | default=fixed
+        mode="scrollable" // fixed, scrollable | default=fixed
         showLeadingSpace={false} //  (default=true) show leading space in scrollable tabs inside the header
         disableSwipe={false} // (default=false) disable swipe to left/right gestures
       >

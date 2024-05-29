@@ -63,7 +63,7 @@ const Login = () => {
                     contentStyle={{ height: 50 }}
                     onPress={handleLogin}
                 >
-                    {t('login.btn1')}
+                    {t('login.btn4')}
                 </Button>
                 <View className="flex-row items-center justify-center">
                     <View className="m-auto   mt-8  flex-row items-center justify-between">
