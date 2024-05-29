@@ -378,6 +378,12 @@ export default {
   NoMore: {
     tag1: 'No tickets yet',
     tag2: 'No area yet',
+  },
+  Result: {
+    tag1: 'Pay successful',
+    tag2: 'Thank you for that 0.2 Lounge & Clu',
+    tag3: 'Close Page',
+    tag4: 'View Info',
   }
 
 };

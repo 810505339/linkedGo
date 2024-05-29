@@ -384,6 +384,12 @@ export default {
   NoMore: {
     tag1: '暂无门票',
     tag2: '暂无区域',
+  },
+  Result: {
+    tag1: '支付成功!',
+    tag2: '感谢您对0.2 Lounge & Clu',
+    tag3: '关闭页面',
+    tag4: '查看详情',
   }
 
 };

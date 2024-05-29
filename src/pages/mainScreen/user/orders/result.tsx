@@ -112,8 +112,8 @@ const Result = () => {
     <ImageBackground source={bg} className=" absolute" style={{ height: window.width, width: window.width }} />
     <Image source={card} className="mx-5 mt-40" style={{ width: window.width - 40, height: 208 }} resizeMode="contain" />
     <View className=" items-center mt-10">
-      <Text style={{ fontSize: 24 }} className=" font-bold">支付成功!</Text>
-      <Text className="mt-5">感谢您对0.2 Lounge & Clu</Text>
+      <Text style={{ fontSize: 24 }} className=" font-bold">{t('Result.tag1')}</Text>
+      <Text className="mt-5">{t('Result.tag2')}</Text>
     </View>
     <View className="flex-row items-center mt-10 justify-center">
       <Button
@@ -127,7 +127,7 @@ const Result = () => {
         contentStyle={{ height: 50 }}
         onPress={handleClose}
       >
-        关闭页面
+        {t('Result.tag3')}
       </Button>
       <Button
         mode="outlined"
@@ -140,8 +140,8 @@ const Result = () => {
         contentStyle={{ height: 50 }}
         onPress={handleItemPress}
       >
-        查看详情    
-          </Button>
+        {t('Result.tag4')}
+      </Button>
     </View>
   </View >
 }
