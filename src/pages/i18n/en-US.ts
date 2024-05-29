@@ -369,6 +369,10 @@ export default {
     tips1: 'If the page does not automatically redirection after successful payment, please click the button below',
     btn1: 'I have completed the payment',
     btn2: 'Cancel',
+  },
+  Tip: {
+    man: 'Male full',
+    woman: 'Women  full',
   }
 
 };
