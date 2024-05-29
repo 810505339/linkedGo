@@ -4,10 +4,9 @@ import { Button, Text } from "react-native-paper"
 import { RootStackParamList } from "@router/type"
 import { NativeStackNavigationProp } from "@react-navigation/native-stack"
 import { getOrderDetail, tempPay } from "@api/order"
-import { fileStore } from "@store/getfileurl"
 import { getImage, IOrderType } from "./index"
 import { useTranslation } from "react-i18next"
-import { useEffect } from "react"
+
 const bg = require('@assets/imgs/user/result-bg.png')
 const card = require('@assets/imgs/user/result-card.png')
 

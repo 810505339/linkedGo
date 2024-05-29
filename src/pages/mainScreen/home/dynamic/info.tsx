@@ -102,14 +102,14 @@ const DynamicInfo = () => {
       { label: t('dynamic.info.tag2'), value: activityPlace },
       {
         label: t('dynamic.info.tag3'), value: amount, render: () => {
-          return (<Text className="text-[#E6A055FF] ml-2">${amount}</Text>);
+          return (<Text className="text-[#E6A055FF] ml-2" numberOfLines={2}>S${amount}</Text>);
         },
       },
       { label: t('dynamic.info.tag4'), value: useOfExpenses },
       {
         label: t('dynamic.info.tag5'), value: showOrNotPersonNumber == '1', render: () => {
           return (<Text className="text-white font-bold ml-2">
-            <Text className="text-[#E6A055FF]">{activitySignUpNumber}</Text> / {activityPersonNumber}
+            <Text className="text-[#E6A055FF]" numberOfLines={2}>{activitySignUpNumber}</Text> / {activityPersonNumber}
           </Text>);
         },
       },
@@ -117,7 +117,7 @@ const DynamicInfo = () => {
     return (<View className="bg-[#FFFFFF0D] p-2.5 rounded-xl mt-4">
       {list.map((item, i) => (item.value && <View key={i} className="flex-row items-center my-1">
         <Text className="text-white opacity-50">{item.label}:</Text>
-        {item?.render?.() ?? <Text className="text-white font-bold ml-2">{item.value}</Text>}
+        {item?.render?.() ?? <Text className="text-white font-bold ml-2 " numberOfLines={2} style={{ flex: 1 }}>{item.value}</Text>}
 
       </View>))}
     </View>);
