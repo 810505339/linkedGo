@@ -62,7 +62,7 @@ const DynamicInfo = () => {
   const { data: application, runAsync: applicationRun } = useRequest(() => isAlreadySignUp(id), {
     manual: true
   });
-  const { data: res } = useRequest(() => getDynamicInfo({ id: id }), {
+  const { data: res, loading } = useRequest(() => getDynamicInfo({ id: id }), {
     onSuccess: (res) => {
       console.log(res, 'res')
       if (!res.success) {
@@ -227,7 +227,7 @@ const DynamicInfo = () => {
 
 
 
-  return (data && <BaseLayout showAppBar={false} source={false} showNoMore={!data}>
+  return (<BaseLayout showAppBar={false} source={false} loading={loading}>
 
     <ScrollView onScroll={onScroll}>
       <View className=" w-full h-[375]  relative">

@@ -145,7 +145,7 @@ const Dynamic = () => {
   // });
 
 
-  return (<BaseLayout showNoMore={dynamicTypeList?.length === 1} >
+  return (<BaseLayout  >
     {storeId && dynamicTypeList?.length >= 2 && <TabsProvider
       defaultIndex={0}
     // onChangeIndex={handleChangeIndex} optional
