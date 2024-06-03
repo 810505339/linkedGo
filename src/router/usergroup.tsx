@@ -24,6 +24,7 @@ import Customer from '@pages/mainScreen/user/customer/index';
 import Result from '@pages/mainScreen/user/orders/result';
 import Pay from '@pages/mainScreen/user/orders/pay';
 import UserInfo from '@pages/mainScreen/user/userInfo';
+import Cancellation from '@pages/mainScreen/user/account/Cancellation'
 
 import { useTranslation } from 'react-i18next';
 
@@ -121,6 +122,7 @@ const LoginGroup = () => {
     <Stack.Screen name="Result" component={Result} options={{ title: t('default.titleList.Result'), presentation: 'modal', headerShown: false }} />
     <Stack.Screen name="Pay" component={Pay} options={{ title: '', presentation: 'modal' }} />
     <Stack.Screen name="EditUserInfo" component={UserInfo} options={{ title: t('default.titleList.UserInfo'), }} />
+    <Stack.Screen name="Cancellation" component={Cancellation} />
   </Stack.Group>;
 };
 

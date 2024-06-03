@@ -127,7 +127,8 @@ export type HomeParamList = {
     codeExpireSecond: string,
     amount: string
   },
-  EditUserInfo: undefined
+  EditUserInfo: undefined,
+  Cancellation: undefined
 }
 
 export type TabParamList = {

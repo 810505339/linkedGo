@@ -10,7 +10,6 @@ const UserRule = () => {
       }}
       originWhitelist={['https://*', 'git://*']}
       style={{ flex: 1, backgroundColor: '#222222FF' }} />}
-
   </BaseLayout>
 }
 
