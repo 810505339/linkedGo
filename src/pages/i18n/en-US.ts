@@ -307,6 +307,7 @@ export default {
     tag2: 'BindingPhone',
     tag3: 'Password',
     tag4: 'Payment Password',
+    tag5: 'Cancel Account',
     btn1: 'Log out',
     set1: 'have set',
     set2: 'Is not set',

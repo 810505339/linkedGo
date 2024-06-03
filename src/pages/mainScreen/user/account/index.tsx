@@ -49,7 +49,7 @@ const Account = () => {
       { id: 'AccountPhone', title: t('account.tag2'), description: t('account.set2') },
       { id: 'AccountLoginPwd', title: t('account.tag3'), description: t('account.set2') },
       { id: 'AccountPayPwd', title: t('account.tag4'), description: t('account.set2') },
-      // { id: '3', title: '第三方账号绑定', description: '未设置' },
+      { id: 'Cancellation', title: t('account.tag5') },
     ],
     third: [
       // { id: 'AccountPhone', title: 'Apple ID', description: '0056-85649653' },
