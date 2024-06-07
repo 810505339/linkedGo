@@ -1,4 +1,4 @@
-package com.clubapp.linkedGo
+package com.clubapped.linkedGo
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate
