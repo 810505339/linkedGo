@@ -1,4 +1,4 @@
-package com.clubapp.linkedGo.wxapi;
+package com.clubapped.linkedGo.wxapi;
 //微信登录上面包名应该填写应用包名
 // react-native-wechat-lib support (
 import android.app.Activity;

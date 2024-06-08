@@ -71,8 +71,9 @@ const AuthenticationCamera = () => {
     const takePhoto = async () => {
         try {
             const photo = await camera.current!.takePhoto()
+            const path = Platform.OS == 'ios' ? photo.path : `file://${photo.path}`
             const fileUrl = await CompressorImage.compress(
-                `file://${photo.path}`,
+                path,
                 {
                     compressionMethod: Platform.OS == 'ios' ? 'manual' : 'auto',
                     maxWidth: 1000,
@@ -82,14 +83,10 @@ const AuthenticationCamera = () => {
                     },
                 }
             )
-
             const result = await fetch(fileUrl)
-
             const fileByBlob = await result.blob()
-
             const file = await blobToBase64(fileByBlob)
             console.log(file)
-
             const { data } = await runAsync(file)
             console.log(data)
             if (data) {
