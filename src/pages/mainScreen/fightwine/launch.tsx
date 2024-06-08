@@ -11,6 +11,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '@router/type';
 import useMode from './hooks/useMode';
 import { useTranslation } from 'react-i18next';
+import CheckSex from '@components/baselayout/checkSex';
 const bg1 = require('@assets/imgs/home/launch/bg1.png');
 const bg2 = require('@assets/imgs/home/launch/bg2.png');
 const bg3 = require('@assets/imgs/home/launch/bg3.png');
@@ -32,7 +33,7 @@ const Item = (props: Item & { onPress: (winePartyMode: string, modeName: string)
 
 
   return (<TouchableOpacity onPress={() => onPress(winePartyMode, modeName)}>
-    <View className="m-2.5 h-28 box-border relative px-5 py-8 rounded-2xl overflow-hidden  flex-row justify-between items-center">
+    <View className="m-2.5 h-28 box-border  px-5 py-8 rounded-2xl overflow-hidden  flex-row justify-between items-center">
       <ImageBackground source={bg} className="h-28   absolute -z-10 left-0 right-0 bottom-0 top-0" />
       <View>
         <Text className=" font-bold text-2xl mb-1" style={{ color: color }}>{modeName}</Text>
@@ -91,7 +92,9 @@ const Launch = () => {
 
 
   return (<BaseLayout>
+
     {modeList.map(l => <Item key={l.winePartyMode} {...l} onPress={itemClick} />)}
+    <CheckSex />
   </BaseLayout>);
 };
 

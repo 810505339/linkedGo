@@ -17,6 +17,7 @@ export default {
     label5: '预定规则',
     label6: '选择门票',
 
+
   },
   user: {
     item1: '系统消息',
@@ -113,6 +114,8 @@ export default {
     tag1: '使用',
     tag2: '最迟入场',
     tip1: '营业时间内可以入场，请安排好您的时间哦～',
+    tip2: '此票可赠送',
+    bnt1: '赠送',
   },
   login: {
     btn1: '登录/注册',
@@ -134,6 +137,7 @@ export default {
     tag13: '请选择区号',
     tip1: '请阅读并同意条款',
     tip2: '',
+    btn11: '三方账号登录'
   },
   sex: {
     tag1: '即将开始人脸认证',
@@ -290,6 +294,8 @@ export default {
     REFUND_TO_BALANCE: '已退款',
     NOT_PAY: '未支付',
 
+    tip: '请选择卡座',
+
   },
   systemmessage: {
     btn1: '全部已读'
@@ -357,5 +363,33 @@ export default {
     label8: '卡座预订成功后，将会赠送您相同人数的门票',
     btn1: '选择卡座',
   },
+  Modal: {
+    btn1: '下载',
+    btn2: '关闭',
+    tip: '提示',
+    sex1: '为了更好的拼酒体验',
+    sex2: '您需要完成性别认证流程',
+  },
+  Pay: {
+    download: '下载二维码',
+    tips: '您可以下载二维码并使用支持PayNow的App载入二维码进行支付，也可以使用另一个手机直接扫码支付',
+    tips1: '如果支付成功后页面没有自动跳转，请点击以下按钮',
+    btn1: '我已经完成付款',
+    btn2: '取消支付',
+  },
+  Tip: {
+    man: '男性已满',
+    woman: '女性已满',
+  },
+  NoMore: {
+    tag1: '暂无门票',
+    tag2: '暂无区域',
+  },
+  Result: {
+    tag1: '支付成功!',
+    tag2: '感谢您对0.2 Lounge & Clu',
+    tag3: '关闭页面',
+    tag4: '查看详情',
+  }
 
 };

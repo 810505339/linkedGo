@@ -4,10 +4,9 @@ import { Button, Text } from "react-native-paper"
 import { RootStackParamList } from "@router/type"
 import { NativeStackNavigationProp } from "@react-navigation/native-stack"
 import { getOrderDetail, tempPay } from "@api/order"
-import { fileStore } from "@store/getfileurl"
 import { getImage, IOrderType } from "./index"
 import { useTranslation } from "react-i18next"
-import { useEffect } from "react"
+
 const bg = require('@assets/imgs/user/result-bg.png')
 const card = require('@assets/imgs/user/result-card.png')
 
@@ -112,8 +111,8 @@ const Result = () => {
     <ImageBackground source={bg} className=" absolute" style={{ height: window.width, width: window.width }} />
     <Image source={card} className="mx-5 mt-40" style={{ width: window.width - 40, height: 208 }} resizeMode="contain" />
     <View className=" items-center mt-10">
-      <Text style={{ fontSize: 24 }} className=" font-bold">支付成功!</Text>
-      <Text className="mt-5">感谢您对0.2 Lounge & Clu</Text>
+      <Text style={{ fontSize: 24 }} className=" font-bold">{t('Result.tag1')}</Text>
+      <Text className="mt-5">{t('Result.tag2')}</Text>
     </View>
     <View className="flex-row items-center mt-10 justify-center">
       <Button
@@ -127,7 +126,7 @@ const Result = () => {
         contentStyle={{ height: 50 }}
         onPress={handleClose}
       >
-        关闭页面
+        {t('Result.tag3')}
       </Button>
       <Button
         mode="outlined"
@@ -140,8 +139,8 @@ const Result = () => {
         contentStyle={{ height: 50 }}
         onPress={handleItemPress}
       >
-        查看详情    
-          </Button>
+        {t('Result.tag4')}
+      </Button>
     </View>
   </View >
 }

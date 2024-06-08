@@ -13,7 +13,6 @@ import {
 } from 'react-native-paper';
 import { Image, useColorScheme, View } from 'react-native';
 import { useMaterial3Theme } from '@pchmn/expo-material3-theme';
-import SplashScreen from 'react-native-splash-screen';
 import useSysLanguage from '@hooks/useSysLanguage.ts';
 import { useEffect } from 'react';
 import { StatusBar } from 'react-native';
@@ -29,11 +28,15 @@ import { ModalLayerFactory, ModalLayers } from 'react-native-modal-layer';
 import { useBackHandler } from '@react-native-community/hooks';
 import useUserInfo from '@hooks/useUserInfo';
 import MyModal from '@components/modal';
+import { useTranslation } from 'react-i18next';
+import SplashScreen from 'react-native-splash-screen'
 
 const headerIcon = require('@assets/imgs/base/modalHeader.png');
 
 const App = () => {
   const { allData, hideDialog, download } = useVersion();
+
+  const { t } = useTranslation()
   useUserInfo();
   useImLogin();
   useSysLanguage();
@@ -43,7 +46,7 @@ const App = () => {
 
   useEffect(() => {
     /* 这是启动页 */
-    //SplashScreen.hide();
+    SplashScreen.hide();
     getFileUrl();
   }, []);
   const colorScheme = useColorScheme();
@@ -77,7 +80,7 @@ const App = () => {
                     />
                     <View>
                       <Text className="text-lg font-bold text-white  text-center pt-2">
-                        提示
+                        {t('Modal.tip')}
                       </Text>
                     </View>
                     <View className="m-auto py-8 px-5">
@@ -94,7 +97,7 @@ const App = () => {
                         labelStyle={{ fontWeight: 'bold' }}
                         textColor="#ffffffbf"
                         onPress={hideDialog}>
-                        关闭
+                        {t('Modal.btn2')}
                       </Button>
                       <Button
                         className="bg-[#EE2737FF] w-32 "
@@ -102,7 +105,7 @@ const App = () => {
                         labelStyle={{ fontWeight: 'bold' }}
                         mode="contained"
                         onPress={download}>
-                        下载
+                        {t('Modal.btn1')}
                       </Button>
                     </View>
                   </View>
@@ -112,7 +115,7 @@ const App = () => {
               <Toast
                 config={toastConfig}
                 bottomOffset={200}
-            
+
               />
             </SafeAreaProvider>
           </PaperProvider>

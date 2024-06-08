@@ -37,11 +37,11 @@ const ListHeader = (props: { headerInfo: IListHeaderProps }) => {
         <View className='mt-5'>
           <View className="flex-row items-center w-full justify-center">
             <Text className="text-[#0b0b0bbf]  text-center " style={{ fontSize: 14 }}>{t('balance.text2')}</Text>
-            <Text className="ml-2 w-28">S${headerInfo.lockBalance}</Text>
+            <Text className="ml-2 ">S${headerInfo.lockBalance}</Text>
           </View>
           <View className="flex-row items-center w-full  justify-center mt-2">
             <Text className="text-[#0b0b0bbf] " style={{ fontSize: 14 }}>{t('balance.text3')}</Text>
-            <Text className="ml-2 w-28 ">S${headerInfo.availableBalance}</Text>
+            <Text className="ml-2  ">S${headerInfo.availableBalance}</Text>
           </View>
         </View>
       </View>

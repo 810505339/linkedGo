@@ -106,7 +106,7 @@ export default {
     modal7: 'Please enter new password',
     modal8: 'Please enter again',
     modal9: 'Please enter a 6-digit password, numbers only',
-    mode1: 'oderNo',
+    mode1: 'orderNo',
     mode2: 'Name of the session',
     mode3: 'Sessions Mode',
     mode4: 'Payment details',
@@ -150,7 +150,8 @@ export default {
     PAY_CANCEL: 'Cancelled',
     PAY_SUCCESS: 'Payment successful',
     REFUND_TO_BALANCE: 'Refunded',
-    NOT_PAY: 'Not pay'
+    NOT_PAY: 'Not pay',
+    tip: 'Please select  holder',
 
   },
   ticket: {
@@ -160,6 +161,8 @@ export default {
     tag1: 'Available',
     tag2: '最迟入场',
     tip1: 'Admittance during business hours. Please arrange your time accordingly~',
+    tip2: 'This ticket can be given away',
+    bnt1: 'Given',
   },
   login: {
 
@@ -181,6 +184,7 @@ export default {
     tag12: 'Please click "Agree" to confirm that you have read and agree to our Terms and Conditions',
     tag13: 'Select an area code',
     tip1: 'Please read through the T&C and click AGREE',
+    btn11: 'Login with other accounts'
 
   },
   sex: {
@@ -226,10 +230,10 @@ export default {
     btn4: "Let's chat",
     btn5: 'Join',
     btn6: 'Remove',
-    btn7: '同意',
-    btn8: '拒绝',
+    btn7: 'Agree',
+    btn8: 'Reject',
     btn9: '评价酒局',
-    btn10: '申请加入酒局',
+    btn10: 'Do you wish to join the session',
     btn11: 'Exit',
     info0: 'Sessions Mode',
     info1: 'Status',
@@ -353,5 +357,33 @@ export default {
     label8: 'Free Tickets will be provided based on the maximum capacity of the selected VIP sofa upon successful reservation',
     btn1: 'Select VIP Sofa'
   },
+  Modal: {
+    btn1: 'Download',
+    btn2: 'Close',
+    tip: 'Tips',
+    sex1: 'For a better wine mixing experience',
+    sex2: 'You need to complete the gender authentication process',
+  },
+  Pay: {
+    download: 'Download QR code',
+    tips: 'You can download the QR code and use the App that supports PayNow to load the QR code for payment, or you can use another phone to pay directly by scanning the code',
+    tips1: 'If the page does not automatically redirection after successful payment, please click the button below',
+    btn1: 'I have completed the payment',
+    btn2: 'Cancel',
+  },
+  Tip: {
+    man: 'Male full',
+    woman: 'Women  full',
+  },
+  NoMore: {
+    tag1: 'No tickets yet',
+    tag2: 'No area yet',
+  },
+  Result: {
+    tag1: 'Pay successful',
+    tag2: 'Thank you for that 0.2 Lounge & Clu',
+    tag3: 'Close Page',
+    tag4: 'View Info',
+  }
 
 };
