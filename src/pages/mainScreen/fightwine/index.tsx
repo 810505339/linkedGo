@@ -1,6 +1,6 @@
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import { NativeStackHeaderProps, NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { View, RefreshControl, ImageBackground, StyleSheet, StyleProp, ViewStyle, TouchableOpacity, ImageSourcePropType, Image, Animated, PanResponder } from 'react-native';
+import { View, RefreshControl, ImageBackground, StyleSheet, StyleProp, ViewStyle, TouchableOpacity, ImageSourcePropType, Image, Animated, PanResponder, Dimensions } from 'react-native';
 import { Button, Text } from 'react-native-paper';
 import { RootStackParamList } from '@router/type';
 import BaseLayout from '@components/baselayout';
@@ -16,6 +16,11 @@ import { useTranslation } from 'react-i18next';
 import { BlurView } from '@react-native-community/blur';
 import useSelectShop from '@hooks/useSelectShop';
 import useUserInfo from '@hooks/useUserInfo';
+
+
+
+const ScreenWidth = Dimensions.get('window').width
+const ScreenHeight = Dimensions.get('window').height
 
 cssInterop(Button, {
   className: 'style'

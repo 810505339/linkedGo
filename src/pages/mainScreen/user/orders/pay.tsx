@@ -4,13 +4,14 @@ import BaseLayout from "@components/baselayout"
 import { View, ScrollView, Platform, Share, } from "react-native"
 import { Button, Divider, Text } from "react-native-paper"
 import QRCode from "react-native-qrcode-svg"
-const bg = require('@assets/imgs/order/pay.png')
+import Dialog from '@components/dialog';
+
 
 import { queryPayResult } from '@api/common'
 import { useRequest } from "ahooks"
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/native"
 import { RootStackParamList } from "@router/type"
-import { useCallback, useEffect, useRef } from "react"
+import { useCallback, useEffect, useRef, useState } from "react"
 import { NativeStackNavigationProp } from "@react-navigation/native-stack"
 import { cancelOrder } from "@api/order"
 
@@ -18,13 +19,18 @@ import RNFS from 'react-native-fs';
 import Toast from "react-native-toast-message"
 import { CameraRoll } from "@react-native-camera-roll/camera-roll"
 import { useTranslation } from "react-i18next"
-
+import MyModal from "@components/modal"
+import { useImmer } from "use-immer";
+const bg = require('@assets/imgs/order/pay.png')
 const Pay = () => {
   const route = useRoute<RouteProp<RootStackParamList, 'Pay'>>()
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>()
   const qrCodeRef = useRef(null)
 
   const { t } = useTranslation()
+  const [allData, setAllData] = useImmer({
+    visible: false
+  })
 
   const { orderId, orderStatus, codeUrl, codeExpireSecond, amount } = route.params
   const { data, run, cancel } = useRequest(() => queryPayResult({ orderId }), {
@@ -87,10 +93,22 @@ const Pay = () => {
     console.log(cancelRes, 'cancelRes');
     if (cancelRes.success) {
       navigation.replace('Orders')
-
     }
 
   };
+
+  /* 点击取消订单取消 */
+  const onDismiss = () => {
+    setAllData(draft => {
+      draft.visible = false;
+    });
+  };
+
+  const show = () => {
+    setAllData(draft => {
+      draft.visible = true;
+    });
+  }
 
 
 
@@ -117,10 +135,13 @@ const Pay = () => {
         <View className="mt-10">
           <Text className=" text-center  opacity-75  mb-2.5 text-xs">{t('Pay.tips1')}</Text>
           <Button textColor="#FDAD25" labelStyle={{ fontWeight: 'bold' }} onPress={run}>{t('Pay.btn1')}</Button>
-          <Button textColor="#ffffff" labelStyle={{ fontWeight: 'bold' }} onPress={cancelPay}>{t('Pay.btn2')}</Button>
+          <Button textColor="#ffffff" labelStyle={{ fontWeight: 'bold' }} onPress={show}>{t('Pay.btn2')}</Button>
         </View>
       </View>
     </ScrollView>
+    <Dialog visible={allData.visible} confirm={cancelPay} onDismiss={onDismiss} >
+      <Text>{t('orderInfo.tag26')}</Text>
+    </Dialog>
   </BaseLayout>
 }
 

@@ -103,7 +103,7 @@ const HomeScreen = () => {
 
   async function onRefresh() {
     setIsRefreshing(true)
-    await runAsync()
+    await getcarouselListApi()
     setIsRefreshing(false)
   }
 
