@@ -2,7 +2,7 @@ import axios from 'axios';
 import qs from 'qs';
 import { getGenericPassword, resetGenericPassword } from 'react-native-keychain';
 import Toast from 'react-native-toast-message';
-const baseUrl = 'https://club-h5.point2club.com/api/';
+const baseUrl = 'https://gateway.point2club.com/api/';
 import { replace } from '@router/index';
 import { loadLanguageStorage } from '@storage/language/action'
 
