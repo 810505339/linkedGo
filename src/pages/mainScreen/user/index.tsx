@@ -61,7 +61,6 @@ type IListHeader = {
 const HomeScreen = () => {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { t } = useTranslation()
-
   const { data: _userInfo, runAsync } = useRequest(detailsById, {
     manual: true,
   });
