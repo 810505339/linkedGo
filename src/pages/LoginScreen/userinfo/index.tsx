@@ -35,7 +35,7 @@ const UserInfo = () => {
       routes: [
         { name: 'HomeTabs' },
       ],
-    });
+    });   
   }
 
   useEffect(() => {

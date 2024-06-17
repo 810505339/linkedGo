@@ -48,8 +48,6 @@ const womanHeaderIcon = require('@assets/imgs/user/header1.png');
 
 
 
-
-
 type IListHeader = {
   balancePress: (name: string) => void
   navigation: NativeStackNavigationProp<UsertackParamList>
@@ -61,8 +59,29 @@ type IListHeader = {
 const HomeScreen = () => {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { t } = useTranslation()
+
+  const [avatar, setAvatarUrl] = useState({
+    aImage: '',
+    image: ''
+  })
   const { data: _userInfo, runAsync } = useRequest(detailsById, {
     manual: true,
+    onSuccess: (res) => {
+      if (res.code == 0) {
+        const splittedUrl = res?.data?.avatarUrl.split("?");
+        const dataBeforeQuestionMark = splittedUrl[0]
+        if (avatar.aImage != dataBeforeQuestionMark) {
+
+          console.log(avatar.aImage, splittedUrl, '跟新了userInfo')
+          setAvatarUrl({
+            aImage: dataBeforeQuestionMark,
+            image: res?.data?.avatarUrl
+          })
+        }
+      }
+
+
+    }
   });
   const { data, runAsync: userRun } = useRequest(mineInfo, {
     manual: true,
@@ -145,8 +164,7 @@ const HomeScreen = () => {
     const orderCount = info?.orderCount >= 100 ? `99+` : info?.orderCount
 
 
-    const avatarUrl = userInfo?.avatarUrl ? (<Image className={' w-24  h-24 rounded-full border-2 border-[#98000CFF]'} resizeMode="cover" source={{ uri: userInfo?.avatarUrl }} />) :
-      (<Image className={' w-24  h-24 rounded-full border-2 border-[#98000CFF]'} resizeMode="cover" source={sexHeaderIcon} />)
+
 
 
     const header = (
@@ -189,7 +207,8 @@ const HomeScreen = () => {
       {/* 头像 */}
       <View className=" px-5 flex   flex-row  box-border relative -top-10">
         <View className="w-24 h-24   rounded-full">
-          {avatarUrl}
+          {avatar?.aImage ? (<Image className={' w-24  h-24 rounded-full border-2 border-[#98000CFF]'} resizeMode="cover" source={{ uri: avatar?.image }} />) :
+            (<Image className={' w-24  h-24 rounded-full border-2 border-[#98000CFF]'} resizeMode="cover" source={sexHeaderIcon} />)}
         </View>
         {userInfo ? header :
           (<TouchableOpacity className=' flex-auto  ml-5 justify-center'><Text className='text-[18px] font-bold text-white' onPress={() => navigation.navigate('Login')}>{t('user.item7')}</Text></TouchableOpacity>)

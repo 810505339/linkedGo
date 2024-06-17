@@ -110,6 +110,7 @@ export default {
     mode2: 'Name of the session',
     mode3: 'Sessions Mode',
     mode4: 'Payment details',
+    balance3: '，Please pay the remaining amount by PAYNOW'
   },
   orders: {
     tag1: 'All',
