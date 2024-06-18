@@ -8,7 +8,7 @@ const PrivacyRule = () => {
   return <BaseLayout>
     {data.language && <WebView startInLoadingState={true}
       source={{
-        uri: `https://club-h5.point2club.com/#/rule?type=PRIVACY_AGREEMENT&language=${data.language}&have=0`
+        uri: `https://m.point2club.com#/rule?type=PRIVACY_AGREEMENT&language=${data.language}&have=0`
       }}
       originWhitelist={['https://*', 'git://*']}
       style={{ flex: 1, backgroundColor: '#222222FF' }} />}

@@ -22,7 +22,7 @@ const Customer = () => {
     setToken((generic as UserCredentials).password)
   }, [])
 
-  console.log(`https://club-h5.point2club.com/#/me/opinion?type=0&language=${data.language}&have=0&token=${token}`);
+  console.log(`https://m.point2club.com#/me/opinion?type=0&language=${data.language}&have=0&token=${token}`);
 
 
   return <BaseLayout>
@@ -30,8 +30,8 @@ const Customer = () => {
     {data.language && token && <WebView
 
       source={{
-        uri: `https://club-h5.point2club.com/#/me/opinion?type=0&language=${data.language}&have=0&token=${token}`
-        // uri: 'https://club-h5.point2club.com/'
+        uri: `https://m.point2club.com#/me/opinion?type=0&language=${data.language}&have=0&token=${token}`
+        // uri: 'https://m.point2club.com'
       }}
       originWhitelist={['https://*', 'git://*']}
       style={{ flex: 1, backgroundColor: '#222222FF' }} />}

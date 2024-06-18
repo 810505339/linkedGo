@@ -17,7 +17,7 @@ import { BlurView } from '@react-native-community/blur';
 import useSelectShop from '@hooks/useSelectShop';
 import useUserInfo from '@hooks/useUserInfo';
 
-
+import { useDebounceFn } from 'ahooks';
 
 const ScreenWidth = Dimensions.get('window').width
 const ScreenHeight = Dimensions.get('window').height
@@ -163,13 +163,16 @@ const FightwineScreen = () => {
     refreshing: false,
     defaultIndex: 0,
   });
-
-
-
   //发起酒局
   const onLaunch = () => {
     navigation.navigate('Launch');
   };
+  const { run } = useDebounceFn(onLaunch, {
+    wait: 500
+  })
+
+
+
 
 
   const toUrl = (id: string) => {
@@ -247,7 +250,7 @@ const FightwineScreen = () => {
         }}
         {...panResponder.panHandlers}
       >
-        <TouchableOpacity onPress={onLaunch} >
+        <TouchableOpacity onPress={run} >
           <ImageBackground source={launch} className="w-16 h-16" />
         </TouchableOpacity>
       </Animated.View>
