@@ -148,10 +148,10 @@ const OrdersInfo = () => {
 
   const { loading, runAsync } = useRequest(orderPay, {
     manual: true,
-    onSuccess: (res) => {
+    onSuccess: (res, params) => {
 
       const resData = res.data
-      console.log(resData, '支付成功')
+      console.log(resData, params, '支付成功')
       if (resData?.success) {
         if (allData.isBalance) {
           Toast.show({
@@ -296,6 +296,8 @@ const OrdersInfo = () => {
           draft.loading = false
         })
       }
+
+      console.log(route.params?.orderId, 'orderId ?? orderIdRef.current')
 
 
       /* 支付 */
