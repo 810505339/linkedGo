@@ -7,9 +7,9 @@ import { TencentImSDKPlugin, LogLevelEnum, V2TimSDKListener, V2TimValueCallback 
 import { RootStackParamList } from '@router/type';
 
 
-const sdkAppID = 1600009072;
+const sdkAppID = 20009949;
 const userID = 'dev2'; // 用户设置的userID
-const userSig = 'eJwtzEELgjAcBfDvsnPYHPu7FLoZdihCqlsXa5v8W*Zw4oTou7fUd3u-B*9DLodzNKiOZIRFlKymjlK9e9Q4sVQDW9xJU1mLkmRxQkNSKti8qNFip4IDAAvLrD02fxMUBE*o2CwvWIdbfBgBR4CxdbW-m2L31JXOT1fO41cj3G3tadnuU1f5otyS7w8ETDFM'; // 用户计算出的userSig
+const userSig = '0ecf1a021a685daddf8b0a375297ef5d62ccbbc0e2eb0b0aa4cc3cc38d4f1f75'; // 用户计算出的userSig
 
 
 const init = async () => {
