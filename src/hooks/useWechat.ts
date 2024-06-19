@@ -13,6 +13,7 @@ import useLogin from '@pages/LoginScreen/hooks/useLogin'
 import { setGenericPassword } from 'react-native-keychain'
 import storage from '@storage/index'
 import { NativeModules } from 'react-native'
+import Toast from 'react-native-toast-message'
 export default (nav: NativeStackNavigationProp<RootStackParamList>) => {
     const { handleLogin, handleLoginOut } = useLogin({}, nav)
 
@@ -48,15 +49,18 @@ export default (nav: NativeStackNavigationProp<RootStackParamList>) => {
 
     async function wechatLogin() {
         /* 注册微信api */
-        await registerApp(
+        await registerApp(/*  */
             'wx8d956651a112bfa6',
-            'https://club-h5.point2club.com/WechatLogin/'
+            'https://m.point2club.com/WechatLogin/'
         )
         /* 判断是否安装微信 */
         const isInstall = isWXAppInstalled()
         if (isInstall) {
             const res = await sendAuthRequest('snsapi_userinfo', '')
             console.log(res.code)
+            Toast.show({
+                text1: res.code
+            })
 
             if (res.code) {
                 run('WX_APP', res.code)

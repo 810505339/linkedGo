@@ -1,7 +1,7 @@
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import { TabParamList, UsertackParamList } from '@router/type';
 import Header from './components/header';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import BaseLayout from '@components/baselayout';
 import SwiperView from './components/swiperView';
 import HorizontalFlatList from './components/HorizontalFlatList';
@@ -15,6 +15,8 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import MyModal from '@components/modal';
 import { useRequest } from 'ahooks';
 import Toast from 'react-native-toast-message';
+import useFindLanguage from '../user/hooks/useFindLanguage';
+
 
 
 const closeIcon = require('@assets/imgs/base/close.png')
@@ -40,13 +42,13 @@ const init = async () => {
     true,
   );
 };
-
-
+let defaultlanguage = ''
 
 
 const HomeScreen = () => {
   const navigation =
     useNavigation<NativeStackNavigationProp<UsertackParamList>>();
+  const { data: language, findlanguage } = useFindLanguage()
 
   const { runAsync, error, loading } = useRequest(() => {
     return Promise.all([getcarouselList({ storeId: data.id, limitNum: '5', type: '0' }), getHomePageAdvertising('0', data.id), getHomePageAdvertising('1', data.id)]);
@@ -77,6 +79,7 @@ const HomeScreen = () => {
   }
   /* 轮播图跟广告 */
   async function getcarouselListApi() {
+    console.log('跟新轮播图')
     const [res, advertising, advertising2] = await runAsync()
     const img = advertising?.data ? fileStore.fileUrl + '/' + advertising?.data?.pictureFile?.[0]?.fileName : ''
     const img1 = advertising2?.data ? fileStore.fileUrl + '/' + advertising2?.data?.pictureFile?.[0]?.fileName : ''
@@ -120,6 +123,24 @@ const HomeScreen = () => {
       getcarouselListApi();
     }
   }, [data.id]);
+
+  useFocusEffect(() => {
+    (async () => {
+      await findlanguage()
+      if (language) {
+        const t = language.language
+        console.log(language, 't')
+        if (defaultlanguage !== t) {
+          defaultlanguage = t
+
+          getcarouselListApi()
+        }
+      }
+    })()
+
+
+
+  })
 
 
   useEffect(() => {
