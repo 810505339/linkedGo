@@ -6,6 +6,8 @@ const baseUrl = 'https://gateway.point2club.com/';
 import { replace } from '@router/index';
 import { loadLanguageStorage } from '@storage/language/action'
 
+
+export const H5='https://m.point2club.com/'
 enum CODELIST {
 	TOKENCAN = '424',
 

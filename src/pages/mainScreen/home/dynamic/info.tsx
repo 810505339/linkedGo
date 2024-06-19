@@ -131,7 +131,7 @@ const DynamicInfo = () => {
 
     try {
       const result = await Share.share({
-        url: `https://club-h5.point2club.com/#/active/${id}`,
+        url: `https://m.point2club.com#/active/${id}`,
         message: '邀请您查看信息',
       });
       if (result.action === Share.sharedAction) {

@@ -17,7 +17,7 @@ import { BlurView } from '@react-native-community/blur';
 import useSelectShop from '@hooks/useSelectShop';
 import useUserInfo from '@hooks/useUserInfo';
 
-
+import { useDebounceFn } from 'ahooks';
 
 const ScreenWidth = Dimensions.get('window').width
 const ScreenHeight = Dimensions.get('window').height
@@ -163,13 +163,16 @@ const FightwineScreen = () => {
     refreshing: false,
     defaultIndex: 0,
   });
-
-
-
   //发起酒局
   const onLaunch = () => {
     navigation.navigate('Launch');
   };
+  const { run } = useDebounceFn(onLaunch, {
+    wait: 500
+  })
+
+
+
 
 
   const toUrl = (id: string) => {
@@ -192,20 +195,42 @@ const FightwineScreen = () => {
 
   const panResponder = useRef(
     PanResponder.create({
-      onMoveShouldSetPanResponder: () => true,
+      onStartShouldSetPanResponder: () => {
+        return true;
+      },
+      onMoveShouldSetPanResponder: (evt, gestureState) => {
+        //当大于5时才进入移动事件，有的情况下需要将onStartShouldSetPanResponderCapture设为false
+        if (Math.abs(gestureState.dx) > 5 || Math.abs(gestureState.dy) > 5) {
+          return true;
+        } else if (
+          Math.abs(gestureState.dx) <= 5 ||
+          Math.abs(gestureState.dy) <= 5
+        ) {
+          return false;
+        }
+
+        return true
+      },
       onPanResponderGrant: () => {
         pan.setOffset({
           x: pan.x._value,
           y: pan.y._value
         });
       },
-      onPanResponderMove: Animated.event(
-        [
-          null,
-          { dx: pan.x, dy: pan.y }
-        ]
-      ),
-      onPanResponderRelease: () => {
+      onPanResponderMove: (evt, gestureState) => {
+        const { dx, dy, moveX, moveY } = gestureState;
+        if (moveX < 1 || moveY < 1) {
+          return
+        }
+
+
+        console.log(dx, dy)
+        return Animated.event([null, {
+          dx: pan.x,
+          dy: pan.y,
+        }])(evt, gestureState)
+      },
+      onPanResponderRelease: (evt, gestureState) => {
         pan.flattenOffset();
       }
     })
@@ -241,13 +266,14 @@ const FightwineScreen = () => {
 
       </TabsProvider>
       <Animated.View
-        className="absolute z-50 w-16 h-16 bottom-1/4 right-0"
+        className="absolute z-50  bottom-1/4 right-0"
         style={{
           transform: [{ translateX: pan.x }, { translateY: pan.y }]
         }}
         {...panResponder.panHandlers}
+
       >
-        <TouchableOpacity onPress={onLaunch} >
+        <TouchableOpacity onPress={run} >
           <ImageBackground source={launch} className="w-16 h-16" />
         </TouchableOpacity>
       </Animated.View>

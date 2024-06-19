@@ -152,12 +152,15 @@ const OrdersInfo = () => {
 
       const resData = res.data
       console.log(resData, '支付成功')
-      if (allData.isBalance) {
-        Toast.show({
-          text1: `${t('orderInfo.tag34')} S$${resData?.data?.balanceAmount}${t('orderInfo.balance3')} S$${resData?.data?.otherAmount
-            }`
-        })
+      if (resData?.success) {
+        if (allData.isBalance) {
+          Toast.show({
+            text1: `${t('orderInfo.tag34')} S$${resData?.data?.balanceAmount}${t('orderInfo.balance3')} S$${resData?.data?.otherAmount
+              }`
+          })
+        }
       }
+
     }
   })
   /* 查询余额 */

@@ -296,7 +296,7 @@ const Appraise = forwardRef((props: any, childRef: any) => {
     }
 
     {
-      <View className="bg-[#191919] rounded-xl border-[#343434] p-2 max-h-36 overflow-y-scroll">
+      <View className="bg-[#191919] rounded-xl border-[#343434] p-2 max-h-30 overflow-y-scroll">
         <TextInput placeholder={t('wineDetail.appraise4')}
           editable
           maxLength={300}
@@ -311,6 +311,8 @@ const Appraise = forwardRef((props: any, childRef: any) => {
           onChangeText={(e) => setData((draft) => {
             draft.content = e
           })}
+          style={{ height: 144, padding: 10 }}
+
         />
       </View>
     }

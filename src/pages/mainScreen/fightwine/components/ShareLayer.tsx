@@ -28,7 +28,7 @@ export default function ShareLayer({ id }: { id: string }) {
             <View style={{ position: 'absolute', right, bottom }}>
                 <QRCode
                     size={qrsize}
-                    value={`https://club-h5.point2club.com/#/drinking-party/${id}`}
+                    value={`https://m.point2club.com#/drinking-party/${id}`}
                 />
             </View>
         </ImageBackground>
