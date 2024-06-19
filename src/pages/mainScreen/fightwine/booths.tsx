@@ -280,7 +280,7 @@ const Booths = () => {
   }, [booths?.activeIndex]);
 
 
-
+  console.log(file + '/' + booths?.picture?.fileName, ' 234')
 
 
   return (<BaseLayout loading={loading}>

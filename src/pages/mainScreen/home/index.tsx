@@ -50,11 +50,7 @@ const HomeScreen = () => {
     useNavigation<NativeStackNavigationProp<UsertackParamList>>();
   const { data: language, findlanguage } = useFindLanguage()
 
-  const { runAsync, error, loading } = useRequest(() => {
-    return Promise.all([getcarouselList({ storeId: data.id, limitNum: '5', type: '0' }), getHomePageAdvertising('0', data.id), getHomePageAdvertising('1', data.id)]);
-  }, {
-    manual: true
-  });
+
 
   const { imageSize, getSize } = useImageSize()
   const { imageSize: imageSize1, getSize: getSize1 } = useImageSize()
@@ -69,6 +65,12 @@ const HomeScreen = () => {
     img: '',
     img1: '',
     visible: false
+  });
+
+  const { runAsync, error, loading } = useRequest(() => {
+    return Promise.all([getcarouselList({ storeId: data.id, limitNum: '5', type: '0' }), getHomePageAdvertising('0', data.id), getHomePageAdvertising('1', data.id)]);
+  }, {
+    manual: true
   });
   function onChange(value: any) {
     console.log(value, 'value');
@@ -132,8 +134,11 @@ const HomeScreen = () => {
         console.log(language, 't')
         if (defaultlanguage !== t) {
           defaultlanguage = t
+          if (data.id) {
+            getcarouselListApi();
+          }
 
-          getcarouselListApi()
+
         }
       }
     })()
