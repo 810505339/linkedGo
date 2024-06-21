@@ -21,6 +21,9 @@ export default (nav: NativeStackNavigationProp<RootStackParamList>) => {
         manual: true,
         onSuccess: async (res) => {
             console.log(res.data, 'res')
+            Toast.show({
+                text1: '成功了！~'
+            })
             const data = res.data
             if ('needAuth' in data) {
                 if (data.needAuth) {
@@ -44,6 +47,9 @@ export default (nav: NativeStackNavigationProp<RootStackParamList>) => {
         },
         onError: (err) => {
             console.log(err)
+            Toast.show({
+                text1: '失败了~~'
+            })
         },
     })
 
