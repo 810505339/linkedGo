@@ -21,9 +21,7 @@ export default (nav: NativeStackNavigationProp<RootStackParamList>) => {
         manual: true,
         onSuccess: async (res) => {
             console.log(res.data, 'res')
-            Toast.show({
-                text1: '成功了！~'
-            })
+
             const data = res.data
             if ('needAuth' in data) {
                 if (data.needAuth) {
@@ -49,9 +47,7 @@ export default (nav: NativeStackNavigationProp<RootStackParamList>) => {
         },
         onError: (err) => {
             console.log(err)
-            Toast.show({
-                text1: '失败了~~'
-            })
+
         },
     })
 
@@ -66,9 +62,9 @@ export default (nav: NativeStackNavigationProp<RootStackParamList>) => {
         if (isInstall) {
             const res = await sendAuthRequest('snsapi_userinfo', '')
             console.log(res.code)
-            Toast.show({
-                text1: res.code
-            })
+            // Toast.show({
+            //     text1: res.code
+            // })
 
             if (res.code) {
                 run('WX_APP', res.code)
