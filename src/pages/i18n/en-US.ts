@@ -166,6 +166,8 @@ export default {
     bnt1: 'Given',
     bnt2: 'Givened',
     bnt3: 'Givened success',
+    bnt4: 'Save image',
+    btn: 'Givened',
   },
   login: {
 

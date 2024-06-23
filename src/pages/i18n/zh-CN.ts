@@ -119,6 +119,8 @@ export default {
     bnt1: '赠送',
     bnt2: '可赠',
     bnt3: '赠送成功',
+    bnt4: '保存图片',
+    btn: '赠出',
   },
   login: {
     btn1: '登录/注册',
