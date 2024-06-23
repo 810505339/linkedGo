@@ -64,9 +64,10 @@ export const signUp = async (params: any) => {
 
 /* 用户是否已经报名 */
 export const isAlreadySignUp = async (id: string) => {
-  const { data } = await service({
+  const res = await service({
     url: `/consumption/customerActivity/isAlreadySignUp/${id}`,
     method: 'get',
   });
-  return data;
+  console.log('请求的包名信息', res, id)
+  return res.data;
 };

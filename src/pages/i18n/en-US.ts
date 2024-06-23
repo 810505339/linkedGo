@@ -164,6 +164,8 @@ export default {
     tip1: 'Admittance during business hours. Please arrange your time accordingly~',
     tip2: 'This ticket can be given away',
     bnt1: 'Given',
+    bnt2: 'Givened',
+    bnt3: 'Givened success',
   },
   login: {
 

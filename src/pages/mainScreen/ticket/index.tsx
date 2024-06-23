@@ -21,12 +21,13 @@ import { checkAuth } from '@utils/checkAuth';
 import { useNavigation } from '@react-navigation/native';
 import CheckAuthLayout from '@components/baselayout/checkLayout';
 import { useRequest } from 'ahooks';
-import { genQrCodeStr, myTicket } from '@api/ticket';
+import { genQrCodeStr, myTicket, ticketGiven } from '@api/ticket';
 import CustomFlatList from '@components/custom-flatlist';
 import QRCode from 'react-native-qrcode-svg';
 import { cssInterop } from 'nativewind'
 import { useTranslation } from 'react-i18next';
 import MyModal from '@components/modal';
+import Toast from 'react-native-toast-message';
 
 cssInterop(Image, {
   className: 'style'
@@ -34,7 +35,7 @@ cssInterop(Image, {
 
 enum TICKET {
   非赠票 = 'NORMAL',
-  未赠送 = 'NOTGIVEN',
+  未赠送 = 'NOT_GIVEN',
   已赠送 = 'GIVEN'
 }
 
@@ -60,7 +61,7 @@ const style = StyleSheet.create({
 const Item = memo<any>((props: any) => {
   const { t } = useTranslation()
 
-  const { entranceDate, usableTimeBegin, usableTimeEnd, areaName, boothName, usageType, latestArrivalTime, handleItemPress, ticketPicture, remainNum, status, cusTicketId, winePartyName, storeName } = props;
+  const { entranceDate, usableTimeBegin, usableTimeEnd, areaName, boothName, usageType, latestArrivalTime, handleItemPress, ticketPicture, remainNum, status, cusTicketId, winePartyName, storeName, givenStatus } = props;
 
   const isShowQr = status === 'UNUSED'
   let img = null
@@ -76,10 +77,16 @@ const Item = memo<any>((props: any) => {
   const cardImg = usageType === 'BOOTH' ? card_2 : bg
 
   const useTime = usageType === 'TICKET' ? `${usableTimeBegin}-${usableTimeEnd}${t('ticket.tag1')}` : `${t('ticket.tag2')} ${latestArrivalTime}`;
-  const NumberRender = <View className="bg-[#000000] rounded-xl absolute p-2 bottom-2 left-5">
+  const NumberRender = <View className="bg-[#000000] rounded-xl absolute p-2 bottom-2 left-1">
     <Text>
       x
       <Text className="font-bold ">{remainNum}</Text>
+    </Text>
+  </View>;
+
+  const KeSong = <View className="bg-[#000000] rounded-xl absolute p-2 bottom-2 left-10">
+    <Text>
+      <Text className="font-bold ">{t('ticket.bnt2')}</Text>
     </Text>
   </View>;
 
@@ -94,6 +101,7 @@ const Item = memo<any>((props: any) => {
         {ticketPicture && <Image source={{ uri: ticketPicture }} className="w-36 h-24 rounded-xl" />}
         {!ticketPicture && <Image source={cardImg} className="w-36 h-24 rounded-xl" />}
         {NumberRender}
+        {givenStatus != 'NORMAL' && KeSong}
       </View>
       <View className=" flex-grow  overflow-hidden flex-col relative ">
         <View>
@@ -116,7 +124,7 @@ const Item = memo<any>((props: any) => {
 const TicketScreen = () => {
 
   const { t } = useTranslation();
-
+  const flatRef = useRef(null)
   const timeId = useRef<NodeJS.Timeout>() /* 这是轮询的id */
 
   const tabs = [
@@ -140,19 +148,19 @@ const TicketScreen = () => {
     qrCode: '',
     givenStatus: TICKET.非赠票,
     givenTime: '',
-
-
   });
+
+  const cid = useRef('')
 
   const containerStyle = { background: '#1E1E1E', padding: 20, margin: 20 };
 
-  // useRequest(myTicket, {
-  //   onSuccess: (res) => {
-  //     console.log(res);
+  const { runAsync, } = useRequest(ticketGiven, {
+    onSuccess: (res) => {
 
-  //   },
 
-  // });
+    },
+    manual: true,
+  });
 
   const hideModal = () => {
     setData(draft => {
@@ -165,7 +173,7 @@ const TicketScreen = () => {
 
 
   const handleItemPress = async (id: string) => {
-
+    cid.current = id
     if (data.defaultIndex != 0) {
       return
     }
@@ -196,9 +204,22 @@ const TicketScreen = () => {
     });
   };
 
-  const send = () => {
+  const send = async () => {
+    const { data, } = await runAsync({ cusTicketId: cid.current })
+    console.log(data, data)
+    if (data.code == '0') {
+      Toast.show({
+        text1: t('ticket.bnt3')
+      })
+      flatRef.current.refreshData()
+      setData(draft => {
+        draft.visible = false;
+      });
 
+    }
   }
+
+
   const getId = useCallback((item: any) => item.cusTicketId, []);
 
 
@@ -229,7 +250,13 @@ const TicketScreen = () => {
             tabs.map((tab, index) => (
               <TabScreen label={tab.title} key={index}>
                 <View className="bg-transparent mt-10">
-                  {index === data.defaultIndex && <CustomFlatList keyExtractor={getId} params={{ status: tabs[index].status }} renderItem={(item) => <Item  {...item} status={item.status} handleItemPress={handleItemPress} />} onFetchData={api} />}
+                  {index === data.defaultIndex && <CustomFlatList
+                    keyExtractor={getId}
+                    params={{ status: tabs[index].status }}
+                    renderItem={(item) => <Item  {...item} status={item.status}
+                      handleItemPress={handleItemPress} />} onFetchData={api}
+                    ref={flatRef}
+                  />}
                 </View>
               </TabScreen>
             ))
@@ -263,14 +290,14 @@ const TicketScreen = () => {
             </View> */}
 
             {data.givenStatus != TICKET.非赠票 && (<View className=' mt-5'>
-              {data.givenStatus === TICKET.未赠送 ? (<View className='flex flex-row items-center  justify-between   w-full px-12'>
-                <Text>{t('ticket.tip1')}</Text>
-                <Button mode={'elevated'} className="bg-[#EE2737FF]  font-bold " contentStyle={{ padding: 0 }} textColor="#000000FF" >{t('ticket.btn1')}</Button>
+              {data.givenStatus == TICKET.未赠送 ? (<View className='flex flex-row items-center  justify-between   w-full px-12'>
+                <Text>{t('ticket.tip2')}</Text>
+                <Button mode={'elevated'} className="bg-[#EE2737FF]  font-bold " contentStyle={{ padding: 0 }} textColor="#000000FF"
+                  onPress={() => send()}
+                >{t('ticket.bnt1')}</Button>
               </View>) : <View>
                 <Text>{data.givenTime}</Text>
               </View>}
-
-
             </View>
             )}
           </View>
