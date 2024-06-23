@@ -75,7 +75,6 @@ const Item = memo<any>((props: any) => {
   /* 门票 */
   const cardImg = usageType === 'BOOTH' ? card_2 : bg
 
-
   const useTime = usageType === 'TICKET' ? `${usableTimeBegin}-${usableTimeEnd}${t('ticket.tag1')}` : `${t('ticket.tag2')} ${latestArrivalTime}`;
   const NumberRender = <View className="bg-[#000000] rounded-xl absolute p-2 bottom-2 left-5">
     <Text>
@@ -173,7 +172,7 @@ const TicketScreen = () => {
     console.log(id, 'id')
     const res = await genQrCodeStr(id)
 
-    console.log(res)
+    console.log(res?.data?.data?.qrCodeStr)
     setData(draft => {
       draft.visible = true;
       draft.qrCode = res?.data?.data?.qrCodeStr

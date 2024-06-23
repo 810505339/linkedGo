@@ -173,7 +173,7 @@ const DynamicInfo = () => {
   const isApplication = application?.data;/* 判断是否已经报名 */
   const amount = data?.amount
   const amountText = !amount ? t('dynamic.tagList.tag2') : t('dynamic.tagList.tag3');
-  const signText = !whetherSignUp ? t('dynamic.tagList.tag1') : '';
+  const signText = whetherSignUp ? t('dynamic.tagList.tag1') : '';
 
   /* 报名 */
   async function handleSignUp() {

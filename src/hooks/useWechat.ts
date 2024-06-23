@@ -32,6 +32,8 @@ export default (nav: NativeStackNavigationProp<RootStackParamList>) => {
                     })
                 } else {
                     console.log(data, '这是微信登录返回的东西哦')
+
+
                     await setGenericPassword(data?.sub, data?.access_token)
                     await storage.save({
                         key: IM_KEY,
