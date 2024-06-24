@@ -212,26 +212,27 @@ const FightwineScreen = () => {
         return true
       },
       onPanResponderGrant: () => {
-        pan.setOffset({
-          x: pan.x._value,
-          y: pan.y._value
-        });
+        // pan.setOffset({
+        //   x: pan.x._value,
+        //   y: pan.y._value
+        // });
       },
       onPanResponderMove: (evt, gestureState) => {
+
         const { dx, dy, moveX, moveY } = gestureState;
-        if (moveX < 1 || moveY < 1) {
+        if (moveX < 20 || moveX > ScreenWidth - 10 || moveY < 150 || moveY > ScreenHeight - 70) {
           return
         }
 
 
-        console.log(dx, dy)
+        console.log(moveX, moveY, ScreenWidth)
         return Animated.event([null, {
           dx: pan.x,
           dy: pan.y,
         }])(evt, gestureState)
       },
       onPanResponderRelease: (evt, gestureState) => {
-        pan.flattenOffset();
+        pan.extractOffset();
       }
     })
   ).current;

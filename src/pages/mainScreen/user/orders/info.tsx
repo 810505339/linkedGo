@@ -154,10 +154,11 @@ const OrdersInfo = () => {
       const resData = res.data
       console.log(resData, params, '支付成功')
       if (resData?.success) {
-        if (allData.isBalance) {
+        if (resData?.data?.balanceAmount) {
+
+          const showotherAmount = Number(resData.data.otherAmount) ? `${t('orderInfo.balance3')} S$${resData?.data?.otherAmount}` : ''
           Toast.show({
-            text1: `${t('orderInfo.tag34')} S$${resData?.data?.balanceAmount}${t('orderInfo.balance3')} S$${resData?.data?.otherAmount
-              }`
+            text1: `${t('orderInfo.tag34')} S$${resData?.data?.balanceAmount}${showotherAmount}`
           })
         }
       }
