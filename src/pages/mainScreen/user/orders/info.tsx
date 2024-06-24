@@ -71,13 +71,13 @@ const Info = (props: any) => {
         </View>);
       })}
     </View>
-    {orderStatus === 'PAY_SUCCESS' && <View className='my-5'>
+    {orderStatus === 'PAY_SUCCESS' && payMethod != 'BALANCE' && <View className='my-5'>
       <Text className=' font-bold  text-[#fff]'>{t('orderInfo.tag11')}</Text>
       <Divider className='my-2' />
-      {payMethod != 'BALANCE' && <View className='flex-row items-center justify-between'>
+      <View className='flex-row items-center justify-between'>
         <Text className="text-xs font-light text-[#ffffff7f]">{payMethod}</Text>
         <Text className='text-[#E6A055] font-bold text-xl ml-2'>S${otherAmount}</Text>
-      </View>}
+      </View>
 
     </View>}
 

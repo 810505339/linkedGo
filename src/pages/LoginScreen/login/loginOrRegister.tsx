@@ -203,9 +203,10 @@ const LoginOrRegister = () => {
           </View>
         </View>
       </View>
-      <View className=" absolute bottom-36 left-0 right-0 mt-96 mx-5  flex-auto   flex-row justify-between">
+
+      {!authCode && <View className=" absolute bottom-36 left-0 right-0 mt-96 mx-5  flex-auto   flex-row justify-between">
         <View>
-          {!authCode && <Button
+          {<Button
             mode="outlined"
             style={{
               borderColor: '#FFFFFF',
@@ -232,7 +233,28 @@ const LoginOrRegister = () => {
             {t('login.btn3')}
           </Button>
         </View>
-      </View>
+      </View>}
+
+      {authCode && <View className=" absolute bottom-36 left-0 right-0 mt-96 mx-5 ">
+
+        <View>
+          <Button
+            mode="outlined"
+            style={{
+              borderColor: '#FFFFFF',
+
+              borderRadius: 33,
+            }}
+            labelStyle={{ fontSize: 18, color: '#FFFFFF', fontWeight: '600' }}
+            contentStyle={{ height: 50 }}
+            onPress={handleVerification}>
+            {t('login.btn3')}
+          </Button>
+        </View>
+      </View>}
+
+
+
       <CustomModal ref={bottomSheetModalRef} data={alldata.codeList} headerText={t('user.header6')} selectValue={alldata.selectItem.nameCode} onPress={setCode} snapPoints={['50%']} />
     </BaseLayout>
   );

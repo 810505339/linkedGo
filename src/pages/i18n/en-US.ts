@@ -17,6 +17,7 @@ export default {
     label4: 'Pax',
     label5: 'Rules',
     label6: 'Please select ticket',
+    save: "save success"
   },
   home: {
     nav1: 'SHARE SOFA',
@@ -339,7 +340,7 @@ export default {
       tag6: 'Event Store',
       btn1: 'Sign up now',
       btn2: 'The number of people is full',
-      btn3: '',
+      btn3: 'You have registered',
       text1: 'Are you signing up for the event or not?',
     },
   },

@@ -52,6 +52,7 @@ export enum STATE {
 }
 
 
+const containerStyle = { background: '#1E1E1E', padding: 20, margin: 20 };
 
 type InfoType = {
   title: string;
@@ -94,6 +95,7 @@ type IAllData = {
     btn?: string
   }
   player?: IPeopleType,
+  visible: boolean //分享弹窗
 }
 
 
@@ -432,6 +434,7 @@ const FightwineDetail = () => {
       cancelText: t('common.btn6'),
       confirmText: t('common.btn2'),
     },
+    visible: false //分享弹窗
   });
   const { userInfoStorage } = useUserInfo();
 
@@ -809,14 +812,18 @@ const FightwineDetail = () => {
     </View>;
   };
 
-  const shareLayer = useLayer(ShareLayer)
+
+
+  console.log(res, 'res')
 
   useEffect(() => {
     navigation.setOptions({
       headerRight: () => (
         <TouchableOpacity
           onPress={() => {
-            shareLayer?.show({ id: partyId, date: res.entranceDate + ' ' + res.latestArrivalTime })
+            setAllData(darft => {
+              darft.visible = true
+            })
           }}
           style={{ paddingRight: 10 }}
         >
@@ -824,7 +831,13 @@ const FightwineDetail = () => {
         </TouchableOpacity>
       ),
     })
-  }, [navigation, shareLayer])
+  }, [navigation, res])
+
+  const hideModal = () => {
+    setAllData(darft => {
+      darft.visible = false
+    })
+  };
 
   /* 如果没有验证人脸 */
   // if (!userInfo?.checkFace) {
@@ -892,7 +905,22 @@ const FightwineDetail = () => {
 
     </>}
     <CheckSex />
-  </BaseLayout>;
+
+
+    {
+      allData.visible && <Portal>
+
+        <MyModal visible={allData.visible} onDismiss={hideModal} contentContainerStyle={containerStyle} dismissable={false} >
+          <View>
+            <ShareLayer date={res?.entranceDate + '  ' + res?.latestArrivalTime} id={partyId} />
+          </View>
+          <TouchableOpacity onPress={hideModal} className='flex-row  items-center justify-center mt-10' >
+            <Image source={closeIcon} className='w-6 h-6' />
+          </TouchableOpacity>
+        </MyModal>
+      </Portal>
+    }
+  </BaseLayout >;
 };
 
 

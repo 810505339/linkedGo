@@ -30,6 +30,8 @@ import MyModal from '@components/modal';
 import Toast from 'react-native-toast-message';
 import RNFS from 'react-native-fs';
 import { CameraRoll } from "@react-native-camera-roll/camera-roll"
+
+import ViewShot from 'react-native-view-shot';
 cssInterop(Image, {
   className: 'style'
 })
@@ -231,29 +233,40 @@ const TicketScreen = () => {
 
   const getId = useCallback((item: any) => item.cusTicketId, []);
   const qrCodeRef = useRef(null)
-  const handleToDataURL = useCallback(async (data) => {
+  const domRef = useRef(null)
+  // const handleToDataURL = useCallback(async (data) => {
 
 
-    // json.qr is base64 string "data:image/png;base64,..."
+  //   // json.qr is base64 string "data:image/png;base64,..."
 
 
 
-    RNFS.writeFile(RNFS.CachesDirectoryPath + "/pay.png", data, 'base64')
-      .then((success) => {
-        return CameraRoll.save(RNFS.CachesDirectoryPath + "/pay.png")
+  //   RNFS.writeFile(RNFS.CachesDirectoryPath + "/pay.png", data, 'base64')
+  //     .then((success) => {
+  //       return CameraRoll.save(RNFS.CachesDirectoryPath + "/pay.png")
+  //     })
+  //     .then((res) => {
+  //       Toast.show({
+  //         text1: '保存成功'
+  //       })
+  //       console.log(res);
+
+  //     })
+
+  // }, [])
+  // const handleClick = useCallback(() => {
+  //   qrCodeRef.current!.toDataURL(handleToDataURL)
+  // }, [qrCodeRef])
+
+  const handleClick = async () => {
+
+    domRef.current.capture().then(uri => {
+      CameraRoll.save(uri)
+      Toast.show({
+        text1: t('common.save')
       })
-      .then((res) => {
-        Toast.show({
-          text1: '保存成功'
-        })
-        console.log(res);
-
-      })
-
-  }, [])
-  const handleClick = useCallback(() => {
-    qrCodeRef.current!.toDataURL(handleToDataURL)
-  }, [qrCodeRef])
+    });
+  }
 
 
   return (
@@ -342,38 +355,42 @@ const TicketScreen = () => {
         </MyModal>
 
 
-        <MyModal visible={data.visible1} onDismiss={hideModal} contentContainerStyle={containerStyle} dismissable={false}>
-          <View className=" relative flex items-center    border  rounded-2xl overflow-hidden  " >
-            <ImageBackground source={bg} className="w-full h-44" />
-            <View className='p-20px   w-full bg-[#1E1E1E] p-5'>
-              <View className='text-xl  mb-2.5 font-bold'>
-                <Text>{cid.current.winePartyName}</Text>
-              </View>
-              <View className='text-xl mb-2.5 font-bold'>
-                <Text>{cid.current.areaName}-{cid.current.boothName}</Text>
-              </View>
-              <View className='text-xl  mb-2.5 font-bold'>
-                <Text>{cid.current.entranceDate} {cid.current.latestArrivalTime}</Text>
-              </View>
-              <View className='text-xl  mb-2.5 flex  flex-row  justify-between'>
-                <View>
-                  <Text className="font-bold">{cid.current.storeName}</Text>
+        <MyModal visible={data.visible} onDismiss={hideModal} contentContainerStyle={containerStyle} dismissable={false}>
+          <ViewShot ref={domRef} options={{ fileName: "ticket", format: "png", quality: 1 }} >
+            <View className=" relative flex items-center    border  rounded-2xl overflow-hidden  " >
+              <ImageBackground source={bg} className="w-full h-44" />
+              <View className='p-20px   w-full bg-[#1E1E1E] p-5'>
+                <View className='text-xl  mb-2.5 font-bold'>
+                  <Text>{cid.current.winePartyName}</Text>
                 </View>
-                <View className="rounded-xl border p-1 bg-white flex flex-row items-center justify-center w-24">
-                  <QRCode
-                    value={data.qrCode}
-                    getRef={(ref) => qrCodeRef.current = ref}
-                    size={74}
-                    logoBackgroundColor="transparent" />
+                <View className='text-xl mb-2.5 font-bold'>
+                  <Text>{cid.current.areaName}-{cid.current.boothName}</Text>
+                </View>
+                <View className='text-xl  mb-2.5 font-bold'>
+                  <Text>{cid.current.entranceDate} {cid.current.latestArrivalTime}</Text>
+                </View>
+                <View className='text-xl  mb-2.5 flex  flex-row  justify-between'>
+                  <View>
+                    <Text className="font-bold">{cid.current.storeName}</Text>
+                  </View>
+                  <View className="rounded-xl border p-1 bg-white flex flex-row items-center justify-center w-24">
+                    <QRCode
+                      value={data.qrCode}
+                      getRef={(ref) => qrCodeRef.current = ref}
+                      size={74}
+                      logoBackgroundColor="transparent" />
+                  </View>
                 </View>
               </View>
+
             </View>
 
-          </View>
+          </ViewShot>
+
           <View className='flex  items-center justify-center my-10'>
 
             <Button mode={'elevated'} className="bg-[#EE2737FF]  font-bold  w-40 " contentStyle={{ padding: 0 }}
-              onPress={send}
+
               textColor="#000000FF"
               onPress={() => handleClick()}
             >{t('ticket.bnt4')}</Button>
