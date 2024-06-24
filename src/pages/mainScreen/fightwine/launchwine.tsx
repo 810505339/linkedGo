@@ -132,7 +132,8 @@ const LaunchWine = () => {
           onPress={showShop} />}
         onPressIn={showShop} />)
     },
-    { label: t('launchwine.tag1'), render: () => (<TextInput mode='outlined' outlineStyle={{ borderRadius: 10 }} style={{ height: 40, borderRadius: 10, fontSize: 14 }} contentStyle={{ height: 42 }} value={data.partyName} onChangeText={(text) => setData(draft => { draft.partyName = text; })} placeholder={t('launchwine.tag6')} />) },
+    //placeholder={t('launchwine.tag6')}
+    { label: t('launchwine.tag1'), render: () => (<TextInput mode='outlined' outlineStyle={{ borderRadius: 10 }} style={{ height: 40, borderRadius: 10, fontSize: 14 }} contentStyle={{ height: 42 }} value={data.partyName} onChangeText={(text) => setData(draft => { draft.partyName = text; })} />) },
     /* 选择日期 */
     {
       label: t('launchwine.tag2'), render: () => (<TextInput mode='outlined' outlineStyle={{ borderRadius: 10 }} value={dateFormat} className="bg-transparent"

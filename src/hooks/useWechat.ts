@@ -13,6 +13,7 @@ import useLogin from '@pages/LoginScreen/hooks/useLogin'
 import { setGenericPassword } from 'react-native-keychain'
 import storage from '@storage/index'
 import { NativeModules } from 'react-native'
+import Toast from 'react-native-toast-message'
 export default (nav: NativeStackNavigationProp<RootStackParamList>) => {
     const { handleLogin, handleLoginOut } = useLogin({}, nav)
 
@@ -20,6 +21,7 @@ export default (nav: NativeStackNavigationProp<RootStackParamList>) => {
         manual: true,
         onSuccess: async (res) => {
             console.log(res.data, 'res')
+
             const data = res.data
             if ('needAuth' in data) {
                 if (data.needAuth) {
@@ -28,6 +30,8 @@ export default (nav: NativeStackNavigationProp<RootStackParamList>) => {
                     })
                 } else {
                     console.log(data, '这是微信登录返回的东西哦')
+
+
                     await setGenericPassword(data?.sub, data?.access_token)
                     await storage.save({
                         key: IM_KEY,
@@ -43,20 +47,24 @@ export default (nav: NativeStackNavigationProp<RootStackParamList>) => {
         },
         onError: (err) => {
             console.log(err)
+
         },
     })
 
     async function wechatLogin() {
         /* 注册微信api */
-        await registerApp(
+        await registerApp(/*  */
             'wx8d956651a112bfa6',
-            'https://club-h5.point2club.com/WechatLogin/'
+            'https://m.point2club.com/WechatLogin/'
         )
         /* 判断是否安装微信 */
         const isInstall = isWXAppInstalled()
         if (isInstall) {
             const res = await sendAuthRequest('snsapi_userinfo', '')
             console.log(res.code)
+            // Toast.show({
+            //     text1: res.code
+            // })
 
             if (res.code) {
                 run('WX_APP', res.code)

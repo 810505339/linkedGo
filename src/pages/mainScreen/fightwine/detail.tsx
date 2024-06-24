@@ -748,7 +748,7 @@ const FightwineDetail = () => {
 
       console.log(res.isCommented, 'res.isCommented')
       /* 没评价过 */
-      if (res.status === STATE.已入场) {
+      if (res.status === STATE.已入场 || res.status === STATE.已结束) {
         return <Button mode={'elevated'} className="bg-[#EE2737FF]" textColor="#0C0C0CFF" onPress={commented}>{t('wineDetail.btn9')}</Button>;
       }
 
@@ -816,7 +816,7 @@ const FightwineDetail = () => {
       headerRight: () => (
         <TouchableOpacity
           onPress={() => {
-            shareLayer?.show({ id: partyId })
+            shareLayer?.show({ id: partyId, date: res.entranceDate + ' ' + res.latestArrivalTime })
           }}
           style={{ paddingRight: 10 }}
         >
@@ -834,6 +834,8 @@ const FightwineDetail = () => {
   // }
 
   const sexIcon = allData.player?.gender === 1 ? manIcon : womanIcon
+
+  console.log(status, '这是酒局的状态')
 
   return <BaseLayout>
     {loading ? <Loading /> : <>
@@ -867,7 +869,7 @@ const FightwineDetail = () => {
           <View />
         </View>
         {/* 评价酒局 */}
-        {status === STATE.已入场 && <Appraise item={res} ref={AppraiseDom} />}
+        {(status === STATE.已入场 || status === STATE.已结束) && <Appraise item={res} ref={AppraiseDom} />}
       </ScrollView>
 
       {!loading && <SafeAreaView><NavBar /></SafeAreaView>}

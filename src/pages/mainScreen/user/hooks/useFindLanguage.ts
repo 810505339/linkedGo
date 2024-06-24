@@ -14,19 +14,21 @@ export default () => {
       { "type": "zh-cn", "title": "中文", key: 'zh' },
       { "type": "en", "title": "English", key: 'en' }
     ]
-    return JSON.stringify((list.find(l => l.key === language) ?? { "type": "en", "title": "English", key: 'en' }))
+
+    setData((draft) => {
+      draft.language = JSON.stringify((list.find(l => l.key === language) ?? { "type": "en", "title": "English", key: 'en' }))
+    })
   }
 
   useEffect(() => {
     (async () => {
-      const language = await findlanguage()
-      setData((draft) => {
-        draft.language = language
-      })
+      await findlanguage()
+
     })()
   }, [])
 
   return {
-    data
+    data,
+    findlanguage
   }
 }

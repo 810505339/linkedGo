@@ -50,7 +50,7 @@ export default (): { dynamicTypeList: Array<DynamicTypeList>, storeId: string } 
 
 
   return {
-    dynamicTypeList: data && [{ id: uuid.v4(), name: t('dynamic.tabs.text1'), isAll: true }, ...data],
+    dynamicTypeList: data && [{ id: '1', name: t('dynamic.tabs.text1'), isAll: true }, ...data],
     storeId: shop.select.id,
   };
 };

@@ -19,7 +19,7 @@ export const getOpenBoothByWine = async (data: any) => {
     data,
   });
 
-  return res;
+  return res; 
 };
 
 

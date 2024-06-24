@@ -86,7 +86,7 @@ export default {
     tag23: 'Setting',
     tag24: 'You have not set a payment password yet',
     tag25: '立即设置?',
-    tag26: '是否取消订单?取消以后无法恢复',
+    tag26: "Do you want to cancel your order? You can't restore it after you cancel",
     tag27: 'Registration in progress',
     tag28: 'Active Name',
     tag29: 'Amount',
@@ -165,6 +165,10 @@ export default {
     tip1: 'Admittance during business hours. Please arrange your time accordingly~',
     tip2: 'This ticket can be given away',
     bnt1: 'Given',
+    bnt2: 'Givened',
+    bnt3: 'Givened success',
+    bnt4: 'Save image',
+    btn: 'Givened',
   },
   login: {
 

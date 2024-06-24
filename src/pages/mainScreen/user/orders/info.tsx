@@ -74,10 +74,11 @@ const Info = (props: any) => {
     {orderStatus === 'PAY_SUCCESS' && <View className='my-5'>
       <Text className=' font-bold  text-[#fff]'>{t('orderInfo.tag11')}</Text>
       <Divider className='my-2' />
-      <View className='flex-row items-center justify-between'>
+      {payMethod != 'BALANCE' && <View className='flex-row items-center justify-between'>
         <Text className="text-xs font-light text-[#ffffff7f]">{payMethod}</Text>
         <Text className='text-[#E6A055] font-bold text-xl ml-2'>S${otherAmount}</Text>
-      </View>
+      </View>}
+
     </View>}
 
     <View className='flex-row items-center justify-between mt-5'>
@@ -148,10 +149,10 @@ const OrdersInfo = () => {
 
   const { loading, runAsync } = useRequest(orderPay, {
     manual: true,
-    onSuccess: (res) => {
+    onSuccess: (res, params) => {
 
       const resData = res.data
-      console.log(resData, '支付成功')
+      console.log(resData, params, '支付成功')
       if (resData?.success) {
         if (allData.isBalance) {
           Toast.show({
@@ -296,6 +297,8 @@ const OrdersInfo = () => {
           draft.loading = false
         })
       }
+
+      console.log(route.params?.orderId, 'orderId ?? orderIdRef.current')
 
 
       /* 支付 */

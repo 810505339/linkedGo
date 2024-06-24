@@ -33,3 +33,11 @@ export const genQrCodeStr = async (cusTicketId: string) => {
   });
   return data;
 };
+//赠送门票
+export const ticketGiven = (data: any) => {
+  return service({
+    url: `/consumption/ticket/given`,
+    method: 'post',
+    data
+  });
+};

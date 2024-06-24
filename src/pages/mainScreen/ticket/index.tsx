@@ -21,20 +21,22 @@ import { checkAuth } from '@utils/checkAuth';
 import { useNavigation } from '@react-navigation/native';
 import CheckAuthLayout from '@components/baselayout/checkLayout';
 import { useRequest } from 'ahooks';
-import { genQrCodeStr, myTicket } from '@api/ticket';
+import { genQrCodeStr, myTicket, ticketGiven } from '@api/ticket';
 import CustomFlatList from '@components/custom-flatlist';
 import QRCode from 'react-native-qrcode-svg';
 import { cssInterop } from 'nativewind'
 import { useTranslation } from 'react-i18next';
 import MyModal from '@components/modal';
-
+import Toast from 'react-native-toast-message';
+import RNFS from 'react-native-fs';
+import { CameraRoll } from "@react-native-camera-roll/camera-roll"
 cssInterop(Image, {
   className: 'style'
 })
 
 enum TICKET {
   非赠票 = 'NORMAL',
-  未赠送 = 'NOTGIVEN',
+  未赠送 = 'NOT_GIVEN',
   已赠送 = 'GIVEN'
 }
 
@@ -60,7 +62,7 @@ const style = StyleSheet.create({
 const Item = memo<any>((props: any) => {
   const { t } = useTranslation()
 
-  const { entranceDate, usableTimeBegin, usableTimeEnd, areaName, boothName, usageType, latestArrivalTime, handleItemPress, ticketPicture, remainNum, status, cusTicketId, winePartyName, storeName } = props;
+  const { entranceDate, usableTimeBegin, usableTimeEnd, areaName, boothName, usageType, latestArrivalTime, handleItemPress, ticketPicture, remainNum, status, cusTicketId, winePartyName, storeName, givenStatus } = props;
 
   const isShowQr = status === 'UNUSED'
   let img = null
@@ -75,19 +77,24 @@ const Item = memo<any>((props: any) => {
   /* 门票 */
   const cardImg = usageType === 'BOOTH' ? card_2 : bg
 
-
   const useTime = usageType === 'TICKET' ? `${usableTimeBegin}-${usableTimeEnd}${t('ticket.tag1')}` : `${t('ticket.tag2')} ${latestArrivalTime}`;
-  const NumberRender = <View className="bg-[#000000] rounded-xl absolute p-2 bottom-2 left-5">
+  const NumberRender = <View className="bg-[#000000] rounded-xl absolute p-2 bottom-2 left-1">
     <Text>
       x
       <Text className="font-bold ">{remainNum}</Text>
     </Text>
   </View>;
 
+  const KeSong = <View className="bg-[#000000] rounded-xl absolute p-2 bottom-2 left-10">
+    <Text>
+      <Text className="font-bold ">{t('ticket.bnt2')}</Text>
+    </Text>
+  </View>;
 
 
 
-  return <TouchableWithoutFeedback onPress={() => handleItemPress(cusTicketId)}>
+
+  return <TouchableWithoutFeedback onPress={() => handleItemPress(props)}>
     <View className="mx-10 h-32 bg-[#FFFFFF1A]  my-3 relative   justify-center flex-row items-center rounded-xl border py-5 " onStartShouldSetResponderCapture={(ev) => true}>
       {img && <Image source={img} className='absolute bottom-0 right-0 h-32  w-32' resizeMethod='scale' />}
       <View className="w-36 h-24 relative  rounded-xl -left-5 ">
@@ -95,6 +102,7 @@ const Item = memo<any>((props: any) => {
         {ticketPicture && <Image source={{ uri: ticketPicture }} className="w-36 h-24 rounded-xl" />}
         {!ticketPicture && <Image source={cardImg} className="w-36 h-24 rounded-xl" />}
         {NumberRender}
+        {givenStatus != 'NORMAL' && KeSong}
       </View>
       <View className=" flex-grow  overflow-hidden flex-col relative ">
         <View>
@@ -117,7 +125,7 @@ const Item = memo<any>((props: any) => {
 const TicketScreen = () => {
 
   const { t } = useTranslation();
-
+  const flatRef = useRef(null)
   const timeId = useRef<NodeJS.Timeout>() /* 这是轮询的id */
 
   const tabs = [
@@ -138,26 +146,30 @@ const TicketScreen = () => {
   const [data, setData] = useImmer({
     defaultIndex: 0,
     visible: false,
+    visible1: false,
     qrCode: '',
     givenStatus: TICKET.非赠票,
     givenTime: '',
-
-
   });
+
+  const cid = useRef({
+    cusTicketId: ''
+  })
 
   const containerStyle = { background: '#1E1E1E', padding: 20, margin: 20 };
 
-  // useRequest(myTicket, {
-  //   onSuccess: (res) => {
-  //     console.log(res);
+  const { runAsync, } = useRequest(ticketGiven, {
+    onSuccess: (res) => {
 
-  //   },
 
-  // });
+    },
+    manual: true,
+  });
 
   const hideModal = () => {
     setData(draft => {
       draft.visible = false;
+      draft.visible1 = false;
     });
     clearInterval(timeId.current);
   };
@@ -165,29 +177,30 @@ const TicketScreen = () => {
   const api = useCallback(myTicket, []);
 
 
-  const handleItemPress = async (id: string) => {
-
+  const handleItemPress = async (props: any) => {
+    cid.current = props
     if (data.defaultIndex != 0) {
       return
     }
-    console.log(id, 'id')
-    const res = await genQrCodeStr(id)
-
-    console.log(res)
+    await createQr(props.cusTicketId)
     setData(draft => {
       draft.visible = true;
+      draft.visible1 = false;
+    });
+
+    timeId.current = setInterval(async () => {
+      await createQr(props.cusTicketId)
+    }, 60000)
+  }
+
+  /* 生成二维码 */
+  async function createQr(id: string) {
+    const res = await genQrCodeStr(id)
+    setData(draft => {
       draft.qrCode = res?.data?.data?.qrCodeStr
       draft.givenStatus = res?.data?.data?.givenStatus
       draft.givenTime = res?.data?.data?.givenTime
     });
-    timeId.current = setInterval(async () => {
-      const res = await genQrCodeStr(id)
-      setData(draft => {
-        draft.qrCode = res?.data?.data?.qrCodeStr
-        draft.givenStatus = res?.data?.data?.givenStatus
-        draft.givenTime = res?.data?.data?.givenTime
-      });
-    }, 60000)
   }
 
 
@@ -197,10 +210,50 @@ const TicketScreen = () => {
     });
   };
 
-  const send = () => {
+  const send = async () => {
+    const { data, } = await runAsync({ cusTicketId: cid.current.cusTicketId })
+    console.log(data, data)
+    if (data.code == '0') {
+      Toast.show({
+        text1: t('ticket.bnt3')
+      })
+      await createQr(cid.current.cusTicketId)
+      setData(draft => {
+        draft.visible = false;
+        draft.visible1 = true;
+      });
 
+
+
+    }
   }
+
+
   const getId = useCallback((item: any) => item.cusTicketId, []);
+  const qrCodeRef = useRef(null)
+  const handleToDataURL = useCallback(async (data) => {
+
+
+    // json.qr is base64 string "data:image/png;base64,..."
+
+
+
+    RNFS.writeFile(RNFS.CachesDirectoryPath + "/pay.png", data, 'base64')
+      .then((success) => {
+        return CameraRoll.save(RNFS.CachesDirectoryPath + "/pay.png")
+      })
+      .then((res) => {
+        Toast.show({
+          text1: '保存成功'
+        })
+        console.log(res);
+
+      })
+
+  }, [])
+  const handleClick = useCallback(() => {
+    qrCodeRef.current!.toDataURL(handleToDataURL)
+  }, [qrCodeRef])
 
 
   return (
@@ -230,7 +283,13 @@ const TicketScreen = () => {
             tabs.map((tab, index) => (
               <TabScreen label={tab.title} key={index}>
                 <View className="bg-transparent mt-10">
-                  {index === data.defaultIndex && <CustomFlatList keyExtractor={getId} params={{ status: tabs[index].status }} renderItem={(item) => <Item  {...item} status={item.status} handleItemPress={handleItemPress} />} onFetchData={api} />}
+                  {index === data.defaultIndex && <CustomFlatList
+                    keyExtractor={getId}
+                    params={{ status: tabs[index].status }}
+                    renderItem={(item) => <Item  {...item} status={item.status}
+                      handleItemPress={handleItemPress} />} onFetchData={api}
+                    ref={flatRef}
+                  />}
                 </View>
               </TabScreen>
             ))
@@ -247,6 +306,7 @@ const TicketScreen = () => {
             <View className="rounded-xl border p-2.5 bg-white flex flex-row items-center justify-center mt-28">
               <QRCode
                 value={data.qrCode}
+
                 size={180}
                 logoBackgroundColor="transparent" />
             </View>
@@ -264,19 +324,63 @@ const TicketScreen = () => {
             </View> */}
 
             {data.givenStatus != TICKET.非赠票 && (<View className=' mt-5'>
-              {data.givenStatus === TICKET.未赠送 ? (<View className='flex flex-row items-center  justify-between   w-full px-12'>
-                <Text>{t('ticket.tip1')}</Text>
-                <Button mode={'elevated'} className="bg-[#EE2737FF]  font-bold " contentStyle={{ padding: 0 }} textColor="#000000FF" >{t('ticket.btn1')}</Button>
+              {data.givenStatus == TICKET.未赠送 ? (<View className='flex flex-row items-center  justify-between   w-full px-12'>
+                <Text>{t('ticket.tip2')}</Text>
+                <Button mode={'elevated'} className="bg-[#EE2737FF]  font-bold " contentStyle={{ padding: 0 }} textColor="#000000FF"
+                  onPress={() => send()}
+                >{t('ticket.bnt1')}</Button>
               </View>) : <View>
-                <Text>{data.givenTime}</Text>
+                <Text>{data.givenTime} {t('ticket.btn')}</Text>
               </View>}
-
-
             </View>
             )}
           </View>
 
           <TouchableOpacity onPress={hideModal} className='flex-row  items-center justify-center mt-10' >
+            <Image source={closeIcon} className='w-6 h-6' />
+          </TouchableOpacity>
+        </MyModal>
+
+
+        <MyModal visible={data.visible1} onDismiss={hideModal} contentContainerStyle={containerStyle} dismissable={false}>
+          <View className=" relative flex items-center    border  rounded-2xl overflow-hidden  " >
+            <ImageBackground source={bg} className="w-full h-44" />
+            <View className='p-20px   w-full bg-[#1E1E1E] p-5'>
+              <View className='text-xl  mb-2.5 font-bold'>
+                <Text>{cid.current.winePartyName}</Text>
+              </View>
+              <View className='text-xl mb-2.5 font-bold'>
+                <Text>{cid.current.areaName}-{cid.current.boothName}</Text>
+              </View>
+              <View className='text-xl  mb-2.5 font-bold'>
+                <Text>{cid.current.entranceDate} {cid.current.latestArrivalTime}</Text>
+              </View>
+              <View className='text-xl  mb-2.5 flex  flex-row  justify-between'>
+                <View>
+                  <Text className="font-bold">{cid.current.storeName}</Text>
+                </View>
+                <View className="rounded-xl border p-1 bg-white flex flex-row items-center justify-center w-24">
+                  <QRCode
+                    value={data.qrCode}
+                    getRef={(ref) => qrCodeRef.current = ref}
+                    size={74}
+                    logoBackgroundColor="transparent" />
+                </View>
+              </View>
+            </View>
+
+          </View>
+          <View className='flex  items-center justify-center my-10'>
+
+            <Button mode={'elevated'} className="bg-[#EE2737FF]  font-bold  w-40 " contentStyle={{ padding: 0 }}
+              onPress={send}
+              textColor="#000000FF"
+              onPress={() => handleClick()}
+            >{t('ticket.bnt4')}</Button>
+          </View>
+
+
+          <TouchableOpacity onPress={hideModal} className='flex-row  items-center justify-center ' >
             <Image source={closeIcon} className='w-6 h-6' />
           </TouchableOpacity>
         </MyModal>

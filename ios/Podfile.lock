@@ -907,13 +907,13 @@ PODS:
     - React-Core
   - react-native-cameraroll (5.10.0):
     - React-Core
-  - react-native-compressor (1.8.24):
+  - react-native-compressor (1.8.25):
     - glog
     - RCT-Folly (= 2022.05.16.00)
     - React-Core
   - react-native-create-thumbnail (2.0.0-rc.2):
     - React-Core
-  - react-native-date-picker (5.0.3):
+  - react-native-date-picker (5.0.4):
     - React-Core
   - react-native-document-picker (8.2.2):
     - React-Core
@@ -921,13 +921,13 @@ PODS:
     - glog
     - RCT-Folly (= 2022.05.16.00)
     - React-Core
-  - react-native-pager-view (6.3.1):
+  - react-native-pager-view (6.3.3):
     - glog
     - RCT-Folly (= 2022.05.16.00)
     - React-Core
   - react-native-render-html (6.3.4):
     - React-Core
-  - react-native-safe-area-context (4.10.1):
+  - react-native-safe-area-context (4.10.5):
     - React-Core
   - react-native-splash-screen (3.3.0):
     - React-Core
@@ -940,7 +940,7 @@ PODS:
     - react-native-video/Video (= 5.2.1)
   - react-native-video/Video (5.2.1):
     - React-Core
-  - react-native-webview (13.10.2):
+  - react-native-webview (13.10.4):
     - glog
     - RCT-Folly (= 2022.05.16.00)
     - React-Core
@@ -1113,7 +1113,7 @@ PODS:
     - React-jsi (= 0.73.8)
     - React-logger (= 0.73.8)
     - React-perflogger (= 0.73.8)
-  - RNAudioRecorderPlayer (3.6.7):
+  - RNAudioRecorderPlayer (3.6.10):
     - React-Core
   - RNCAsyncStorage (1.23.1):
     - React-Core
@@ -1131,7 +1131,7 @@ PODS:
     - React-Core
   - RNFS (2.20.0):
     - React-Core
-  - RNGestureHandler (2.16.2):
+  - RNGestureHandler (2.17.1):
     - glog
     - RCT-Folly (= 2022.05.16.00)
     - React-Core
@@ -1139,14 +1139,14 @@ PODS:
     - React-Core
   - RNKeychain (8.2.0):
     - React-Core
-  - RNLocalize (3.1.0):
+  - RNLocalize (3.2.0):
     - React-Core
-  - RNReanimated (3.11.0):
+  - RNReanimated (3.12.1):
     - glog
     - RCT-Folly (= 2022.05.16.00)
     - React-Core
     - ReactCommon/turbomodule/core
-  - RNScreens (3.31.1):
+  - RNScreens (3.32.0):
     - glog
     - RCT-Folly (= 2022.05.16.00)
     - React-Core
@@ -1165,11 +1165,11 @@ PODS:
     - SDWebImage/Core (~> 5.10)
   - SocketRocket (0.6.1)
   - TXIMSDK_Plus_iOS (7.6.5011)
-  - VisionCamera (4.0.5):
-    - VisionCamera/Core (= 4.0.5)
-    - VisionCamera/React (= 4.0.5)
-  - VisionCamera/Core (4.0.5)
-  - VisionCamera/React (4.0.5):
+  - VisionCamera (4.3.2):
+    - VisionCamera/Core (= 4.3.2)
+    - VisionCamera/React (= 4.3.2)
+  - VisionCamera/Core (4.3.2)
+  - VisionCamera/React (4.3.2):
     - React-Core
   - WechatOpenSDK (2.0.4)
   - Yoga (1.14.0)
@@ -1473,18 +1473,18 @@ SPEC CHECKSUMS:
   React-Mapbuffer: 672a9342eb75a4d0663306e94d4dfc88aee73b93
   react-native-blur: 799045500f56146afc46245148080e7b7623cb75
   react-native-cameraroll: 4701ae7c3dbcd3f5e9e150ca17f250a276154b35
-  react-native-compressor: b9bdbc08fdb8c3846a081c4489d1e86717a2af6f
+  react-native-compressor: db1b725658367d9aa0f8bdabed4b0aec88cd1c0b
   react-native-create-thumbnail: 6f45caa41b69098376c1681bf757c6113871b7b8
-  react-native-date-picker: 682417ada6f9c334b969f7df6dd331a56983c63c
+  react-native-date-picker: 6891317e850deae5b53d51355226e07a495aba61
   react-native-document-picker: cd4d6b36a5207ad7a9e599ebb9eb0c2e84fa0b87
   react-native-image-picker: d3db110a3ded6e48c93aef7e8e51afdde8b16ed0
-  react-native-pager-view: f1e72cb827406f1b49f007ab07400197d421b6e7
+  react-native-pager-view: 4cc7e44dbc04cad0ca9e0a49c62c593d0fa793cc
   react-native-render-html: 984dfe2294163d04bf5fe25d7c9f122e60e05ebe
-  react-native-safe-area-context: dcab599c527c2d7de2d76507a523d20a0b83823d
+  react-native-safe-area-context: a240ad4b683349e48b1d51fed1611138d1bdad97
   react-native-splash-screen: 4312f786b13a81b5169ef346d76d33bc0c6dc457
   react-native-tim-js: 32d80c645592f7786d028d99bd57a8ef7cd80ccb
   react-native-video: c26780b224543c62d5e1b2a7244a5cd1b50e8253
-  react-native-webview: c461fed0b58be5ee5180c3c3092a1d5dcb214a94
+  react-native-webview: dbc8171113daa2abb2499da5f327a8d0cdfcd61c
   react-native-wechat-lib: 2aee4950372b8feb89489bcdb936079429fe58ac
   React-nativeconfig: 2e44d0d2dd222b12a5183f4bcaa4a91881497acb
   React-NativeModulesApple: 8aa032fe6c92c1a3c63e4809d42816284a56a9b0
@@ -1506,7 +1506,7 @@ SPEC CHECKSUMS:
   React-runtimescheduler: 1c40cfe98dcc7b06354d96a1cd8ee10cbc4cc797
   React-utils: 4cc2ba652f5df1c8f0461d4ae9e3ee474c1354ea
   ReactCommon: 1da3fc14d904883c46327b3322325eebf60a720a
-  RNAudioRecorderPlayer: 9b34adc281800e5b19258f1b91d889b1ef3abdd6
+  RNAudioRecorderPlayer: f3b4f32d5581a44be0f9eb383dc87f98f941b08b
   RNCAsyncStorage: 826b603ae9c0f88b5ac4e956801f755109fa4d5c
   RNCClipboard: 0a720adef5ec193aa0e3de24c3977222c7e52a37
   RNDateTimePicker: 4f3c4dbd4f908be32ec8c93f086e8924bd4a2e07
@@ -1514,19 +1514,19 @@ SPEC CHECKSUMS:
   RNFastImage: 5c9c9fed9c076e521b3f509fe79e790418a544e8
   RNFileViewer: ce7ca3ac370e18554d35d6355cffd7c30437c592
   RNFS: 4ac0f0ea233904cb798630b3c077808c06931688
-  RNGestureHandler: 96439cf6543defdde87459e48cd1a3f0e45a008e
+  RNGestureHandler: 67d3f1f69d4d0c98d6e83f4229e3bbf997d1dc72
   RNKeyboardInsets: b4e8f3235eca5e2ee17c92459ef350941704d62b
   RNKeychain: bfe3d12bf4620fe488771c414530bf16e88f3678
-  RNLocalize: e8694475db034bf601e17bd3dfa8986565e769eb
-  RNReanimated: 6cfa556540186ce7ae7a0b048f369236b1d86ebb
-  RNScreens: 134a7511b12b8eb440b87aac21e36a71295d6024
+  RNLocalize: b77875884750cb6a58cd6865863fe2ba2729b72b
+  RNReanimated: 5307ba390921b76ddf9c0aa69876916ad427a61f
+  RNScreens: e842cdccb23c0a084bd6307f6fa83fd1c1738029
   RNSVG: 963a95f1f5d512a13d11ffd50d351c87fb5c6890
   RNVectorIcons: 96e8c5c45609932bb2f8347e1c709bcca0e95654
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SDWebImageWebPCoder: 908b83b6adda48effe7667cd2b7f78c897e5111d
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
   TXIMSDK_Plus_iOS: b665f09489e7d1a35c2dd95a495544d0c2a84f37
-  VisionCamera: 59949b04a51c00a52a6d7125425d01664792c9bd
+  VisionCamera: 2c4cb89c573c5d54d1191e433bd224998d3b14b7
   WechatOpenSDK: 290989072e87b79d52225a01bb4e5e58f6f88593
   Yoga: e5b887426cee15d2a326bdd34afc0282fc0486ad
 
