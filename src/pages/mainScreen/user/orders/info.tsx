@@ -336,7 +336,14 @@ const OrdersInfo = () => {
   }
   /* 点击下一步 */
   async function next() {
+    if (allData.isBalance) {
+      if (allData.PayPasswordNow === '') {
+        Toast.show({
+          text1: t('orderInfo.isBalance'),
+        })
+      }
 
+    }
     await pay()
   }
   /* 点击继续支付 */
@@ -382,6 +389,7 @@ const OrdersInfo = () => {
       payPassword: allData.payPassword,
       newPayPassword: allData.newPayPassword,
     })
+
     if (res.data.success) {
       setAllData((draft) => {
         draft.psdVisible = false;

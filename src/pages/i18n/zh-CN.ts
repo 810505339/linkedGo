@@ -105,7 +105,8 @@ export default {
     mode2: '酒局名称',
     mode3: '酒局类型',
     mode4: '支付明细',
-    balance3: '，剩余金额请使用PAYNOW支付'
+    balance3: '，剩余金额请使用PAYNOW支付',
+    isBalance: '请输入支付密码'
   },
 
   ticket: {

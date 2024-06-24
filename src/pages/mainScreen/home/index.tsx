@@ -1,4 +1,4 @@
-import { useNavigation } from '@react-navigation/native';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import { TabParamList, UsertackParamList } from '@router/type';
 import Header from './components/header';
 import { useEffect, useState } from 'react';
@@ -112,6 +112,11 @@ const HomeScreen = () => {
   useEffect(() => {
     init();
   }, []);
+
+  /* 获取屏幕焦点 */
+  useFocusEffect(() => {
+    
+  })
 
 
   useEffect(() => {
