@@ -118,6 +118,11 @@ const HomeScreen = () => {
     init();
   }, []);
 
+  /* 获取屏幕焦点 */
+  useFocusEffect(() => {
+    
+  })
+
 
   useEffect(() => {
     console.log(data.id, 'data.id');

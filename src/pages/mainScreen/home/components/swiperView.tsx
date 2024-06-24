@@ -69,50 +69,7 @@ function Index({ swiperList }: IProps) {
   }, [pressAnim.value]);
 
   return (
-    // <View className="flex-auto p-5  relative">
-    //   <Carousel
-    //     loop={true}
-    //     autoPlay={true}
-    //     pagingEnabled={true}
 
-    //     className="h-full"
-    //     style={{ width: PAGE_WIDTH - 40 }}
-    //     width={PAGE_WIDTH - 40}
-    //     data={[...ImageItems]}
-    //     //并且当数据长度小于 3 时，您还需要添加 prop
-    //     // autoFillData={false}
-    //     // onSnapToItem={(index) => console.log('current index:', index)}
-    //     onScrollBegin={() => {
-    //       pressAnim.value = withTiming(1);
-    //     }}
-    //     onScrollEnd={() => {
-    //       pressAnim.value = withTiming(0);
-    //     }}
-    //     onProgressChange={(offsetProgress, absoluteProgress) => {
-    //       progressValue.value = absoluteProgress;
-    //     }}
-    //     renderItem={({ index, item }) => {
-    //       return (
-    //         <CustomItem
-    //           source={item}
-    //           key={index}
-    //           pressAnim={pressAnim}
-    //         />
-    //       );
-    //     }}
-    //     customAnimation={animationStyle}
-    //     scrollAnimationDuration={3000}
-
-    //   />
-
-    //   <View className="flex-row absolute bottom-10 left-0 right-0 justify-center items-center">
-    //     {ImageItems.map((item, index) => (
-    //       <PaginationItem animValue={progressValue} length={ImageItems.length}
-    //         index={index}
-    //         key={index} />
-    //     ))}
-    //   </View>
-    // </View>
     <View className=" p-5 relative " style={{ flex: 1 }}>
       <Carousel
         {...baseOptions}
@@ -183,15 +140,7 @@ const CustomItem: React.FC<ItemProps> = (props) => {
 
   const source = props.source
   const pressAnim = props.pressAnim;
-  // const animStyle = useAnimatedStyle(() => {
-  //   const scale = interpolate(pressAnim.value, [0, 1], [1, 0.9]);
 
-
-  //   return {
-  //     transform: [{ scale }],
-
-  //   };
-  // }, []);
 
   return (
     <View className={'  rounded-3xl  flex-1 overflow-hidden'} >

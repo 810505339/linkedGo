@@ -111,7 +111,8 @@ export default {
     mode2: 'Name of the session',
     mode3: 'Sessions Mode',
     mode4: 'Payment details',
-    balance3: '，Please pay the remaining amount by PAYNOW'
+    balance3: '，Please pay the remaining amount by PAYNOW',
+    isBalance: 'Please enter  payment password'
   },
   orders: {
     tag1: 'All',
