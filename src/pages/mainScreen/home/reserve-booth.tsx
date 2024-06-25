@@ -179,9 +179,9 @@ const ReserveBooth = () => {
         </ScrollView>
       </View>
       <SafeAreaView>
-        <View className="h-14  flex-col justify-center ">
+        <View className="h-16  flex-col justify-center ">
           <Divider />
-          <View className="flex-row  px-5 mt-2">
+          <View className="flex-row  px-5  my-2">
             <Button mode={'elevated'} className="bg-[#EE2737FF] w-full" textColor="#0C0C0CFF" onPress={toUrl} >{t('confirmBooth.btn1')}</Button>
           </View>
         </View>

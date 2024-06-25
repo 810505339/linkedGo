@@ -242,7 +242,7 @@ const LaunchWine = () => {
 
   return (<BaseLayout>
     <CustomModal ref={bottomSheetModalRef} data={snap.shopList} selectValue={shop.select.id} onPress={onPress} headerText={t('common.label1')} snapPoints={['50%']} />
-    <ScrollView className="px-5 ">
+    <ScrollView className="pt-5">
       {list.map((item, i) => (
         <View className="mb-8" key={i}>
           <Text className="text-xs font-bold mb-2.5">{item.label}</Text>
@@ -256,23 +256,15 @@ const LaunchWine = () => {
     </ScrollView>
 
     <SafeAreaView>
-      <View className=" flex-col justify-center">
+      <View className="h-16  flex-col justify-center ">
         <Divider />
-        <Button
-          mode="outlined"
-          style={{ borderColor: '#EE2737', height: 50, borderRadius: 33, backgroundColor: '#EE2737' }}
-          labelStyle={{
-            fontSize: 18,
-            color: '#0C0C0CFF',
-            fontWeight: '600',
-          }}
-          contentStyle={{ height: 50 }}
-          onPress={handleNext}>
-          {t('launchwine.tag7')}
-        </Button>
+        <View className="flex-row  px-5  my-2">
+          <Button mode={'elevated'} className="bg-[#EE2737FF] w-full" textColor="#0C0C0CFF" onPress={handleNext} >
+            {t('launchwine.tag7')}
+          </Button>
+        </View>
       </View>
     </SafeAreaView>
-
     <CheckSex />
   </BaseLayout>);
 };

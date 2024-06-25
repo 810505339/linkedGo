@@ -6,8 +6,11 @@ import { useImmer } from 'use-immer';
 import { findIndex, initList, store } from '@store/shopStore';
 import { useSnapshot } from 'valtio';
 import { useFocusEffect } from '@react-navigation/native';
+import { useNetInfo } from "@react-native-community/netinfo";
+
 
 export default (isStore = true) => {
+  const { type, isConnected } = useNetInfo();
 
   const [shop, setShop] = useImmer({
     select: {
@@ -62,6 +65,10 @@ export default (isStore = true) => {
       init()
     }, [])
   );
+
+  useEffect(() => {
+    init()
+  }, [isConnected])
 
   return {
     bottomSheetModalRef,
