@@ -75,6 +75,10 @@ const HomeScreen = () => {
   function onChange(value: any) {
     console.log(value, 'value');
 
+    Toast.show({
+      text1: value.id
+    })
+
     setData((draft: IData) => {
       draft.id = value.id;
     });
@@ -120,7 +124,7 @@ const HomeScreen = () => {
 
   /* 获取屏幕焦点 */
   useFocusEffect(() => {
-    
+
   })
 
 
