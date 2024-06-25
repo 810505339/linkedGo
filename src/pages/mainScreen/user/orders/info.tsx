@@ -217,6 +217,8 @@ const OrdersInfo = () => {
     amount = currency(amount).subtract(tempBalance).value
   }
 
+  console.log(tempAmount, 'amount')
+
   const payList = [
     { label: t('orderInfo.tag30'), value: `S$ ${route.params?.amount}`, color: '#fff', show: orderStatus === undefined },
     { label: t('orderInfo.tag13'), value: `-S$ ${couponUnAmount}`, color: '#FF2C2CFF', show: couponNum },

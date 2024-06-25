@@ -156,7 +156,7 @@ const Preset = () => {
       useScope: 'TICKET', //使用范围
       ticketId: data.ticketId, //门票id
       storeId: shop.select.id,
-      amount: `S${data.total}`,//需要支付多少钱
+      amount: `${data.total}`,//需要支付多少钱
       taxAmount: currency(data.total).multiply(taxRate).divide(100),
       feeAmount: currency(data.total).multiply(feeRate).divide(100),
 

@@ -18,6 +18,7 @@ import useSelectShop from '@hooks/useSelectShop';
 import useUserInfo from '@hooks/useUserInfo';
 
 import { useDebounceFn } from 'ahooks';
+import { getGenericPassword } from 'react-native-keychain';
 
 const ScreenWidth = Dimensions.get('window').width
 const ScreenHeight = Dimensions.get('window').height
@@ -80,6 +81,13 @@ const ItemCard = ({ cards, className }: { cards: any[] }) => {
   </View >);
 };
 
+//  const generic = await getGenericPassword()
+
+// console.log(generic, 'generic')
+
+// if ((generic as UserCredentials)?.password) {
+//   await applicationRun()
+// }
 
 
 export const Item = (props) => {
@@ -175,8 +183,20 @@ const FightwineScreen = () => {
 
 
 
-  const toUrl = (id: string) => {
-    navigation.navigate('FightwineDetail', { partyId: id });
+  const toUrl = async (id: string) => {
+    const generic = await getGenericPassword()
+
+    // console.log(generic, 'generic')
+
+    if ((generic as UserCredentials)?.password) {
+      navigation.navigate('FightwineDetail', { partyId: id });
+    } else {
+      navigation.navigate('Login');
+    }
+
+
+
+
   };
 
   const handleChangeIndex = (index: number) => {

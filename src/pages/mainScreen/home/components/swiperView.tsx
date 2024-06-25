@@ -33,6 +33,7 @@ export interface IProps {
 function Index({ swiperList }: IProps) {
   const windowWidth = useWindowDimensions().width;
   const scrollOffsetValue = useSharedValue<number>(0);
+  console.log(swiperList, 'swiperList')
 
   const baseOptions = ({
     vertical: false,
@@ -71,6 +72,8 @@ function Index({ swiperList }: IProps) {
   return (
 
     <View className=" p-5 relative " style={{ flex: 1 }}>
+
+
       <Carousel
         {...baseOptions}
         panGestureHandlerProps={{
@@ -102,7 +105,6 @@ function Index({ swiperList }: IProps) {
           );
         }}
       />
-
       <View className="flex-row justify-center items-center">
         {swiperList.map((item, index) => (
           <PaginationItem animValue={progressValue} length={swiperList.length}

@@ -60,7 +60,7 @@ const DynamicInfo = () => {
     });
   };
   const { data: application, runAsync: applicationRun } = useRequest(() => isAlreadySignUp(id), {
-    manual: false
+    manual: true
   });
   const { data: res, loading } = useRequest(() => getDynamicInfo({ id: id }), {
     onSuccess: (res) => {

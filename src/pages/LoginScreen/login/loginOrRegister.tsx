@@ -204,8 +204,8 @@ const LoginOrRegister = () => {
         </View>
       </View>
 
-      {!authCode && <View className=" absolute bottom-36 left-0 right-0 mt-96 mx-5  flex-auto   flex-row justify-between">
-        <View>
+      {!authCode && <View className=" absolute bottom-36 left-0 right-0 mt-96 mx-5  flex-auto   flex-row justify-between ">
+        <View className='w-[45%]'>
           {<Button
             mode="outlined"
             style={{
@@ -219,7 +219,7 @@ const LoginOrRegister = () => {
           </Button>}
 
         </View>
-        <View>
+        <View className='w-[45%]'>
           <Button
             mode="outlined"
             style={{
