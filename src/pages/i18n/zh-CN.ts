@@ -123,6 +123,8 @@ export default {
     bnt3: '赠送成功',
     bnt4: '保存图片',
     btn: '赠出',
+    NOT_GIVEN: '可赠',
+    GIVEN: '已赠',
   },
   login: {
     btn1: '登录/注册',

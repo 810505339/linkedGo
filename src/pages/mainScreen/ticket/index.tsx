@@ -89,7 +89,7 @@ const Item = memo<any>((props: any) => {
 
   const KeSong = <View className="bg-[#000000] rounded-xl absolute p-2 bottom-2 left-10">
     <Text>
-      <Text className="font-bold ">{t('ticket.bnt2')}</Text>
+      <Text className="font-bold ">{t(`ticket.${givenStatus}`)}</Text>
     </Text>
   </View>;
 
