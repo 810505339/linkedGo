@@ -225,6 +225,8 @@ const TicketScreen = () => {
         draft.visible1 = true;
       });
 
+      flatRef.current.refreshData()
+
 
 
     }
@@ -355,7 +357,7 @@ const TicketScreen = () => {
         </MyModal>
 
 
-        <MyModal visible={data.visible} onDismiss={hideModal} contentContainerStyle={containerStyle} dismissable={false}>
+        <MyModal visible={data.visible1} onDismiss={hideModal} contentContainerStyle={containerStyle} dismissable={false}>
           <ViewShot ref={domRef} options={{ fileName: "ticket", format: "png", quality: 1 }} >
             <View className=" relative flex items-center    border  rounded-2xl overflow-hidden  " >
               <ImageBackground source={bg} className="w-full h-44" />

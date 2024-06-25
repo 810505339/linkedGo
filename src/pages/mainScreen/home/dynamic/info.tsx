@@ -216,8 +216,8 @@ const DynamicInfo = () => {
 
 
   const RenderBtn = () => {
-    console.log(whetherSignUp, 'whetherSignUp');
-    if (isFull && whetherSignUp) {
+    console.log(whetherSignUp, isFull, 'whetherSignUp')
+    if (data?.showOrNotPersonNumber != 0 && isFull && whetherSignUp) {
       return <Button className=" bg-[#EE2737FF] flex-auto mr-2" mode="elevated" textColor="#0C0C0CFF" disabled={true} > {t('dynamic.info.btn2')}</Button>;
     }
     if (isApplication) {

@@ -190,7 +190,7 @@ const HomeScreen = () => {
             <BlurView
               style={{ position: 'absolute', bottom: 0, left: 0, right: 0, top: 0 }}
               blurType="light"
-              blurAmount={10}
+              blurAmount={4}
               reducedTransparencyFallbackColor="transparent"
             />
             <Image source={sexIcon} className="w-4 h-4 absolute left-2" />
