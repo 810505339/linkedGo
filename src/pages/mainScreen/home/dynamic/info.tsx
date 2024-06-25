@@ -312,8 +312,8 @@ const DynamicInfo = () => {
             <Text className="text-base font-bold text-white  text-center mt-24" numberOfLines={2}>{t('dynamic.info.text1')}</Text>
           </View>
           <View className="flex-row justify-around items-center  w-full px-5 pb-5 mt-10 ">
-            <Button className="bg-transparent flex-1 mr-5" mode="outlined" labelStyle={{ fontWeight: 'bold' }} textColor="#ffffffbf" onPress={hideModal}>{t('common.btn1')}</Button>
-            <Button className="bg-[#EE2737FF] flex-1" textColor="#000000FF" labelStyle={{ fontWeight: 'bold' }} mode="contained" onPress={async () => await handleSignUp()} >{t('common.btn2')}</Button>
+            <Button className="bg-transparent  mr-5" mode="outlined" labelStyle={{ fontWeight: 'bold' }} textColor="#ffffffbf" onPress={hideModal}>{t('common.btn1')}</Button>
+            <Button className="bg-[#EE2737FF] " textColor="#000000FF" labelStyle={{ fontWeight: 'bold' }} mode="contained" onPress={async () => await handleSignUp()} >{t('common.btn2')}</Button>
           </View>
         </View>
       </MyModal>
