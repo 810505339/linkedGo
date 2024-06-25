@@ -11,12 +11,14 @@ import useSelectShop from '@hooks/useSelectShop';
 
 import { load, save } from '@storage/shop/action';
 import { useTranslation } from 'react-i18next';
+import { useNetInfo } from "@react-native-community/netinfo";
 const LOGO = require('@assets/imgs/home/logo.png');
 
 const xialaIcon = require('@assets/imgs/base/xiala.png')
 
 const Header = ({ layout, options, onChange }: BottomTabHeaderProps & { onChange: (value: any) => void }) => {
   const { snap, bottomSheetModalRef, shop, onPress, shopName } = useSelectShop(false);
+  const { type, isConnected } = useNetInfo();
   const { t } = useTranslation()
 
   //点击展开
@@ -28,9 +30,10 @@ const Header = ({ layout, options, onChange }: BottomTabHeaderProps & { onChange
 
   useEffect(() => {
     if (shop.select.id != '') {
-      onChange(shop.select);
+      if(isConnected)
+        onChange(shop.select);
     }
-  }, [shop.select?.id]);
+  }, [shop.select?.id,isConnected]);
 
   return (<Appbar.Header style={{ backgroundColor: 'transparent' }}>
     <Image source={LOGO} className="w-16 h-8 ml-5" />
