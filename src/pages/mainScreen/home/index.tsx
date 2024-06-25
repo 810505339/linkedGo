@@ -9,7 +9,7 @@ import { getcarouselList, getHomePageAdvertising } from '@api/common';
 import { useImmer } from 'use-immer';
 import { fileStore } from '@store/getfileurl';
 import { LogLevelEnum, TencentImSDKPlugin } from 'react-native-tim-js';
-import { Image, RefreshControl, ScrollView, Text, TouchableOpacity } from 'react-native';
+import { Image, RefreshControl, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import useImageSize from '@hooks/useImageSize';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import MyModal from '@components/modal';
@@ -175,8 +175,16 @@ const HomeScreen = () => {
 
         {data.img && (<TouchableOpacity onPress={() => advertisingClick(data.advertising)}><Image source={{ uri: data.img }} className='h-[60] mx-5 my-5  rounded-2xl' /></TouchableOpacity>)}
         {<HorizontalFlatList className="mt-7" />}
-        {data.swiperList && <SwiperView swiperList={data?.swiperList} />}
+        {/* {data.swiperList && <SwiperView swiperList={data?.swiperList} />} */}
+        <View>
 
+          <Image source={{ uri: 'https://club-h5.point2club.com/static/png/logo1-bbc02f49.png' }} className='w-40 h-40'></Image>
+          {data.swiperList && data?.swiperList.map((item) => {
+            return (
+              <Text className='text-white'>{item.pictureFile}</Text>
+            )
+          })}
+        </View>
       </ScrollView>
 
 

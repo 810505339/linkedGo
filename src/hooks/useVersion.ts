@@ -6,8 +6,11 @@ import { getVersion } from "@api/version"
 import { useEffect } from "react"
 import { fileStore } from '@store/getfileurl';
 import { getStore } from '@store/versionStore'
+import { useNetInfo } from "@react-native-community/netinfo";
+
 export default () => {
   const type = Platform.OS === 'android' ? 'ANDROID' : 'IOS'
+  const { isConnected } = useNetInfo();
 
   const version = DeviceInfo.getVersion()
   const [allData, setAllData] = useImmer({
@@ -51,9 +54,8 @@ export default () => {
   })
 
   useEffect(() => {
-
     run({ type, version })
-  }, [])
+  }, [isConnected])
 
   function hideDialog() {
     if (allData.isForceUpdate == 1) {
