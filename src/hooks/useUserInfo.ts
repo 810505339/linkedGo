@@ -16,12 +16,19 @@ export default () => {
     });
   }
   useEffect(() => {
+
+    
     (async () => {
-      const _userInfoStorage = await storage.load({ key: IM_KEY });
+
+      const _userInfoStorage = await storage.load({ key: IM_KEY }).catch(err=>{
+        console.log("123123123131")
+      })
+
+      console.log(_userInfoStorage,"_userInfoStorage")
       if (!_userInfoStorage) {
         resetGenericPassword()
       }
-      setuserInfoStorage(_userInfoStorage);
+      setuserInfoStorage(_userInfoStorage??{});
     })();
   }, []);
 
