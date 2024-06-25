@@ -16,6 +16,7 @@ import { useState } from 'react';
 
 
 const hot = require('@assets/imgs/base/hot.png');
+const active = require('@assets/imgs/base/active.jpg');
 
 
 type IProps = {
@@ -50,8 +51,8 @@ const DynamicItem = (props: IProps) => {
 
 
   const source = pictureFile && { uri: fileStore.fileUrl + '/' + pictureFile[0]?.fileName };
-  const boxClass = source != undefined ? 'h-[473]' : '';
-  const tagPostion = source != undefined ? 'absolute top-2.5 left-2.5' : 'mr-2.5';
+  const boxClass = 'h-[473]';
+  const tagPostion = 'absolute top-2.5 left-2.5';
 
   const signText = whetherSignUp == '1' ? t('dynamic.tagList.tag1') : '';
   const amountText = !amount ? t('dynamic.tagList.tag2') : t('dynamic.tagList.tag3');
@@ -90,7 +91,8 @@ const DynamicItem = (props: IProps) => {
 
   return <TouchableOpacity onPress={() => handleItemPress(id)} className={`m-5  rounded-2xl relative ${boxClass}   overflow-hidden flex-col justify-end bg-[#5E3C18FF]`}>
     {pictureFile && <ImageBackground key={'blurryImage'} source={source} className="absolute  left-0 right-0 bottom-0 top-0" style={{ flex: 1 }} />}
-    {pictureFile && <Type />}
+    {!pictureFile && <ImageBackground key={'blurryImage'} source={active} className="absolute  left-0 right-0 bottom-0 top-0" style={{ flex: 1 }} />}
+    {<Type />}
     <View className=" p-2.5 overflow-hidden">
       <BlurView
         style={{ position: 'absolute', bottom: 0, left: 0, right: 0, top: 0 }}
@@ -100,7 +102,7 @@ const DynamicItem = (props: IProps) => {
 
       />
       <View className="flex-row items-center justify-start ">
-        {!pictureFile && <Type />}
+
         <Text className="text-white text-base font-bold flex-auto" numberOfLines={1}>{title}</Text>
       </View>
       {pictureFile && <TagList />}
@@ -164,7 +166,7 @@ const Dynamic = () => {
         {dynamicTypeList.map((dynamicType) => {
           const typeId = dynamicType.isAll ? '' : dynamicType.id;
 
-          return (<TabScreen label={dynamicType.name} key={dynamicType.id??''}>
+          return (<TabScreen label={dynamicType.name} key={dynamicType.id ?? ''}>
             <View className="bg-transparent">
               <CustomFlatList keyExtractor={(item) => item.id} renderItem={(item) => <DynamicItem {...item} />} params={{ typeId, storeId }} onFetchData={getDynamicList} key={dynamicType.id ?? ""} />
             </View>
