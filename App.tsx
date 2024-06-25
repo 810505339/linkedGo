@@ -30,12 +30,13 @@ import useUserInfo from '@hooks/useUserInfo';
 import MyModal from '@components/modal';
 import { useTranslation } from 'react-i18next';
 import SplashScreen from 'react-native-splash-screen'
+import { useNetInfo } from '@react-native-community/netinfo';
 
 const headerIcon = require('@assets/imgs/base/modalHeader.png');
 
 const App = () => {
   const { allData, hideDialog, download } = useVersion();
-
+  const { isConnected } = useNetInfo();
   const { t } = useTranslation()
   useUserInfo();
   useImLogin();
@@ -43,11 +44,14 @@ const App = () => {
   useBackHandler(() => {
     return ModalLayerFactory.back();
   });
+  useEffect(() => {
+    getFileUrl();
+  }, [isConnected])
 
   useEffect(() => {
     /* 这是启动页 */
     SplashScreen.hide();
-    getFileUrl();
+
   }, []);
   const colorScheme = useColorScheme();
   const { theme } = useMaterial3Theme();

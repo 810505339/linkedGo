@@ -73,11 +73,6 @@ const HomeScreen = () => {
     manual: true
   });
   function onChange(value: any) {
-    console.log(value, 'value');
-
-    Toast.show({
-      text1: value.id
-    })
 
     setData((draft: IData) => {
       draft.id = value.id;
@@ -175,8 +170,8 @@ const HomeScreen = () => {
 
         {data.img && (<TouchableOpacity onPress={() => advertisingClick(data.advertising)}><Image source={{ uri: data.img }} className='h-[60] mx-5 my-5  rounded-2xl' /></TouchableOpacity>)}
         {<HorizontalFlatList className="mt-7" />}
-        {/* {data.swiperList && <SwiperView swiperList={data?.swiperList} />} */}
-        <View>
+        {data.swiperList && <SwiperView swiperList={data?.swiperList} />}
+        {/* <View>
 
           <Image source={{ uri: 'https://club-h5.point2club.com/static/png/logo1-bbc02f49.png' }} className='w-40 h-40'></Image>
           {data.swiperList && data?.swiperList.map((item) => {
@@ -184,7 +179,7 @@ const HomeScreen = () => {
               <Text className='text-white'>{item.pictureFile}</Text>
             )
           })}
-        </View>
+        </View> */}
       </ScrollView>
 
 
