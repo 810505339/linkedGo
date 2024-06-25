@@ -940,6 +940,8 @@ PODS:
     - react-native-video/Video (= 5.2.1)
   - react-native-video/Video (5.2.1):
     - React-Core
+  - react-native-view-shot (3.8.0):
+    - React-Core
   - react-native-webview (13.10.4):
     - glog
     - RCT-Folly (= 2022.05.16.00)
@@ -1219,6 +1221,7 @@ DEPENDENCIES:
   - react-native-splash-screen (from `../node_modules/react-native-splash-screen`)
   - react-native-tim-js (from `../node_modules/react-native-tim-js`)
   - react-native-video (from `../node_modules/react-native-video`)
+  - react-native-view-shot (from `../node_modules/react-native-view-shot`)
   - react-native-webview (from `../node_modules/react-native-webview`)
   - react-native-wechat-lib (from `../node_modules/react-native-wechat-lib`)
   - React-nativeconfig (from `../node_modules/react-native/ReactCommon`)
@@ -1357,6 +1360,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-tim-js"
   react-native-video:
     :path: "../node_modules/react-native-video"
+  react-native-view-shot:
+    :path: "../node_modules/react-native-view-shot"
   react-native-webview:
     :path: "../node_modules/react-native-webview"
   react-native-wechat-lib:
@@ -1484,6 +1489,7 @@ SPEC CHECKSUMS:
   react-native-splash-screen: 4312f786b13a81b5169ef346d76d33bc0c6dc457
   react-native-tim-js: 32d80c645592f7786d028d99bd57a8ef7cd80ccb
   react-native-video: c26780b224543c62d5e1b2a7244a5cd1b50e8253
+  react-native-view-shot: 6b7ed61d77d88580fed10954d45fad0eb2d47688
   react-native-webview: dbc8171113daa2abb2499da5f327a8d0cdfcd61c
   react-native-wechat-lib: 2aee4950372b8feb89489bcdb936079429fe58ac
   React-nativeconfig: 2e44d0d2dd222b12a5183f4bcaa4a91881497acb

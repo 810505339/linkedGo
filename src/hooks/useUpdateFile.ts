@@ -39,9 +39,11 @@ const useUpdateFile = (option?: ImageLibraryOptions) => {
     } else {
       if (response.assets) {
         const res = await Promise.all(response.assets.map(async (asset) => {
+
+          
           return await uploadImage(asset);
         }));
-
+        console.log(res,'这是热水')
         setImageList([...imageList, ...res]);
 
       }

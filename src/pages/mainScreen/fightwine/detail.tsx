@@ -331,10 +331,10 @@ const Appraise = forwardRef((props: any, childRef: any) => {
       {imageList.map((image) => {
         return (<TouchableOpacity className="w-20 h-20 rounded relative mx-2 " key={image.id} onPress={() => onSelectImage(image)}>
           <IconButton icon="backspace-reverse"
-            className="absolute z-10 -right-4 -top-4 "
+            className="absolute z-20 -right-4 -top-4 "
             iconColor={'#000'}
             size={14} onPress={() => onDeleteImage(image.id)} />
-          <Image source={{ uri: image.previewUrl }} className="w-20 h-20 rounded" onProgress={() => onDeleteImage(image.id)} />
+          <Image source={{ uri: image.previewUrl }} className="w-16 h-16 rounded"  />
         </TouchableOpacity>);
       })}
       {imageList.length < 4 && <IconButton
