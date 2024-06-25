@@ -33,7 +33,7 @@ const Account = () => {
         draft.info[0].description = res.data?.phone ?? t('account.set2');
         draft.info[1].description = res.data?.setPassword ? t('account.set1') : t('account.set2');
         draft.info[2].description = res.data?.setPayPassword ? t('account.set1') : t('account.set2');
-        draft.third[0].description = res.data?.wxOpenid ?? t('account.set1');
+        draft.third[0].description = res.data?.wxOpenid ?? t('account.set2');
         // draft.third[0].description = res.data?.wxOpenid ? '已设置' : '未设置';
         // draft.third[0].description = res.data?.wxOpenid ? '已设置' : '未设置';
       })
