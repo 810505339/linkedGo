@@ -2,12 +2,12 @@ import axios from 'axios';
 import qs from 'qs';
 import { getGenericPassword, resetGenericPassword } from 'react-native-keychain';
 import Toast from 'react-native-toast-message';
-const baseUrl = 'https://gateway.point2club.com/';
 import { replace } from '@router/index';
 import { loadLanguageStorage } from '@storage/language/action'
-
-
-export const H5='https://m.point2club.com/'
+/* http://114.67.231.163:9999 */
+// https://gateway.point2club.com/
+const baseUrl = 'http://114.67.231.163:9999/';
+export const H5 = 'https://m.point2club.com/'
 enum CODELIST {
 	TOKENCAN = '424',
 

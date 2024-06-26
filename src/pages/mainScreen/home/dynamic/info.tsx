@@ -18,6 +18,7 @@ import { findIndex } from '@store/shopStore';
 import currency from 'currency.js';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import MyModal from '@components/modal';
+import Toast from 'react-native-toast-message';
 
 const hot = require('@assets/imgs/base/hot.png');
 const cardHeader = require('@assets/imgs/base/cardHeader.png');
@@ -62,7 +63,7 @@ const DynamicInfo = () => {
   const { data: application, runAsync: applicationRun } = useRequest(() => isAlreadySignUp(id), {
     manual: true
   });
-  const { data: res, loading } = useRequest(() => getDynamicInfo({ id: id }), {
+  const { data: res, loading, runAsync: infoRun } = useRequest(() => getDynamicInfo({ id: id }), {
     onSuccess: (res) => {
       console.log(res, 'res')
       if (!res.success) {
@@ -78,18 +79,19 @@ const DynamicInfo = () => {
     manual: true,
   });
 
-  useAsyncEffect(
-    async function* () {
+  useEffect(() => {
+    (async () => {
       const generic = await getGenericPassword()
 
-      console.log(generic, 'generic')
+      console.log(generic, 'generic', (generic as UserCredentials)?.password != '')
 
-      if ((generic as UserCredentials)?.password) {
+      if ((generic as UserCredentials)?.password != '') {
+        console.log('请求了')
         await applicationRun()
       }
-    },
-    [],
-  );
+    })()
+
+  }, [])
 
   const RenderList = ({ item }) => {
 
@@ -179,37 +181,59 @@ const DynamicInfo = () => {
   /* 报名 */
   async function handleSignUp() {
     hideModal()
-    const feeRate = findIndex(shop.select.id)?.feeRate ?? 0
-    const taxRate = findIndex(shop.select.id)?.taxRate ?? 0
-    navigation.navigate('OrdersInfo', {
-      orderContext: [
-        /* 门店 */
-        { label: t('orderInfo.tag1'), value: findIndex(shop.select.id)!.name ?? '' },
-        /* 名称 */
-        { label: t('orderInfo.tag28'), value: title },
-        { label: t('dynamic.info.tag1'), value: data.activityTime },
-        { label: t('dynamic.info.tag2'), value: data.activityPlace },
-        { label: t('dynamic.info.tag4'), value: data.useOfExpenses },
 
-      ],
-      headerImg: imgsource,
-      submit: async (params) => {
-        const res = await runAsync({
-          activityId: id,
-          ...params
-        });
-        console.log(res, '这是提交的信息');
+    console.log(amount, 'amount')
 
-        return {
-          orderId: res?.data?.orderId
-        };
-      },
-      useScope: 'ACTIVITY', //使用范围
-      storeId: shop.select.id,
-      amount: amount,
-      taxAmount: currency(amount).multiply(taxRate).divide(100),
-      feeAmount: currency(amount).multiply(feeRate).divide(100),
-    });
+    if (amount) {
+      const feeRate = findIndex(shop.select.id)?.feeRate ?? 0
+      const taxRate = findIndex(shop.select.id)?.taxRate ?? 0
+      const feeAmount = currency(amount).multiply(feeRate).divide(100)
+      navigation.navigate('OrdersInfo', {
+        orderContext: [
+          /* 门店 */
+          { label: t('orderInfo.tag1'), value: findIndex(shop.select.id)!.name ?? '' },
+          /* 名称 */
+          { label: t('orderInfo.tag28'), value: title },
+          { label: t('dynamic.info.tag1'), value: data.activityTime },
+          { label: t('dynamic.info.tag2'), value: data.activityPlace },
+          { label: t('dynamic.info.tag4'), value: data.useOfExpenses },
+
+        ],
+        headerImg: imgsource,
+        submit: async (params) => {
+          const res = await runAsync({
+            activityId: id,
+            ...params
+          });
+          console.log(res, '这是提交的信息');
+
+          return {
+            orderId: res?.data?.orderId
+          };
+        },
+        useScope: 'ACTIVITY', //使用范围
+        storeId: shop.select.id,
+        amount: amount,
+        feeAmount: currency(amount).multiply(feeRate).divide(100),
+        taxAmount: currency(amount + feeAmount.value).multiply(taxRate).divide(100),
+
+      });
+      return
+    }
+
+    const res = await signUp({
+      payMethod: 'PAYNOW',
+      useBalance: false,
+      activityId: id,
+    })
+
+    console.log(res, '这是提交的信息');
+    if (res.success) {
+      Toast.show({
+        text1: '报名成功'
+      })
+      await infoRun()
+    }
 
   }
 
@@ -217,12 +241,15 @@ const DynamicInfo = () => {
 
   const RenderBtn = () => {
     console.log(whetherSignUp, isFull, 'whetherSignUp')
-    if (data?.activityPersonNumber != null && isFull && whetherSignUp) {
-      return <Button className=" bg-[#EE2737FF] flex-auto mr-2" mode="elevated" textColor="#0C0C0CFF" disabled={true} > {t('dynamic.info.btn2')}</Button>;
-    }
+
     if (isApplication) {
       return <Button className=" bg-[#EE2737FF] flex-auto mr-2" mode="elevated" textColor="#0C0C0CFF" disabled={true} > {t('dynamic.info.btn3')}</Button>;
     }
+
+    if (data?.activityPersonNumber != null && isFull && whetherSignUp) {
+      return <Button className=" bg-[#EE2737FF] flex-auto mr-2" mode="elevated" textColor="#0C0C0CFF" disabled={true} > {t('dynamic.info.btn2')}</Button>;
+    }
+
     return <Button className=" bg-[#EE2737FF] flex-auto mr-2" mode="elevated" textColor="#0C0C0CFF" onPress={submit}> {t('dynamic.info.btn1')}</Button>;
   };
 

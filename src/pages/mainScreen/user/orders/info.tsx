@@ -23,6 +23,7 @@ import currency from 'currency.js'
 import { getCustomerCoupon } from '@api/coupon';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import MyModal from '@components/modal';
+import { findIndex } from '@store/shopStore';
 cssInterop(Text, {
   className: 'style'
 })
@@ -96,6 +97,8 @@ const OrdersInfo = () => {
   const route = useRoute<RouteProp<RootStackParamList, 'OrdersInfo'>>();
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { orderContext = [], headerImg, submit, orderStatus, orderId, taxAmount = 0, feeAmount = 0, discountAmount, realAmount, balanceAmount = 0, useScope, ticketId, storeId, boothId, winePartyMode, activityId, payMethod, otherAmount } = route?.params;
+
+
 
   const [allData, setAllData] = useImmer({
     visible: false,
@@ -202,8 +205,14 @@ const OrdersInfo = () => {
   const couponNum = route.params?.couponId ? 1 : 0;
   /*   */
   const tempAmount = !couponNum ? route.params?.amount : couponAmount?.data
-  const temptaxAmount = currency(taxAmount).divide(route.params?.amount || 0).multiply(tempAmount)
-  const tempfeeAmount = currency(feeAmount).divide(route.params?.amount || 0).multiply(tempAmount)
+  const feeRate = findIndex(storeId)?.feeRate ?? 0
+  const taxRate = findIndex(storeId)?.taxRate ?? 0
+  const tempfeeAmount = Math.ceil(tempAmount * feeRate) / 100
+  const temptaxAmount = Math.ceil((tempAmount + tempfeeAmount) * taxRate) / 100
+
+
+
+  /* 总的金额 */
   let amount: number | currency = currency(tempAmount).add(temptaxAmount).add(tempfeeAmount).value;
   /* 总的余额 */
   const totalBalance = balance?.data?.totalBalance ?? 0
@@ -217,7 +226,7 @@ const OrdersInfo = () => {
     amount = currency(amount).subtract(tempBalance).value
   }
 
-  console.log(tempAmount, 'amount')
+  console.log(amount, 'amount')
 
   const payList = [
     { label: t('orderInfo.tag30'), value: `S$ ${route.params?.amount}`, color: '#fff', show: orderStatus === undefined },
@@ -226,8 +235,8 @@ const OrdersInfo = () => {
     { label: t('orderInfo.tag13'), value: `-S$ ${discountAmount}`, color: '#FF2C2CFF', show: discountAmount },
     { label: t('orderInfo.tag34'), value: `-S$ ${balanceAmount}`, color: '#FF2C2CFF', show: balanceAmount },
     { label: t('orderInfo.tag34'), value: `-S$ ${tempBalance}`, color: '#FF2C2CFF', show: allData?.isBalance },
-    { label: t('orderInfo.tag31'), value: `S$ ${taxAmount}`, color: '#E6A055FF', show: taxAmount },
-    { label: t('orderInfo.tag32'), value: `S$ ${feeAmount}`, color: '#E6A055FF', show: feeAmount },
+    { label: t('orderInfo.tag31'), value: `S$ ${temptaxAmount}`, color: '#E6A055FF', show: taxAmount },
+    { label: t('orderInfo.tag32'), value: `S$ ${tempfeeAmount}`, color: '#E6A055FF', show: feeAmount },
     { label: t('orderInfo.tag33'), value: `S$ ${realAmount}`, color: '#E6A055FF', show: realAmount },
     { label: t('orderInfo.tag33'), value: `S$ ${amount}`, color: '#E6A055FF', show: orderStatus === undefined },
   ];
