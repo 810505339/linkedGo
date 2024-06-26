@@ -215,7 +215,7 @@ const OrdersInfo = () => {
   /* 总的金额 */
   let amount: number | currency = currency(tempAmount).add(temptaxAmount).add(tempfeeAmount).value;
   /* 总的余额 */
-  const totalBalance = balance?.data?.totalBalance ?? 0
+  const totalBalance = balance?.data?.totalBalance ?? 0                                           
   /* 如果大于0证明余额多 */
   /* 临时减去的显示 */
   const tempBalance = currency(totalBalance).subtract(amount).value > 0 ? amount : currency(totalBalance).value;
