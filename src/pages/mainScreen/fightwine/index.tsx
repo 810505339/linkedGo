@@ -321,7 +321,7 @@ function createAvatar(people: number, avatarList: any[], bg: string = 'bg-[#E6A0
     return (<View className='relative w-8 h-8  overflow-hidden'>
       <BlurView
         style={{ position: 'absolute', bottom: 0, left: 0, right: 0, top: 0, zIndex: 10 }}
-        blurAmount={4}
+        blurAmount={1}
         blurType="light"
         reducedTransparencyFallbackColor="transparent"
 
