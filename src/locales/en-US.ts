@@ -32,7 +32,7 @@ export default {
     UserRule: 'User Agreement',
     AccountLoginPwd: 'Password',
     AccountPayPwd: 'Payment Password',
-    MyActive: 'My events',
+    MyActive: 'My Events',
     Customer: 'Contact us',
     Orders: 'Orders',
     Coupons: 'Coupons',

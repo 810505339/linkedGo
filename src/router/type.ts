@@ -67,7 +67,7 @@ export type UsertackParamList = {
     submit?: (parmas: any) => Promise<{ orderId: string }>,  /* 优惠券id */
     couponId?: string, /* 优惠券id */
     useScope?: 'TICKET' | 'WINE_PARTY' | 'BOOTH' | 'ACTIVITY' /* 使用范围 */
-    storeId?: string
+    storeId: string
     ticketId?: string
     activityId?: string
     boothId?: string

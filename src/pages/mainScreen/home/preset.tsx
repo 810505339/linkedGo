@@ -110,6 +110,14 @@ const Preset = () => {
   const toUrl = () => {
     const feeRate = findIndex(shop.select.id)?.feeRate ?? 0
     const taxRate = findIndex(shop.select.id)?.taxRate ?? 0
+
+    console.log(taxRate, 'taxRate')
+
+    const feeAmount = currency(data.total).multiply(feeRate).divide(100)
+    const taxAmount = currency(data.total + feeAmount.value).multiply(taxRate).divide(100)
+
+    console.log(feeAmount, 'feeAmount')
+
     const beginTime = data.selectArea?.businessDateVOS?.[0].beginTime
 
     console.log(data.selectArea, 'businessDateVOS');
@@ -157,8 +165,9 @@ const Preset = () => {
       ticketId: data.ticketId, //门票id
       storeId: shop.select.id,
       amount: `${data.total}`,//需要支付多少钱
-      taxAmount: currency(data.total).multiply(taxRate).divide(100),
-      feeAmount: currency(data.total).multiply(feeRate).divide(100),
+      //feeAmount
+      taxAmount: taxAmount,
+      feeAmount: feeAmount,
 
     });
   };
