@@ -106,7 +106,9 @@ const Result = () => {
       feeAmount: data.feeAmount,
       balanceAmount: data.balanceAmount,
       discountAmount: data.discountAmount,
-      needCheckPayPassword: data.needCheckPayPassword
+      needCheckPayPassword: data.needCheckPayPassword,
+      payMethod: data?.payMethod,
+      otherAmount: data?.otherAmount
     });
   };
 
