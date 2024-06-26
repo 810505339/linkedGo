@@ -13,7 +13,7 @@ const Homegroup = () => {
 
   const { t } = useTranslation();
   return <Stack.Group>
-    <Stack.Screen name="Dynamic" component={Dynamic} />
+    <Stack.Screen name="Dynamic" component={Dynamic} options={{ title: t('default.titleList.DynamicInfo') }} />
     <Stack.Screen name="Preset" options={{ title: t('default.titleList.bookTickets') }} component={Preset} />
     <Stack.Screen name="PresetRule" options={{ title: '' }} component={PresetRule} />
     <Stack.Screen name="DynamicInfo" component={DynamicInfo} options={{ title: t('default.titleList.DynamicInfo') }} />
