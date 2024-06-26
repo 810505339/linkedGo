@@ -24,7 +24,7 @@ export default {
     nav2: 'TICKET',
     nav3: 'VIP SOFA',
     nav4: 'BROADCST',
-    nav6: 'EVENT',
+    nav6: 'EVENTS',
   },
   user: {
     item1: 'Notification',
