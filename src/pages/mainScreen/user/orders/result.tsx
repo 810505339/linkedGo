@@ -6,6 +6,7 @@ import { NativeStackNavigationProp } from "@react-navigation/native-stack"
 import { getOrderDetail, tempPay } from "@api/order"
 import { getImage, IOrderType } from "./index"
 import { useTranslation } from "react-i18next"
+import useSelectShop from "@hooks/useSelectShop"
 
 const bg = require('@assets/imgs/user/result-bg.png')
 const card = require('@assets/imgs/user/result-card.png')
@@ -15,6 +16,7 @@ const Result = () => {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>()
   const route = useRoute<RouteProp<RootStackParamList, 'Result'>>();
   const { orderId } = route.params
+  const { snap, bottomSheetModalRef, shop, onPress, shopName, showShop } = useSelectShop();
   const { t } = useTranslation()
 
 
@@ -99,6 +101,7 @@ const Result = () => {
       realAmount: data.realAmount,
       orderStatus: data.orderStatus,
       orderId: orderId,
+      storeId: shop.select.id,
       taxAmount: data.taxAmount,
       feeAmount: data.feeAmount,
       balanceAmount: data.balanceAmount,

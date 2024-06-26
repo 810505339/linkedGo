@@ -7,6 +7,7 @@ import { loadLanguageStorage } from '@storage/language/action'
 /* http://114.67.231.163:9999 */
 // https://gateway.point2club.com/
 const baseUrl = 'https://gateway.point2club.com/';
+//const baseUrl = 'http://114.67.231.163:9999';
 export const H5 = 'https://m.point2club.com/'
 enum CODELIST {
 	TOKENCAN = '424',

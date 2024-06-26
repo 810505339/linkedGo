@@ -207,7 +207,7 @@ const OrdersInfo = () => {
   const tempAmount = !couponNum ? route.params?.amount : couponAmount?.data
   const feeRate = findIndex(storeId)?.feeRate ?? 0
   const taxRate = findIndex(storeId)?.taxRate ?? 0
-  const tempfeeAmount = Math.ceil(tempAmount * feeRate) / 100
+  const tempfeeAmount = Math.ceil(parseFloat(tempAmount) * feeRate) / 100
   const temptaxAmount = Math.ceil((parseFloat(tempAmount) + parseFloat(`${tempfeeAmount}`)) * taxRate) / 100
 
 
@@ -235,8 +235,8 @@ const OrdersInfo = () => {
     { label: t('orderInfo.tag13'), value: `-S$ ${discountAmount}`, color: '#FF2C2CFF', show: discountAmount },
     { label: t('orderInfo.tag34'), value: `-S$ ${balanceAmount}`, color: '#FF2C2CFF', show: balanceAmount },
     { label: t('orderInfo.tag34'), value: `-S$ ${tempBalance}`, color: '#FF2C2CFF', show: allData?.isBalance },
-    { label: t('orderInfo.tag31') + `%${taxRate}`, value: `S$ ${temptaxAmount}`, color: '#E6A055FF', show: taxAmount },
-    { label: t('orderInfo.tag32') + `%${feeRate}`, value: `S$ ${tempfeeAmount}`, color: '#E6A055FF', show: feeAmount },
+    { label: t('orderInfo.tag31') + ' ' + `${taxRate}%`, value: `S$ ${temptaxAmount}`, color: '#E6A055FF', show: taxAmount },
+    { label: t('orderInfo.tag32') + ' ' + `${feeRate}%`, value: `S$ ${tempfeeAmount}`, color: '#E6A055FF', show: feeAmount },
     { label: t('orderInfo.tag33'), value: `S$ ${realAmount}`, color: '#E6A055FF', show: realAmount },
     { label: t('orderInfo.tag33'), value: `S$ ${amount}`, color: '#E6A055FF', show: orderStatus === undefined },
   ];
