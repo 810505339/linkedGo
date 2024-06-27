@@ -27,6 +27,7 @@ import { useLayer } from '@hooks/useLayer';
 import ShareLayer from './components/ShareLayer';
 
 import MyModal from '@components/modal';
+import Loading from '@components/baselayout/loading';
 
 
 const femaleAvatarBg = require('@assets/imgs/fightwine/femaleAvatarBg.png');
@@ -161,7 +162,8 @@ const Appraise = forwardRef((props: any, childRef: any) => {
     visible: boolean,
     option: ImageLibraryOptions,
     selectImage?: IUpdateImage,
-    content: string
+    content: string,
+    loading: boolean
   }
   const [data, setData] = useImmer<IData>({
     option: {
@@ -174,6 +176,7 @@ const Appraise = forwardRef((props: any, childRef: any) => {
     visible: false,
     selectImage: undefined,
     content: '',
+    loading: false
   });
 
   const { handleChooseImage, imageList, deleteImage } = useUpdateFile(data.option);
@@ -187,9 +190,14 @@ const Appraise = forwardRef((props: any, childRef: any) => {
   /* 点击上传酒局评价 */
   const onChooseImage = async () => {
     console.log(4 - imageList.length, 'imageList.length');
+    setData(draft => {
+      draft.loading = true;
+    })
     const res = await handleChooseImage();
     console.log(res, '这是上传的图片哦');
-
+    setData(draft => {
+      draft.loading = false;
+    })
   };
   /* 点击删除 */
   const onDeleteImage = (id: string) => {
@@ -363,6 +371,7 @@ const Appraise = forwardRef((props: any, childRef: any) => {
     }
 
 
+    {data.loading && <Loading />}
 
   </View >);
 })
@@ -777,9 +786,10 @@ const FightwineDetail = () => {
       }
     }
 
-    return <View className="h-14  flex-col justify-center">
-      <Divider />
-      <View className="px-5 mt-2">
+
+
+    return NavButton() && <View className="h-16  flex flex-row items-center  ">
+      <View className="px-5  w-full">
         <NavButton />
       </View>
     </View>
@@ -805,16 +815,11 @@ const FightwineDetail = () => {
 
     }
   }
-  /* loading */
-  const Loading = () => {
-    return <View className="flex">
-      <ActivityIndicator color="#EE2737FF" />
-    </View>;
-  };
 
 
 
-  console.log(res, 'res')
+
+
 
   useEffect(() => {
     navigation.setOptions({
