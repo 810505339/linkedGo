@@ -17,7 +17,8 @@ export default {
     label4: 'Pax',
     label5: 'Rules',
     label6: 'Please select ticket',
-    save: "save success"
+    save: "save success",
+    time: "change time"
   },
   home: {
     nav1: 'SHARE SOFA',

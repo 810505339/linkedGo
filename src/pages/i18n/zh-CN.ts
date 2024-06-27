@@ -16,7 +16,8 @@ export default {
     label4: '选择数量',
     label5: '预定规则',
     label6: '选择门票',
-    save: "保存成功"
+    save: "保存成功",
+    time: "选择时间"
 
 
   },

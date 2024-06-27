@@ -238,6 +238,10 @@ const LaunchWine = () => {
     });
   };
 
+  console.log(!(!data.areaId), '11')
+
+  const disabledBtn = data.partyName == '' || data.areaId == undefined
+
 
 
   return (<BaseLayout>
@@ -259,7 +263,7 @@ const LaunchWine = () => {
       <View className="h-16  flex-col justify-center ">
         <Divider />
         <View className="flex-row  px-5  my-2">
-          <Button mode={'elevated'} className="bg-[#EE2737FF] w-full" textColor="#0C0C0CFF" onPress={handleNext} >
+          <Button mode={'elevated'} className="bg-[#EE2737FF] w-full" disabled={disabledBtn} textColor="#0C0C0CFF" onPress={handleNext} >
             {t('launchwine.tag7')}
           </Button>
         </View>

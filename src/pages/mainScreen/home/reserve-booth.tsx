@@ -132,7 +132,7 @@ const ReserveBooth = () => {
     });
 
   }
-
+  const disabled = data.selectArea?.id == undefined
   return (<BaseLayout loading={data.loading}>
     <CustomModal ref={bottomSheetModalRef} data={snap.shopList} selectValue={shop.select.id} onPress={onPress} headerText={t('common.label1')} snapPoints={['50%']} />
     <View className="flex-1">
@@ -182,7 +182,7 @@ const ReserveBooth = () => {
         <View className="h-16  flex-col justify-center ">
           <Divider />
           <View className="flex-row  px-5  my-2">
-            <Button mode={'elevated'} className="bg-[#EE2737FF] w-full" textColor="#0C0C0CFF" onPress={toUrl} >{t('confirmBooth.btn1')}</Button>
+            <Button mode={'elevated'} className="bg-[#EE2737FF] w-full" textColor="#0C0C0CFF" onPress={toUrl} disabled={disabled} >{t('confirmBooth.btn1')}</Button>
           </View>
         </View>
       </SafeAreaView>

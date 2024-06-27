@@ -16,6 +16,7 @@ import MyModal from '@components/modal';
 import { useRequest } from 'ahooks';
 import Toast from 'react-native-toast-message';
 import useFindLanguage from '../user/hooks/useFindLanguage';
+import useSelectShop from '@hooks/useSelectShop';
 
 
 
@@ -50,7 +51,7 @@ const HomeScreen = () => {
     useNavigation<NativeStackNavigationProp<UsertackParamList>>();
   const { data: language, findlanguage } = useFindLanguage()
 
-
+  const { snap, bottomSheetModalRef, shop, onPress, shopName, init: shopInit } = useSelectShop(false);
 
   const { imageSize, getSize } = useImageSize()
   const { imageSize: imageSize1, getSize: getSize1 } = useImageSize()
@@ -107,6 +108,7 @@ const HomeScreen = () => {
 
   async function onRefresh() {
     setIsRefreshing(true)
+    await shopInit()
     await getcarouselListApi()
     setIsRefreshing(false)
   }
