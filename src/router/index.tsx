@@ -70,7 +70,7 @@ const AppNavigator = () => {
         {FightGroup()}
 
 
-        <Stack.Screen name="CouponsModal" component={CouponsModal} options={{ presentation: 'modal' }} />
+        <Stack.Screen name="CouponsModal" component={CouponsModal} options={{ presentation: 'modal', title: '' }} />
 
       </Stack.Navigator>
     </NavigationContainer>

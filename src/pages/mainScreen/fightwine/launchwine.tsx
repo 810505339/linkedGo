@@ -242,7 +242,7 @@ const LaunchWine = () => {
 
   return (<BaseLayout>
     <CustomModal ref={bottomSheetModalRef} data={snap.shopList} selectValue={shop.select.id} onPress={onPress} headerText={t('common.label1')} snapPoints={['50%']} />
-    <ScrollView className="pt-5">
+    <ScrollView className="pt-5 px-5">
       {list.map((item, i) => (
         <View className="mb-8" key={i}>
           <Text className="text-xs font-bold mb-2.5">{item.label}</Text>

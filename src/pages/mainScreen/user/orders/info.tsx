@@ -419,13 +419,13 @@ const OrdersInfo = () => {
 
 
   const SetPwd = allData.isShowPwd && (<View className='bg-[#222222]  rounded-2xl px-6 py-6' >
-    <Text className=' text-center font-bold text-lg'>{t('oderInfo.modal4')}</Text>
-    <Text className=' text-center mt-2.5 mb-5'>{t('oderInfo.modal5')}{phone}</Text>
+    <Text className=' text-center font-bold text-lg'>{t('orderInfo.modal4')}</Text>
+    <Text className=' text-center mt-2.5 mb-5'>{t('orderInfo.modal5')}{phone}</Text>
     <View>
-      <TextInput label={t('oderInfo.modal6')} mode={'outlined'} dense={true} maxLength={4} className=' mb-6' onChangeText={(text) => { setAllData((draft) => { draft.verificationCode = text }) }} />
-      <PswInput label={t('oderInfo.modal7')} mode={'outlined'} dense={true} secureTextEntry={true} keyboardType='numeric' maxLength={6} onChangeText={(text) => { setAllData((draft) => { draft.payPassword = text }) }} className=' mb-6' />
-      <PswInput label={t('oderInfo.modal8')} mode={'outlined'} dense={true} secureTextEntry={true} keyboardType='numeric' maxLength={6} onChangeText={(text) => { setAllData((draft) => { draft.newPayPassword = text }) }} className=' mb-6' />
-      <Text className=' opacity-75'>* {t('oderInfo.modal9')}</Text>
+      <TextInput label={t('orderInfo.modal6')} mode={'outlined'} dense={true} maxLength={4} className=' mb-6' onChangeText={(text) => { setAllData((draft) => { draft.verificationCode = text }) }} />
+      <PswInput label={t('orderInfo.modal7')} mode={'outlined'} dense={true} secureTextEntry={true} keyboardType='numeric' maxLength={6} onChangeText={(text) => { setAllData((draft) => { draft.payPassword = text }) }} className=' mb-6' />
+      <PswInput label={t('orderInfo.modal8')} mode={'outlined'} dense={true} secureTextEntry={true} keyboardType='numeric' maxLength={6} onChangeText={(text) => { setAllData((draft) => { draft.newPayPassword = text }) }} className=' mb-6' />
+      <Text className=' opacity-75'>* {t('orderInfo.modal9')}</Text>
     </View>
     <View className='mt-10'>
       <Button mode="outlined"

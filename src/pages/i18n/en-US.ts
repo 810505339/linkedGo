@@ -185,7 +185,7 @@ export default {
     tag4: 'Input Verification Code',
     tag5: 'No verification code received?',
     tag6: 'Resend',
-    tag7: '《Terms Service》',
+    tag7: '《User Agreement》',
     tag8: '《Privacy Policy》',
     tag9: 'you can resend the message again',
     tag10: 'Enter Password',

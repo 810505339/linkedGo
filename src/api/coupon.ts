@@ -3,6 +3,9 @@ import service from './base';
 
 /* 查询用户可用的优惠列表 */
 export const getCustomerCoupon = async (data: any) => {
+
+
+  console.log('请求参数', data)
   const { data: res } = await service({
     url: '/operation/coupon/getCustomerCoupon',
     method: 'get',

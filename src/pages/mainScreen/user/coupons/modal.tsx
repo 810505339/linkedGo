@@ -61,6 +61,8 @@ const FirstRoute = (props: IFirstRouteProps) => {
     setList(list)
   }
 
+
+
   const isShow = list.length > 0
   return <View className="mt-10 relative flex-1 " >
     <CustomFlatList getList={getList}
