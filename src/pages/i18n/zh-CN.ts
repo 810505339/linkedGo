@@ -337,9 +337,9 @@ export default {
       text1: '全部',
     },
     tagList: {
-      tag1: '# 需报名',
-      tag2: '# 免费',
-      tag3: '# 收费',
+      tag1: '需报名',
+      tag2: '免费',
+      tag3: '收费',
     },
     info: {
       tag1: '活动时间',

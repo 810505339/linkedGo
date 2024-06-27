@@ -331,9 +331,9 @@ export default {
       text1: 'all',
     },
     tagList: {
-      tag1: '# Registration required',
-      tag2: '# gratis',
-      tag3: '# toll',
+      tag1: 'Registration required',
+      tag2: 'gratis',
+      tag3: 'toll',
     },
     info: {
       tag1: 'Event time',
