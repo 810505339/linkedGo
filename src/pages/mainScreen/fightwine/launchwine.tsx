@@ -18,7 +18,7 @@ import CheckSex from '@components/baselayout/checkSex';
 import { tempPartyOpenStatus } from '@api/fightwine'
 import { useRequest } from 'ahooks';
 import CustomModal from '@components/custom-modal';
-import { SafeAreaView } from 'react-native-safe-area-context';
+
 const icon = require('@assets/imgs/home/preset/icon.png');
 var customParseFormat = require('dayjs/plugin/customParseFormat')
 dayjs.extend(customParseFormat)
@@ -259,16 +259,14 @@ const LaunchWine = () => {
 
     </ScrollView>
 
-    <SafeAreaView>
-      <View className="h-16  flex-col justify-center ">
-        <Divider />
-        <View className="flex-row  px-5  my-2">
-          <Button mode={'elevated'} className="bg-[#EE2737FF] w-full" disabled={disabledBtn} textColor="#0C0C0CFF" onPress={handleNext} >
-            {t('launchwine.tag7')}
-          </Button>
-        </View>
+    <View className="h-16  flex-col justify-center ">
+      <Divider />
+      <View className="flex-row  px-5  my-2">
+        <Button mode={'elevated'} className="bg-[#EE2737FF] w-full" disabled={disabledBtn} textColor="#0C0C0CFF" onPress={handleNext} >
+          {t('launchwine.tag7')}
+        </Button>
       </View>
-    </SafeAreaView>
+    </View>
     <CheckSex />
   </BaseLayout>);
 };

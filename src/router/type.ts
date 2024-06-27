@@ -10,6 +10,7 @@ export type RootStackParamList = {
     boothId?: string
     winePartyMode?: string
     useScope?: string //使用范围
+    couponId?: string //回显
   },
   LoginOrRegister: {
     authCode?: string

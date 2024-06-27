@@ -7,7 +7,7 @@ import CustomFlatList from '@components/custom-flatlist';
 
 import { useTranslation } from 'react-i18next';
 import { TabView, SceneMap, SceneRendererProps, NavigationState } from 'react-native-tab-view';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { RootStackParamList } from '@router/type';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -29,7 +29,7 @@ type IFirstRouteProps = {
 }
 
 const FirstRoute = (props: IFirstRouteProps) => {
-  const { available, params } = props;
+  const { available, params, } = props;
   const { t } = useTranslation();
   const [checked, setChecked] = useState('');
   const [list, setList] = useState([]);
@@ -60,6 +60,10 @@ const FirstRoute = (props: IFirstRouteProps) => {
   const getList = (list: any) => {
     setList(list)
   }
+
+  useEffect(() => {
+    setChecked(params?.couponId)
+  }, [params?.couponId])
 
 
 

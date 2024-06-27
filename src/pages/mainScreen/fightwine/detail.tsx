@@ -25,7 +25,7 @@ import currency from 'currency.js';
 import useSelectShop from '@hooks/useSelectShop';
 import { useLayer } from '@hooks/useLayer';
 import ShareLayer from './components/ShareLayer';
-import { SafeAreaView } from 'react-native-safe-area-context';
+
 import MyModal from '@components/modal';
 
 
@@ -885,7 +885,7 @@ const FightwineDetail = () => {
         {(status === STATE.已入场 || status === STATE.已结束) && <Appraise item={res} ref={AppraiseDom} />}
       </ScrollView>
 
-      {!loading && <SafeAreaView><NavBar /></SafeAreaView>}
+      {!loading && <NavBar />}
 
       {/* 踢人 */}
       {<Dialog visible={dialog.visible} confirm={confirm} onDismiss={cancel} cancelText={dialog.cancelText} confirmText={dialog.confirmText} dismissable={true}>

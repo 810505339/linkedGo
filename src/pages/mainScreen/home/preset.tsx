@@ -307,16 +307,13 @@ const Preset = () => {
           </Panel>
         </View>
       </ScrollView>
-      <SafeAreaView>
-        <View className="h-14  flex-col justify-center">
-          <Divider />
-          <View className="flex-row items-center justify-between px-5 mt-1">
-            <Text style={{ fontSize: 10 }}>{t('preset.label3')}<Text className="text-[#E6A055FF]">S$</Text><Text className="text-[#E6A055FF] text-2xl font-bold" >{data.total}</Text></Text>
-            <Button mode={'elevated'} className="bg-[#EE2737FF]" textColor="#0C0C0CFF" onPress={toUrl} disabled={!data.num} >{t('common.btn2')}</Button>
-          </View>
+      <View className="h-14  flex-col justify-center">
+        <Divider />
+        <View className="flex-row items-center justify-between px-5 mt-1">
+          <Text style={{ fontSize: 10 }}>{t('preset.label3')}<Text className="text-[#E6A055FF]">S$</Text><Text className="text-[#E6A055FF] text-2xl font-bold" >{data.total}</Text></Text>
+          <Button mode={'elevated'} className="bg-[#EE2737FF]" textColor="#0C0C0CFF" onPress={toUrl} disabled={!data.num} >{t('common.btn2')}</Button>
         </View>
-      </SafeAreaView>
-
+      </View>
 
     </View>
   </BaseLayout>);

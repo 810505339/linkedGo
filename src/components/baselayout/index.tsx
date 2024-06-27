@@ -1,6 +1,6 @@
 import { FC, PropsWithChildren, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ImageBackground, Keyboard, View, type ImageSourcePropType } from 'react-native';
+import { ImageBackground, Keyboard, SafeAreaView, View, type ImageSourcePropType } from 'react-native';
 import { StatusBar, NativeModules, Platform } from 'react-native';
 import { Text } from 'react-native-paper';
 import Loading from './loading';
@@ -46,15 +46,18 @@ const BaseLayout: FC<PropsWithChildren<IProps>> = ({ source = defaultBg, classNa
 
   const classNames = `flex-1 bg-[#101010FF] ${className}`;
   return (
-    <View className={classNames} onStartShouldSetResponder={handleUnhandledTouches}>
-      {loading && <Loading />}
-      {source && <ImageBackground source={source} resizeMode="cover" className="absolute left-0 right-0 bottom-0 -z-10 top-0" />}
-      {showAppBar && <View style={{ paddingTop: statusBarHeight }} />}
-      {/* {showNoMore ? <RendernoMoreData /> : children} */}
-      {showNoMore ? <RendernoMoreData /> : children}
-      {/* {showNoMore ? <RendernoMoreData /> : children} */}
+    <SafeAreaView className='border' style={{ flex: 1 }}>
+      <View className={classNames} onStartShouldSetResponder={handleUnhandledTouches}>
+        {loading && <Loading />}
+        {source && <ImageBackground source={source} resizeMode="cover" className="absolute left-0 right-0 bottom-0 -z-10 top-0" />}
+        {showAppBar && <View style={{ paddingTop: statusBarHeight }} />}
+        {/* {showNoMore ? <RendernoMoreData /> : children} */}
+        {showNoMore ? <RendernoMoreData /> : children}
+        {/* {showNoMore ? <RendernoMoreData /> : children} */}
 
-    </View >
+      </View >
+    </SafeAreaView>
+
   );
 };
 

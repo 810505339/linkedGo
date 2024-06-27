@@ -16,7 +16,7 @@ import { useLoginUser } from '../../hooks/useLoginUser';
 import { setRepliedMessage, useTUIChatContext } from '../../store';
 import { MessageService } from './message_service';
 import { VoiceButton } from './tui_message_voice_button';
-import runes from 'runes';
+
 import { useRepliedMessage } from '../../store/TUIChat/selector';
 import { MessageUtils } from '../../utils/message';
 import FastImage from 'react-native-fast-image';

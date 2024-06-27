@@ -16,7 +16,7 @@ import { getGenericPassword, UserCredentials } from 'react-native-keychain';
 import useSelectShop from '@hooks/useSelectShop';
 import { findIndex } from '@store/shopStore';
 import currency from 'currency.js';
-import { SafeAreaView } from 'react-native-safe-area-context';
+
 import MyModal from '@components/modal';
 import Toast from 'react-native-toast-message';
 
@@ -310,23 +310,19 @@ const DynamicInfo = () => {
     </ScrollView>
 
     {
-      whetherSignUp && <SafeAreaView>
-        <View className="h-14 px-5">
-          <Divider />
-          <View className="flex-row items-center">
-            <RenderBtn />
-            <IconButton icon="upload" size={22} mode="contained" containerColor={'#EE2737FF'} iconColor={'#1A1311FF'} onPress={onShare} />
-          </View>
+      whetherSignUp && <View className="h-14 px-5">
+        <Divider />
+        <View className="flex-row items-center">
+          <RenderBtn />
+          <IconButton icon="upload" size={22} mode="contained" containerColor={'#EE2737FF'} iconColor={'#1A1311FF'} onPress={onShare} />
         </View>
-      </SafeAreaView>
+      </View>
     }
 
     {
-      !whetherSignUp && <SafeAreaView>
-        <View className="absolute right-0 bottom-1/3 z-50">
-          <IconButton icon="upload" size={22} mode="contained" containerColor={'#EE2737FF'} iconColor={'#1A1311FF'} onPress={onShare} />
-        </View>
-      </SafeAreaView>
+      !whetherSignUp && <View className="absolute right-0 bottom-1/3 z-50">
+        <IconButton icon="upload" size={22} mode="contained" containerColor={'#EE2737FF'} iconColor={'#1A1311FF'} onPress={onShare} />
+      </View>
     }
 
 

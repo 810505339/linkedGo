@@ -21,7 +21,7 @@ import PswInput from '@pages/LoginScreen/set-password/components/pswInput'
 import usesetPwd from './hooks/usesetPwd';
 import currency from 'currency.js'
 import { getCustomerCoupon } from '@api/coupon';
-import { SafeAreaView } from 'react-native-safe-area-context';
+
 import MyModal from '@components/modal';
 import { findIndex } from '@store/shopStore';
 cssInterop(Text, {
@@ -235,8 +235,8 @@ const OrdersInfo = () => {
     { label: t('orderInfo.tag13'), value: `-S$ ${discountAmount}`, color: '#FF2C2CFF', show: discountAmount },
     { label: t('orderInfo.tag34'), value: `-S$ ${balanceAmount}`, color: '#FF2C2CFF', show: balanceAmount },
     { label: t('orderInfo.tag34'), value: `-S$ ${tempBalance}`, color: '#FF2C2CFF', show: allData?.isBalance },
-    { label: t('orderInfo.tag31') + ' ' + `${taxRate}%`, value: `S$ ${temptaxAmount}`, color: '#E6A055FF', show: taxAmount },
-    { label: t('orderInfo.tag32') + ' ' + `${feeRate}%`, value: `S$ ${tempfeeAmount}`, color: '#E6A055FF', show: feeAmount },
+    { label: t('orderInfo.tag31') + ' ' + `${taxRate}%`, value: `S$ ${temptaxAmount}`, color: '#E6A055FF', show: true },
+    { label: t('orderInfo.tag32') + ' ' + `${feeRate}%`, value: `S$ ${tempfeeAmount}`, color: '#E6A055FF', show: true },
     { label: t('orderInfo.tag33'), value: `S$ ${realAmount}`, color: '#E6A055FF', show: realAmount },
     { label: t('orderInfo.tag33'), value: `S$ ${amount}`, color: '#E6A055FF', show: orderStatus === undefined },
   ];
@@ -248,6 +248,7 @@ const OrdersInfo = () => {
       boothId: boothId,
       winePartyMode: winePartyMode,
       storeId: storeId,
+      couponId: route.params?.couponId
     });
   };
   /* 点击取消订单确定 */
@@ -532,9 +533,7 @@ const OrdersInfo = () => {
         </Panel>
       </View>
     </ScrollView>}
-    <SafeAreaView>
-      <Nav />
-    </SafeAreaView>
+    <Nav />
 
     {
       orderStatus === ORDERSATUS.未支付 && <Dialog visible={allData.visible} confirm={confirm} onDismiss={onDismiss} >

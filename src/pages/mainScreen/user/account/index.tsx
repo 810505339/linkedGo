@@ -13,7 +13,7 @@ import { detailsById } from '@api/user';
 import { CommonActions } from '@react-navigation/native';
 import { cssInterop } from 'nativewind';
 import { useTranslation } from 'react-i18next';
-import { SafeAreaView } from 'react-native-safe-area-context';
+
 import { logout } from '@api/login';
 import { useStore } from '@store/versionStore'
 
@@ -118,18 +118,16 @@ const Account = () => {
 
     </ScrollView>
 
-    <SafeAreaView >
-      <View className="p-5   bottom-0 left-0 right-0 fixed">
-        <Button mode="outlined" className='w-full' style={{ borderColor: '#EE2737', borderRadius: 33 }}
-          labelStyle={{
-            fontSize: 18,
-            color: '#EE2737',
-            fontWeight: '600',
-          }} onPress={handleOut} >
-          {t('account.btn1')}
-        </Button>
-      </View>
-    </SafeAreaView>
+    <View className="p-5   bottom-0 left-0 right-0 fixed">
+      <Button mode="outlined" className='w-full' style={{ borderColor: '#EE2737', borderRadius: 33 }}
+        labelStyle={{
+          fontSize: 18,
+          color: '#EE2737',
+          fontWeight: '600',
+        }} onPress={handleOut} >
+        {t('account.btn1')}
+      </Button>
+    </View>
 
   </BaseLayout>);
 };

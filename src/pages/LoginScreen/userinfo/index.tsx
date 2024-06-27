@@ -1,6 +1,6 @@
 import BaseLayout from '@components/baselayout';
 import { useEffect, useRef, useState } from 'react';
-import { View, Image, Pressable, TouchableWithoutFeedback, NativeSyntheticEvent, TextInputFocusEventData, ImageSourcePropType, TouchableOpacity } from 'react-native';
+import { View, Image, Pressable, TouchableWithoutFeedback, NativeSyntheticEvent, TextInputFocusEventData, ImageSourcePropType, TouchableOpacity, ScrollView } from 'react-native';
 import { IconButton, Button, Text, TextInput, TouchableRipple } from 'react-native-paper';
 import { Asset, launchImageLibrary } from 'react-native-image-picker';
 import DateTimePicker, { DateTimePickerEvent } from '@react-native-community/datetimepicker';
@@ -17,6 +17,7 @@ import { useRequest } from 'ahooks';
 import { detailsById } from '@api/user';
 import { cssInterop } from 'nativewind';
 import { useTranslation } from 'react-i18next';
+import MyDateTimePicker from '@components/DateTimePicker';
 
 const bgImage = require('@assets/imgs/login/login-register-bg.png');
 const red = require('@assets/imgs/nav/red.png')
@@ -35,7 +36,7 @@ const UserInfo = () => {
       routes: [
         { name: 'HomeTabs' },
       ],
-    });   
+    });
   }
 
   useEffect(() => {
@@ -168,6 +169,16 @@ const UserInfo = () => {
 
   }
 
+  //选择日期
+  const onDateChange = (selectDate?: Date) => {
+    const currentDate = selectDate || data.date;
+    setdateTimer(draft => {
+      draft.date = currentDate;
+      draft.show = false;
+    });
+  };
+
+
   // 上传图片api调用
   async function uploadImage(params: Asset) {
     console.log(params.uri);
@@ -201,7 +212,7 @@ const UserInfo = () => {
 
   return (
     <BaseLayout source={bgImage} >
-      <View className="mt-10 mx-5  flex-1"  >
+      <ScrollView className="mt-10 mx-5  flex-1" >
         <View>
           <Text className="mb-2">{t('userInfo.tag1')}</Text>
           <Pressable onPress={handleChooseImage} >
@@ -214,31 +225,31 @@ const UserInfo = () => {
         </View>
         <View className="mt-10">
           <Text className="mb-2">{t('userInfo.tag3')}</Text>
-          {dateTimer.show && <DateTimePicker onChange={onChange} value={dateTimer.date} />}
-
+          {dateTimer.show && <MyDateTimePicker onChange={onDateChange} date={dateTimer.date} open={dateTimer.show} setOpen={(show: boolean) => { setdateTimer((draft) => { draft.show = show }) }} mode="date" minimumDate={null} />}
           <TextInput className="bg-transparent" showSoftInputOnFocus={false} value={formatDay} onFocus={onFocus} />
 
         </View>
 
-        <View className="mt-10">
+        <View className="mt-10 pb-10">
           <Text className="mb-2">{t('userInfo.tag4')}</Text>
           <TextInput className="bg-transparent" value={personalSignature} onChangeText={(t) => setPersonalSignature(t)} />
 
         </View>
-        <View className="h-32 mt-auto  justify-start">
-          <Button
-            mode="outlined"
-            style={{
-              borderColor: '#FFFFFF',
-              borderRadius: 33,
-            }}
-            labelStyle={{ fontSize: 18, color: '#FFFFFF', fontWeight: '600' }}
-            contentStyle={{ height: 50 }}
-            onPress={handleNext}
-          >
-            {t('userInfo.tag5')}
-          </Button>
-        </View>
+      </ScrollView>
+
+      <View className=" mt-auto  justify-start  mx-5">
+        <Button
+          mode="outlined"
+          style={{
+            borderColor: '#FFFFFF',
+            borderRadius: 33,
+          }}
+          labelStyle={{ fontSize: 18, color: '#FFFFFF', fontWeight: '600' }}
+          contentStyle={{ height: 50 }}
+          onPress={handleNext}
+        >
+          {t('userInfo.tag5')}
+        </Button>
       </View>
     </BaseLayout>);
 

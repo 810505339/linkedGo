@@ -17,7 +17,7 @@ import { useTranslation } from 'react-i18next';
 import { useEffect } from 'react';
 import MyDateTimePicker from '@components/DateTimePicker';
 import Toast from 'react-native-toast-message';
-import { SafeAreaView } from 'react-native-safe-area-context';
+
 var customParseFormat = require('dayjs/plugin/customParseFormat')
 dayjs.extend(customParseFormat)
 const card_2 = require('@assets/imgs/base/card_2.png');
@@ -178,14 +178,12 @@ const ReserveBooth = () => {
           </Panel>
         </ScrollView>
       </View>
-      <SafeAreaView>
-        <View className="h-16  flex-col justify-center ">
-          <Divider />
-          <View className="flex-row  px-5  my-2">
-            <Button mode={'elevated'} className="bg-[#EE2737FF] w-full" textColor="#0C0C0CFF" onPress={toUrl} disabled={disabled} >{t('confirmBooth.btn1')}</Button>
-          </View>
+      <View className="h-16  flex-col justify-center ">
+        <Divider />
+        <View className="flex-row  px-5  my-2">
+          <Button mode={'elevated'} className="bg-[#EE2737FF] w-full" textColor="#0C0C0CFF" onPress={toUrl} disabled={disabled} >{t('confirmBooth.btn1')}</Button>
         </View>
-      </SafeAreaView>
+      </View>
 
     </View>
   </BaseLayout>);
