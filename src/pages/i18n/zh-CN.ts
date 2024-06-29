@@ -323,6 +323,7 @@ export default {
     btn1: '退出账号',
     set1: '已设置',
     set2: '未设置',
+    set3: '未绑定',
   },
   agreement: {
     tag1: '用户协议',

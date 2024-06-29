@@ -30,12 +30,11 @@ const Account = () => {
       console.log(res);
 
       setData((draft) => {
-        draft.info[0].description = res.data?.phone ?? t('account.set2');
+        draft.info[0].description = '+' + res?.data?.phoneAreaCode + ' ' + res.data?.phone ?? t('account.set2');
         draft.info[1].description = res.data?.setPassword ? t('account.set1') : t('account.set2');
         draft.info[2].description = res.data?.setPayPassword ? t('account.set1') : t('account.set2');
         draft.third[0].description = res.data?.wxOpenid ?? t('account.set2');
-        // draft.third[0].description = res.data?.wxOpenid ? '已设置' : '未设置';
-        // draft.third[0].description = res.data?.wxOpenid ? '已设置' : '未设置';
+
       })
 
     }
@@ -46,7 +45,7 @@ const Account = () => {
   const [data, setData] = useImmer({
     refreshing: false,
     info: [
-      { id: 'AccountPhone', title: t('account.tag2'), description: t('account.set2') },
+      { id: '', title: t('account.tag2'), description: t('account.set2') },
       { id: 'AccountLoginPwd', title: t('account.tag3'), description: t('account.set2') },
       { id: 'AccountPayPwd', title: t('account.tag4'), description: t('account.set2') },
       { id: 'Cancellation', title: t('account.tag5') },
@@ -56,7 +55,7 @@ const Account = () => {
       // { id: '1', title: 'Google', description: '未设置' },
       // { id: '2', title: 'Facebook', description: '未设置' },
       // { id: '3', title: 'X', description: '未设置' },
-      { id: '4', title: 'WeChat', description: t('account.set2') },
+      { id: '4', title: 'WeChat ID', description: t('account.set3') },
     ],
   });
 
@@ -78,12 +77,16 @@ const Account = () => {
 
   }
   const handleItemPress = (item: any) => {
-    navigation.navigate(item.id);
+    if (item.id) {
+      navigation.navigate(item.id);
+    }
+
   };
   const right = (item: any) => {
+
     return (<View className=" flex-row items-center">
       <Text className="text-[#ffffff7f] font-light text-xs">{item.description}</Text>
-      <List.Icon icon="chevron-right" color="#ffffff7f" />
+      {item.id ? <List.Icon icon="chevron-right" color="#ffffff7f" /> : null}
     </View>);
 
   };

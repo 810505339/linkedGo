@@ -20,6 +20,7 @@ export default {
     save: "save success",
     time: "change time",
     set: 'Set Success',
+
   },
   home: {
     nav1: 'SHARE SOFA',
@@ -324,6 +325,7 @@ export default {
     btn1: 'Log out',
     set1: 'have set',
     set2: 'Is not set',
+    set3: 'Is not set',
   },
   agreement: {
     tag1: 'User Agreement',

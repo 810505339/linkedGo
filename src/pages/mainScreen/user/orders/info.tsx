@@ -105,7 +105,7 @@ const OrdersInfo = () => {
     visible: false,
     playType: 'PayNow',
     /* 未设置支付密码弹窗 */
-    psdVisible: true,
+    psdVisible: false,
     /* 设置支付密码弹窗 */
     isPsdVisible: false,
     //设置余额支付
