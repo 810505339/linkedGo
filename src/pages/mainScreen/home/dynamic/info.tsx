@@ -42,7 +42,8 @@ const DynamicInfo = () => {
   const navigation = useNavigation<ScreenNavigationProp<'DynamicInfo'>>();
   const { t } = useTranslation();
   // const { id, tagList, title, content, publishDate, pageView, source: img } = route.params;
-  const { id } = route.params;
+  const { id = '0' } = route.params;
+
 
 
   const { width } = useWindowDimensions();
