@@ -1,6 +1,6 @@
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { useEffect, useRef, useState } from 'react';
-import { TouchableOpacity, View } from 'react-native';
+import { TouchableOpacity, TouchableWithoutFeedback, View } from 'react-native';
 import { Button, Checkbox, Text } from 'react-native-paper';
 import { TextInput } from 'react-native-paper';
 import { RootStackParamList } from '@router/type';
@@ -191,13 +191,15 @@ const LoginOrRegister = () => {
           <View className="flex-1 ">
             <Text className="text-[#ffffff]">
               {t('login.tag11')}
-              <TouchableOpacity onPress={() => toRule('u')}>
-                <Text className="text-[#EE2737]">{t('login.tag7')}</Text>
-              </TouchableOpacity>
+
+              <TouchableWithoutFeedback onPress={() => toRule('u')} style={{ marginBottom: 10 }}>
+                <Text className="text-[#EE2737]" >{t('login.tag7')}</Text>
+              </TouchableWithoutFeedback>
               {t('login.tag12')}
-              <TouchableOpacity onPress={() => toRule('p')}>
+
+              <TouchableWithoutFeedback onPress={() => toRule('p')} >
                 <Text className="text-[#EE2737]">{t('login.tag8')}</Text>
-              </TouchableOpacity>
+              </TouchableWithoutFeedback>
 
             </Text>
           </View>
