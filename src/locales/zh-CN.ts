@@ -20,7 +20,7 @@ export default {
     Booths: '发起酒局',
     FightwineDetail: '酒局详情',
     Radio: '广播',
-    DynamicInfo: '动态详情',
+    DynamicInfo: '0.2动态',
     SystemMessage: '系统消息',
     SystemMessageInfo: '系统消息',
     Account: '账号与安全',

@@ -483,18 +483,7 @@ const OrdersInfo = () => {
           </TouchableOpacity>)}
           <Divider />
 
-          {/* 余额支付 */}
-          {orderStatus === undefined && totalBalance > 0 && <View className="mt-4">
-            <View className='flex-row items-center justify-between mb-2'>
-              <Text>{t('orderInfo.modal1')}</Text>
-              <RadioButton.Android value="first" status={allData.isBalance ? 'checked' : 'unchecked'} onPress={() => { setAllData(draft => { draft.isBalance = !draft.isBalance }) }} />
-            </View>
-            <View className='flex-row items-center justify-between mb-4'>
-              <Text className="text-xs font-light text-[#ffffff7f]">{t('orderInfo.modal2')}</Text>
-              <Text>S${totalBalance}</Text>
-            </View>
-            <Divider />
-          </View>}
+
 
           <View className="mt-3">
             {payList.map((item, index) => {
@@ -510,8 +499,22 @@ const OrdersInfo = () => {
               </View>);
             })}
           </View>
+
+          {/* 余额支付 */}
+          {orderStatus === undefined && totalBalance > 0 && <View className="mt-4">
+            <Divider />
+            <View className='flex-row items-center justify-between mb-2'>
+              <Text>{t('orderInfo.modal1')}</Text>
+              <RadioButton.Android value="first" status={allData.isBalance ? 'checked' : 'unchecked'} onPress={() => { setAllData(draft => { draft.isBalance = !draft.isBalance }) }} />
+            </View>
+            <View className='flex-row items-center justify-between mb-4'>
+              <Text className="text-xs font-light text-[#ffffff7f]">{t('orderInfo.modal2')}</Text>
+              <Text>S${totalBalance}</Text>
+            </View>
+          </View>}
+
           {/* 这是选择支付方式 */}
-          {orderStatus === undefined && <View className="mt-5">
+          {orderStatus === undefined && <View className="">
             <Text className="text-xs font-bold text-white pb-2.5">{t('orderInfo.tag22')}</Text>
             <Divider />
             <RadioButton.Group onValueChange={(value) => { setAllData(draft => { draft.playType = value }) }} value={allData.playType}>
