@@ -19,6 +19,7 @@ import currency from 'currency.js';
 
 import MyModal from '@components/modal';
 import Toast from 'react-native-toast-message';
+import { RenderNoData } from '@components/custom-flatlist';
 
 const hot = require('@assets/imgs/base/hot.png');
 const cardHeader = require('@assets/imgs/base/cardHeader.png');
@@ -263,8 +264,8 @@ const DynamicInfo = () => {
   };
 
   if (!id) {
-    return <BaseLayout showAppBar={false}  >
-      <Text>1</Text>
+    return <BaseLayout>
+      <RenderNoData />
     </BaseLayout>
   }
 

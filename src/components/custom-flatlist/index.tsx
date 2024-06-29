@@ -37,7 +37,7 @@ const INIT_STATE = {
 
 
 
-const RenderNoData = () => {
+export const RenderNoData = () => {
   const { t } = useTranslation();
   return <View className="mt-40  justify-center items-center" >
     <Image source={noData} resizeMode="contain" />
