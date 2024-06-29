@@ -23,6 +23,10 @@ import { getGenericPassword } from 'react-native-keychain';
 const ScreenWidth = Dimensions.get('window').width
 const ScreenHeight = Dimensions.get('window').height
 
+
+const manIcon = require('@assets/imgs/user/header.png');
+const womanIcon = require('@assets/imgs/user/header1.png');
+
 cssInterop(Button, {
   className: 'style'
 })
@@ -92,8 +96,8 @@ const ItemCard = ({ cards, className }: { cards: any[] }) => {
 
 export const Item = (props) => {
   const { partyName, statusDesc, peopleNum, modeName, entranceDate, latestArrivalTime, onPress, id, partyMode, maleAvatarList, femaleAvatarList, maleNum, femaleNum, partyModeDesc, isShowStatusDesc = true } = props;
-  const maleIconList = createAvatar(maleNum, maleAvatarList ?? [], 'bg-[#E6A055FF]', maleIcon)
-  const famaleIconList = createAvatar(femaleNum, femaleAvatarList ?? [], 'bg-[#EE2737FF]', famaleIcon)
+  const maleIconList = createAvatar(maleNum, maleAvatarList ?? [], 'bg-[#E6A055FF]', maleIcon, "male")
+  const famaleIconList = createAvatar(femaleNum, femaleAvatarList ?? [], 'bg-[#EE2737FF]', famaleIcon, "famale")
 
   const { t } = useTranslation()
 
@@ -182,7 +186,17 @@ const FightwineScreen = () => {
   })
 
 
+  useFocusEffect(
+    useCallback(() => {
 
+      // Do something when the screen is focused
+      return () => {
+        console.log(2)
+        // Do something when the screen is unfocused
+        // Useful for cleanup functions
+      };
+    }, [])
+  )
 
 
   const toUrl = async (id: string) => {
@@ -261,9 +275,7 @@ const FightwineScreen = () => {
 
   const getId = useCallback((item: any) => item.id, []);
 
-  useFocusEffect(() => {
-    //刷新
-  })
+
 
   return (
     <BaseLayout>
@@ -304,9 +316,7 @@ const FightwineScreen = () => {
           <ImageBackground source={launch} className="w-16 h-16" />
         </TouchableOpacity>
       </Animated.View>
-      {/* <TouchableOpacity className="absolute z-50 w-16 h-16 bottom-1/4 right-0" onPress={onLaunch}>
-        <ImageBackground source={launch} className="w-16 h-16" />
-      </TouchableOpacity> */}
+
 
 
     </BaseLayout>
@@ -314,15 +324,20 @@ const FightwineScreen = () => {
 };
 
 
-function createAvatar(people: number, avatarList: any[], bg: string = 'bg-[#E6A055FF]', icon: any = maleIcon) {
-
+function createAvatar(people: number, avatarList: any[], bg: string = 'bg-[#E6A055FF]', icon: any = maleIcon, type: string) {
   const avatarListRender_ = Array.from({ length: people - avatarList.length }, () => {
     return <View className={`${bg} w-8 h-8 items-center justify-center`}>
       <Image source={icon} className='w-6 h-6' />
     </View >
   })
 
+
+
   const avatarListRender = avatarList.map((m: string) => {
+    /* 如果是男的 */
+    const source = !m ? type == 'male' ? manIcon : famaleIcon : { uri: m }
+
+
     // return <ImageBackground source={{ uri: m }} className='w-6 h-6' />
     return (<View className='relative w-8 h-8  overflow-hidden'>
       <BlurView
@@ -332,7 +347,7 @@ function createAvatar(people: number, avatarList: any[], bg: string = 'bg-[#E6A0
         reducedTransparencyFallbackColor="transparent"
 
       />
-      <ImageBackground source={{ uri: m }} className='w-8 h-8' />
+      <ImageBackground source={source} className='w-8 h-8' />
     </View>)
   })
   const iconList = [...avatarListRender, ...avatarListRender_]

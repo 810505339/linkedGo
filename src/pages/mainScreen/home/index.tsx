@@ -143,8 +143,6 @@ const HomeScreen = () => {
           if (data.id) {
             getcarouselListApi();
           }
-
-
         }
       }
     })()
