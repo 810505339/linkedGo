@@ -277,6 +277,23 @@ const Booths = () => {
 
   useEffect(() => {
     //清空数据
+    console.log(123)
+
+    setData(draft => {
+      if (gender == '1') {
+        draft.minmaleNum = 1
+        draft.maleNum = 1
+        draft.femaleNum = 0
+      }
+
+      if (gender == '2') {
+        draft.minfemaleNum = 1
+        draft.femaleNum = 1
+        draft.maleNum = 0
+      }
+    })
+
+
   }, [booths?.activeIndex]);
 
 
@@ -300,7 +317,7 @@ const Booths = () => {
       <View className="flex-row items-center justify-between  px-5 mt-2">
         <View>
           <Text style={{ fontSize: 10 }}>{t('confirmBooth.label5')} <Text className="text-[#E6A055FF]">{selectBooth?.maxAccommodate}</Text>{t('confirmBooth.label6')}</Text>
-          <Text className="mt-2" style={{ fontSize: 10 }}>{t('confirmBooth.label7')}： <Text className="text-[#E6A055FF]">S$ {selectBooth?.reserveAmount}</Text></Text>
+          <Text className="mt-2" style={{ fontSize: 10 }}>{t('confirmBooth.label7')}: <Text className="text-[#E6A055FF]">S$ {selectBooth?.reserveAmount}</Text></Text>
         </View>
         <Button mode={'elevated'} className="bg-[#EE2737FF]" textColor="#0C0C0CFF" onPress={onSure} disabled={booths?.activeIndex === undefined} >{t('common.btn2')}</Button>
       </View>

@@ -630,16 +630,17 @@ const FightwineDetail = () => {
           headerImg: card_1,
           orderContext: [
             { label: t('orders.label1'), value: res.storeName },
+            { label: t('orders.label10'), value: res.partyName },
             { label: t('orders.label2'), value: `${res.areaName} - ${res.boothName}` },
             { label: t('orders.label3'), value: res.drinksMealName },
             { label: t('orders.label4'), value: res.entranceDate },
             { label: t('orders.label6'), value: res.latestArrivalTime },
-            { label: t('orders.label10'), value: res.partyName },
+
             { label: t('orders.label14'), value: res.modeName },
             // { label: t('orders.label11'), value: latestArrivalTime },
             { label: t('orders.label12'), value: res.maleNum },
             { label: t('orders.label13'), value: res.femaleNum },
-            { label: t('orders.label7'), value: res.needPayAmount },
+            { label: t('orders.label7'), value: 'S$' + res.needPayAmount },
           ],
           amount: res.needPayAmount,
           winePartyMode: res.partyMode,/* 酒局模式 */
