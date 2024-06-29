@@ -165,7 +165,7 @@ const DynamicInfo = () => {
     });
   };
   const source = {
-    html: l == 'en' ? data?.dynamicContentUk : data?.dynamicContentCn,
+    html: l == 'en' ? `<div>${data?.dynamicContentUk}</div>` : `<div>${data?.dynamicContentCn}</div>`,
   };
   const img = fileStore?.fileUrl + '/' + data?.pictureFile[0]?.fileName
   const imgsource = data?.pictureFile[0]?.fileName ? { uri: img } : cardHeader
