@@ -125,10 +125,10 @@ const ConfirmBooth = () => {
         { label: t('orders.label1'), value: shopName },
         { label: t('orders.label2'), value: `${areaName} - ${selectBooth?.name}` },
         { label: t('orders.label3'), value: data.selectPackage?.name },
-        { label: t('orders.label4'), value: entranceDate },
+        { label: t('orders.label4'), value: entranceDate + ' ' + latestArrivalTime },
         { label: t('orders.label5'), value: data.num },
-        { label: t('orders.label6'), value: latestArrivalTime },
-        { label: t('orders.label7'), value: `S$${selectBooth?.reserveAmount}` },
+
+
 
       ],
       headerImg: card_2,

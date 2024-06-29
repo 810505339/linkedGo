@@ -47,7 +47,7 @@ const ReserveBooth = () => {
     loading: false
   });
   const beginTime = data.selectArea?.businessDateVOS?.[0]?.beginTime
-  const endTime = data.selectArea?.businessDateVOS?.[0]?.beginTime
+  const endTime = data.selectArea?.businessDateVOS?.[0]?.endTime
   const defaultTime = dayjs(beginTime, 'HH:mm:ss').toDate()
   const defaultendTime = dayjs(endTime, 'HH:mm:ss').toDate()
 
