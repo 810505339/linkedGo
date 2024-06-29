@@ -17,6 +17,7 @@ import { cssInterop } from 'nativewind'
 import { useTranslation } from 'react-i18next';
 import { useAsyncEffect } from 'ahooks'
 import { getGenericPassword } from 'react-native-keychain';
+import useUserInfo from '@hooks/useUserInfo';
 
 
 cssInterop(Appbar.Header, {
@@ -64,15 +65,26 @@ const HomeScreen = () => {
     aImage: '',
     image: ''
   })
+
+  const { userInfoStorage, save } = useUserInfo()
   const { data: _userInfo, runAsync } = useRequest(detailsById, {
     manual: true,
     onSuccess: (res) => {
+
+      const { userInfo } = userInfoStorage
+      console.log(res, userInfo, 'res')
+      userInfo.setPayPassword == res?.data?.setPayPassword
+
+      save(userInfo)
       if (res.code == 0) {
         const splittedUrl = res?.data?.avatarUrl.split("?");
         const dataBeforeQuestionMark = splittedUrl[0]
+
+
+        console.log(res, '跟新了userInfo')
+
         if (avatar.aImage != dataBeforeQuestionMark) {
 
-          console.log(avatar.aImage, splittedUrl, '跟新了userInfo')
           setAvatarUrl({
             aImage: dataBeforeQuestionMark,
             image: res?.data?.avatarUrl
@@ -87,6 +99,7 @@ const HomeScreen = () => {
     manual: true,
     onSuccess: (res) => {
       console.log('跟新', res)
+
     }
   });
 

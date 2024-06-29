@@ -97,6 +97,7 @@ export default {
     tag32: 'Booking Fee',
     tag33: 'Payment amount',
     tag34: 'Balance deduction',
+    tag35: 'Select coupon',
     nav1: 'Payment amount',
     nav2: 'pay',
     modal1: 'Pay with account balance',

@@ -21,6 +21,7 @@ import PswInput from '@pages/LoginScreen/set-password/components/pswInput'
 import usesetPwd from './hooks/usesetPwd';
 import currency from 'currency.js'
 import { getCustomerCoupon } from '@api/coupon';
+import setPayApi from '@api/common'
 
 import MyModal from '@components/modal';
 import { findIndex } from '@store/shopStore';
@@ -400,11 +401,13 @@ const OrdersInfo = () => {
   /* 设置密码 */
   async function handleClick() {
 
-    const res = await setPayPassword({
+    const res = await setPayApi.setPayPassword({
       verificationCode: allData.verificationCode,
       payPassword: allData.payPassword,
       newPayPassword: allData.newPayPassword,
     })
+
+    console.log(res, 'res')
 
     if (res.data.success) {
       setAllData((draft) => {
@@ -412,18 +415,17 @@ const OrdersInfo = () => {
       })
     }
 
-
-
   }
-
-
+  /* 这是显示的文字 */
+  const couponNumText = couponNum ? <Text >{t('orderInfo.tag21')}<Text className="text-[#E6A055FF]"> {couponNum} </Text> {t('orderInfo.tag20')}
+  </Text> : <Text>{t('orderInfo.tag35')}</Text>
 
 
   const SetPwd = allData.isShowPwd && (<View className='bg-[#222222]  rounded-2xl px-6 py-6' >
     <Text className=' text-center font-bold text-lg'>{t('orderInfo.modal4')}</Text>
     <Text className=' text-center mt-2.5 mb-5'>{t('orderInfo.modal5')}{phone}</Text>
     <View>
-      <TextInput label={t('orderInfo.modal6')} mode={'outlined'} dense={true} maxLength={4} className=' mb-6' onChangeText={(text) => { setAllData((draft) => { draft.verificationCode = text }) }} />
+      <TextInput label={t('orderInfo.modal6')} mode={'outlined'} dense={true} maxLength={4} keyboardType='numeric' className=' mb-6' onChangeText={(text) => { setAllData((draft) => { draft.verificationCode = text }) }} />
       <PswInput label={t('orderInfo.modal7')} mode={'outlined'} dense={true} secureTextEntry={true} keyboardType='numeric' maxLength={6} onChangeText={(text) => { setAllData((draft) => { draft.payPassword = text }) }} className=' mb-6' />
       <PswInput label={t('orderInfo.modal8')} mode={'outlined'} dense={true} secureTextEntry={true} keyboardType='numeric' maxLength={6} onChangeText={(text) => { setAllData((draft) => { draft.newPayPassword = text }) }} className=' mb-6' />
       <Text className=' opacity-75'>* {t('orderInfo.modal9')}</Text>
@@ -476,8 +478,7 @@ const OrdersInfo = () => {
           {orderStatus === undefined && allData.isShowCoupon && (<TouchableOpacity className=" flex-row  items-center justify-between py-3.5" onPress={toUrl}>
             <Text className="text-xs font-bold text-white">{t('user.tag2')}</Text>
             <View className="flex-row items-center justify-center">
-              <Text >{t('orderInfo.tag21')}<Text className="text-[#E6A055FF]"> {couponNum} </Text> {t('orderInfo.tag20')}
-              </Text>
+              {couponNumText}
               <IconButton icon="chevron-right" size={14} className="w-5 h-3" />
             </View>
           </TouchableOpacity>)}
