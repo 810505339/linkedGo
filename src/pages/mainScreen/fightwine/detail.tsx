@@ -42,7 +42,7 @@ const womanIcon = require('@assets/imgs/user/woman.png');
 
 const manHeaderIcon = require('@assets/imgs/user/header.png');
 const womanHeaderIcon = require('@assets/imgs/user/header1.png');
-const card_1 = require('@assets/imgs/base/card_2.png');
+const card_1 = require('assets/imgs/base/fightwineBg.png');
 export enum STATE {
   '未开始' = 'WAIT_START',
   '进行中' = 'IN_PROGRESS',
