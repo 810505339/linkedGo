@@ -229,12 +229,12 @@ const DynamicInfo = () => {
       activityId: id,
     })
 
-    console.log(res, '这是提交的信息');
+
     if (res.success) {
       Toast.show({
         text1: '报名成功'
       })
-      await infoRun()
+      await applicationRun()
     }
 
   }
@@ -242,9 +242,10 @@ const DynamicInfo = () => {
 
 
   const RenderBtn = () => {
-    console.log(whetherSignUp, isFull, 'whetherSignUp')
+    console.log(isApplication, 'isApplication')
 
     if (isApplication) {
+      /* 你已经报名 */
       return <Button className=" bg-[#EE2737FF] flex-auto mr-2" mode="elevated" textColor="#0C0C0CFF" disabled={true} > {t('dynamic.info.btn3')}</Button>;
     }
 

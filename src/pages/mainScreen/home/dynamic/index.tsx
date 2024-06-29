@@ -105,7 +105,7 @@ const DynamicItem = (props: IProps) => {
 
         <Text className="text-white text-base font-bold flex-auto" numberOfLines={1}>{title}</Text>
       </View>
-      {pictureFile && <TagList />}
+      {<TagList />}
       <View className="flex-auto mt-2.5 mb-5">
         {/* <Text numberOfLines={2} className="text-xs font-light">{content}</Text> */}
       </View>
