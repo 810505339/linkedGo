@@ -141,7 +141,7 @@ const LoginOrRegister = () => {
   }
 
   function toRule(type: string) {
-    if (type = 'p') {
+    if (type == 'p') {
       navigation.navigate('PrivacyRule');
     } else {
       navigation.navigate('UserRule');
@@ -191,11 +191,11 @@ const LoginOrRegister = () => {
           <View className="flex-1 ">
             <Text className="text-[#ffffff]">
               {t('login.tag11')}
-              <TouchableOpacity onPress={() => toRule('p')}>
+              <TouchableOpacity onPress={() => toRule('u')}>
                 <Text className="text-[#EE2737]">{t('login.tag7')}</Text>
               </TouchableOpacity>
               {t('login.tag12')}
-              <TouchableOpacity onPress={() => toRule('u')}>
+              <TouchableOpacity onPress={() => toRule('p')}>
                 <Text className="text-[#EE2737]">{t('login.tag8')}</Text>
               </TouchableOpacity>
 

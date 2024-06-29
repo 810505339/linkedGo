@@ -28,6 +28,12 @@ const girls = require('@assets/imgs/fightwine/girls.png');
 const width = Dimensions.get('window').width;
 const headerIcon = require('@assets/imgs/base/modalHeader.png');
 const orderHeader = require('@assets/imgs/base/fightwineBg.png');
+
+
+
+
+
+
 const Booths = () => {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const route = useRoute<RouteProp<RootStackParamList, 'Booths'>>();
@@ -176,8 +182,8 @@ const Booths = () => {
           { label: t('orders.label11'), value: entranceDate + ' ' + latestArrivalTime },
           { label: t('orders.label12'), value: data.maleNum },
           { label: t('orders.label13'), value: data.femaleNum },
-          { label: t('orderInfo.tag29'), value: `S$${selectBooth?.reserveAmount}` },
-          { label: t('orders.label7'), value: `S$${res.data.payAmount}` },
+          { label: t('orderInfo.tag29'), value: winePartyMode != 'PAY_SOLO' ? `S$${selectBooth?.reserveAmount}` : undefined },
+
         ],
         headerImg: orderHeader,
         submit: async (params) => {

@@ -139,8 +139,6 @@ const Preset = () => {
         { label: t('orders.label8'), value: data.ticketName },
         { label: t('orders.label9'), value: data.num },
         { label: t('orders.label4'), value: formatDay + ` ${beginTime}` },
-        { label: t('orderInfo.tag29'), value: `S$${data.total}` },
-        { label: t('orders.label7'), value: `S$${data.total}` },
       ],
       headerImg: header ? { uri: header } : card_1,
       submit: async (params: any) => {

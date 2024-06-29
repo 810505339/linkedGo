@@ -116,8 +116,8 @@ const ConfirmBooth = () => {
       return;
     }
 
-
-
+    /* 预定总金额 */
+    const reservedAmount = `S$${selectBooth?.reserveAmount}`
 
 
     navigation.navigate('OrdersInfo', {
@@ -128,7 +128,6 @@ const ConfirmBooth = () => {
         { label: t('orders.label4'), value: entranceDate },
         { label: t('orders.label5'), value: data.num },
         { label: t('orders.label6'), value: latestArrivalTime },
-        { label: t('orderInfo.tag29'), value: `S$${selectBooth?.reserveAmount}` },
         { label: t('orders.label7'), value: `S$${selectBooth?.reserveAmount}` },
 
       ],
