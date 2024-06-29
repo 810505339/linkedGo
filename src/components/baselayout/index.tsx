@@ -25,7 +25,7 @@ const RendernoMoreData = () => {
 
 const BaseLayout: FC<PropsWithChildren<IProps>> = ({ source = defaultBg, className = '', children, showAppBar = true, showNoMore = false, loading = false }) => {
 
-  const [statusBarHeight, setStatusBarHeight] = useState<number>(StatusBar.currentHeight! + 56)
+  const [statusBarHeight, setStatusBarHeight] = useState<number>(StatusBar.currentHeight!)
 
 
 
