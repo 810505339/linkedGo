@@ -282,14 +282,16 @@ const DynamicInfo = () => {
           <View className={`px-2.5 py-1  rounded-2xl mr-2 bg-[#E6A05580]`}>
             <Text className="text-sm font-normal">{type}</Text>
           </View>
+          <View className={`px-2.5 py-1 rounded-2xl mr-2 bg-[#ffffff19]`}>
+            <Text className="text-sm font-normal">{signText}</Text>
+          </View>
+
           {amount && <View className={`px-2.5 py-1  rounded-2xl mr-2`}>
             <Text className="text-sm font-normal">{amountText}</Text>
           </View>}
 
 
-          <View className={`px-2.5 py-1 rounded-2xl mr-2 bg-[#ffffff19]`}>
-            <Text className="text-sm font-normal">{signText}</Text>
-          </View>
+
 
         </View>
         <View className="h-12 flex-row items-center justify-between mt-2.5 text-[#ffffff7f] text-xs">
