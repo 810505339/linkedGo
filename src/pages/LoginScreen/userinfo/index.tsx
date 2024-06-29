@@ -1,7 +1,7 @@
 import BaseLayout from '@components/baselayout';
 import { useEffect, useRef, useState } from 'react';
 import { View, Image, Pressable, TouchableWithoutFeedback, NativeSyntheticEvent, TextInputFocusEventData, ImageSourcePropType, TouchableOpacity, ScrollView } from 'react-native';
-import { IconButton, Button, Text, TextInput, TouchableRipple } from 'react-native-paper';
+import { IconButton, Button, Text, TextInput, TouchableRipple, Icon } from 'react-native-paper';
 import { Asset, launchImageLibrary } from 'react-native-image-picker';
 import DateTimePicker, { DateTimePickerEvent } from '@react-native-community/datetimepicker';
 import dayjs from 'dayjs';
@@ -227,6 +227,10 @@ const UserInfo = () => {
           <Text className="mb-2">{t('userInfo.tag3')}</Text>
           {dateTimer.show && <MyDateTimePicker onChange={onDateChange} date={dateTimer.date} open={dateTimer.show} setOpen={(show: boolean) => { setdateTimer((draft) => { draft.show = show }) }} mode="date" minimumDate={null} />}
           <TextInput className="bg-transparent" showSoftInputOnFocus={false} value={formatDay} onFocus={onFocus} />
+          <View className='flex-row items-center mt-4'>
+            <Icon source={'alert-circle'} size={16} color={'#EE2737FF'} />
+            <Text className=' mr-10 text-[#EE2737FF]'>{t('userInfo.tag6')}</Text>
+          </View>
 
         </View>
 

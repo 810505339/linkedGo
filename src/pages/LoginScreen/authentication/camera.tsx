@@ -33,7 +33,7 @@ const AuthenticationCamera = () => {
     console.log('渲染了AuthenticationCamera')
     const dimensions = useWindowDimensions()
 
-    const [cameraPosition, setcameraPosition] = useState<CameraPosition>('back')
+    const [cameraPosition, setcameraPosition] = useState<CameraPosition>('front')
     //front
     const device = useCameraDevice(cameraPosition)
     const format = useCameraFormat(device, [
@@ -122,7 +122,7 @@ const AuthenticationCamera = () => {
         )
     }
     return (
-        <BaseLayout className="h-full w-full justify-end" loading={loading}>
+        <BaseLayout className="h-full w-full " loading={loading}>
             {device && (
                 <Camera
                     ref={camera}
@@ -143,7 +143,7 @@ const AuthenticationCamera = () => {
                 />
             )}
 
-            <View className="flex-row w-full items-center justify-around mb-[25%]">
+            <View className="flex-row w-full items-center justify-around   absolute bottom-20">
                 <TouchableOpacity
                     className="p-2 rounded-full bg-[#D51D1D99]"
                     onPress={changecamera}

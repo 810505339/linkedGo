@@ -17,6 +17,7 @@ export default {
     label5: '预定规则',
     label6: '选择门票',
     save: "保存成功",
+    set: '设置成功',
     time: "选择时间"
 
 
@@ -92,7 +93,7 @@ export default {
     tag32: '服务费',
     tag33: '实付金额',
     tag34: '余额抵扣',
-    tag35:'选择优惠券',
+    tag35: '选择优惠券',
     nav1: '实付金额',
     nav2: '立即支付',
     modal1: '余额抵扣',
@@ -179,7 +180,9 @@ export default {
     tag3: '你的生日',
     tag4: '你的个性签名',
     tag5: '完成',
+    tag6: '如未满饮酒年龄，请慎重使用APP',
     btn1: '保存修改',
+
   },
   fightwine: {
     btn1: '我的酒局',

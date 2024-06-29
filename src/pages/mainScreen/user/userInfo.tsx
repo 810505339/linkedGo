@@ -1,7 +1,7 @@
 import BaseLayout from '@components/baselayout';
 import { useRef, useState } from 'react';
 import { View, Image, Pressable, TouchableWithoutFeedback, NativeSyntheticEvent, TextInputFocusEventData, ImageSourcePropType, ImageBackground, ScrollView } from 'react-native';
-import { IconButton, Button, Text, TextInput, TouchableRipple, Dialog, Divider } from 'react-native-paper';
+import { IconButton, Button, Text, TextInput, TouchableRipple, Dialog, Divider, Icon } from 'react-native-paper';
 import { Asset, launchImageLibrary } from 'react-native-image-picker';
 import DatePicker from 'react-native-date-picker'
 import dayjs from 'dayjs';
@@ -226,6 +226,10 @@ const UserInfo = () => {
                     <Text className='text-right  opacity-50'>{formatDay}</Text>
                   </Pressable>
 
+                </View>
+                <View className='flex-row items-center mt-2'>
+                  <Icon source={'alert-circle'} size={16} color={'#EE2737FF'} />
+                  <Text className=' mr-10 text-[#EE2737FF]'>{t('userInfo.tag6')}</Text>
                 </View>
               </View>
             </View>

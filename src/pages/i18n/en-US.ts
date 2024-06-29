@@ -18,7 +18,8 @@ export default {
     label5: 'Rules',
     label6: 'Please select ticket',
     save: "save success",
-    time: "change time"
+    time: "change time",
+    set: 'Set Success',
   },
   home: {
     nav1: 'SHARE SOFA',
@@ -226,6 +227,7 @@ export default {
     tag3: 'Your Birthday',
     tag4: "What's up",
     tag5: 'Done',
+    tag6: 'If you are under the drinking age, please use the APP with caution',
     btn1: 'save'
   },
   fightwine: {

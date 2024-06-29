@@ -97,3 +97,7 @@ export const queryPayResult = (data: any) => {
 		data
 	});
 };
+
+export default {
+	setPayPassword
+}

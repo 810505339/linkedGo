@@ -105,7 +105,7 @@ const OrdersInfo = () => {
     visible: false,
     playType: 'PayNow',
     /* 未设置支付密码弹窗 */
-    psdVisible: false,
+    psdVisible: true,
     /* 设置支付密码弹窗 */
     isPsdVisible: false,
     //设置余额支付
@@ -407,9 +407,12 @@ const OrdersInfo = () => {
       newPayPassword: allData.newPayPassword,
     })
 
-    console.log(res, 'res')
+
 
     if (res.data.success) {
+      Toast.show({
+        text1: t('common.set')
+      })
       setAllData((draft) => {
         draft.psdVisible = false;
       })

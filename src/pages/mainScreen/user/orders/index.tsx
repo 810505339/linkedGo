@@ -315,7 +315,7 @@ const Orders = () => {
 
 
 
-  return (<BaseLayout>
+  return (<BaseLayout >
 
 
     <TabsProvider
@@ -323,7 +323,7 @@ const Orders = () => {
       onChangeIndex={handleChangeIndex}
 
     >
-      <ListHeaderComponent className="absolute  top-44 z-10  w-full" list={orderStatusTitle} tabIndex={data.typeIndex} itemClick={itemClick} />
+      <ListHeaderComponent className="fixed top-32  z-10  w-full" list={orderStatusTitle} tabIndex={data.typeIndex} itemClick={itemClick} />
       <Tabs
         uppercase={true} // true/false | default=true (on material v2) | labels are uppercase
         // showTextLabel={false} // true/false | default=false (KEEP PROVIDING LABEL WE USE IT AS KEY INTERNALLY + SCREEN READERS)
