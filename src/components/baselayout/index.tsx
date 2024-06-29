@@ -46,17 +46,16 @@ const BaseLayout: FC<PropsWithChildren<IProps>> = ({ source = defaultBg, classNa
 
   const classNames = `flex-1 bg-[#101010FF] ${className}`;
   return (
-    <SafeAreaView className='border' style={{ flex: 1 }}>
-      <View className={classNames} onStartShouldSetResponder={handleUnhandledTouches}>
-        {loading && <Loading />}
-        {source && <ImageBackground source={source} resizeMode="cover" className="absolute left-0 right-0 bottom-0 -z-10 top-0" />}
-        {showAppBar && <View style={{ paddingTop: statusBarHeight }} />}
-        {/* {showNoMore ? <RendernoMoreData /> : children} */}
-        {showNoMore ? <RendernoMoreData /> : children}
-        {/* {showNoMore ? <RendernoMoreData /> : children} */}
 
-      </View >
-    </SafeAreaView>
+    <View className={classNames} onStartShouldSetResponder={handleUnhandledTouches}>
+      {loading && <Loading />}
+      {source && <ImageBackground source={source} resizeMode="cover" className="absolute left-0 right-0 bottom-0 -z-10 top-0" />}
+      {showAppBar && <View style={{ paddingTop: statusBarHeight }} />}
+      {/* {showNoMore ? <RendernoMoreData /> : children} */}
+      {showNoMore ? <RendernoMoreData /> : <SafeAreaView style={{ flex: 1 }}>{children}</SafeAreaView>}
+      {/* {showNoMore ? <RendernoMoreData /> : children} */}
+    </View >
+
   );
 };
 
