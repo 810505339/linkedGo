@@ -162,7 +162,7 @@ const HomeScreen = () => {
 
   const containerStyle = { padding: 20 };
   return (
-    <BaseLayout className="bg-[#0B0B0BE6]" loading={loading}>
+    <BaseLayout className="bg-[#0B0B0BE6]" loading={loading} >
 
       <ScrollView
         contentContainerStyle={{ flex: 1 }}

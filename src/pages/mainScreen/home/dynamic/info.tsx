@@ -67,7 +67,7 @@ const DynamicInfo = () => {
     manual: true
   });
   const { data: res, loading, runAsync: infoRun } = useRequest(() => getDynamicInfo({ id: id }), {
-    manual: true,
+    manual: false,
     onSuccess: (res) => {
       console.log(res, 'res')
       if (!res.success) {

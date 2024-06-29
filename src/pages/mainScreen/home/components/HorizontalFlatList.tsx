@@ -26,7 +26,7 @@ const Item = ({ navigation, text, source, color, onPress }: IData & {
 
 
   return (
-    <TouchableOpacity className="mx-1.5  w-24 h-32  rounded-XL relative" onPress={() => onPress(navigation)}>
+    <TouchableOpacity className="mx-1.5  w-24 h-32  rounded-2xl relative" onPress={() => onPress(navigation)}>
       <ImageBackground source={source as ImageSourcePropType} className="w-full h-full text-center" />
       <Text className="text-xs   absolute bottom-2 text-center w-full" style={{ color: color }}>{t(text)}</Text>
     </TouchableOpacity>
