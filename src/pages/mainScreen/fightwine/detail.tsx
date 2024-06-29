@@ -42,7 +42,7 @@ const womanIcon = require('@assets/imgs/user/woman.png');
 
 const manHeaderIcon = require('@assets/imgs/user/header.png');
 const womanHeaderIcon = require('@assets/imgs/user/header1.png');
-
+const card_1 = require('@assets/imgs/base/card_2.png');
 export enum STATE {
   '未开始' = 'WAIT_START',
   '进行中' = 'IN_PROGRESS',
@@ -627,6 +627,7 @@ const FightwineDetail = () => {
       if (res.isNeedPay) {
         /* 需要支付跳转订单 */
         navigation.navigate('OrdersInfo', {
+          headerImg: card_1,
           orderContext: [
             { label: t('orders.label1'), value: res.storeName },
             { label: t('orders.label2'), value: `${res.areaName} - ${res.boothName}` },
