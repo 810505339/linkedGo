@@ -74,9 +74,7 @@ const HomeScreen = () => {
       const { userInfo } = userInfoStorage
 
       userInfo.setPayPassword == res?.data?.setPayPassword
-      userInfo.checkFace == res?.data?.checkFace
-      console.log(userInfo, '这是userInfo')
-      save(userInfo)
+      save(res?.data)
       if (res.code == 0) {
         const splittedUrl = res?.data?.avatarUrl.split("?");
         const dataBeforeQuestionMark = splittedUrl[0]

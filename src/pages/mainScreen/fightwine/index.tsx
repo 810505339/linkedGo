@@ -124,7 +124,7 @@ export const Item = (props) => {
       </View>}
     </View>
     <View className="flex-row mt-3.5 flex-wrap ">
-      {tags.map((item, index) => (<View className={`h-6 px-1.5 my-1.5 mr-1.5 overflow-hidden  rounded-2xl ${tagBg(index)}`} key={index}>
+      {tags.map((item, index) => (<View className={`h-6 px-1.5 my-1.5 mr-1.5 overflow-hidden flex-row items-center justify-center  rounded-2xl ${tagBg(index)}`} key={index}>
         <Text key={index} >{item.label}</Text>
       </View>))}
     </View>
@@ -260,6 +260,10 @@ const FightwineScreen = () => {
   ).current;
 
   const getId = useCallback((item: any) => item.id, []);
+
+  useFocusEffect(() => {
+    //刷新
+  })
 
   return (
     <BaseLayout>

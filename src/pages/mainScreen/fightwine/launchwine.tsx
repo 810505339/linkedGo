@@ -96,11 +96,11 @@ const LaunchWine = () => {
 
 
   const beginTime = data.selectArea?.businessDateVOS?.[0]?.beginTime
-  const endTime = data.selectArea?.businessDateVOS?.[0]?.beginTime
+  const endTime = data.selectArea?.businessDateVOS?.[0]?.endTime
   const defaultTime = dayjs(beginTime, 'HH:mm:ss').toDate()
   const defaultendTime = dayjs(endTime, 'HH:mm:ss').toDate()
 
-  console.log(beginTime, 'beginTime');
+  console.log(beginTime, defaultendTime, 'beginTime');
 
 
   useEffect(() => {
@@ -157,6 +157,8 @@ const LaunchWine = () => {
     { label: t('launchwine.tag5'), render: () => (shop.select.id != '' && <AreaList storeId={shop.select.id} date={dateFormat} onChange={changeArea} />) },
   ];
 
+  console.log(dateFormat, 'dateFormat')
+
   //选择日期
   const onDateChange = (selectDate?: Date) => {
     const currentDate = selectDate || data.date;
@@ -166,15 +168,13 @@ const LaunchWine = () => {
     });
   };
 
-  const setShowTime = (timershow: boolean) => {
-    setData(draft => {
-      draft.timershow = timershow;
-    });
-  }
+
   //选择最晚时间
   const onTimerChange = (selectDate: Date) => {
     const currentDate = selectDate || data.lastDate;
-    console.log(currentDate);
+
+    dayjs(currentDate)
+    console.log(currentDate, defaultTime, defaultendTime, 'currentDate');
 
     if (selectDate < defaultTime || selectDate > defaultendTime) {
       Toast.show({

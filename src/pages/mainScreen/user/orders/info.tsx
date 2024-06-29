@@ -43,9 +43,9 @@ const Payment = [
 const Info = (props: any) => {
   const { orderContext, payList, orderStatus, realAmount, headerImg, payMethod, otherAmount } = props
   const { t } = useTranslation()
-  return <ScrollView className='px-5'>
+  return <ScrollView className='px-5 '>
     <View className="relative">
-      {headerImg && <View className="   h-52  rounded-2xl overflow-hidden">
+      {headerImg && <View className=" h-52  rounded-2xl overflow-hidden">
         <Image source={headerImg} resizeMode="cover" className="h-52 w-full absolute left-0 right-0" />
       </View>}
     </View>
@@ -83,7 +83,7 @@ const Info = (props: any) => {
 
     </View>}
 
-    <View className='flex-row items-center justify-between mt-5'>
+    <View className='flex-row items-center justify-between mt-5 pb-20'>
       <View className='flex-row items-center'>
         <Text className='text-xs font-light text-[#ffffff7f]'>{t('preset.label3')}</Text>
         <Text className='text-[#E6A055] font-bold text-xl ml-2'>S$ {realAmount} </Text>
