@@ -45,6 +45,8 @@ const Booths = () => {
   const { userInfoStorage } = useUserInfo()
   const gender = userInfoStorage?.userInfo?.gender
 
+  console.log(userInfoStorage, 'gender');
+
 
 
 

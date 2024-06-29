@@ -255,8 +255,6 @@ const LoginOrRegister = () => {
         </View>
       </View>}
 
-
-
       <CustomModal ref={bottomSheetModalRef} data={alldata.codeList} headerText={t('user.header6')} selectValue={alldata.selectItem.nameCode} onPress={setCode} snapPoints={['50%']} />
     </BaseLayout>
   );

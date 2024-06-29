@@ -17,6 +17,7 @@ import { useAppState } from '@react-native-community/hooks'
 import { useEffect, useRef, useState } from 'react'
 import { blobToBase64 } from '@utils/file'
 import { checkFace } from '@api/checkFace'
+import { detailsById } from '@api/user';
 import useUserInfo from '@hooks/useUserInfo'
 import Toast from 'react-native-toast-message'
 import { RootStackParamList } from 'router/type'
@@ -54,10 +55,9 @@ const AuthenticationCamera = () => {
         }
     )
     /* 人脸识别成功 */
-    const takeFaceSuccess = () => {
-        const { userInfo } = userInfoStorage /* 获取用户信息 */
-        userInfo.checkFace = true
-        save(userInfo)
+    const takeFaceSuccess = async () => {
+        const res = await detailsById()
+        save(res?.data)
 
         Toast.show({
             text1: '人脸识别成功',
