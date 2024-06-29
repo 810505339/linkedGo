@@ -94,7 +94,7 @@ export default {
     tag34: '余额抵扣',
     nav1: '实付金额',
     nav2: '立即支付',
-    modal1: '余额支付',
+    modal1: '余额抵扣',
     modal2: '可用余额',
     modal3: '支付密码',
     modal4: '设置支付密码',
