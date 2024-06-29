@@ -1,4 +1,3 @@
-import { loadLanguageStorage } from '@storage/language/action';
 import service from './base';
 
 
@@ -44,6 +43,7 @@ export type getDynamicInfoIParams = {
 
 //详情查询-C端
 export const getDynamicInfo = async (params: getDynamicInfoIParams) => {
+  console.log(params, 'getDynamicInfo')
   const { data } = await service({
     url: '/operation/dynamicState/clientDetail',
     method: 'GET',
@@ -54,6 +54,7 @@ export const getDynamicInfo = async (params: getDynamicInfoIParams) => {
 
 //新增报名
 export const signUp = async (params: any) => {
+  console.log(params, 'signUp')
   const { data } = await service({
     url: '/consumption/customerActivity/signUp',
     method: 'POST',
@@ -64,6 +65,7 @@ export const signUp = async (params: any) => {
 
 /* 用户是否已经报名 */
 export const isAlreadySignUp = async (id: string) => {
+  console.log(id, 'signUp')
   const res = await service({
     url: `/consumption/customerActivity/isAlreadySignUp/${id}`,
     method: 'get',

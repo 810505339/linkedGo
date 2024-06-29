@@ -83,9 +83,9 @@ const DynamicInfo = () => {
     (async () => {
       const generic = await getGenericPassword()
 
-      console.log(generic, 'generic', (generic as UserCredentials)?.password != '')
+      console.log('password' in generic, 'generic', (generic as UserCredentials)?.password != '')
 
-      if ((generic as UserCredentials)?.password != '') {
+      if ('password' in (generic as UserCredentials)) {
         console.log('请求了')
         await applicationRun()
       }
@@ -220,6 +220,8 @@ const DynamicInfo = () => {
       });
       return
     }
+
+    console.log(id)
 
     const res = await signUp({
       payMethod: 'PAYNOW',
