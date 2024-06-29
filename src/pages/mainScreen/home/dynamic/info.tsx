@@ -45,6 +45,12 @@ const DynamicInfo = () => {
   // const { id, tagList, title, content, publishDate, pageView, source: img } = route.params;
   const { id } = route.params;
 
+  if (!id) {
+    return <BaseLayout>
+      <RenderNoData />
+    </BaseLayout>
+  }
+
   console.log(id, 'id')
 
 
@@ -263,11 +269,7 @@ const DynamicInfo = () => {
     return <Button className=" bg-[#EE2737FF] flex-auto mr-2" mode="elevated" textColor="#0C0C0CFF" onPress={submit}> {t('dynamic.info.btn1')}</Button>;
   };
 
-  if (!id) {
-    return <BaseLayout>
-      <RenderNoData />
-    </BaseLayout>
-  }
+
 
 
 
