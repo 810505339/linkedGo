@@ -133,7 +133,7 @@ const DynamicInfo = () => {
     console.log(1);
 
     try {
-      const msg = Platform.OS === 'android' ? `https://m.point2club.com#/active/${id}` : title
+      const msg = Platform.OS === 'android' ? `${title} https://m.point2club.com#/active/${id}` : title
       const result = await Share.share({
         url: `https://m.point2club.com#/active/${id}`,
         message: msg,
