@@ -13,7 +13,7 @@ import { STATE } from './detail';
 import { useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from '@router/type';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { Button, Checkbox, Text } from 'react-native-paper';
+import { Button, RadioButton, Text } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
 
 
@@ -68,7 +68,7 @@ const MyWineParty = () => {
   useEffect(() => {
     navigation.setOptions({
       headerRight: (props) => <View className="flex-row items-center">
-        <Checkbox.Android status={data.isPromoter ? 'checked' : 'unchecked'} onPress={changePromoter} />
+        <RadioButton.Android status={data.isPromoter ? 'checked' : 'unchecked'} value="second" onPress={changePromoter} />
         <Text>{t('mywineparty.btn1')}</Text>
       </View>,
     });

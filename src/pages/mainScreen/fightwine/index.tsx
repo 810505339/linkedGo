@@ -119,17 +119,19 @@ export const Item = (props) => {
 
     <View className="flex flex-row items-center justify-between ">
       <Text className="text-sm text-white font-bold">{partyName}</Text>
-      {isShowStatusDesc && <Text className="text-xs text-white border border-white rounded-xl px-1.5 py-1">{statusDesc}</Text>}
+      {isShowStatusDesc && <View className='h-6 flex-row items-center justify-center border border-white rounded-xl'>
+        <Text className="text-xs  px-1.5   text-white   ">{statusDesc}</Text>
+      </View>}
     </View>
     <View className="flex-row mt-3.5 flex-wrap ">
-      {tags.map((item, index) => (<View className={`py-1.5 px-1.5 my-1.5 mr-1.5 overflow-hidden  rounded-2xl ${tagBg(index)}`} key={index}>
+      {tags.map((item, index) => (<View className={`h-6 px-1.5 my-1.5 mr-1.5 overflow-hidden  rounded-2xl ${tagBg(index)}`} key={index}>
         <Text key={index} >{item.label}</Text>
       </View>))}
     </View>
     <View className="mt-5 flex-row ">
       <ItemCard cards={maleIconList} />
       <ItemCard cards={famaleIconList} className='mr-5' />
-      <TouchableOpacity activeOpacity={1} className=" p-2 justify-self-end justify-center items-center bg-[#FFFFFF] rounded-2xl absolute right-0" onPress={() => onPress(id)}>
+      <TouchableOpacity activeOpacity={1} className=" px-2 py-1 justify-self-end justify-center items-center bg-[#FFFFFF] rounded-2xl absolute right-0" onPress={() => onPress(id)}>
         <View>
           <Text className={` font-normal ${color}`}  >{t('fightwine.btn2')}</Text>
         </View>

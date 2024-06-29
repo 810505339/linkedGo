@@ -72,9 +72,10 @@ const HomeScreen = () => {
     onSuccess: (res) => {
 
       const { userInfo } = userInfoStorage
-      console.log(res, userInfo, 'res')
-      userInfo.setPayPassword == res?.data?.setPayPassword
 
+      userInfo.setPayPassword == res?.data?.setPayPassword
+      userInfo.checkFace == res?.data?.checkFace
+      console.log(userInfo, '这是userInfo')
       save(userInfo)
       if (res.code == 0) {
         const splittedUrl = res?.data?.avatarUrl.split("?");
