@@ -53,9 +53,9 @@ const BaseLayout: FC<PropsWithChildren<IProps>> = ({ source = defaultBg, classNa
 
       {/* {showNoMore ? <RendernoMoreData /> : children} */}
       {showNoMore ? <RendernoMoreData /> : <SafeAreaView style={{ flex: 1 }}>
-      {showAppBar && <View style={{ paddingTop: statusBarHeight }} />}
-      {children}
-        </SafeAreaView>}
+        {showAppBar && <View style={{ paddingTop: statusBarHeight }} />}
+        {children}
+      </SafeAreaView>}
       {/* {showNoMore ? <RendernoMoreData /> : children} */}
     </View >
 
