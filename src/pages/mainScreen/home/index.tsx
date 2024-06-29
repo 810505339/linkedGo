@@ -186,7 +186,7 @@ const HomeScreen = () => {
 
 
       <MyModal visible={data.visible} onDismiss={() => setData(draft => { draft.visible = false })} contentContainerStyle={containerStyle} dismissable={false}  >
-        {data.img1 && (<TouchableOpacity onPress={() => advertisingClick(data.advertising1)}><Image source={{ uri: data.img1 }} resizeMethod='auto' className='h-[440px]  mx-[44px] my-5 rounded-2xl' /></TouchableOpacity>)}
+        {data.img1 && (<TouchableOpacity onPress={() => advertisingClick(data.advertising1)}><Image source={{ uri: data.img1 }} style={{ height: imageSize1.h }} resizeMethod='auto' className='my-5 rounded-2xl' /></TouchableOpacity>)}
         <TouchableOpacity onPress={() => setData(draft => { draft.visible = false })} className='flex-row  items-center justify-center' >
           <Image source={closeIcon} className='w-6 h-6' />
         </TouchableOpacity>

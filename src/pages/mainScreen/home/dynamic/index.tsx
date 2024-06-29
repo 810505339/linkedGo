@@ -48,13 +48,15 @@ const DynamicItem = (props: IProps) => {
   }, [id])
 
 
-
+  console.log(!amount, '!amount')
 
   const source = pictureFile && { uri: fileStore.fileUrl + '/' + pictureFile[0]?.fileName };
   const boxClass = 'h-[473]';
   const tagPostion = 'absolute top-2.5 left-2.5';
 
   const signText = whetherSignUp == '1' ? t('dynamic.tagList.tag1') : '';
+
+
   const amountText = !amount ? t('dynamic.tagList.tag2') : null
 
   const RenderList = () => {

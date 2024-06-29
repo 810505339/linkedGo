@@ -42,7 +42,9 @@ const DynamicInfo = () => {
   const navigation = useNavigation<ScreenNavigationProp<'DynamicInfo'>>();
   const { t } = useTranslation();
   // const { id, tagList, title, content, publishDate, pageView, source: img } = route.params;
-  const { id = '0' } = route.params;
+  const { id } = route.params;
+
+  console.log(id, 'id')
 
 
 
@@ -65,6 +67,7 @@ const DynamicInfo = () => {
     manual: true
   });
   const { data: res, loading, runAsync: infoRun } = useRequest(() => getDynamicInfo({ id: id }), {
+    manual: true,
     onSuccess: (res) => {
       console.log(res, 'res')
       if (!res.success) {
@@ -179,7 +182,7 @@ const DynamicInfo = () => {
   const amount = data?.amount
   const amountText = !amount ? t('dynamic.tagList.tag2') : t('dynamic.tagList.tag3');
   const signText = whetherSignUp ? t('dynamic.tagList.tag1') : '';
-  console.log(application, 'isApplication');
+  console.log(amount, 'isApplication');
 
   /* 报名 */
   async function handleSignUp() {
@@ -259,9 +262,17 @@ const DynamicInfo = () => {
     return <Button className=" bg-[#EE2737FF] flex-auto mr-2" mode="elevated" textColor="#0C0C0CFF" onPress={submit}> {t('dynamic.info.btn1')}</Button>;
   };
 
+  if (!id) {
+    return <BaseLayout showAppBar={false}  >
+      <Text>1</Text>
+    </BaseLayout>
+  }
+
 
 
   return (<BaseLayout showAppBar={false} source={false} loading={loading}>
+
+
 
     <ScrollView onScroll={onScroll}>
       <View className=" w-full h-[375]  relative">
@@ -286,7 +297,7 @@ const DynamicInfo = () => {
             <Text className="text-sm font-normal">{signText}</Text>
           </View>
 
-          {amount && <View className={`px-2.5 py-1  rounded-2xl mr-2`}>
+          {amountText && <View className={`px-2.5 py-1  rounded-2xl mr-2 bg-[#ffffff19]`}>
             <Text className="text-sm font-normal">{amountText}</Text>
           </View>}
 
