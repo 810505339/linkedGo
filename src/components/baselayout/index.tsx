@@ -32,7 +32,7 @@ const BaseLayout: FC<PropsWithChildren<IProps>> = ({ source = defaultBg, classNa
   if (Platform.OS === 'ios') {
     const { StatusBarManager } = NativeModules;
     StatusBarManager.getHeight(statusBarHeight => {
-      const height = 56 + statusBarHeight.height
+      const height = statusBarHeight.height
       setStatusBarHeight(height)
 
     });
@@ -57,7 +57,6 @@ const BaseLayout: FC<PropsWithChildren<IProps>> = ({ source = defaultBg, classNa
 
       </View >
     </SafeAreaView>
-
   );
 };
 

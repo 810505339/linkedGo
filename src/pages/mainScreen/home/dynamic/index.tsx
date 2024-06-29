@@ -55,7 +55,7 @@ const DynamicItem = (props: IProps) => {
   const tagPostion = 'absolute top-2.5 left-2.5';
 
   const signText = whetherSignUp == '1' ? t('dynamic.tagList.tag1') : '';
-  const amountText = !amount ? t('dynamic.tagList.tag2') : t('dynamic.tagList.tag3');
+  const amountText = !amount ? t('dynamic.tagList.tag2') : null
 
   const RenderList = () => {
 
@@ -105,7 +105,7 @@ const DynamicItem = (props: IProps) => {
 
         <Text className="text-white text-base font-bold flex-auto" numberOfLines={1}>{title}</Text>
       </View>
-      {<TagList />}
+      {/* {<TagList />} */}
       <View className="flex-auto mt-2.5 mb-5">
         {/* <Text numberOfLines={2} className="text-xs font-light">{content}</Text> */}
       </View>

@@ -330,7 +330,7 @@ export default {
     nav3: '预定卡座',
     nav4: '发广播',
     nav5: '消费排行',
-    nav6: '0.2 动态',
+    nav6: '动态',
   },
   dynamic: {
     tabs: {
@@ -339,7 +339,8 @@ export default {
     tagList: {
       tag1: '需报名',
       tag2: '免费',
-      tag3: '收费',
+      tag3: '',
+      //    tag3: '收费',
     },
     info: {
       tag1: '活动时间',
@@ -351,7 +352,8 @@ export default {
       btn1: '立即报名',
       btn2: '人数已满,期待下次相遇',
       btn3: '您已报名',
-      text1: '您正在报名参加活动 是否继续?',
+      text1: '您正在报名参加活动',
+      text2: '是否继续?',
     },
   },
   preset: {

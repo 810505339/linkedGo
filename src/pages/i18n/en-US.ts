@@ -334,6 +334,7 @@ export default {
       tag1: 'Registration required',
       tag2: 'gratis',
       tag3: 'toll',
+      // tag3: 'toll',
     },
     info: {
       tag1: 'Event time',
@@ -345,7 +346,8 @@ export default {
       btn1: 'Sign up now',
       btn2: 'The number of people is full',
       btn3: 'You have registered',
-      text1: 'Are you signing up for the event or not?',
+      text1: 'Registration in progress',
+      text2: 'Do you wish to continue?',
     },
   },
   preset: {

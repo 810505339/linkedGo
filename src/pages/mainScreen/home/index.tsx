@@ -170,7 +170,7 @@ const HomeScreen = () => {
           < RefreshControl refreshing={isRefreshing} onRefresh={onRefresh} />
         }>
 
-        {data.img && (<TouchableOpacity onPress={() => advertisingClick(data.advertising)}><Image source={{ uri: data.img }} className='h-[60] mx-5 my-5  rounded-2xl' /></TouchableOpacity>)}
+        {data.img && (<TouchableOpacity onPress={() => advertisingClick(data.advertising)}><Image source={{ uri: data.img }} className='h-[60] mx-5  mb-5  rounded-2xl' /></TouchableOpacity>)}
         {<HorizontalFlatList className="mt-7" />}
         {data.swiperList && <SwiperView swiperList={data?.swiperList} />}
         {/* <View>

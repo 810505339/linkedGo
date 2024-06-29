@@ -1,6 +1,6 @@
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import BaseLayout from '@components/baselayout';
-import { View, Animated, RefreshControl, Image, ImageSourcePropType, ImageBackground, StyleSheet, TouchableOpacity, useWindowDimensions, ScrollView, NativeSyntheticEvent, NativeScrollEvent, Share } from 'react-native';
+import { View, Animated, RefreshControl, Image, ImageSourcePropType, ImageBackground, StyleSheet, TouchableOpacity, useWindowDimensions, ScrollView, NativeSyntheticEvent, NativeScrollEvent, Share, Platform } from 'react-native';
 import { Button, Divider, IconButton, Modal, Portal, Text } from 'react-native-paper';
 import { BlurView } from '@react-native-community/blur';
 import React, { useEffect, useState } from 'react';
@@ -118,9 +118,9 @@ const DynamicInfo = () => {
       },
     ];
     return (<View className="bg-[#FFFFFF0D] p-2.5 rounded-xl mt-4">
-      {list.map((item, i) => (item.value && <View key={i} className="flex-row items-center my-1">
+      {list.map((item, i) => (item.value && <View key={i} className="flex-row  my-1">
         <Text className="text-white opacity-50">{item.label}:</Text>
-        {item?.render?.() ?? <Text className="text-white font-bold ml-2 " numberOfLines={2} style={{ flex: 1 }}>{item.value}</Text>}
+        {item?.render?.() ?? <Text className="text-white font-bold ml-2 " style={{ flex: 1 }}>{item.value}</Text>}
 
       </View>))}
     </View>);
@@ -133,9 +133,11 @@ const DynamicInfo = () => {
     console.log(1);
 
     try {
+      const msg = Platform.OS === 'android' ? `https://m.point2club.com#/active/${id}` : title
       const result = await Share.share({
         url: `https://m.point2club.com#/active/${id}`,
-        message: '邀请您查看信息',
+        message: msg,
+        title: title
       });
       if (result.action === Share.sharedAction) {
         if (result.activityType) {
@@ -285,14 +287,14 @@ const DynamicInfo = () => {
           </View>}
 
 
-          <View className={`px-2.5 py-1  rounded-2xl mr-2`}>
+          <View className={`px-2.5 py-1 rounded-2xl mr-2 bg-[#ffffff19]`}>
             <Text className="text-sm font-normal">{signText}</Text>
           </View>
 
         </View>
         <View className="h-12 flex-row items-center justify-between mt-2.5 text-[#ffffff7f] text-xs">
           <Text className="text-[#ffffff7f] text-xs">{publishDate}</Text>
-          <View className="flex-row">
+          <View className="flex-row items-center justify-center">
             <Image source={hot} />
             <Text className=" text-[#ffffff7f] text-xs">{pageView}</Text>
           </View>
@@ -315,7 +317,7 @@ const DynamicInfo = () => {
 
     {
       whetherSignUp && <View className="h-14 px-5">
-        <Divider />
+
         <View className="flex-row items-center">
           <RenderBtn />
           <IconButton icon="upload" size={22} mode="contained" containerColor={'#EE2737FF'} iconColor={'#1A1311FF'} onPress={onShare} />
@@ -335,12 +337,13 @@ const DynamicInfo = () => {
         <View className="w-[285] h-72 bg-[#1E1E1EFF] items-center ml-auto mr-auto  rounded-2xl ">
           <ImageBackground source={modalBg} resizeMode="contain" className="absolute -left-1 -right-1 h-[160] top-0" />
           <Image source={modalHeader} resizeMode="contain" className="absolute w-[335] right-0 -top-20" />
-          <View className="m-auto w-40">
-            <Text className="text-base font-bold text-white  text-center mt-24" numberOfLines={2}>{t('dynamic.info.text1')}</Text>
+          <View className="m-auto mt-32">
+            <Text className="text-lg font-bold text-white  text-center">{t('dynamic.info.text1')}</Text>
+            <Text className="text-lg font-bold text-white  text-center">{t('dynamic.info.text2')}</Text>
           </View>
           <View className="flex-row justify-around items-center  w-full px-5 pb-5 mt-10 ">
-            <Button className="bg-transparent  mr-5" mode="outlined" labelStyle={{ fontWeight: 'bold' }} textColor="#ffffffbf" onPress={hideModal}>{t('common.btn1')}</Button>
-            <Button className="bg-[#EE2737FF] " textColor="#000000FF" labelStyle={{ fontWeight: 'bold' }} mode="contained" onPress={async () => await handleSignUp()} >{t('common.btn2')}</Button>
+            <Button className="bg-transparent  mr-5 w-[45%]" mode="outlined" labelStyle={{ fontWeight: 'bold' }} textColor="#ffffffbf" onPress={hideModal}>{t('common.btn1')}</Button>
+            <Button className="bg-[#EE2737FF]  w-[45%]" textColor="#000000FF" labelStyle={{ fontWeight: 'bold' }} mode="contained" onPress={async () => await handleSignUp()} >{t('common.btn2')}</Button>
           </View>
         </View>
       </MyModal>
