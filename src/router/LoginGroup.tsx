@@ -23,10 +23,10 @@ const LoginGroup = () => {
 
   const { t } = useTranslation();
 
-  return <Stack.Group screenOptions={{ presentation: 'modal', headerLeft: () => <Image source={red} className='w-6 h-6 mr-4' /> }} >
+  return <Stack.Group screenOptions={{ headerLeft: () => <Image source={red} className='w-6 h-6 mr-4' /> }} >
     <Stack.Screen
       name="Login"
-      options={{ title:''  }}
+      options={{ title: '' }}
       component={Login}
     />
     <Stack.Screen
@@ -86,7 +86,7 @@ const LoginGroup = () => {
       component={WeChat}
       options={{ title: 'WeCht' }}
     />
-    
+
 
   </Stack.Group>;
 };
