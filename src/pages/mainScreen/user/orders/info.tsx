@@ -463,9 +463,9 @@ const OrdersInfo = () => {
                 return null;
               }
 
-              return (<View key={index} className="flex-row  items-center justify-between mb-2.5 ">
+              return (<View key={index} className="flex-row  justify-between mb-2.5  overflow-hidden">
                 <Text className="text-xs font-light text-[#ffffff7f]">{item.label}:</Text>
-                <Text numberOfLines={6} className='w-40 text-right'>{item.value}</Text>
+                <Text className='text-right ml-4  w-[80%] '>{item.value}</Text>
               </View>);
             })}
           </View>
@@ -511,10 +511,12 @@ const OrdersInfo = () => {
               <Text className="text-xs font-light text-[#ffffff7f]">{t('orderInfo.modal2')}</Text>
               <Text>S${totalBalance}</Text>
             </View>
+            <Divider />
           </View>}
 
           {/* 这是选择支付方式 */}
-          {orderStatus === undefined && <View className="">
+          {orderStatus === undefined && <View className="mt-5">
+
             <Text className="text-xs font-bold text-white pb-2.5">{t('orderInfo.tag22')}</Text>
             <Divider />
             <RadioButton.Group onValueChange={(value) => { setAllData(draft => { draft.playType = value }) }} value={allData.playType}>
