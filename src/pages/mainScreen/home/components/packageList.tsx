@@ -74,7 +74,7 @@ const PackageList: FC<IAreaListProps> = (props) => {
 
       setData(draft => {
         draft.cells = res.data ? [...initList, ...res.data,] : initList;
-        onChange?.(draft.cells, 0);
+        // onChange?.(draft.cells, 0);
         draft.activeIndex = 0;
       });
 
