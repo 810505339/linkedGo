@@ -34,6 +34,7 @@ export default () => {
       console.log(resdata, '获取版本');
 
       if (resdata) {
+        
         setAllData(draft => {
           draft.versionNumber = resdata?.versionNumber
           draft.versionIntroduce = resdata?.versionIntroduce
