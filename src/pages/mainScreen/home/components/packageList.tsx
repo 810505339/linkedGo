@@ -96,7 +96,7 @@ const PackageList: FC<IAreaListProps> = (props) => {
 
   return (<View className=' flex-wrap gap-3 flex-row '>
     {data.cells.map((item, index) => {
-      return <PackageItem {...item} index={index} activeIndex={data.activeIndex} onPress={onPress} />
+      return <PackageItem {...item} key={index} index={index} activeIndex={data.activeIndex} onPress={onPress} />
     })}
 
   </View>)
