@@ -470,7 +470,7 @@ const OrdersInfo = () => {
 
               return (<View key={index} className="flex-row  justify-between mb-2.5  overflow-hidden">
                 <Text className="text-xs font-light text-[#ffffff7f]">{item.label}:</Text>
-                <Text className='text-right ml-4  w-[70%] '>{item.value}</Text>
+                <Text className='text-right ml-4    ' style={{ flex: 1 }}>{item.value}</Text>
               </View>);
             })}
           </View>

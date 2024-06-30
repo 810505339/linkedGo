@@ -329,9 +329,9 @@ const Appraise = forwardRef((props: any, childRef: any) => {
 
     {/* 上传图片 */}
     {
-      <View className="flex-row  my-3 space-x-2">
+      <View className="flex-row  my-3 space-x-2  items-center">
         <Text className="font-bold">{t('wineDetail.appraise5')}</Text>
-        <Text className="text-[#EE2737] font-normal text-xs">{t('wineDetail.appraise6')}</Text>
+        <Text className="text-[#EE2737] font-normal text-xs ml-2">{t('wineDetail.appraise6')}</Text>
       </View>
     }
 
