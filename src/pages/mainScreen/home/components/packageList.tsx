@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { View, TouchableOpacity, Image } from 'react-native';
 import { Text } from 'react-native-paper';
 import Animated from 'react-native-reanimated';
@@ -45,6 +45,7 @@ export type IAreaListProps = {
 const PackageList: FC<IAreaListProps> = (props) => {
 
   const { t } = useTranslation();
+
   const initList = [
     {
       id: uuid.v4(),
@@ -62,14 +63,14 @@ const PackageList: FC<IAreaListProps> = (props) => {
     setData(draft => {
       draft.activeIndex = index;
     });
-    onChange?.(data.cells, index);
+    // onChange?.(data.cells, index);
   };
 
   const { run, loading } = useRequest(() => getByBoothId(boothId), {
     manual: true,
     onSuccess: (res) => {
 
-      console.log(res.data, '酒水套餐');
+
 
       setData(draft => {
         draft.cells = res.data ? [...initList, ...res.data,] : initList;
@@ -86,13 +87,15 @@ const PackageList: FC<IAreaListProps> = (props) => {
     if (boothId) {
       run();
     }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [boothId]);
 
   useEffect(() => {
     changeLoading?.(loading)
   }, [loading])
+
+  useEffect(() => {
+    onChange?.(data.cells, data.activeIndex);
+  }, [data])
 
   return (<View className=' flex-wrap gap-3 flex-row '>
     {data.cells.map((item, index) => {
