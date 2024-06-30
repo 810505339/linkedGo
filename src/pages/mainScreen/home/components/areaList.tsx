@@ -78,16 +78,13 @@ const AreaList: FC<IAreaListProps> = (props) => {
   };
 
   useEffect(() => {
-    if (data.activeIndex && data.cells) {
-      setData(draft => {
-        const list = resList ?? [];
-        draft.cells = list;
-        draft.activeIndex = data.activeIndex;
+    setData(draft => {
+      const list = resList ?? [];
+      draft.cells = list;
+      draft.activeIndex = data.activeIndex;
 
-      });
-      onChange(data.cells, data.activeIndex)
-    }
-
+    });
+    onChange(data.cells, data.activeIndex)
   }, [data.activeIndex, resList])
 
 
