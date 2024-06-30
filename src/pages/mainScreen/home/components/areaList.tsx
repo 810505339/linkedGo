@@ -87,6 +87,7 @@ const AreaList: FC<IAreaListProps> = (props) => {
     onChange(data.cells, data.activeIndex)
   }, [data.activeIndex, resList])
 
+  
 
 
   useEffect(() => {
