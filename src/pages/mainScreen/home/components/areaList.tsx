@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { View, TouchableOpacity, ImageBackground, useWindowDimensions, FlatList, StyleSheet } from 'react-native';
 import { Text } from 'react-native-paper';
 import Animated from 'react-native-reanimated';
@@ -57,6 +57,7 @@ const AreaList: FC<IAreaListProps> = (props) => {
   const { runAsync, loading } = useRequest(() => getAreaById(storeId, { date }), {
     manual: true
   })
+  const [resList, setReList] = useState([])
   const [data, setData] = useImmer({
     cells: [],
     activeIndex: 0,
@@ -73,17 +74,21 @@ const AreaList: FC<IAreaListProps> = (props) => {
 
   const getAreaByIdApi = async () => {
     const { data: res } = await runAsync()
-    setData(draft => {
-      const list = res ?? [];
-      draft.cells = list;
-      draft.activeIndex = 0;
-
-    });
+    setReList(res)
   };
 
   useEffect(() => {
-    onChange(data.cells, data.activeIndex)
-  }, [data.activeIndex, data.cells])
+    if (data.activeIndex && data.cells) {
+      setData(draft => {
+        const list = resList ?? [];
+        draft.cells = list;
+        draft.activeIndex = data.activeIndex;
+
+      });
+      onChange(data.cells, data.activeIndex)
+    }
+
+  }, [data.activeIndex, resList])
 
 
 
