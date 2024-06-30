@@ -101,7 +101,7 @@ const HomeScreen = () => {
   }
 
   function advertisingClick(obj: any) {
-    if (obj.jump) {
+    if (obj.jump && obj.dynamicStateId) {
       navigation.navigate('DynamicInfo', { id: obj.dynamicStateId });
     }
   }

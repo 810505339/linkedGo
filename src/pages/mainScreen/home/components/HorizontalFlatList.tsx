@@ -8,6 +8,9 @@ import { useTranslation } from 'react-i18next';
 import { cssInterop } from 'nativewind'
 
 import { store } from '@store/versionStore'
+import DeviceInfo from 'react-native-device-info';
+
+
 
 cssInterop(Text, {
   className: 'style'
@@ -41,7 +44,7 @@ type IProps = {
 
 const HorizontalFlatList: FC<PropsWithChildren<IProps>> = ({ style }) => {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
-
+  const version = DeviceInfo.getVersion()
   const [data, setData] = useState<IData[]>([
 
     { key: '1', navigation: 'Fightwine', text: 'home.nav1', source: require('@assets/imgs/home/fightwine.png'), color: '#ED8EFFFF' },
@@ -52,17 +55,22 @@ const HorizontalFlatList: FC<PropsWithChildren<IProps>> = ({ style }) => {
 
 
   useEffect(() => {
-    if (store.app.sensitivenessOn === '0') {
-      setData([
-        { key: '1', navigation: 'Fightwine', text: 'home.nav1', source: require('@assets/imgs/home/fightwine.png'), color: '#ED8EFFFF' },
-        { key: '2', navigation: 'Preset', text: 'home.nav2', source: require('@assets/imgs/home/tickets.png'), color: '#FFBF65FF' },
-        { key: '3', navigation: 'ReserveBooth', text: 'home.nav3', source: require('@assets/imgs/home/deck.png'), color: '#91F2FFFF' },
-        { key: '4', navigation: 'Radio', text: 'home.nav4', source: require('@assets/imgs/home/radio.png'), color: '#FF8383FF' },
-        { key: '6', navigation: 'Dynamic', text: 'home.nav6', source: require('@assets/imgs/home/dynamic.png'), color: '#C7C2FFFF' },
-      ])
+    if (store.app.versionNumber) {
 
+      if (store.app.sensitivenessOn === '0' || version != store.app.versionNumber) {
+        setData([
+          { key: '1', navigation: 'Fightwine', text: 'home.nav1', source: require('@assets/imgs/home/fightwine.png'), color: '#ED8EFFFF' },
+          { key: '2', navigation: 'Preset', text: 'home.nav2', source: require('@assets/imgs/home/tickets.png'), color: '#FFBF65FF' },
+          { key: '3', navigation: 'ReserveBooth', text: 'home.nav3', source: require('@assets/imgs/home/deck.png'), color: '#91F2FFFF' },
+          { key: '4', navigation: 'Radio', text: 'home.nav4', source: require('@assets/imgs/home/radio.png'), color: '#FF8383FF' },
+          { key: '6', navigation: 'Dynamic', text: 'home.nav6', source: require('@assets/imgs/home/dynamic.png'), color: '#C7C2FFFF' },
+        ])
+
+      }
     }
-  }, [store.app.sensitivenessOn])
+
+
+  }, [store.app])
 
 
 

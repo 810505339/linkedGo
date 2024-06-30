@@ -67,23 +67,23 @@ const AreaList: FC<IAreaListProps> = (props) => {
     setData(draft => {
       draft.activeIndex = index;
     });
-    onChange(data.cells, index);
+    //onChange(data.cells, index);
   };
 
 
   const getAreaByIdApi = async () => {
     const { data: res } = await runAsync()
-    const week = dayjs(date).day() == 0 ? 7 : dayjs(date).day();
-    //获取今天的时间
-    //数据里面找到今天的营业
-    console.log(res, 'week');
     setData(draft => {
       const list = res ?? [];
       draft.cells = list;
       draft.activeIndex = 0;
-      onChange(list, 0);
+
     });
   };
+
+  useEffect(() => {
+    onChange(data.cells, data.activeIndex)
+  }, [data.activeIndex, data.cells])
 
 
 

@@ -246,7 +246,7 @@ export default {
     btn6: 'Remove',
     btn7: 'Agree',
     btn8: 'Reject',
-    btn9: '评价酒局',
+    btn9: 'Appraise',
     btn10: 'Do you wish to join the session',
     btn11: 'Exit',
     info0: 'Sessions Mode',
