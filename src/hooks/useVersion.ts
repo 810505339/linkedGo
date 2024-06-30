@@ -34,12 +34,18 @@ export default () => {
       console.log(resdata, '获取版本');
 
       if (resdata) {
-        
+
+        const isShow = Platform.OS === 'ios'
+
         setAllData(draft => {
           draft.versionNumber = resdata?.versionNumber
           draft.versionIntroduce = resdata?.versionIntroduce
           draft.isForceUpdate = resdata?.isForceUpdate
+
           draft.isShow = resdata?.versionNumber != version
+          if (isShow) {
+            draft.isShow = false
+          }
           draft.packageFile = fileStore?.fileUrl + '/' + resdata?.packageFile
           draft.sensitivenessOn = resdata?.sensitivenessOn
           draft.versionType = resdata?.versionType
