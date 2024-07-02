@@ -257,14 +257,14 @@ const FightwineScreen = () => {
 
         const { dx, dy, moveX, moveY } = gestureState;
         if (moveX < 20 || moveX > ScreenWidth - 10 || moveY < 150 || moveY > ScreenHeight - 70) {
-          Animate.spring(pan,{
-            toValue:{x:0,y:0},
-            useNativeDiriver:false
+          Animated.spring(pan, {
+            toValue: { x: 0, y: 0 },
+            useNativeDriver: false
           }).start()
           return
         }
 
-
+                                                    
         console.log(moveX, moveY, ScreenWidth)
         return Animated.event([null, {
           dx: pan.x,

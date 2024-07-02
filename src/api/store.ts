@@ -1,6 +1,7 @@
 import service from './base';
 //获取门店的列表
 export const getSotreList = async () => {
+  console.log('请求门店列表')
   return service({
     url: '/admin/store/allEnabled',
     method: 'get',

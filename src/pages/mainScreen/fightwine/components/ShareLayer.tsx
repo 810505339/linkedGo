@@ -8,7 +8,7 @@ import ViewShot from 'react-native-view-shot'
 import { useRef } from 'react'
 import { CameraRoll } from '@react-native-camera-roll/camera-roll'
 import Toast from 'react-native-toast-message'
-
+import dayjs from 'dayjs'
 const imageSize = Image.resolveAssetSource(require('../images/share_bg_zh.png'))
 
 const IMAGE_WIDTH = 1920,
@@ -41,6 +41,8 @@ export default function ShareLayer({ id, date }: { id: string, date: string }) {
         });
     }
 
+    const dateFormat = dayjs(date).format('YYYY-MM-DD hh:mm')
+
     return (
         <View>
             <ViewShot ref={domRef} options={{ fileName: "fightwine", format: "png", quality: 1 }}>
@@ -52,7 +54,7 @@ export default function ShareLayer({ id, date }: { id: string, date: string }) {
                     source={require('../images/share_bg_zh.png')}
                 >
                     <View style={{ position: 'absolute', right: dateright, bottom: datebottom }}>
-                        <Text className='  font-bold text-[#000]'>{date}</Text>
+                        <Text className='  font-bold text-[#000]'>{dateFormat}</Text>
                     </View>
                     <View style={{ position: 'absolute', right, bottom }}>
                         <QRCode

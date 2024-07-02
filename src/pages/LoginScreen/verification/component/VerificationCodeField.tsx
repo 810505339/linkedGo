@@ -88,7 +88,7 @@ const VerificationCodeField: FC<IProps> = ({ onChange }) => {
         key={index}
         style={[styles.cell, animatedCellStyle]}
         onLayout={getCellOnLayoutHandler(index)}>
-        <Animated.Text className={'  text-black pl-3'} style={{ fontSize: 50,  lineHeight: CELL_SIZE - 5}}> {symbol || (isFocused ? <Cursor /> : null)}</Animated.Text>
+        <Animated.Text className={'  text-black pl-3'} style={{ fontSize: 50, lineHeight: CELL_SIZE - 5 }}> {symbol || (isFocused ? <Cursor /> : null)}</Animated.Text>
       </Animated.View>
     );
   };

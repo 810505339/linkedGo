@@ -39,7 +39,7 @@ export default (isStore = true) => {
     } finally {
       const shopList = isStore ? store.shopList : await initList();
       const index = shopList.findIndex((item) => item.id === data?.selectId);
-      console.log(data, '触发了init');
+      console.log(shopList, '触发了init');
 
       if (!data?.selectId || !~index) {
         data = await save(shopList[0]);
