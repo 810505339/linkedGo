@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     fontSize: 50,
     textAlign: 'center',
     borderRadius: CELL_BORDER_RADIUS,
-    color: '#0F0F0F',
+    color: '#EE2737',
 
 
     // IOS

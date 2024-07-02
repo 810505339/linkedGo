@@ -63,18 +63,19 @@ const VerificationCodeField: FC<IProps> = ({ onChange }) => {
           inputRange: [0, 1],
           outputRange: [DEFAULT_CELL_BG_COLOR, ACTIVE_CELL_BG_COLOR],
         }),
-      borderRadius: animationsScale[index].interpolate({
-        inputRange: [0, 1],
-        outputRange: [CELL_SIZE, CELL_BORDER_RADIUS],
-      }),
-      transform: [
-        {
-          scale: animationsScale[index].interpolate({
-            inputRange: [0, 1],
-            outputRange: [0.2, 1],
-          }),
-        },
-      ],
+      // borderRadius: animationsScale[index].interpolate({
+      //   inputRange: [0, 1],
+      //   outputRange: [CELL_SIZE, CELL_BORDER_RADIUS],
+      // }),
+
+      // transform: [
+      //   {
+      //     scale: animationsScale[index].interpolate({
+      //       inputRange: [0, 1],
+      //       outputRange: [0.2, 1],
+      //     }),
+      //   },
+      // ],
     };
 
     // Run animation on next event loop tik
@@ -88,7 +89,7 @@ const VerificationCodeField: FC<IProps> = ({ onChange }) => {
         key={index}
         style={[styles.cell, animatedCellStyle]}
         onLayout={getCellOnLayoutHandler(index)}>
-        <Animated.Text className={'  text-black pl-3'} style={{ fontSize: 50, lineHeight: CELL_SIZE - 5 }}> {symbol || (isFocused ? <Cursor /> : null)}</Animated.Text>
+        <Animated.Text className={'  text-[#fff] pl-3'} style={{ fontSize: 50, lineHeight: CELL_SIZE - 5 }}> {symbol || (isFocused ? <Cursor /> : null)}</Animated.Text>
       </Animated.View>
     );
   };
