@@ -269,7 +269,7 @@ export default {
     appraise1: 'No review for this session, be the first to comment',
     appraise2: 'Review this session',
     appraise3: '* is required',
-    appraise4: 'Please enter a review',
+    appraise4: 'please appraise the session',
     appraise5: 'Upload image attachments',
     appraise6: 'Upload a maximum of 4 images',
     WAIT_START: 'WAIT_START',
