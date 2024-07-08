@@ -25,7 +25,7 @@ export default () => {
 
 
 
-  const { run } = useRequest(getVersion, {
+  const { run,loading } = useRequest(getVersion, {
     manual: true,
     onSuccess: (res) => {
 
@@ -84,7 +84,8 @@ export default () => {
   return {
     allData,
     hideDialog,
-    download
+    download,
+    loading
   }
 
 

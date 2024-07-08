@@ -286,7 +286,7 @@ const Header = ({ navigation }) => {
   }
 
   return ((<Appbar.Header style={{ backgroundColor: 'transparent' }} className="flex-row items-center justify-between px-4  pb-4">
-    <Image source={logoIcon} />
+    <Image source={logoIcon} className="h-8 w-32" resizeMode={'contain'} />
     <View className="flex-row items-center gap-x-4">
       <Pressable onPress={toUserInfo}>
         <Image source={editIcon} />

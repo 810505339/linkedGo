@@ -51,7 +51,7 @@ const HomeScreen = () => {
     useNavigation<NativeStackNavigationProp<UsertackParamList>>();
   const { data: language, findlanguage } = useFindLanguage()
 
-  const { snap, bottomSheetModalRef, shop, onPress, shopName, init: shopInit } = useSelectShop(false);
+  const { snap, bottomSheetModalRef, shop, onPress, shopName, init: shopInit, loading: shopLoading } = useSelectShop(false);
 
   const { imageSize, getSize } = useImageSize()
   const { imageSize: imageSize1, getSize: getSize1 } = useImageSize()
@@ -156,7 +156,7 @@ const HomeScreen = () => {
 
   const containerStyle = { padding: 20 };
   return (
-    <BaseLayout className="bg-[#0B0B0BE6]" loading={loading} >
+    <BaseLayout className="bg-[#0B0B0BE6]" loading={loading && shopLoading} >
 
       <ScrollView
         contentContainerStyle={{ flex: 1 }}

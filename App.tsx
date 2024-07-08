@@ -31,11 +31,12 @@ import MyModal from '@components/modal';
 import { useTranslation } from 'react-i18next';
 import SplashScreen from 'react-native-splash-screen'
 import { useNetInfo } from '@react-native-community/netinfo';
+import Loading from '@components/baselayout/loading';
 
 const headerIcon = require('@assets/imgs/base/modalHeader.png');
 
 const App = () => {
-  const { allData, hideDialog, download } = useVersion();
+  const { allData, hideDialog, download, loading } = useVersion();
   const { isConnected } = useNetInfo();
   const { t } = useTranslation()
   useUserInfo();
@@ -66,11 +67,13 @@ const App = () => {
       : { ...MD3LightTheme, colors: colors };
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
+   
       <ModalLayers>
         <BottomSheetModalProvider>
           <PaperProvider theme={paperTheme}>
             <SafeAreaProvider>
               <StatusBar backgroundColor="transparent" translucent={true} />
+              {loading && <Loading />}
               <Portal>
                 <MyModal
                   visible={allData.isShow}

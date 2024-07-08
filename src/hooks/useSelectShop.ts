@@ -7,10 +7,16 @@ import { findIndex, initList, store } from '@store/shopStore';
 import { useSnapshot } from 'valtio';
 import { useFocusEffect } from '@react-navigation/native';
 import { useNetInfo } from "@react-native-community/netinfo";
+import { useRequest } from 'ahooks';
 
 
 export default (isStore = true) => {
   const { type, isConnected } = useNetInfo();
+
+  const { runAsync, loading } = useRequest(initList, {
+    manual: true
+  })
+
 
   const [shop, setShop] = useImmer({
     select: {
@@ -37,7 +43,7 @@ export default (isStore = true) => {
     try {
       data = await load();
     } finally {
-      const shopList = isStore ? store.shopList : await initList();
+      const shopList = isStore ? store.shopList : await runAsync();
       const index = shopList.findIndex((item) => item.id === data?.selectId);
       console.log(shopList, '触发了init');
 
@@ -79,5 +85,6 @@ export default (isStore = true) => {
     snap,
     shopName,
     showShop,
+    loading
   };
 };

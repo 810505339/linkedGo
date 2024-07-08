@@ -30,13 +30,13 @@ const Header = ({ layout, options, onChange }: BottomTabHeaderProps & { onChange
 
   useEffect(() => {
     if (shop.select.id != '') {
-      if(isConnected)
+      if (isConnected)
         onChange(shop.select);
     }
-  }, [shop.select?.id,isConnected]);
+  }, [shop.select?.id, isConnected]);
 
   return (<Appbar.Header style={{ backgroundColor: 'transparent' }}>
-    <Image source={LOGO} className="w-16 h-8 ml-5" />
+    <Image source={LOGO} className="h-8 w-32" resizeMode={'contain'} />
     <Appbar.Content style={{
       alignItems: 'flex-end',
       justifyContent: "center",
