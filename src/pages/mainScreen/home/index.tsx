@@ -17,9 +17,13 @@ import { useRequest } from 'ahooks';
 import Toast from 'react-native-toast-message';
 import useFindLanguage from '../user/hooks/useFindLanguage';
 import useSelectShop from '@hooks/useSelectShop';
+import useVersion from '@hooks/useVersion';
+import { useTranslation } from 'react-i18next';
+import { Button } from 'react-native-paper';
+import Loading from '@components/baselayout/loading';
 
 
-
+const headerIcon = require('@assets/imgs/base/modalHeader.png');
 const closeIcon = require('@assets/imgs/base/close.png')
 
 // const HOMEBG = require('@assets/imgs/home/bg.png')
@@ -49,8 +53,9 @@ let defaultlanguage = ''
 const HomeScreen = () => {
   const navigation =
     useNavigation<NativeStackNavigationProp<UsertackParamList>>();
+  const { t } = useTranslation()
   const { data: language, findlanguage } = useFindLanguage()
-
+  const { allData, hideDialog, download, loading: versionloading } = useVersion();
   const { snap, bottomSheetModalRef, shop, onPress, shopName, init: shopInit, loading: shopLoading } = useSelectShop(false);
 
   const { imageSize, getSize } = useImageSize()
@@ -148,6 +153,8 @@ const HomeScreen = () => {
   })
 
 
+
+
   useEffect(() => {
     navigation.setOptions({
       header: props => <Header {...props} onChange={onChange} />,
@@ -155,6 +162,14 @@ const HomeScreen = () => {
   }, [navigation]);
 
   const containerStyle = { padding: 20 };
+
+  if (versionloading) {
+
+    return <BaseLayout>
+      <Loading />
+    </BaseLayout>
+  }
+
   return (
     <BaseLayout className="bg-[#0B0B0BE6]" loading={loading && shopLoading} >
 
@@ -184,6 +199,49 @@ const HomeScreen = () => {
         <TouchableOpacity onPress={() => setData(draft => { draft.visible = false })} className='flex-row  items-center justify-center' >
           <Image source={closeIcon} className='w-6 h-6' />
         </TouchableOpacity>
+      </MyModal>
+
+      <MyModal
+        visible={allData.isShow}
+        onDismiss={hideDialog}
+        dismissable={false}>
+        <View className="w-[285]  bg-[#222222FF] items-center ml-auto mr-auto  rounded-2xl relative ">
+          <Image
+            source={headerIcon}
+            resizeMode="contain"
+            className="w-[285] h-[60] absolute -top-2 left-0 right-0"
+          />
+          <View>
+            <Text className="text-lg font-bold text-white  text-center pt-2">
+              {t('Modal.tip')}
+            </Text>
+          </View>
+          <View className="m-auto py-8 px-5">
+            <Text
+              className="text-xs font-bold text-white  text-center "
+              numberOfLines={2}>
+              {allData.versionIntroduce}
+            </Text>
+          </View>
+          <View className="flex-row justify-around items-center  w-full px-5 pb-5 ">
+            <Button
+              className="bg-transparent  mr-5 w-32"
+              mode="outlined"
+              labelStyle={{ fontWeight: 'bold' }}
+              textColor="#ffffffbf"
+              onPress={hideDialog}>
+              {t('Modal.btn2')}
+            </Button>
+            <Button
+              className="bg-[#EE2737FF] w-32 "
+              textColor="#000000FF"
+              labelStyle={{ fontWeight: 'bold' }}
+              mode="contained"
+              onPress={download}>
+              {t('Modal.btn1')}
+            </Button>
+          </View>
+        </View>
       </MyModal>
     </BaseLayout>
   );

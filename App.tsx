@@ -33,10 +33,10 @@ import SplashScreen from 'react-native-splash-screen'
 import { useNetInfo } from '@react-native-community/netinfo';
 import Loading from '@components/baselayout/loading';
 
-const headerIcon = require('@assets/imgs/base/modalHeader.png');
+
 
 const App = () => {
-  const { allData, hideDialog, download, loading } = useVersion();
+
   const { isConnected } = useNetInfo();
   const { t } = useTranslation()
   useUserInfo();
@@ -65,59 +65,18 @@ const App = () => {
     colorScheme === 'dark'
       ? { ...MD3DarkTheme, colors: colors }
       : { ...MD3LightTheme, colors: colors };
+
+
+
+
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-   
+
       <ModalLayers>
         <BottomSheetModalProvider>
           <PaperProvider theme={paperTheme}>
             <SafeAreaProvider>
               <StatusBar backgroundColor="transparent" translucent={true} />
-              {loading && <Loading />}
-              <Portal>
-                <MyModal
-                  visible={allData.isShow}
-                  onDismiss={hideDialog}
-                  dismissable={false}>
-                  <View className="w-[285]  bg-[#222222FF] items-center ml-auto mr-auto  rounded-2xl relative ">
-                    <Image
-                      source={headerIcon}
-                      resizeMode="contain"
-                      className="w-[285] h-[60] absolute -top-2 left-0 right-0"
-                    />
-                    <View>
-                      <Text className="text-lg font-bold text-white  text-center pt-2">
-                        {t('Modal.tip')}
-                      </Text>
-                    </View>
-                    <View className="m-auto py-8 px-5">
-                      <Text
-                        className="text-xs font-bold text-white  text-center "
-                        numberOfLines={2}>
-                        {allData.versionIntroduce}
-                      </Text>
-                    </View>
-                    <View className="flex-row justify-around items-center  w-full px-5 pb-5 ">
-                      <Button
-                        className="bg-transparent  mr-5 w-32"
-                        mode="outlined"
-                        labelStyle={{ fontWeight: 'bold' }}
-                        textColor="#ffffffbf"
-                        onPress={hideDialog}>
-                        {t('Modal.btn2')}
-                      </Button>
-                      <Button
-                        className="bg-[#EE2737FF] w-32 "
-                        textColor="#000000FF"
-                        labelStyle={{ fontWeight: 'bold' }}
-                        mode="contained"
-                        onPress={download}>
-                        {t('Modal.btn1')}
-                      </Button>
-                    </View>
-                  </View>
-                </MyModal>
-              </Portal>
               <AppNavigator />
               <Toast
                 config={toastConfig}
