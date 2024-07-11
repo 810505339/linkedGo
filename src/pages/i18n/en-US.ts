@@ -150,6 +150,7 @@ export default {
     label14: 'Number of ladies',
 
     tip1: 'The order cannot be restored once it has been canceled. Do you wish to proceed',
+    tip2: 'Your money will be returned to the APP wallet for your next purchase. If you need a refund to your bank card, please contact customer service. See T&C for detailed rules.',
     WINE_PARTY: 'SHARE SOFA',
     TICKET: 'TICKET',
     BOOTH: 'VIP SOFA',

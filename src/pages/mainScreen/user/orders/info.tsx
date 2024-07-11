@@ -41,7 +41,9 @@ const Payment = [
 
 /* 详情重新渲染 */
 const Info = (props: any) => {
-  const { orderContext, payList, orderStatus, realAmount, headerImg, payMethod, otherAmount } = props
+
+
+  const { orderContext, payList, orderStatus, realAmount, headerImg, payMethod, otherAmount, canCancel } = props
   const { t } = useTranslation()
   return <ScrollView className='px-5 '>
     <View className="relative">
@@ -83,13 +85,23 @@ const Info = (props: any) => {
 
     </View>}
 
-    <View className='flex-row items-center justify-between mt-5 pb-20'>
-      <View className='flex-row items-center'>
-        <Text className='text-xs font-light text-[#ffffff7f]'>{t('preset.label3')}</Text>
-        <Text className='text-[#E6A055] font-bold text-xl ml-2'>S$ {realAmount} </Text>
+    {canCancel && <View className='flex-row items-center justify-between mt-5 pb-20'>
+      <Button mode='outlined' className=" w-full font-bold" textColor="rgba(255, 255, 255, 0.75)" style={{ borderColor: 'rgba(255, 255, 255, 0.2)' }} onPress={props.cancel} >{t('orders.btn1')}</Button>
+    </View>}
+
+    {!canCancel &&
+      <View className='flex-row items-center justify-between mt-5 pb-20'>
+        <View className='flex-row items-center'>
+          <Text className='text-xs font-light text-[#ffffff7f]'>{t('preset.label3')}</Text>
+          <Text className='text-[#E6A055] font-bold text-xl ml-2'>S$ {realAmount} </Text>
+        </View>
+        <Text className='text-[#fff] text-xl'>{t(`orders.${orderStatus}`)}</Text>
       </View>
-      <Text className='text-[#fff] text-xl'>{t(`orders.${orderStatus}`)}</Text>
-    </View>
+
+    }
+
+
+
   </ScrollView>
 }
 
@@ -97,7 +109,7 @@ const Info = (props: any) => {
 const OrdersInfo = () => {
   const route = useRoute<RouteProp<RootStackParamList, 'OrdersInfo'>>();
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
-  const { orderContext = [], headerImg, submit, orderStatus, orderId, taxAmount = 0, feeAmount = 0, discountAmount, realAmount, balanceAmount = 0, useScope, ticketId, storeId, boothId, winePartyMode, activityId, payMethod, otherAmount } = route?.params;
+  const { orderContext = [], headerImg, submit, orderStatus, orderId, taxAmount = 0, feeAmount = 0, discountAmount, realAmount, balanceAmount = 0, useScope, ticketId, storeId, boothId, winePartyMode, activityId, payMethod, otherAmount, canCancel } = route?.params;
 
 
 
@@ -119,7 +131,9 @@ const OrdersInfo = () => {
     /* 是否显示优惠券*/
     isShowCoupon: false,
     /* 订单loading */
-    loading: false
+    loading: false,
+    /* 展示是否取消订单 */
+    showCancel: false
   });
   const { t } = useTranslation()
   /* 需要支付的钱 */
@@ -260,7 +274,7 @@ const OrdersInfo = () => {
       Toast.show({
         text1: '取消成功',
       });
-      navigation.goBack();
+      navigation.navigate('Orders', { refresh: Math.random() })
     }
 
   };
@@ -268,6 +282,7 @@ const OrdersInfo = () => {
   const onDismiss = () => {
     setAllData(draft => {
       draft.visible = false;
+      draft.showCancel = false
     });
   };
   /* 提交订单 */
@@ -458,7 +473,11 @@ const OrdersInfo = () => {
       </View>)
     }
 
-    {orderStatus != undefined ? <Info orderContext={orderContext} payList={payList} orderStatus={orderStatus} realAmount={realAmount} headerImg={headerImg} payMethod={payMethod} otherAmount={otherAmount} /> : <ScrollView>
+    {orderStatus != undefined ? <Info
+      orderContext={orderContext} payList={payList} orderStatus={orderStatus} realAmount={realAmount} headerImg={headerImg} payMethod={payMethod} otherAmount={otherAmount}
+      canCancel={canCancel}
+      cancel={() => { setAllData((draft) => { draft.showCancel = true }) }}
+    /> : <ScrollView>
       <View>
         <Panel className="mt-52">
           <View>
@@ -585,6 +604,12 @@ const OrdersInfo = () => {
       </View>
 
     </MyModal>
+
+    <Dialog visible={allData.showCancel} confirm={confirm} onDismiss={onDismiss} confirmText={t('orders.btn3')} cancelText={t('orders.btn4')}  >
+      <Text>{t('orders.tip2')}</Text>
+    </Dialog>
+
+
   </BaseLayout>;
 };
 

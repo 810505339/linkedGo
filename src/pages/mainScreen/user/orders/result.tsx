@@ -108,7 +108,8 @@ const Result = () => {
       discountAmount: data.discountAmount,
       needCheckPayPassword: data.needCheckPayPassword,
       payMethod: data?.payMethod,
-      otherAmount: data?.otherAmount
+      otherAmount: data?.otherAmount,
+      canCancel: data?.canCancel
     });
   };
 

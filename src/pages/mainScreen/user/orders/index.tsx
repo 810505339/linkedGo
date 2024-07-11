@@ -5,7 +5,7 @@ import { TabsProvider, Tabs, TabScreen } from 'react-native-paper-tabs';
 
 import { useImmer } from 'use-immer';
 
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { ScreenNavigationProp } from '@router/type';
 
 import { cancelOrder, getOrderDetail, getOrderList, tempPay } from '@api/order';
@@ -141,6 +141,9 @@ const Item: FC<any> = ((props) => {
 const Orders = () => {
 
   const navigation = useNavigation<ScreenNavigationProp<'OrdersInfo'>>();
+  const route = useRoute<any>()
+
+
 
   useEffect(() => {
     navigation.setOptions({
@@ -292,7 +295,8 @@ const Orders = () => {
       discountAmount: data.discountAmount,
       needCheckPayPassword: data.needCheckPayPassword,
       payMethod: data?.payMethod,
-      otherAmount: data?.otherAmount
+      otherAmount: data?.otherAmount,
+      canCancel: data?.canCancel
     });
   };
   const handleChangeIndex = (index: number) => {
@@ -312,6 +316,10 @@ const Orders = () => {
       draft.typeIndex = index;
     });
   }
+
+  useEffect(() => {
+    Dom.current!.refreshData();
+  }, [route.params?.refresh])
 
 
 
@@ -358,7 +366,7 @@ const Orders = () => {
       </Tabs>
     </TabsProvider>
     <Dialog visible={data.visible} confirm={confirm} onDismiss={onDismiss} confirmText={t('orders.btn3')} cancelText={t('orders.btn4')}  >
-      <Text>{t('orders.tip1')}</Text>
+      <Text>{t('orders.tip2')}</Text>
     </Dialog>
   </BaseLayout>);
 };
