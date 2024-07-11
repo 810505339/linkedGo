@@ -342,7 +342,7 @@ const Appraise = forwardRef((props: any, childRef: any) => {
             className="absolute  z-50 -right-4 -top-4"
             iconColor={'#000'}
             size={14} onPress={() => onDeleteImage(image.id)} />
-          <Image source={{ uri: image.previewUrl }} className="w-20 h-20 rounded" />
+          <Image source={{ uri: image.previewUrl }} className="w-20 h-20 rounded relative z-10" />
         </TouchableOpacity>);
       })}
       {imageList.length < 4 && <IconButton
