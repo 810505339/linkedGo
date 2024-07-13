@@ -5,7 +5,7 @@ import { useEffect } from "react";
 
 export default (isShowPwd: boolean) => {
 
-  const { userInfoStorage } = useUserInfo();
+  const { userInfoStorage, runAsyncByUser } = useUserInfo();
   const { userInfo } = userInfoStorage;
   console.log(userInfo, 'userInfo');
 
@@ -26,6 +26,7 @@ export default (isShowPwd: boolean) => {
 
   return {
     phone: userInfo?.phone,
-    setPayPassword: userInfo?.setPayPassword ?? false
+    setPayPassword: userInfo?.setPayPassword ?? false,
+    runAsyncByUser
   }
 }
