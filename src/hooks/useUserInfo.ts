@@ -8,9 +8,11 @@ export default () => {
   const [userInfoStorage, setuserInfoStorage] = useState<any>({});
 
 
-  const { runAsync } = useRequest(detailsById, {
+  const { runAsync, loading } = useRequest(detailsById, {
     manual: true,
     onSuccess: (res) => {
+
+      console.log(res?.data,)
       save(res?.data)
 
     }
@@ -41,7 +43,7 @@ export default () => {
       }
       setuserInfoStorage(_userInfoStorage ?? {});
     })();
-  }, []);
+  }, [loading]);
 
   return {
     userInfoStorage,
