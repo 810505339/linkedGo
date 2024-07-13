@@ -191,7 +191,7 @@ const OrdersInfo = () => {
 
   /* overId的值 */
   const orderIdRef = useRef('')
-  const { phone, setPayPassword } = usesetPwd(allData.isShowPwd)
+  const { phone, setPayPassword, runAsyncByUser } = usesetPwd(allData.isShowPwd)
   /* 当存在couponId 也就是选中了优惠券 */
   useEffect(() => {
     console.log(route.params?.couponId);
@@ -422,12 +422,11 @@ const OrdersInfo = () => {
       newPayPassword: allData.newPayPassword,
     })
 
-
-
     if (res.data.success) {
       Toast.show({
         text1: t('common.set')
       })
+      await runAsyncByUser()
       setAllData((draft) => {
         draft.psdVisible = false;
       })

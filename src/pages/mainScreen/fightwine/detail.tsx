@@ -337,15 +337,15 @@ const Appraise = forwardRef((props: any, childRef: any) => {
 
     {<View className="flex-row  space-x-2    items-center ">
       {imageList.map((image) => {
-        return (<View className="w-20 h-20 rounded relative mx-2 " key={image.id} onPress={() => onSelectImage(image)}>
+        return (<TouchableOpacity className="w-20 h-20 rounded relative mx-2 " key={image.id} onPress={() => onSelectImage(image)}>
           <View className="absolute  z-50 -right-4 -top-4">
-          <IconButton icon="backspace-reverse"
-            
-            iconColor={'#000'}
-            size={14} onPress={() => onDeleteImage(image.id)} />
+            <IconButton icon="backspace-reverse"
+              iconColor={'#000'}
+              size={14} onPress={() => onDeleteImage(image.id)} />
           </View>
+
           <Image source={{ uri: image.previewUrl }} className="w-20 h-20 rounded relative z-10" />
-        </View>);
+        </TouchableOpacity>);
       })}
       {imageList.length < 4 && <IconButton
         icon="plus-thick"

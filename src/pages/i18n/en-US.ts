@@ -132,6 +132,8 @@ export default {
     item4: 'Cancelled',
     btn1: 'Cancel your order',
     btn2: 'payment',
+    btn3: 'OK',
+    btn4: 'Cancel',
     info1: 'Remaining',
     info2: 'payment',
     label1: 'Selected store',
