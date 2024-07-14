@@ -85,7 +85,7 @@ const Info = (props: any) => {
 
     </View>}
 
-    {canCancel && <View className='flex-row items-center justify-between mt-5 pb-20'>
+    {canCancel && orderStatus != ORDERSATUS.未支付 && <View className='flex-row items-center justify-between mt-5 pb-20'>
       <Button mode='outlined' className=" w-full font-bold" textColor="rgba(255, 255, 255, 0.75)" style={{ borderColor: 'rgba(255, 255, 255, 0.2)' }} onPress={props.cancel} >{t('orders.btn1')}</Button>
     </View>}
 
