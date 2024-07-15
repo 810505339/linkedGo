@@ -166,7 +166,7 @@ const HomeScreen = () => {
 
   const containerStyle = { padding: 20 };
 
-  if (versionloading || isConnected) {
+  if (versionloading || !isConnected) {
 
     return <BaseLayout>
       <Loading />
