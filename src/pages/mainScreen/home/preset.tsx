@@ -22,7 +22,7 @@ import { useTranslation } from 'react-i18next';
 import { ticketBooking } from '@api/ticket';
 import MyDateTimePicker from '@components/DateTimePicker';
 import TicketList from './components/ticketList'
-import { findIndex, initList, store } from '@store/shopStore';
+import { findIndex, initList, store } from '@storage/store/shopStore';
 /* 预定门票 */
 const tickerBg = require('@assets/imgs/home/preset/ticket-header.png');
 const card_1 = require('@assets/imgs/base/card_1.png');

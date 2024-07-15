@@ -7,7 +7,7 @@ import { TabParamList } from './type';
 import { Image, TouchableOpacity } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { useEffect } from 'react';
-import { store } from '@store/versionStore';
+import { store } from '@storage/store/versionStore';
 
 
 const HOMEICON = require('@assets/imgs/bottombar/home.png');

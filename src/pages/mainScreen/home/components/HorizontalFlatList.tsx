@@ -7,7 +7,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useTranslation } from 'react-i18next';
 import { cssInterop } from 'nativewind'
 
-import { store } from '@store/versionStore'
+import { store } from '@storage/store/versionStore'
 import DeviceInfo from 'react-native-device-info';
 
 

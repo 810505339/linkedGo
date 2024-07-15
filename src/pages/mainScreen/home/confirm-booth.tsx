@@ -9,7 +9,7 @@ import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import Panel from '@components/panel';
 import BoothsList from './components/boothList';
 import { RootStackParamList } from '@router/type';
-import { fileStore } from '@store/getfileurl';
+import { fileStore } from '@storage/store/getfileurl';
 import PackageList from './components/packageList';
 import useSelectBooths from '@hooks/useSelectBooths';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -20,7 +20,7 @@ import { booking } from '@api/booths';
 import Toast from 'react-native-toast-message';
 import { useRequest } from 'ahooks';
 import currency from 'currency.js';
-import { findIndex } from '@store/shopStore';
+import { findIndex } from '@storage/store/shopStore';
 import NumberInput from '@components/number-input';
 
 

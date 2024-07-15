@@ -10,11 +10,11 @@ import { useAsyncEffect, useRequest } from 'ahooks';
 import { getDynamicInfo, isAlreadySignUp, signUp } from '@api/dynamic';
 import { RootStackParamList, ScreenNavigationProp } from '@router/type';
 import { useTranslation } from 'react-i18next';
-import { fileStore } from '@store/getfileurl';
+import { fileStore } from '@storage/store/getfileurl';
 import { loadLanguageStorage } from "@storage/language/action";
 import { getGenericPassword, UserCredentials } from 'react-native-keychain';
 import useSelectShop from '@hooks/useSelectShop';
-import { findIndex } from '@store/shopStore';
+import { findIndex } from '@storage/store/shopStore';
 import currency from 'currency.js';
 
 import MyModal from '@components/modal';

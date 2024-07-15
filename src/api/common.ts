@@ -1,4 +1,4 @@
-import { fileStore } from '@store/getfileurl';
+import { fileStore } from '@storage/store/getfileurl';
 import service from './base';
 
 //上传文件(私有)

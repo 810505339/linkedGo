@@ -24,7 +24,7 @@ import { getCustomerCoupon } from '@api/coupon';
 import setPayApi from '@api/common'
 
 import MyModal from '@components/modal';
-import { findIndex } from '@store/shopStore';
+import { findIndex } from '@storage/store/shopStore';
 cssInterop(Text, {
   className: 'style'
 })
@@ -82,7 +82,6 @@ const Info = (props: any) => {
         <Text className="text-xs font-light text-[#ffffff7f]">{payMethod}</Text>
         <Text className='text-[#E6A055] font-bold text-xl ml-2'>S${otherAmount}</Text>
       </View>
-
     </View>}
 
     {canCancel && orderStatus != ORDERSATUS.未支付 && <View className='flex-row items-center justify-between mt-5 pb-20'>

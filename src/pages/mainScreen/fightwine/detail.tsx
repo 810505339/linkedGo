@@ -20,7 +20,7 @@ import Toast from 'react-native-toast-message';
 import useUserInfo from '@hooks/useUserInfo';
 import { BlurView } from '@react-native-community/blur';
 import CheckSex from '@components/baselayout/checkSex';
-import { findIndex } from '@store/shopStore';
+import { findIndex } from '@storage/store/shopStore';
 import currency from 'currency.js';
 import useSelectShop from '@hooks/useSelectShop';
 import { useLayer } from '@hooks/useLayer';

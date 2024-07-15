@@ -12,7 +12,7 @@ import { cancelOrder, getOrderDetail, getOrderList, tempPay } from '@api/order';
 import CustomFlatList from '@components/custom-flatlist';
 import { FC, memo, useCallback, useEffect, useRef, useState } from 'react';
 import dayjs from 'dayjs';
-import { fileStore } from '@store/getfileurl';
+import { fileStore } from '@storage/store/getfileurl';
 import { useTranslation } from 'react-i18next';
 import Dialog from '@components/dialog';
 import ListHeaderComponent from './components/ListHeaderComponent';

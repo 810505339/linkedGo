@@ -5,7 +5,7 @@ import Animated from 'react-native-reanimated';
 import { useImmer } from 'use-immer';
 import { getAreaById } from '@api/store';
 import dayjs from 'dayjs';
-import { fileStore } from '@store/getfileurl';
+import { fileStore } from '@storage/store/getfileurl';
 import { useRequest } from 'ahooks';
 import { useTranslation } from 'react-i18next';
 const DATA = [

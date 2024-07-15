@@ -7,7 +7,7 @@ import { BlurView } from '@react-native-community/blur';
 import useGetDynamicType from './hooks/useGetDynamicType';
 import CustomFlatList from '@components/custom-flatlist';
 import { getDynamicList } from '@api/dynamic';
-import { fileStore } from '@store/getfileurl';
+import { fileStore } from '@storage/store/getfileurl';
 import { useTranslation } from 'react-i18next';
 import { useAsyncEffect } from 'ahooks'
 import { loadLanguageStorage } from '@storage/language/action';

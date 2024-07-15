@@ -7,7 +7,7 @@ import SwiperView from './components/swiperView';
 import HorizontalFlatList from './components/HorizontalFlatList';
 import { getcarouselList, getHomePageAdvertising } from '@api/common';
 import { useImmer } from 'use-immer';
-import { fileStore } from '@store/getfileurl';
+import { fileStore } from '@storage/store/getfileurl';
 import { LogLevelEnum, TencentImSDKPlugin } from 'react-native-tim-js';
 import { Image, RefreshControl, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import useImageSize from '@hooks/useImageSize';
