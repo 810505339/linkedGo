@@ -79,7 +79,7 @@ function Index({ swiperList }: IProps) {
         panGestureHandlerProps={{
           activeOffsetX: [-10, 10],
         }}
-        loop
+        loop={swiperList.length > 1}
         enabled // Default is true, just for demo
         defaultScrollOffsetValue={scrollOffsetValue}
         testID={"xxx"}
