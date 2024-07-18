@@ -340,7 +340,7 @@ const Appraise = forwardRef((props: any, childRef: any) => {
         return (<TouchableOpacity className="w-20 h-20 rounded relative mx-2 " key={image.id} onPress={() => onSelectImage(image)}>
           <View className="absolute  z-50 -right-4 -top-4">
             <IconButton icon="backspace-reverse"
-              iconColor={'#000'}
+              iconColor={'#fff'}
               size={14} onPress={() => onDeleteImage(image.id)} />
           </View>
 
