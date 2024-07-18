@@ -49,7 +49,7 @@ const qrCodeImage = require('@assets/imgs/base/qrcode.png');
 const modalBg = require('@assets/imgs/modal/ticket-head-bg.png');
 const modalIcon = require('@assets/imgs/modal/ticket-icon.png');
 
-const card_2 = require('@assets/imgs/base/card_2.png');
+const card_1 = require('@assets/imgs/base/card_1.png');
 const bg = require('@assets/imgs/base/fightwineBg.png');
 
 const closeIcon = require('@assets/imgs/base/close.png')
@@ -77,7 +77,7 @@ const Item = memo<any>((props: any) => {
     img = expiredIcon
   }
   /* 门票 */
-  const cardImg = usageType === 'BOOTH' ? card_2 : bg
+  const cardImg = usageType === 'BOOTH' ? card_1 : card_1
 
   const useTime = usageType === 'TICKET' ? `${usableTimeBegin}-${usableTimeEnd}${t('ticket.tag1')}` : `${t('ticket.tag2')} ${latestArrivalTime}`;
   const NumberRender = <View className="bg-[#000000] rounded-xl absolute p-2 bottom-2 left-1">
