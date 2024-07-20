@@ -36,7 +36,7 @@ export default {
     item4: '0.2 L&C',
     item5: 'Terms & Conditions',
     item6: 'CONTACT US',
-    item7: 'Click to log in',
+    item7: 'log in',
     tag1: 'Account balance',
     tag2: 'Coupons',
     tag3: 'Orders',
