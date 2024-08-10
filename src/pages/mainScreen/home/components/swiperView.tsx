@@ -13,6 +13,7 @@ import { RootStackParamList } from '@router/type';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { Text } from 'react-native-paper';
 import { BlurView } from '@react-native-community/blur';
+import FastImage  from 'react-native-fast-image'
 
 
 const PAGE_WIDTH = Dimensions.get('window').width;
@@ -160,7 +161,7 @@ const CustomItem: React.FC<ItemProps> = (props) => {
           </Text>
         </View>
         }
-        <ImageBackground source={{ uri: source }} className='flex-1' />
+        <FastImage source={{ uri: source }} className='flex-1' />
       </TouchableOpacity>
 
     </View>

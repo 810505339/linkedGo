@@ -25,4 +25,9 @@ module.exports = {
       'import-glob',
     ],
   ],
+  env: {
+    production: {
+      plugins: ['transform-remove-console'],
+    },
+  },
 };
