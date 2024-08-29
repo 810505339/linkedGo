@@ -12,7 +12,7 @@
     "a-build": "cd android && ./gradlew assembleRelease",
     "a-build-aab": "cd android && ./gradlew bundleRelease",
     "i-pod-install": "cd ios && pod install",
-    "i-build": "react-native bundle --entry-file index.ios.js --platform ios --dev false --bundle-output ios/ios.js bundle",
+    "i-build": "react-native bundle --entry-file index.js --platform ios --dev false --bundle-output ios/ios.js bundle",
     "bundle-ios": "node node_modules/react-native/local-cli/cli.js bundle --entry-file index.js --platform ios --dev false --bundle-output ./ios/bundle/index.js bundle --assets-dest ./ios/bundle"
   },
   "dependencies": {

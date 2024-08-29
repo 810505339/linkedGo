@@ -3,8 +3,8 @@ import BaseLayout from '@components/baselayout';
 import { View, Animated, RefreshControl, Image, ImageSourcePropType, ImageBackground, StyleSheet, TouchableOpacity, useWindowDimensions, ScrollView, NativeSyntheticEvent, NativeScrollEvent, Share, Platform } from 'react-native';
 import { Button, Divider, IconButton, Modal, Portal, Text } from 'react-native-paper';
 import { BlurView } from '@react-native-community/blur';
-import React, { useEffect, useState } from 'react';
-import RenderHtml from 'react-native-render-html';
+import React, { memo, useEffect, useState } from 'react';
+import RenderHtml, { RenderHTML } from 'react-native-render-html';
 import { useImmer } from 'use-immer';
 import { useAsyncEffect, useRequest } from 'ahooks';
 import { getDynamicInfo, isAlreadySignUp, signUp } from '@api/dynamic';
@@ -178,6 +178,7 @@ const DynamicInfo = () => {
   const source = {
     html: l == 'en' ? `<div>${data?.dynamicContentUk}</div>` : `<div>${data?.dynamicContentCn}</div>`,
   };
+  const InfoRender=memo(RenderHTML);
   const img = fileStore?.fileUrl + '/' + data?.pictureFile[0]?.fileName
   const imgsource = data?.pictureFile[0]?.fileName ? { uri: img } : cardHeader
   const title = l == 'en' ? data?.dynamicTitleUk : data?.dynamicTitleCn
@@ -324,7 +325,7 @@ const DynamicInfo = () => {
 
 
       <View className="p-5">
-        <RenderHtml
+        <InfoRender
           baseStyle={{ fontSize: 14, color: '#ffffffbf' }}
           contentWidth={width - 40}
           source={source}
