@@ -78,8 +78,13 @@ const Item = memo<any>((props: any) => {
   }
   /* 门票 */
   const cardImg = usageType === 'BOOTH' ? card_1 : card_1
+  console.log(usageType,'usageType',props)
+  let useTime = usageType === 'TICKET' ? `${usableTimeBegin}-${usableTimeEnd}${t('ticket.tag1')}` : `${t('ticket.tag2')} ${latestArrivalTime}`;
+if(usageType==='ACTIVITY')
+{
+  useTime=''
+}
 
-  const useTime = usageType === 'TICKET' ? `${usableTimeBegin}-${usableTimeEnd}${t('ticket.tag1')}` : `${t('ticket.tag2')} ${latestArrivalTime}`;
   const NumberRender = <View className="bg-[#000000] rounded-xl absolute p-2 bottom-2 left-1">
     <Text>
       x
@@ -108,8 +113,8 @@ const Item = memo<any>((props: any) => {
       </View>
       <View className=" flex-grow  overflow-hidden flex-col relative ">
         <View>
-          <Text className="text-white text-lg font-600">{entranceDate}</Text>
-          <Text className="text-[#ffffff7f] text-xs" >{useTime}</Text>
+        {entranceDate&&  <Text className="text-white text-lg font-600">{entranceDate}</Text> }
+          {useTime&& <Text className="text-[#ffffff7f] text-xs" >{useTime}</Text> }
         </View>
         <View className='mt-2'>
           <Text className="text-sm">{storeName}</Text>
