@@ -5,6 +5,7 @@ import { BottomSheetFooter, BottomSheetModal, BottomSheetScrollView, BottomSheet
 import { Button, RadioButton, Text } from 'react-native-paper';
 import FastImage from 'react-native-fast-image';
 import { cssInterop } from 'nativewind'
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 cssInterop(FastImage, {
   className: 'style'
@@ -124,11 +125,14 @@ const CustomModal = forwardRef<BottomSheetModal, IModalProp>((props, ref) => {
     <BottomSheetView >
       <ListHeaderComponent headerText={headerText} />
     </BottomSheetView>
+    <SafeAreaView>
     <BottomSheetScrollView>
       <RadioButton.Group onValueChange={onValueChange} value={value}>
         {data.map(renderItem)}
       </RadioButton.Group>
     </BottomSheetScrollView>
+    </SafeAreaView>
+   
     {/* <BottomSheetView >
       {renderFooter()}
     </BottomSheetView> */}

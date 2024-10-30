@@ -5,11 +5,6 @@ import {
   PaperProvider,
   MD3DarkTheme,
   MD3LightTheme,
-  Modal,
-  Portal,
-  Dialog,
-  Text,
-  Button,
 } from 'react-native-paper';
 import { Image, useColorScheme, View } from 'react-native';
 import { useMaterial3Theme } from '@pchmn/expo-material3-theme';
