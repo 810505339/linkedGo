@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@gorhom/bottom-sheet": "^5.0.5",
-    "@pchmn/expo-material3-theme": "^1.3.2",
+    "@pchmn/expo-materi/Mal3-theme": "^1.3.2",
     "@react-native-async-storage/async-storage": "^1.21.0",
     "@react-native-camera-roll/camera-roll": "^5.10.0",
     "@react-native-clipboard/clipboard": "^1.11.2",
