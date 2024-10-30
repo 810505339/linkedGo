@@ -3,8 +3,8 @@ import BaseLayout from '@components/baselayout';
 import { View, Animated, RefreshControl, Image, ImageSourcePropType, ImageBackground, StyleSheet, TouchableOpacity, useWindowDimensions, ScrollView, NativeSyntheticEvent, NativeScrollEvent, Share, Platform } from 'react-native';
 import { Button, Divider, IconButton, Modal, Portal, Text } from 'react-native-paper';
 import { BlurView } from '@react-native-community/blur';
-import React, { useEffect, useState } from 'react';
-import RenderHtml from 'react-native-render-html';
+import React, { memo, useEffect, useState } from 'react';
+import RenderHtml, { RenderHTML } from 'react-native-render-html';
 import { useImmer } from 'use-immer';
 import { useAsyncEffect, useRequest } from 'ahooks';
 import { getDynamicInfo, isAlreadySignUp, signUp } from '@api/dynamic';
@@ -34,7 +34,7 @@ const DynamicInfo = () => {
     (async () => {
       const { language } = await loadLanguageStorage()
       setL(language)
-      console.log(language, 'language');
+   
 
     })()
 
@@ -52,7 +52,7 @@ const DynamicInfo = () => {
     </BaseLayout>
   }
 
-  console.log(id, 'id')
+
 
 
 
@@ -77,7 +77,7 @@ const DynamicInfo = () => {
   const { data: res, loading, runAsync: infoRun } = useRequest(() => getDynamicInfo({ id: id }), {
     manual: false,
     onSuccess: (res) => {
-      console.log(res, 'res')
+     
       if (!res.success) {
         navigation.goBack()
       }
@@ -95,10 +95,10 @@ const DynamicInfo = () => {
     (async () => {
       const generic = await getGenericPassword()
 
-      console.log('password' in generic, 'generic', (generic as UserCredentials)?.password != '')
+      
 
       if ('password' in (generic as UserCredentials)) {
-        console.log('请求了')
+     
         await applicationRun()
       }
     })()
@@ -141,7 +141,7 @@ const DynamicInfo = () => {
 
 
   const onShare = async () => {
-    console.log(1);
+
 
     try {
       const msg = Platform.OS === 'android' ? `${title} https://m.point2club.com#/active/${id}` : title
@@ -178,6 +178,8 @@ const DynamicInfo = () => {
   const source = {
     html: l == 'en' ? `<div>${data?.dynamicContentUk}</div>` : `<div>${data?.dynamicContentCn}</div>`,
   };
+
+  const InfoRender=memo(RenderHTML)
   const img = fileStore?.fileUrl + '/' + data?.pictureFile[0]?.fileName
   const imgsource = data?.pictureFile[0]?.fileName ? { uri: img } : cardHeader
   const title = l == 'en' ? data?.dynamicTitleUk : data?.dynamicTitleCn
@@ -190,13 +192,13 @@ const DynamicInfo = () => {
   const amount = data?.amount
   const amountText = !amount ? t('dynamic.tagList.tag2') : t('dynamic.tagList.tag3');
   const signText = whetherSignUp ? t('dynamic.tagList.tag1') : '';
-  console.log(amount, 'isApplication');
+
 
   /* 报名 */
   async function handleSignUp() {
     hideModal()
 
-    console.log(amount, 'amount')
+
 
     if (amount) {
       const feeRate = findIndex(shop.select.id)?.feeRate ?? 0
@@ -219,7 +221,7 @@ const DynamicInfo = () => {
             activityId: id,
             ...params
           });
-          console.log(res, '这是提交的信息');
+   
 
           return {
             orderId: res?.data?.orderId
@@ -235,7 +237,6 @@ const DynamicInfo = () => {
       return
     }
 
-    console.log(id)
 
     const res = await signUp({
       payMethod: 'PAYNOW',
@@ -256,7 +257,7 @@ const DynamicInfo = () => {
 
 
   const RenderBtn = () => {
-    console.log(isApplication, 'isApplication')
+
 
     if (isApplication) {
       /* 你已经报名 */

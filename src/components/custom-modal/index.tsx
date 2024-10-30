@@ -124,10 +124,8 @@ const CustomModal = forwardRef<BottomSheetModal, IModalProp>((props, ref) => {
     <BottomSheetView >
       <ListHeaderComponent headerText={headerText} />
     </BottomSheetView>
-    <BottomSheetScrollView  >
-
+    <BottomSheetScrollView>
       <RadioButton.Group onValueChange={onValueChange} value={value}>
-
         {data.map(renderItem)}
       </RadioButton.Group>
     </BottomSheetScrollView>

@@ -22,8 +22,6 @@ import { useTranslation } from 'react-i18next';
 import { Button } from 'react-native-paper';
 import Loading from '@components/baselayout/loading';
 import { useNetInfo } from '@react-native-community/netinfo';
-
-
 const headerIcon = require('@assets/imgs/base/modalHeader.png');
 const closeIcon = require('@assets/imgs/base/close.png')
 
@@ -54,10 +52,7 @@ let defaultlanguage = ''
 const HomeScreen = () => {
   const navigation =
     useNavigation<NativeStackNavigationProp<UsertackParamList>>();
-
-  const { isConnected } = useNetInfo()
   const { t } = useTranslation()
-
   const { isConnected } = useNetInfo();
   const { data: language, findlanguage } = useFindLanguage()
   const { allData, hideDialog, download, loading: versionloading } = useVersion();

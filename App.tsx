@@ -71,22 +71,20 @@ const App = () => {
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-
-      <ModalLayers>
-        <BottomSheetModalProvider>
-          <PaperProvider theme={paperTheme}>
+       <BottomSheetModalProvider>
+       <ModalLayers>
+       <PaperProvider theme={paperTheme}>
             <SafeAreaProvider>
               <StatusBar backgroundColor="transparent" translucent={true} />
               <AppNavigator />
               <Toast
                 config={toastConfig}
                 bottomOffset={200}
-
               />
             </SafeAreaProvider>
           </PaperProvider>
+       </ModalLayers>
         </BottomSheetModalProvider>
-      </ModalLayers>
     </GestureHandlerRootView>
   );
 };
