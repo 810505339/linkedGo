@@ -7,11 +7,12 @@ import { BlurView } from '@react-native-community/blur';
 import useGetDynamicType from './hooks/useGetDynamicType';
 import CustomFlatList from '@components/custom-flatlist';
 import { getDynamicList } from '@api/dynamic';
-import { fileStore } from '@store/getfileurl';
+import { fileStore } from '@storage/store/getfileurl';
 import { useTranslation } from 'react-i18next';
 import { useAsyncEffect } from 'ahooks'
 import { loadLanguageStorage } from '@storage/language/action';
 import { useState } from 'react';
+import FastImage from 'react-native-fast-image';
 
 
 
@@ -92,8 +93,8 @@ const DynamicItem = (props: IProps) => {
 
 
   return <TouchableOpacity onPress={() => handleItemPress(id)} className={`m-5  rounded-2xl relative ${boxClass}   overflow-hidden flex-col justify-end bg-[#5E3C18FF]`}>
-    {pictureFile && <ImageBackground key={'blurryImage'} source={source} className="absolute  left-0 right-0 bottom-0 top-0" style={{ flex: 1 }} />}
-    {!pictureFile && <ImageBackground key={'blurryImage'} source={active} className="absolute  left-0 right-0 bottom-0 top-0" style={{ flex: 1 }} />}
+    {pictureFile && <FastImage key={'blurryImage'} source={source} className="absolute  left-0 right-0 bottom-0 top-0" style={{ flex: 1 }} />}
+    {!pictureFile && <FastImage key={'blurryImage'} source={active} className="absolute  left-0 right-0 bottom-0 top-0" style={{ flex: 1 }} />}
     {<Type />}
     <View className=" p-2.5 overflow-hidden">
       <BlurView
@@ -114,7 +115,7 @@ const DynamicItem = (props: IProps) => {
       <View className="flex-row justify-between">
         <Text className="text-[#ffffff59] text-xs font-bold">{publishDate}</Text>
         <View className="flex-row">
-          <Image source={hot} />
+          <FastImage source={hot} />
           <Text className="text-[#ffffff59] text-xs font-bold">
             {pageView}
           </Text>

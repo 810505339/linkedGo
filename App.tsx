@@ -20,7 +20,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import Toast from 'react-native-toast-message';
 import toastConfig from '@components/toast/customToast';
-import { getFileUrl } from '@store/getfileurl';
+import { getFileUrl } from '@storage/store/getfileurl';
 import useVersion from '@hooks/useVersion';
 import './global.css';
 import useImLogin from '@hooks/useImLogin';

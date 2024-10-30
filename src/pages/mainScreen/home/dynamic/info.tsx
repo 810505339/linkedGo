@@ -10,12 +10,13 @@ import { useAsyncEffect, useRequest } from 'ahooks';
 import { getDynamicInfo, isAlreadySignUp, signUp } from '@api/dynamic';
 import { RootStackParamList, ScreenNavigationProp } from '@router/type';
 import { useTranslation } from 'react-i18next';
-import { fileStore } from '@store/getfileurl';
+import { fileStore } from '@storage/store/getfileurl';
 import { loadLanguageStorage } from "@storage/language/action";
 import { getGenericPassword, UserCredentials } from 'react-native-keychain';
 import useSelectShop from '@hooks/useSelectShop';
-import { findIndex } from '@store/shopStore';
+import { findIndex } from '@storage/store/shopStore';
 import currency from 'currency.js';
+import FastImage from 'react-native-fast-image';
 
 import MyModal from '@components/modal';
 import Toast from 'react-native-toast-message';
@@ -279,7 +280,7 @@ const DynamicInfo = () => {
 
     <ScrollView onScroll={onScroll}>
       <View className=" w-full h-[375]  relative">
-        <ImageBackground source={imgsource} className="absolute inset-0 top-0 left-0 right-0 bottom-0 -z-10" />
+        <FastImage source={imgsource} className="absolute inset-0 top-0 left-0 right-0 bottom-0 -z-10" />
         <View className="absolute bottom-0 left-0 right-0  text-center px-5 py-2 overflow-hidden">
           <BlurView
             style={{ position: 'absolute', bottom: 0, left: 0, right: 0, top: 0 }}
@@ -323,7 +324,7 @@ const DynamicInfo = () => {
 
 
       <View className="p-5">
-        <RenderHtml
+        <InfoRender
           baseStyle={{ fontSize: 14, color: '#ffffffbf' }}
           contentWidth={width - 40}
           source={source}

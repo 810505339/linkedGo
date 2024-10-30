@@ -22,7 +22,7 @@ type IProps = {
 const Dialog = (props: PropsWithChildren<IProps>) => {
   const { t } = useTranslation()
   const { visible, confirm, onDismiss, title, children, confirmText, cancelText, isShowTitle = true, dismissable = false, onCancel } = props;
-  const _title = title ? title : <Text>提示</Text>;
+  const _title = title ? title : <Text>{t('Modal.tip')}</Text>;
   const _confirmText = confirmText ?? t('common.btn2');
   const _cancelText = cancelText ?? t('common.btn6');
   return <Portal>

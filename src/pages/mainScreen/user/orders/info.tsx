@@ -24,7 +24,7 @@ import { getCustomerCoupon } from '@api/coupon';
 import setPayApi from '@api/common'
 
 import MyModal from '@components/modal';
-import { findIndex } from '@store/shopStore';
+import { findIndex } from '@storage/store/shopStore';
 cssInterop(Text, {
   className: 'style'
 })
@@ -82,10 +82,9 @@ const Info = (props: any) => {
         <Text className="text-xs font-light text-[#ffffff7f]">{payMethod}</Text>
         <Text className='text-[#E6A055] font-bold text-xl ml-2'>S${otherAmount}</Text>
       </View>
-
     </View>}
 
-    {canCancel && <View className='flex-row items-center justify-between mt-5 pb-20'>
+    {canCancel && orderStatus != ORDERSATUS.未支付 && <View className='flex-row items-center justify-between mt-5 pb-20'>
       <Button mode='outlined' className=" w-full font-bold" textColor="rgba(255, 255, 255, 0.75)" style={{ borderColor: 'rgba(255, 255, 255, 0.2)' }} onPress={props.cancel} >{t('orders.btn1')}</Button>
     </View>}
 
@@ -191,7 +190,7 @@ const OrdersInfo = () => {
 
   /* overId的值 */
   const orderIdRef = useRef('')
-  const { phone, setPayPassword } = usesetPwd(allData.isShowPwd)
+  const { phone, setPayPassword, runAsyncByUser } = usesetPwd(allData.isShowPwd)
   /* 当存在couponId 也就是选中了优惠券 */
   useEffect(() => {
     console.log(route.params?.couponId);
@@ -422,12 +421,11 @@ const OrdersInfo = () => {
       newPayPassword: allData.newPayPassword,
     })
 
-
-
     if (res.data.success) {
       Toast.show({
         text1: t('common.set')
       })
+      await runAsyncByUser()
       setAllData((draft) => {
         draft.psdVisible = false;
       })

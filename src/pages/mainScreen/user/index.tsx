@@ -6,16 +6,14 @@ import { Image, ImageBackground, Pressable, RefreshControl, Text, TouchableOpaci
 import { Appbar, Divider, List } from 'react-native-paper';
 import Animated from 'react-native-reanimated';
 import { RootStackParamList } from '@router/type';
-import CheckAuthLayout from '@components/baselayout/checkLayout';
 import { BlurView } from '@react-native-community/blur';
 import { useRequest } from 'ahooks';
 import { detailsById, mineInfo } from '@api/user';
 import CustomModal from '@components/custom-modal';
 import useLanguageSelect from './hooks/useLanguageSelect';
-import { useImmer } from 'use-immer';
 import { cssInterop } from 'nativewind'
 import { useTranslation } from 'react-i18next';
-import { useAsyncEffect } from 'ahooks'
+
 import { getGenericPassword } from 'react-native-keychain';
 import useUserInfo from '@hooks/useUserInfo';
 

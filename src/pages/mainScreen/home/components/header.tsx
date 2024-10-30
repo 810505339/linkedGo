@@ -4,7 +4,7 @@ import { Image, TouchableOpacity, View } from 'react-native';
 import { useEffect, useRef } from 'react';
 import { BottomSheetModal } from '@gorhom/bottom-sheet';
 
-import { initList, store, findIndex } from '@store/shopStore';
+import { initList, store, findIndex } from '@storage/store/shopStore';
 
 import CustomModal, { IItemProp } from '@components/custom-modal';
 import useSelectShop from '@hooks/useSelectShop';

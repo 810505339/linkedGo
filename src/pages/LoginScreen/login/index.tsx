@@ -7,7 +7,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import useWechat from '@hooks/useWechat'
 import { useTranslation } from 'react-i18next'
 import { useEffect, useState } from 'react'
-import {  useStore } from '@store/versionStore'
+import { useStore } from '@storage/store/versionStore'
 
 const bgImage = require('@assets/imgs/login/bg.png')
 

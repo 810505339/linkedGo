@@ -5,9 +5,10 @@ import Animated from 'react-native-reanimated';
 import { useImmer } from 'use-immer';
 import { getAreaById } from '@api/store';
 import dayjs from 'dayjs';
-import { fileStore } from '@store/getfileurl';
+import { fileStore } from '@storage/store/getfileurl';
 import { useRequest } from 'ahooks';
 import { useTranslation } from 'react-i18next';
+import FastImage from 'react-native-fast-image';
 const DATA = [
   {
     id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
@@ -35,7 +36,7 @@ const AreaItem = (props: IProps) => {
   const border = index === activeIndex ? 'border-2 border-[#E6A055FF]' : 'border-2';
   return (<TouchableOpacity onPress={() => onPress(index)} className='w-[30%] box-border'>
     <View className={`  rounded-xl ${border} overflow-hidden`} >
-      <ImageBackground source={{ uri: fileStore.fileUrl + '/' + pictureFIleVOs[0]?.fileName }} className="h-20 " />
+      <FastImage source={{ uri: fileStore.fileUrl + '/' + pictureFIleVOs[0]?.fileName }} className="h-20 " />
     </View>
     <Text className="text-white text-xs font-bold mt-2.5 w-24" numberOfLines={3}>{name}</Text>
     <Text className="opacity-50 text-white mt-1" style={{ fontSize: 10 }}>{beginTime} - {endTime}</Text>

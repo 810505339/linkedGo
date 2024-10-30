@@ -7,7 +7,7 @@ import useSelectBooths from '@hooks/useSelectBooths';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { RootStackParamList } from '@router/type';
 import Panel from '@components/panel';
-import { fileStore } from '@store/getfileurl';
+import { fileStore } from '@storage/store/getfileurl';
 import { useTranslation } from 'react-i18next';
 import PackageList from '../home/components/packageList';
 import { useImmer } from 'use-immer';
@@ -19,7 +19,7 @@ import useSelectShop from '@hooks/useSelectShop';
 import { useRequest } from 'ahooks';
 import useUserInfo from '@hooks/useUserInfo';
 import currency from 'currency.js';
-import { findIndex } from '@store/shopStore';
+import { findIndex } from '@storage/store/shopStore';
 
 import MyModal from '@components/modal';
 

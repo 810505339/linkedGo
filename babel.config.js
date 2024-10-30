@@ -25,4 +25,7 @@ module.exports = {
       'import-glob',
     ],
   ],
+  env: {
+
+  },
 };

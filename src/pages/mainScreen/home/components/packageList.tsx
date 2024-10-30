@@ -3,7 +3,7 @@ import { View, TouchableOpacity, Image } from 'react-native';
 import { Text } from 'react-native-paper';
 import Animated from 'react-native-reanimated';
 import { useImmer } from 'use-immer';
-import { fileStore } from '@store/getfileurl';
+import { fileStore } from '@storage/store/getfileurl';
 import { useRequest } from 'ahooks';
 import { getByBoothId } from '@api/booths';
 import uuid from 'react-native-uuid';

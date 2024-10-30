@@ -12,7 +12,7 @@
     "a-build": "cd android && ./gradlew assembleRelease",
     "a-build-aab": "cd android && ./gradlew bundleRelease",
     "i-pod-install": "cd ios && pod install",
-    "i-build": "react-native bundle --entry-file index.ios.js --platform ios --dev false --bundle-output ios/ios.js bundle",
+    "i-build": "react-native bundle --entry-file index.js --platform ios --dev false --bundle-output ios/ios.js bundle",
     "bundle-ios": "node node_modules/react-native/local-cli/cli.js bundle --entry-file index.js --platform ios --dev false --bundle-output ./ios/bundle/index.js bundle --assets-dest ./ios/bundle"
   },
   "dependencies": {
@@ -107,6 +107,7 @@
     "babel-jest": "^29.6.3",
     "babel-plugin-import-glob": "^2.0.0",
     "babel-plugin-module-resolver": "^5.0.0",
+    "babel-plugin-transform-remove-console": "^6.9.4",
     "eslint": "^8.19.0",
     "jest": "^29.6.3",
     "prettier": "2.8.8",

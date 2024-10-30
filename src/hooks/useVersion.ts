@@ -4,8 +4,8 @@ import { useImmer } from 'use-immer'
 import { useRequest } from 'ahooks'
 import { getVersion } from "@api/version"
 import { useEffect } from "react"
-import { fileStore } from '@store/getfileurl';
-import { getStore } from '@store/versionStore'
+import { fileStore } from '@storage/store/getfileurl';
+import { getStore } from '@storage/store/versionStore'
 import { useNetInfo } from "@react-native-community/netinfo";
 
 export default () => {
@@ -25,7 +25,7 @@ export default () => {
 
 
 
-  const { run,loading } = useRequest(getVersion, {
+  const { run, loading } = useRequest(getVersion, {
     manual: true,
     onSuccess: (res) => {
 

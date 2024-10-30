@@ -15,7 +15,7 @@ import { cssInterop } from 'nativewind';
 import { useTranslation } from 'react-i18next';
 
 import { logout } from '@api/login';
-import { useStore } from '@store/versionStore'
+import { useStore } from '@storage/store/versionStore'
 
 cssInterop(Button, {
   className: 'style'

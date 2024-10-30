@@ -3,7 +3,7 @@ import { IItemProp } from 'components/custom-modal';
 import { useCallback, useEffect, useRef } from 'react';
 import { load, save } from '@storage/shop/action';
 import { useImmer } from 'use-immer';
-import { findIndex, initList, store } from '@store/shopStore';
+import { findIndex, initList, store } from '@storage/store/shopStore';
 import { useSnapshot } from 'valtio';
 import { useFocusEffect } from '@react-navigation/native';
 import { useNetInfo } from "@react-native-community/netinfo";
