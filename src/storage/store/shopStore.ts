@@ -1,5 +1,13 @@
-import { getSotreList } from '@api/store';
-import { load } from '@storage/shop/action';
+/*
+ * @Author: 810505339
+ * @Date: 2024-10-30 09:17:32
+ * @LastEditors: 810505339
+ * @LastEditTime: 2024-12-03 17:39:58
+ * @FilePath: \linkedGo\src\storage\store\shopStore.ts
+ * 记得注释
+ */
+import { getSotreList,getTenantList } from '@api/store';
+import { load } from'@storage/shop/action';
 import { proxy } from 'valtio';
 
 export type IShopItem = {
@@ -17,9 +25,11 @@ export const store = proxy<IProxy>({
 
 
 export const initList = async () => {
-  const { data } = await getSotreList();
-  store.shopList = data.data;
-  return data.data;
+  // const { data } = await getSotreList();
+  const { data:Tdata } = await getTenantList();
+  console.log(Tdata,'Tdata')
+  // store.shopList = data.data;
+  // return data.data;
 };
 
 export const findIndex = (id: string) => {

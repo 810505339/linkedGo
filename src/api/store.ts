@@ -1,3 +1,11 @@
+/*
+ * @Author: 810505339
+ * @Date: 2024-07-11 13:46:26
+ * @LastEditors: 810505339
+ * @LastEditTime: 2024-12-03 16:48:01
+ * @FilePath: \linkedGo\src\api\store.ts
+ * 记得注释
+ */
 import service from './base';
 //获取门店的列表
 export const getSotreList = async () => {
@@ -7,6 +15,14 @@ export const getSotreList = async () => {
     method: 'get',
   });
 };
+
+export const getTenantList=async ()=>{
+  console.log('请求tenant列表')
+  return service({
+    url: '/admin/tenant/app/list',
+    method: 'get',
+  });
+}
 
 
 
