@@ -9,7 +9,7 @@
 import service from './base';
 //获取门店的列表
 export const getSotreList = async () => {
-  console.log('请求门店列表')
+ 
   return service({
     url: '/admin/store/allEnabled',
     method: 'get',
@@ -17,7 +17,7 @@ export const getSotreList = async () => {
 };
 
 export const getTenantList=async ()=>{
-  console.log('请求tenant列表')
+
   return service({
     url: '/admin/tenant/app/list',
     method: 'get',

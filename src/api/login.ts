@@ -54,7 +54,7 @@ export const loginApi = async ({ code, grant_type = 'mobile', scope = 'server', 
 		},
 	});
 
-	console.log(res.data, '这是请求发出去的返回的真正东西');
+
 	const data = res.data
 
 	if (data) {

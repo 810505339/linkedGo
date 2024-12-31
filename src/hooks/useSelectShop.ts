@@ -1,3 +1,11 @@
+/*
+ * @Author: 810505339
+ * @Date: 2024-10-30 09:17:32
+ * @LastEditors: 810505339
+ * @LastEditTime: 2024-12-31 11:18:59
+ * @FilePath: \linkedGo\src\hooks\useSelectShop.ts
+ * 记得注释
+ */
 import { BottomSheetModal } from '@gorhom/bottom-sheet';
 import { IItemProp } from 'components/custom-modal';
 import { useCallback, useEffect, useRef } from 'react';
@@ -45,7 +53,7 @@ export default (isStore = true) => {
     } finally {
       const shopList = isStore ? store.shopList : await runAsync();
       const index = shopList.findIndex((item) => item.id === data?.selectId);
-      console.log(shopList, '触发了init');
+    
 
       if (!data?.selectId || !~index) {
         data = await save(shopList[0]);

@@ -25,6 +25,7 @@ import setPayApi from '@api/common'
 
 import MyModal from '@components/modal';
 import { findIndex } from '@storage/store/shopStore';
+import useSelectShop from '@hooks/useSelectShop';
 cssInterop(Text, {
   className: 'style'
 })
@@ -107,6 +108,7 @@ const Info = (props: any) => {
 
 const OrdersInfo = () => {
   const route = useRoute<RouteProp<RootStackParamList, 'OrdersInfo'>>();
+   const { snap, bottomSheetModalRef, shop, onPress, shopName } = useSelectShop(false);
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { orderContext = [], headerImg, submit, orderStatus, orderId, taxAmount = 0, feeAmount = 0, discountAmount, realAmount, balanceAmount = 0, useScope, ticketId, storeId, boothId, winePartyMode, activityId, payMethod, otherAmount, canCancel } = route?.params;
 
@@ -204,8 +206,11 @@ const OrdersInfo = () => {
     route.params?.couponId,
   ]);
   useEffect(() => {
-    balanceRun()
-  }, [])
+  if(shop.select.id!='')
+  {
+    balanceRun(shop.select.id)
+  }
+  }, [shop.select.id])
 
   useEffect(() => {
     if (orderStatus) {

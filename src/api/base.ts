@@ -58,7 +58,7 @@ service.interceptors.request.use(async (config) => {
 		config.headers['Accept-Language'] = 'en'
 	}
 
-	console.log('现在请求的语言', config.headers['Accept-Language'])
+	
 
 
 	// 请求报文加密
