@@ -29,7 +29,7 @@ const Verification = () => {
 
   console.log(mobile, 'mobile');
 
-  const [isResend, setIsResend] = useState(false);
+  const [isResend, setIsResend] = useState(true);
   const { count, start, stop } = useCountdown(60);
   const [code, setCode] = useState('');
   const { handleLogin, loading } = useLogin({ code, mobile, authCode, phoneAreaCode }, navigation)
@@ -45,6 +45,8 @@ const Verification = () => {
 
   };
 
+  
+
 
   const codeChange = useCallback((value: string) => {
     setCode(value);
@@ -56,6 +58,11 @@ const Verification = () => {
       setIsResend(false);
     }
   }, [count, stop]);
+
+  useEffect(()=>{
+    start()
+
+  },[])
 
   const ResendRender = (
     <Text>

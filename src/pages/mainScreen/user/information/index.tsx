@@ -1,16 +1,29 @@
+/*
+ * @Author: 810505339
+ * @Date: 2024-06-30 11:59:51
+ * @LastEditors: 810505339
+ * @LastEditTime: 2024-12-31 11:29:36
+ * @FilePath: \linkedGo\src\pages\mainScreen\user\information\index.tsx
+ * 记得注释
+ */
 import BaseLayout from '@components/baselayout';
 import CustomFlatlist from '@components/custom-flatlist';
 import { useRequest } from 'ahooks';
 import { getBalanceInfo, balanceDetailPage } from '@api/balance';
-import { ImageBackground, RefreshControl, View } from 'react-native';
-import { Text } from 'react-native-paper';
+import { getTenantList } from '@api/store';
+import { Image, ImageBackground, RefreshControl, TouchableOpacity, View } from 'react-native';
+import { Button, Text } from 'react-native-paper';
 import Animated from 'react-native-reanimated';
 import { useTranslation } from 'react-i18next';
+import useSelectShop from '@hooks/useSelectShop';
+import CustomModal from '@components/custom-modal';
+import { useNetInfo } from '@react-native-community/netinfo';
+import { useEffect } from 'react';
 
 const cardBg = require('@assets/imgs/information/card_bg.png')
 const navBg = require('@assets/imgs/information/nav_bg.png')
 
-
+const xiala=require('@assets/imgs/xiala_w.png')
 
 type IListHeaderProps = {
   totalBalance: string,
@@ -76,18 +89,44 @@ const renderItem = (item: any, t: any) => {
 };
 
 const Information = () => {
-
-  const { data } = useRequest(getBalanceInfo, {});
+    const { snap, bottomSheetModalRef, shop, onPress, shopName } = useSelectShop(false);
+    const { data,run } = useRequest(getBalanceInfo, {
+      manual:false
+    });
+  
   const { t } = useTranslation()
 
+  function openModal(){
+    bottomSheetModalRef.current?.present();
+  }
+
+  useEffect(()=>{
+    run(shop.select.id)
+  },[shop.select.id])
+  
 
   return (<BaseLayout className="bg-[#0B0B0BFF]">
-    {data?.data && <Animated.View>
-      <ListHeader headerInfo={data?.data} />
-
-      <CustomFlatlist renderItem={(item) => renderItem(item, t)} params={{ customerId: data?.data.customerId }} onFetchData={balanceDetailPage} keyExtractor={(item) => item.serialNum} />
+    { <Animated.View>
+      <View >
+      <TouchableOpacity onPress={openModal}  >
+      <View className='flex-row relative  px-6 items-center justify-between'>
+        <Text numberOfLines={1} className=" text-base  items-center justify-center">{shopName}</Text>
+        <Image source={xiala} className='w-4 h-4 ' />
+      </View>
+    </TouchableOpacity>
+      </View>
+      
+    {data?.data&&  
+    <View>
+       <ListHeader headerInfo={data?.data} />
+       <CustomFlatlist renderItem={(item) => renderItem(item, t)} params={{ customerId: data?.data.customerId }} onFetchData={balanceDetailPage} keyExtractor={(item) => item.serialNum} />
+    </View>
+     }
+    
+     
+    
+      <CustomModal ref={bottomSheetModalRef} data={snap.shopList} selectValue={shop.select.id} onPress={onPress} headerText={t('common.label1')} snapPoints={['50%']} />
     </Animated.View>}
-
   </BaseLayout>);
 
 };

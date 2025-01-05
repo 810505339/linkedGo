@@ -6,8 +6,8 @@ import { replace } from '@router/index';
 import { loadLanguageStorage } from '@storage/language/action'
 /* http://114.67.231.163:9999 */
 // https://gateway.point2club.com/
-const baseUrl = 'https://gateway.point2club.com/';
-//const baseUrl = 'http://114.67.231.163:9999';
+//const baseUrl = 'https://gateway.point2club.com/';
+const baseUrl = 'http://101.126.67.59:9999';
 export const H5 = 'https://m.point2club.com/'
 enum CODELIST {
 	TOKENCAN = '424',
@@ -58,7 +58,7 @@ service.interceptors.request.use(async (config) => {
 		config.headers['Accept-Language'] = 'en'
 	}
 
-	console.log('现在请求的语言', config.headers['Accept-Language'])
+	
 
 
 	// 请求报文加密
