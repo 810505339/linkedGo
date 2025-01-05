@@ -86,16 +86,20 @@ android {
     }
     signingConfigs {
         debug {
-            storeFile file('my-release-key.keystore')
+            // storeFile file('my-release-key.keystore')
+            storeFile file('deployment_cert.keystore')
             storePassword '123456'
-            keyAlias 'my-key-alias'
+            // keyAlias 'my-key-alias'
+            keyAlias 'mykey'
             keyPassword '123456'
         }
 
         release {
-            storeFile file('my-release-key.keystore')
+            // storeFile file('my-release-key.keystore')
+            storeFile file('my-keystore.keystore')
             storePassword '123456'
             keyAlias 'my-key-alias'
+            //keyAlias 'mykey'
             keyPassword '123456'
         }
     }
